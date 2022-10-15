@@ -1,13 +1,25 @@
-import './App.css';
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import UserContextProvider from "./contexts/UserContext";
+import Homepage from "./pages/HomePage";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>Bienvenidos a Fotofi</p>
-      </header>
-    </div>
+    <>
+      <UserContextProvider>
+        <div>
+          <header>
+            <p>Bienvenidos a Fotofi</p>
+          </header>
+          <>
+            <Routes>
+              <Route path="/" element={<Homepage />}></Route>
+            </Routes>
+          </>
+        </div>
+      </UserContextProvider>
+    </>
   );
-}
+};
 
 export default App;
