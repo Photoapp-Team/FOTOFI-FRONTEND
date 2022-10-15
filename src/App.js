@@ -1,12 +1,13 @@
 import './App.css';
+import ButtonAppBar from './components/NavBar/NavBar';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>Bienvenidos a Fotofi</p>
+      <header className='App-header'>
+        <ButtonAppBar />
+        
       </header>
-    </div>
   );
 }
 
