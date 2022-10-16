@@ -5,11 +5,16 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
+import Button from '@mui/material/Button';
 
 export default function ActionAreaCard() {
   return (
-    <Card sx={{ maxWidth: 300 }}>
-      <CardActionArea>
+    <Card sx={{ maxWidth: 300,
+    }} 
+    elevation={4}>
+      <CardActionArea sx={{ maxWidth: 300,
+      padding: "1rem"
+    }}>
         <CardMedia
           className="cardImg"
           component="img"
@@ -26,6 +31,7 @@ export default function ActionAreaCard() {
             align="center"
           />
         </CardContent>
+        <Button>Primary</Button>
       </CardActionArea>
     </Card>
   );
