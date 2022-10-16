@@ -6,9 +6,13 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import Fotofilogo from '/home/devdanda/Kodemia/g20/Fotofi/fotofi-frontend/fotofi-frontend/src/images/fotofi.png'
-import '/home/devdanda/Kodemia/g20/Fotofi/fotofi-frontend/fotofi-frontend/src/components/NavBar/NavBar.css'
+import Fotofilogo from '../../images/fotofi.png'
+import './NavBar.css'
 import SearchBar from '../SearchBar/Search';
+import HeartIcon from '../HeartButton/Heart';
+import ButtonToEdit from '../Button/Buttons';
+import Heart from '../HeartButton/Heart';
+import BellButton from '../BellButton/BellButton';
 
 export default function ButtonAppBar() {
   return (
@@ -21,6 +25,11 @@ export default function ButtonAppBar() {
                 </div>
                 <div>
                     <SearchBar/>
+                </div>
+                <div className='rightCornerNav'>
+                    <Heart/>
+                    <BellButton/>
+                    <ButtonToEdit />
                 </div>
             </div>
         </Toolbar>

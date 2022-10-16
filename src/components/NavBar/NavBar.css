@@ -9,3 +9,9 @@
     justify-content: space-around;
     align-items: center;
 }
+
+.rightCornerNav{
+    display: flex;
+    justify-content: space-around;
+    width: 19%;
+}
