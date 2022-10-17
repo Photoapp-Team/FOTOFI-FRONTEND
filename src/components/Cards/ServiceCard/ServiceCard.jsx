@@ -5,33 +5,27 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-import Button from '@mui/material/Button';
 
-export default function ActionAreaCard() {
+export default function ActionAreaCard(service, img) {
   return (
-    <Card sx={{ maxWidth: 300,
-    }} 
-    elevation={4}>
-      <CardActionArea sx={{ maxWidth: 300,
-      padding: "1rem"
-    }}>
+    <Card sx={{ maxWidth: 250, borderRadius: 2 }} elevation={4}>
+      <CardActionArea sx={{ maxWidth: 300, padding: ".5rem" }}>
         <CardMedia
           className="cardImg"
           component="img"
           height="140"
-          image="https://i.insider.com/61a7a6e10ed48c0019e537e8?width=1000&format=jpeg&auto=webp"
-          alt="green iguana"
+          image="https://i.insider.com/61a7a6e10ed48c0019e537e8?width=1000&format=jpeg&auto=webp" //image={img} Esta linea es para ya pasar la info
+          alt="FOTO BODA" //alt={service} Esta linea es para ya pasar la info
         />
-        <CardContent>
+        <CardContent sx={{ pb: 0 }}>
           <Typography
             className="cardTitle"
             variant="h5"
             component="div"
-            children="BODAS"
+            children="BODAS" //children={service} Esta linea es para ya pasar la info
             align="center"
           />
         </CardContent>
-        <Button>Primary</Button>
       </CardActionArea>
     </Card>
   );
