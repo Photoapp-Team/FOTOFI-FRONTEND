@@ -4,7 +4,7 @@ import UserContextProvider from "./contexts/UserContext";
 import Homepage from "./pages/HomePage";
 import ServiceCard from "./components/Cards/ServiceCard/ServiceCard";
 import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
-import { green, purple, yellow } from "@mui/material/colors";
+import { green, purple, yellow, grey } from "@mui/material/colors";
 import PhotographerCard from "./components/Cards/PhotographerCard";
 import "@fontsource/raleway"; // Defaults to weight 400.
 
@@ -18,6 +18,9 @@ const theme = createTheme({
     },
     secondary: {
       main: green[500],
+    },
+    tertiary: {
+      main: grey[400],
     },
     accent: {
       main: yellow[500],

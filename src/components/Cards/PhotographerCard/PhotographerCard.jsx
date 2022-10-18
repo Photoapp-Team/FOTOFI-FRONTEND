@@ -77,7 +77,7 @@ export default function RecipeReviewCard(
 
       <CardActions disableSpacing sx={{ p: 0 }}>
         <IconButton aria-label="add to favorites" sx={{ p: 0.25 }}>
-          <FavoriteIcon />
+          <FavoriteIcon sx={{ color: "tertiary.main" }} />
         </IconButton>
         <ExpandMore
           sx={{ p: 0 }}
