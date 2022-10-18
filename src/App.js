@@ -3,7 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import UserContextProvider from "./contexts/UserContext";
 import Homepage from "./pages/HomePage";
 import FullRegistrationPage from "./pages/FullRegistrationPage";
-import BasicRegistrationPage from "./pages/BasicRegistrationPage";
+import BasicRegistrationPage from "./pages/BasicRegistration/BasicRegistrationPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
                 path="/BasicRegistration"
                 element={<BasicRegistrationPage />}
               ></Route>
+              <Route path="/Login" element={<LoginPage />}></Route>
             </Routes>
           </>
         </div>
