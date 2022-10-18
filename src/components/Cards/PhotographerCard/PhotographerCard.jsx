@@ -13,6 +13,7 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import StarIcon from "@mui/icons-material/Star";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import Skeleton from "@mui/material/Skeleton";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -25,13 +26,14 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function RecipeReviewCard(
+export default function PhotographerCard({
   name,
   coverImg,
   ranking,
   profilePic,
-  location
-) {
+  location,
+  isLoaded,
+}) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -45,20 +47,48 @@ export default function RecipeReviewCard(
         font
         sx={{ p: 0.75 }}
         avatar={
-          <Avatar
-            alt="Luis Rod" //alt={name} Esta linea es para ya pasar la info
-            src="https://www.jokesforfunny.com/wp-content/uploads/2021/06/0596bdb89b60fe771acd2f5972a9d3e3.jpg" //src={profilePic} Esta linea es para ya pasar la info
-          />
+          isLoaded ? (
+            <Avatar alt={name} src={profilePic} />
+          ) : (
+            <Skeleton
+              animation="wave"
+              variant="circular"
+              width={40}
+              height={40}
+            />
+          )
         }
-        title="Luis Rod" //title={name} Esta linea es para ya pasar la info
-        subheader="Cdmx" //subheader={location} Esta linea es para ya pasar la info
+        title={
+          isLoaded ? (
+            name
+          ) : (
+            <Skeleton variant="text" width="60%" sx={{ fontSize: ".9rem" }} />
+          )
+        }
+        subheader={
+          isLoaded ? (
+            location
+          ) : (
+            <Skeleton variant="text" width="40%" sx={{ fontSize: ".9rem" }} />
+          )
+        }
         action={
           <IconButton aria-label="ranking">
             <Typography
               sx={{ p: 0.75 }}
               variant="caption"
               component="div"
-              children="4.7" //children={ranking} Esta linea es para ya pasar la info
+              children={
+                isLoaded ? (
+                  ranking
+                ) : (
+                  <Skeleton
+                    variant="text"
+                    width="20px"
+                    sx={{ fontSize: ".75rem" }}
+                  />
+                )
+              }
               align="center"
             />
             <StarIcon className="StarIcon" sx={{ color: "accent.main" }} />
@@ -66,14 +96,18 @@ export default function RecipeReviewCard(
         }
       />
 
-      <CardMedia
-        className="cardCover"
-        sx={{ borderBottomRadius: 3 }}
-        component="img"
-        height="194"
-        image="https://i.insider.com/61a7a6e10ed48c0019e537e8?width=1000&format=jpeg&auto=webp" //image={img} Esta linea es para ya pasar la info
-        alt="Paella dish"
-      />
+      {isLoaded ? (
+        <CardMedia
+          className="cardCover"
+          sx={{ borderBottomRadius: 3 }}
+          component="img"
+          height="194"
+          image={coverImg}
+          alt="Cover Picture"
+        />
+      ) : (
+        <Skeleton variant="rectangular" height={194} align="center" />
+      )}
 
       <CardActions disableSpacing sx={{ p: 0 }}>
         <IconButton aria-label="add to favorites" sx={{ p: 0.25 }}>
