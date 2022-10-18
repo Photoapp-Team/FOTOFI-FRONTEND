@@ -34,8 +34,6 @@ const App = () => {
             <header>
               <p>Bienvenidos a Fotofi</p>
             </header>
-            <ServiceCard />
-            <PhotographerCard />
             <>
               <Routes>
                 <Route path="/" element={<Homepage />}></Route>
