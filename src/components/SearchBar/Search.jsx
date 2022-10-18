@@ -50,7 +50,7 @@ const Search = styled('div')(({ theme }) => ({
 
 const SearchBar = () =>{
     return (
-        <Toolbar sx={{color: "blue"}}> 
+        <Toolbar sx={{color: "black"}}> 
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
