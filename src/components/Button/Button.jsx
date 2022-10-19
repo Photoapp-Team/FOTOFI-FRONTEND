@@ -1,14 +1,7 @@
 import React from 'react'
 
 const Button = (props) => {
-    console.log(props)
-  return (
-    <div className="button-container">
-                  <button {...props}>
-                    Submit
-                  </button>
-                </div>
-  )
-}
+  return <button {...props}>{props.name}</button>;
+};
 
 export default Button
