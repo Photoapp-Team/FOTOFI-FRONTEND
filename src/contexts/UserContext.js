@@ -1,31 +1,64 @@
-import React, { useState, createContext, useEffect } from "react";
+import { ContentCopy } from "@mui/icons-material";
+import React, { useState, createContext, useEffect, useContext } from "react";
 export const UserContext = createContext();
 
 const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [token, setToken] = useState();
 
-  useEffect(() => {
+  const login = async (values) => {
     const { REACT_APP_API_ENDPOINT } = process.env;
-    const getUserTest = async () => {
-      const response = await fetch(
-        `${REACT_APP_API_ENDPOINT}/users/633895f0b250e66539a053b4`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMzg5NWYwYjI1MGU2NjUzOWEwNTNiNCIsImlhdCI6MTY2NTgwNDQ2NCwiZXhwIjoxNjY1ODkwODY0fQ.NvUj8EFAE6F0yCFgSOOKqj3MnImeo0mW9gxqyzvyr6w",
-          },
-        }
-      );
-      const userData = await response.json();
-      setUser(userData.data);
+    const AUTH_URL = `${REACT_APP_API_ENDPOINT}/auth`;
+    const { password, email } = values;
+    const userData = {
+      email,
+      password,
     };
-    getUserTest();
-  }, []);
 
-  return <UserContext.Provider value={user}>{children}</UserContext.Provider>;
+    const tokenResponse = await fetch(`${AUTH_URL}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData),
+    });
+
+    const tokenData = await tokenResponse.json();
+
+    if (!tokenData) alert("Ingresaste mal tus datos");
+    else {
+      console.log("tokenData", tokenData);
+      setToken({ tokenData });
+      localStorage.setItem("token", tokenData.data.token);
+      console.log(localStorage.getItem("token"));
+      const temp = tokenData.data.token.split(".")[1];
+      const userId = JSON.parse(atob(temp)).id;
+      const USER_URL = `${REACT_APP_API_ENDPOINT}/users/${userId}`;
+
+      const userResponse = await fetch(`${USER_URL}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${tokenData.data.token}`,
+        },
+      });
+
+      const userData = await userResponse.json();
+
+      if (userData) console.log("userData", userData);
+      setUser(userData.data);
+    }
+  };
+
+  const logout = () => {
+    setUser({});
+  };
+
+  return (
+    <UserContext.Provider value={{ user, login, logout }}>
+      {children}
+    </UserContext.Provider>
+  );
 };
 
 export default UserContextProvider;
+
+export const useUser = () => useContext(UserContext);
