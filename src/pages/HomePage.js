@@ -1,9 +1,10 @@
-import { useContext } from "react";
 import RecipeReviewCard from "../components/Cards/PhotographerCard/PhotographerCard";
-import { UserContext } from "../contexts/UserContext";
+import { useUser } from "../contexts/UserContext";
 
 const Homepage = () => {
-  const user = useContext(UserContext);
+  const { user, token } = useUser();
+  console.log("user", user);
+  console.log("token", token);
   return (
     <>
       <RecipeReviewCard />

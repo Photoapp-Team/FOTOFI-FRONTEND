@@ -12,7 +12,6 @@ const LoginForm = () => {
   const { login } = useUser();
 
   const onSubmit = (values, actions) => {
-    console.log(values, login, actions);
     login(values);
     actions.resetForm();
   };
@@ -56,7 +55,12 @@ const LoginForm = () => {
                     type="password"
                     placeholder="Escribe una contraseña"
                   />
-                  <Button disabled={isSubmitting} type="submit" />
+                  <Button
+                    disabled={isSubmitting}
+                    type="submit"
+                    name={"Enviar"}
+                    className={"button-login"}
+                  />
                 </Form>
               )}
             </Formik>

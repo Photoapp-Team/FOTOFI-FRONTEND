@@ -85,7 +85,13 @@ const BasicRegistrationForm = () => {
                     type="password"
                     placeholder="Escribe una contraseña"
                   />
-                  <Button disabled={isSubmitting} type="submit" />
+                  <Button
+                    disabled={isSubmitting}
+                    type="submit"
+                    text={"Submit"}
+                    name={"Enviar"}
+                    className={"button-basic-registration"}
+                  />
                 </Form>
               )}
             </Formik>
