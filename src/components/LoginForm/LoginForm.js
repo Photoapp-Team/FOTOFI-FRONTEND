@@ -7,6 +7,7 @@ import CustomInput from "../Inputs/CustomInput";
 import { registerSchema } from "../schemas";
 import { useUser } from "../../contexts/UserContext";
 import Button from "../Button/Button";
+import { Navigate } from "react-router-dom";
 
 const LoginForm = () => {
   const { login } = useUser();
@@ -14,6 +15,7 @@ const LoginForm = () => {
   const onSubmit = (values, actions) => {
     login(values);
     actions.resetForm();
+    Navigate("/Profile");
   };
 
   return (

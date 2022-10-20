@@ -37,26 +37,21 @@ const App = () => {
     <>
       <ThemeProvider theme={theme}>
         <UserContextProvider>
-          <div>
-            <header>
-              <p>Bienvenidos a Fotofi</p>
-            </header>
-            <>
-              <Routes>
-                <Route path="/" element={<Homepage />}></Route>
-                <Route
-                  path="/FullRegistration"
-                  element={<FullRegistrationPage />}
-                ></Route>
-                <Route
-                  path="/BasicRegistration"
-                  element={<BasicRegistrationPage />}
-                ></Route>
-                <Route path="/Login" element={<LoginPage />}></Route>
-                <Route path="/Profile" element={<ProfilePage />}></Route>
-              </Routes>
-            </>
-          </div>
+          <>
+            <Routes>
+              <Route path="/" element={<Homepage />}></Route>
+              <Route
+                path="/FullRegistration"
+                element={<FullRegistrationPage />}
+              ></Route>
+              <Route
+                path="/BasicRegistration"
+                element={<BasicRegistrationPage />}
+              ></Route>
+              <Route path="/Login" element={<LoginPage />}></Route>
+              <Route path="/Profile" element={<ProfilePage />}></Route>
+            </Routes>
+          </>
         </UserContextProvider>
       </ThemeProvider>
     </>

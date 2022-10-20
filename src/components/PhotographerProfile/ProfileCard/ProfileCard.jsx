@@ -7,6 +7,9 @@ import ProfileName from "../ProfileName/ProfileName";
 import RoleText from "../Role/RoleText";
 import Button from "../../Button/Button";
 import Address from "../Address/Address";
+import ServiceBlock from "../ServiceBlock/ServiceBlock";
+import CoverPhoto from "../CoverPhoto/CoverPhoto";
+import MainSection from "../MainSection/MainSection";
 
 const ProfileCard = () => {
   const { REACT_APP_API_ENDPOINT } = process.env;
@@ -15,45 +18,73 @@ const ProfileCard = () => {
   const { data, loading, error } = useFetch(UserUrl);
   if (data) {
     console.log("data", data);
-    const { profilePic, name, lastname, role, location } = data;
+    const {
+      profilePic,
+      name,
+      lastname,
+      role,
+      location,
+      phoneNumber,
+      email,
+      coverPhoto,
+      photoTags,
+    } = data;
     return (
-      <div className="profile">
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            "& > :not(style)": {
-              m: 1,
-              width: 396,
-              height: 1037,
-            },
-          }}
-          className="profile-box"
-        >
-          <Paper elevation={3}>
-            <div className="profile-paper-container">
-              <div>
-                <ProfilePhoto profilePic={profilePic} />
+      <>
+        <></>
+        <div className="profile">
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              "& > :not(style)": {
+                m: 1,
+                width: 396,
+                height: 1037,
+              },
+            }}
+            className="profile-box"
+          >
+            <CoverPhoto coverPhoto={coverPhoto} />
+            <Paper elevation={3} className="profile-paper-container-main">
+              <div className="profile-paper-container">
+                <div>
+                  <ProfilePhoto profilePic={profilePic} />
+                </div>
+                <>
+                  <ProfileName name={name} lastname={lastname} />
+                </>
+                <>
+                  <RoleText role={role} />
+                </>
+                <>
+                  <Button
+                    name={"Mis sesiones"}
+                    className={"button-profile-1"}
+                  />
+                </>
+                <>
+                  <Button
+                    name={"Editar perfil"}
+                    className={"button-profile-2"}
+                  />
+                </>
+                <>
+                  <Address
+                    location={location}
+                    phoneNumber={phoneNumber}
+                    email={email}
+                  />
+                </>
+                <>
+                  <ServiceBlock photoTags={photoTags} />
+                </>
               </div>
-              <>
-                <ProfileName name={name} lastname={lastname} />
-              </>
-              <>
-                <RoleText role={role} />
-              </>
-              <>
-                <Button name={"Mis sesiones"} className={"button-profile-1"} />
-              </>
-              <>
-                <Button name={"Editar perfil"} className={"button-profile-2"} />
-              </>
-              <>
-                <Address className={"profile-address"} location={location} />
-              </>
-            </div>
-          </Paper>
-        </Box>
-      </div>
+            </Paper>
+            <MainSection />
+          </Box>
+        </div>
+      </>
     );
   } else return <div>Loading...</div>;
 };

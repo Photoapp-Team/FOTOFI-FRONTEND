@@ -46,7 +46,6 @@ const UserContextProvider = ({ children }) => {
       const userData = await userResponse.json();
 
       if (userData) {
-        console.log("userData", userData);
         setUser(userData.data);
       }
     }

@@ -1,11 +1,76 @@
-svg path {
+.address-icon-container svg path {
   fill: #656565;
 }
 
-svg polygon {
+.address-icon-container svg polygon {
   fill: #656565;
 }
 
-svg rect {
+.address-icon-container svg rect {
   fill: #656565;
+}
+
+.phone-icon-container svg path {
+  fill: #656565;
+}
+
+.phone-icon-container svg polygon {
+  fill: #656565;
+}
+
+.phone-icon-container svg rect {
+  fill: #656565;
+}
+
+.socialnetwork-icon svg path {
+  fill: #656565;
+}
+
+.address-icon-container {
+  display: inline-block;
+  width: 50px;
+  height: 84px;
+  align-self: center;
+}
+
+.address-icon {
+  display: flex;
+  align-self: center;
+  width: 37px !important;
+  height: 37px !important;
+}
+
+.profile-location {
+  margin: auto;
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.address-text {
+  display: inline-block;
+}
+
+.profile-phone {
+  display: flex;
+  width: 100%;
+}
+
+.phone-icon-container {
+  display: inline-block;
+  width: 50px;
+  height: 40px;
+  align-self: center;
+}
+
+.profile-email {
+  display: flex;
+  width: 100%;
+}
+
+.socialnetwork-icon {
+  display: flex;
+  align-self: center;
+  width: 37px;
+  height: 37px;
 }
