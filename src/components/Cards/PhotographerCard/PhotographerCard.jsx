@@ -6,9 +6,9 @@ import CardMedia from "@mui/material/CardMedia";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import StarIcon from "@mui/icons-material/Star";
 import Skeleton from "@mui/material/Skeleton";
 import PhotographerCardFooter from "../PhotographerCardFooter";
+import StarTwoToneIcon from "@mui/icons-material/StarTwoTone";
 
 export default function PhotographerCard({
   name,
@@ -73,7 +73,9 @@ export default function PhotographerCard({
               }
               align="center"
             />
-            <StarIcon className="StarIcon" sx={{ color: "accent.main" }} />
+            <div className="starIconContainer">
+              <StarTwoToneIcon className="StarIcon" />
+            </div>
           </IconButton>
         }
       />

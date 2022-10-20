@@ -1,17 +1,12 @@
-.mainPage {
+.photographersDisplayLoading {
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
   width: 100vw;
 }
-
-.mainPageLoading {
+.photographersDisplay {
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
   width: 100vw;
-}
-
-.filterContainer {
-  background-color: #ccd1d1;
 }

@@ -1,17 +1,12 @@
-.mainPage {
+.serviceFilter {
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
   width: 100vw;
 }
-
-.mainPageLoading {
+.serviceFilterLoading {
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
   width: 100vw;
-}
-
-.filterContainer {
-  background-color: #ccd1d1;
 }
