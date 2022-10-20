@@ -8,7 +8,6 @@ import BasicRegistrationPage from "./pages/BasicRegistration/BasicRegistrationPa
 import LoginPage from "./pages/LoginPage/LoginPage";
 import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
 import { green, purple, yellow, grey } from "@mui/material/colors";
-import PhotographerCard from "./components/Cards/PhotographerCard";
 import "@fontsource/raleway"; // Defaults to weight 400.
 import ProfilePage from "./pages/Profile/ProfilePage";
 
