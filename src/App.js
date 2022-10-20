@@ -9,6 +9,7 @@ import ServiceCard from "./components/Cards/ServiceCard/ServiceCard";
 import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
 import { green, purple, yellow, grey } from "@mui/material/colors";
 import "@fontsource/raleway"; // Defaults to weight 400.
+import AddNewService from "./components/AddNewService/AddNewService";
 
 const theme = createTheme({
   typography: {
@@ -38,6 +39,7 @@ const App = () => {
         <div>
           <header>
             <p>Bienvenidos a Fotofi</p>
+            <AddNewService />
           </header>
           <>
             <Routes>
