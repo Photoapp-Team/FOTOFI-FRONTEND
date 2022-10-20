@@ -22,7 +22,15 @@
   fill: #656565;
 }
 
-.socialnetwork-icon svg path {
+.socialnetwork-icon-container svg path {
+  fill: #656565;
+}
+
+.socialnetwork-icon-container svg polygon {
+  fill: #656565;
+}
+
+.socialnetwork-icon-container svg rect {
   fill: #656565;
 }
 
@@ -71,6 +79,14 @@
 .socialnetwork-icon {
   display: flex;
   align-self: center;
-  width: 37px;
-  height: 37px;
+  width: 37px !important;
+  height: 37px !important;
+}
+
+.socialnetwork-icon-container {
+  width: 100%;
+  height: 40px;
+  align-self: center;
+  justify-content: space-around;
+  gap: 58px;
 }

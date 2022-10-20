@@ -95,7 +95,6 @@
   flex-direction: row;
   margin-top: 40px;
   margin-left: 20px;
-  width: 100%;
+  min-width: 100%;
   height: 40px;
-  gap: 58px;
 }

@@ -44,9 +44,15 @@ const Address = (props) => {
         <div className="phone-text">{props.email}</div>
       </div>
       <div className="profile-socialNetworks">
-        <InstagramIcon className="socialnetwork-icon" />
-        <LanguageOutlinedIcon className="socialnetwork-icon" />
-        <FacebookIcon className="socialnetwork-icon" />
+        <div className="socialnetwork-icon-container">
+          <InstagramIcon className="socialnetwork-icon" />
+        </div>
+        <div className="socialnetwork-icon-container">
+          <LanguageOutlinedIcon className="socialnetwork-icon" />
+        </div>
+        <div className="socialnetwork-icon-container">
+          <FacebookIcon className="socialnetwork-icon" />
+        </div>
       </div>
     </>
   );

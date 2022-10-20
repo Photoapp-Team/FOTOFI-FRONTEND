@@ -1,47 +1,13 @@
-import * as React from "react";
-import PropTypes from "prop-types";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
+import { useState } from "react";
 import Box from "@mui/material/Box";
-import Button from "../../Button/Button";
+import Tab from "@mui/material/Tab";
+import TabContext from "@mui/lab/TabContext";
+import TabList from "@mui/lab/TabList";
+import TabPanel from "@mui/lab/TabPanel";
 import "./NavigationTabs.css";
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <>{children}</>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
-
-export default function BasicTabs() {
-  const [value, setValue] = React.useState(0);
+export default function NavigationTabs() {
+  const [value, setValue] = useState("1");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -49,30 +15,23 @@ export default function BasicTabs() {
 
   return (
     <Box sx={{ width: "100%" }} className="profile-main-box">
-      <Box sx={{ borderColor: "divider" }}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="basic tabs example"
-        >
-          <Button
-            name={"Servicios"}
-            className={"button-profile-1"}
-            {...a11yProps(0)}
-          />
-          <Tab label="Galeria" {...a11yProps(1)} />
-          <Tab label="Colecciones" {...a11yProps(2)} />
-        </Tabs>
-      </Box>
-      <TabPanel value={value} index={0}>
-        Item One
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        Item Two
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
-      </TabPanel>
+      <TabContext value={value}>
+        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+          <TabList
+            onChange={handleChange}
+            aria-label="lab API tabs example"
+            textColor="#42B7D0"
+            indicatorColor="#42B7D0"
+          >
+            <Tab label="Servicios" value="1" />
+            <Tab label="Sesiones" value="2" />
+            <Tab label="Galeria" value="3" />
+          </TabList>
+        </Box>
+        <TabPanel value="1">Servicios</TabPanel>
+        <TabPanel value="2">Sesiones</TabPanel>
+        <TabPanel value="3">Galeria</TabPanel>
+      </TabContext>
     </Box>
   );
 }

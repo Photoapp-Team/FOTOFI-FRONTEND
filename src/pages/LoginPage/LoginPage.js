@@ -6,8 +6,8 @@ import "./LoginPage.css";
 const LoginPage = () => {
   return (
     <div className="login">
-      <div>
-        <ReactLogo className="logo-container" />
+      <div className="logo-container">
+        <ReactLogo />
       </div>
       <div>
         <LoginForm />

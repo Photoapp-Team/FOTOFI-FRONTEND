@@ -14,15 +14,15 @@
   top: 436px;
 }
 
-svg path {
+.logo-container svg path {
   fill: #ffffff;
 }
 
-svg polygon {
+.logo-container svg polygon {
   fill: #ffffff;
 }
 
-svg rect {
+.logo-container svg rect {
   fill: #ffffff;
 }
 
