@@ -2,12 +2,12 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import UserContextProvider from "./contexts/UserContext";
 import Homepage from "./pages/HomePage";
-import ServiceCard from "./components/Cards/ServiceCard/ServiceCard";
-import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
-import { green, purple, yellow, grey } from "@mui/material/colors";
+import MainPage from "./pages/MainPage/MainPage";
 import FullRegistrationPage from "./pages/FullRegistrationPage";
 import BasicRegistrationPage from "./pages/BasicRegistration/BasicRegistrationPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
+import { green, purple, yellow, grey } from "@mui/material/colors";
 import PhotographerCard from "./components/Cards/PhotographerCard";
 import "@fontsource/raleway"; // Defaults to weight 400.
 import ProfilePage from "./pages/Profile/ProfilePage";
@@ -52,6 +52,26 @@ const App = () => {
               <Route path="/Profile" element={<ProfilePage />}></Route>
             </Routes>
           </>
+          <div>
+            <header>
+              <p>Bienvenidos a Fotofi</p>
+            </header>
+            <>
+              <Routes>
+                <Route path="/" element={<Homepage />}></Route>
+                <Route
+                  path="/FullRegistration"
+                  element={<FullRegistrationPage />}
+                ></Route>
+                <Route
+                  path="/BasicRegistration"
+                  element={<BasicRegistrationPage />}
+                ></Route>
+                <Route path="/Login" element={<LoginPage />}></Route>
+                <Route path="/Main" element={<MainPage />}></Route>
+              </Routes>
+            </>
+          </div>
         </UserContextProvider>
       </ThemeProvider>
     </>

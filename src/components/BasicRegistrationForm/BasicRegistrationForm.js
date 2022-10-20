@@ -59,14 +59,12 @@ const BasicRegistrationForm = () => {
                     type="text"
                     placeholder="Ingresa tu apellido"
                   />
-
                   <CustomInput
                     label="Username"
                     name="username"
                     type="text"
                     placeholder="Ingresa tu nombre de usuario"
                   />
-
                   <CustomInput
                     label="Email"
                     name="email"
