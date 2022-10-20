@@ -1,3 +1,7 @@
 .cardCover {
   box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
+
+.starIconContainer svg path {
+  fill: #ffdd06;
+}

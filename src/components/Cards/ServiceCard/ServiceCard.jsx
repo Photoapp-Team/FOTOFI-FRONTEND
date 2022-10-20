@@ -19,6 +19,7 @@ export default function ServiceCard({
   return (
     <>
       <Card
+        className="serviceCard"
         sx={{ maxWidth: 250, borderRadius: 2, minWidth: 202, margin: 2 }}
         elevation={4}
       >
@@ -43,6 +44,7 @@ export default function ServiceCard({
                 component="div"
                 children={service}
                 align="center"
+                boxSizing="content-box"
               />
             ) : (
               <Skeleton variant="text" sx={{ fontSize: "1.5rem" }} />
