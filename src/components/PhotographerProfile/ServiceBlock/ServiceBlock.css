@@ -1,5 +1,5 @@
 .profile-service-block {
-  margin-top: 150px;
+  margin-top: 110px;
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
@@ -14,11 +14,6 @@
 }
 
 .profile-service-buttons {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 272px;
-  height: 188px;
   border: solid 1px #42b7d0;
   border-radius: 10px;
 }
@@ -30,7 +25,7 @@
   padding: 0.35rem 0.5rem;
   background-color: #324a51;
   color: #95b0b7;
-  width: 253px;
+  width: 90%;
   height: 38px;
   border: none;
   border-radius: 5px;

@@ -8,7 +8,7 @@ import FullRegistrationPage from "./pages/FullRegistrationPage";
 import BasicRegistrationPage from "./pages/BasicRegistration/BasicRegistrationPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
-import { green, purple, yellow, grey, red, blue } from "@mui/material/colors";
+import { green, purple, yellow, grey, red, blue, cyan } from "@mui/material/colors";
 import "@fontsource/raleway"; // Defaults to weight 400.
 import ProfilePage from "./pages/Profile/ProfilePage";
 
@@ -35,6 +35,9 @@ const theme = createTheme({
     blue: {
       main: blue[500],
     }
+    tabs: {
+      main: cyan[500],
+    },
   },
 });
 
@@ -59,26 +62,10 @@ const App = () => {
                 element={<BasicRegistrationPage />}
               ></Route>
               <Route path="/Login" element={<LoginPage />}></Route>
-              <Route path="/Profile" element={<ProfilePage />}></Route>
+              <Route path="/Main" element={<MainPage />}></Route>
+              <Route path="/Profile/" element={<ProfilePage />}></Route>
             </Routes>
           </>
-          <div>
-            <>
-              <Routes>
-                <Route path="/" element={<Homepage />}></Route>
-                <Route
-                  path="/FullRegistration"
-                  element={<FullRegistrationPage />}
-                ></Route>
-                <Route
-                  path="/BasicRegistration"
-                  element={<BasicRegistrationPage />}
-                ></Route>
-                <Route path="/Login" element={<LoginPage />}></Route>
-                <Route path="/Main" element={<MainPage />}></Route>
-              </Routes>
-            </>
-          </div>
         </UserContextProvider>
       </ThemeProvider>
     </>

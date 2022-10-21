@@ -11,10 +11,10 @@ import ServiceBlock from "../ServiceBlock/ServiceBlock";
 import CoverPhoto from "../CoverPhoto/CoverPhoto";
 import MainSection from "../MainSection/MainSection";
 
-const ProfileCard = () => {
+const ProfileCard = ({ id }) => {
   const { REACT_APP_API_ENDPOINT } = process.env;
   const userId = "";
-  const UserUrl = `${REACT_APP_API_ENDPOINT}/users/`;
+  const UserUrl = `${REACT_APP_API_ENDPOINT}/users`;
   const { data, loading, error } = useFetch(UserUrl);
   if (data) {
     console.log("data", data);
@@ -28,11 +28,12 @@ const ProfileCard = () => {
       email,
       coverPhoto,
       photoTags,
+      _id,
     } = data;
     return (
       <>
         <></>
-        <div className="profile">
+        <Box sx={{ display: "flex" }} className="profile">
           <Box
             sx={{
               display: "flex",
@@ -43,11 +44,31 @@ const ProfileCard = () => {
                 height: 1037,
               },
             }}
-            className="profile-box"
           >
             <CoverPhoto coverPhoto={coverPhoto} />
-            <Paper elevation={3} className="profile-paper-container-main">
-              <div className="profile-paper-container">
+            <Paper
+              elevation={3}
+              sx={{
+                mt: 115,
+                ml: 100,
+                zIndex: 1,
+              }}
+              className="profile-paper-container-main"
+            >
+              <Box
+                sx={{
+                  ml: 98,
+                  width: "69%",
+                  height: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  flexDirection: "column",
+                  ml: "auto",
+                  mr: "auto",
+                  zIndex: 1,
+                }}
+                className="profile-paper-container"
+              >
                 <div>
                   <ProfilePhoto profilePic={profilePic} />
                 </div>
@@ -79,11 +100,13 @@ const ProfileCard = () => {
                 <>
                   <ServiceBlock photoTags={photoTags} />
                 </>
-              </div>
+              </Box>
             </Paper>
-            <MainSection />
           </Box>
-        </div>
+          <Box sx={{ display: "flex", flexWrap: "wrap", mt: 35 }}>
+            <MainSection id={_id} />
+          </Box>
+        </Box>
       </>
     );
   } else return <div>Loading...</div>;
