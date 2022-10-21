@@ -59,14 +59,12 @@ const BasicRegistrationForm = () => {
                     type="text"
                     placeholder="Ingresa tu apellido"
                   />
-
                   <CustomInput
                     label="Username"
                     name="username"
                     type="text"
                     placeholder="Ingresa tu nombre de usuario"
                   />
-
                   <CustomInput
                     label="Email"
                     name="email"
@@ -85,7 +83,13 @@ const BasicRegistrationForm = () => {
                     type="password"
                     placeholder="Escribe una contraseña"
                   />
-                  <Button disabled={isSubmitting} type="submit" />
+                  <Button
+                    disabled={isSubmitting}
+                    type="submit"
+                    text={"Submit"}
+                    name={"Enviar"}
+                    className={"button-basic-registration"}
+                  />
                 </Form>
               )}
             </Formik>

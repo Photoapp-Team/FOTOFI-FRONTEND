@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
 import { green, purple, yellow, grey } from "@mui/material/colors";
 import "@fontsource/raleway"; // Defaults to weight 400.
+import ProfilePage from "./pages/Profile/ProfilePage";
 
 const theme = createTheme({
   typography: {
@@ -35,6 +36,21 @@ const App = () => {
     <>
       <ThemeProvider theme={theme}>
         <UserContextProvider>
+          <>
+            <Routes>
+              <Route path="/" element={<Homepage />}></Route>
+              <Route
+                path="/FullRegistration"
+                element={<FullRegistrationPage />}
+              ></Route>
+              <Route
+                path="/BasicRegistration"
+                element={<BasicRegistrationPage />}
+              ></Route>
+              <Route path="/Login" element={<LoginPage />}></Route>
+              <Route path="/Profile" element={<ProfilePage />}></Route>
+            </Routes>
+          </>
           <div>
             <header>
               <p>Bienvenidos a Fotofi</p>

@@ -7,14 +7,15 @@ import CustomInput from "../Inputs/CustomInput";
 import { registerSchema } from "../schemas";
 import { useUser } from "../../contexts/UserContext";
 import Button from "../Button/Button";
+import { Navigate } from "react-router-dom";
 
 const LoginForm = () => {
   const { login } = useUser();
 
   const onSubmit = (values, actions) => {
-    console.log(values, login, actions);
     login(values);
     actions.resetForm();
+    Navigate("/Profile");
   };
 
   return (
@@ -56,7 +57,12 @@ const LoginForm = () => {
                     type="password"
                     placeholder="Escribe una contraseña"
                   />
-                  <Button disabled={isSubmitting} type="submit" />
+                  <Button
+                    disabled={isSubmitting}
+                    type="submit"
+                    name={"Enviar"}
+                    className={"button-login"}
+                  />
                 </Form>
               )}
             </Formik>
