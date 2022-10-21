@@ -59,6 +59,7 @@ const PhotographersDisplay = () => {
               withFooter={false}
               key={user.username}
               isLoaded={true}
+              photographerId={user._id}
             />
           </>
         );
