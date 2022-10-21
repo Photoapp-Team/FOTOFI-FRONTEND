@@ -49,7 +49,7 @@ const App = () => {
               <ButtonAppBar />
               <p>Bienvenidos a Fotofi</p>
             </header>
-            
+            <ImageUpload text="Escoger archivos"/>
             <Routes>
               <Route path="/" element={<Homepage />}></Route>
               <Route

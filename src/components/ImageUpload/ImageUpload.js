@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
+import "../ImageUpload/ImageUpload.css"
+import Button from "../Button/Button";
 
 const thumbsContainer = {
   display: "flex",
@@ -71,14 +73,18 @@ const ImageUpload = ({ text }) => {
   }, []);
 
   return (
-    <section className="container">
+    <section className="imagePreviewer">
       <div {...getRootProps({ className: "dropzone" })}>
         <input {...getInputProps()} />
-        <p>{text}</p>
+        <Button 
+        className="uploaderButton"
+        name="Escoger Archivos"/>
       </div>
-      <aside style={thumbsContainer}>{thumbs}</aside> //contenedor de imagenes
+      <div className="imageContainer" style={thumbsContainer}>{thumbs}</div> 
     </section>
   );
 };
 
 export default ImageUpload;
+
+{/* <button className="uploaderText">{text}</button> */}
