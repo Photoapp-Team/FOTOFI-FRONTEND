@@ -23,7 +23,7 @@ export default function PhotographerCard({
 }) {
   const navigate = useNavigate();
   const handleOnClick = () => {
-    navigate(`/users/${photographerId}`);
+    navigate(`/profile/${photographerId}`);
   };
 
   return (
