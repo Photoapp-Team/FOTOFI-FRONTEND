@@ -1,0 +1,12 @@
+.photographersDisplayLoading {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  width: 100vw;
+}
+.photographersDisplay {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  width: 100vw;
+}
