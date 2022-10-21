@@ -11,6 +11,7 @@ import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
 import { green, purple, yellow, grey, red, blue } from "@mui/material/colors";
 import "@fontsource/raleway"; // Defaults to weight 400.
 import ProfilePage from "./pages/Profile/ProfilePage";
+import ImageUpload from './components/ImageUpload/ImageUpload';
 
 const theme = createTheme({
   typography: {
@@ -48,6 +49,7 @@ const App = () => {
               <ButtonAppBar />
               <p>Bienvenidos a Fotofi</p>
             </header>
+            
             <Routes>
               <Route path="/" element={<Homepage />}></Route>
               <Route
