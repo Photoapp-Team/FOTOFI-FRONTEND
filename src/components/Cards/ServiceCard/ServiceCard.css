@@ -1,0 +1,10 @@
+.cardImg {
+  border-radius: 0.5rem;
+}
+
+.cardTitle {
+  font-family: "Raleway" !important;
+}
+.serviceCard {
+  aspect-ratio: 1 / 1 !important;
+}
