@@ -8,7 +8,7 @@ import FullRegistrationPage from "./pages/FullRegistrationPage";
 import BasicRegistrationPage from "./pages/BasicRegistration/BasicRegistrationPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
-import { green, purple, yellow, grey } from "@mui/material/colors";
+import { green, purple, yellow, grey, red, blue } from "@mui/material/colors";
 import "@fontsource/raleway"; // Defaults to weight 400.
 import ProfilePage from "./pages/Profile/ProfilePage";
 
@@ -29,6 +29,12 @@ const theme = createTheme({
     accent: {
       main: yellow[500],
     },
+    heart: {
+      main: red[500],
+    },
+    blue: {
+      main: blue[500],
+    }
   },
 });
 
@@ -38,6 +44,10 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <UserContextProvider>
           <>
+            <header className="App-header">
+              <ButtonAppBar />
+              <p>Bienvenidos a Fotofi</p>
+            </header>
             <Routes>
               <Route path="/" element={<Homepage />}></Route>
               <Route
@@ -53,10 +63,6 @@ const App = () => {
             </Routes>
           </>
           <div>
-            <header className="App-header">
-                <ButtonAppBar />
-                <p>Bienvenidos a Fotofi</p>
-            </header>
             <>
               <Routes>
                 <Route path="/" element={<Homepage />}></Route>

@@ -3,16 +3,14 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Fotofilogo from '../../images/fotofi.png'
 import './NavBar.css'
 import SearchBar from '../SearchBar/Search';
-import HeartIcon from '../HeartButton/Heart';
-import ButtonToEdit from '../Button/Buttons';
-import Heart from '../HeartButton/Heart';
-import BellButton from '../BellButton/BellButton';
+import Button from '../Button/Button'
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 
 export default function ButtonAppBar() {
   return (
@@ -27,9 +25,22 @@ export default function ButtonAppBar() {
                     <SearchBar/>
                 </div>
                 <div className='rightCornerNav'>
-                    <Heart/>
-                    <BellButton/>
-                    <ButtonToEdit />
+                    <Button 
+                    variant="contained"
+                    size="small"
+                    name={<FavoriteIcon color="heart" />}
+                    style={{border: "none"}}/>
+                    <Button 
+                    variant="contained"
+                    size="small"
+                    name={<NotificationsIcon color="tertiary" />}
+                    style={{border: "none"}}/>
+                    <Button 
+                    variant="contained"
+                    size="small"
+                    name="Log In"
+                    style={{border: "none"}}
+                    />
                 </div>
             </div>
         </Toolbar>
