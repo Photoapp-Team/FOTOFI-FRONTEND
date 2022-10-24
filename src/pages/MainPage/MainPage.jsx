@@ -2,11 +2,16 @@ import "./MainPage.css";
 import ServiceFilter from "../../components/ServiceFilter";
 import { Typography } from "@mui/material";
 import PhotographersDisplay from "../../components/PhotographersDisplay";
+import FilterTool from "../../components/FilterTool";
 
 const MainPage = () => {
   return (
     <div className="mainPage">
-      <div className="filterContainer">
+      <div>
+        <FilterTool></FilterTool>
+      </div>
+
+      <div className="servicesContainer">
         <Typography
           sx={{ px: 4, pt: 2 }}
           className="filterTitle"
