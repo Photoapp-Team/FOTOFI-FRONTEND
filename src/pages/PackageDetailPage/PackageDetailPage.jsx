@@ -5,7 +5,6 @@ import { Grid, Container } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PackageGalleryCard from "../../components/Cards/PackageGalleryCard/PackageGalleryCard";
-import { AspectRatio } from "@mui/icons-material";
 
 const PackageDetailPage = () => {
   const params = useParams();
@@ -21,7 +20,6 @@ const PackageDetailPage = () => {
     (async function () {
       try {
         setLoading(true);
-        console.log("haciendo fetch");
         const response = await axios.get(url);
         if (response) {
           console.log(response.data.success);
@@ -49,7 +47,6 @@ const PackageDetailPage = () => {
               // profilePic=""
               // location=""
               // photographerId=""
-              sx={1}
             />
           ) : (
             <PackageGalleryCard isLoaded={fetchSucess} sx={1} />

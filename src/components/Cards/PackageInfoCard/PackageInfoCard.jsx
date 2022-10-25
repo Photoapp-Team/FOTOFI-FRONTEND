@@ -10,6 +10,7 @@ import Divider from "@mui/material/Divider";
 import StarIcon from "@mui/icons-material/StarTwoTone";
 import "./PackageInfoCard.css";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../../../contexts/UserContext";
 
 export default function PackageInfoCard({
   minPrice,
@@ -23,9 +24,15 @@ export default function PackageInfoCard({
   isLoaded,
   serviceId,
 }) {
+  const { isUserLoggedIn, setAutomaticRedirection } = useUser();
   const navigate = useNavigate();
   const handleOnClick = () => {
-    navigate(`/NewSession/${serviceId}`);
+    if (isUserLoggedIn) {
+      navigate(`/NewSession/${serviceId}`);
+    } else {
+      setAutomaticRedirection(`/NewSession/${serviceId}`);
+      navigate(`/Login`);
+    }
   };
 
   return (
