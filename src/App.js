@@ -10,6 +10,7 @@ import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
 import { green, purple, yellow, grey } from "@mui/material/colors";
 import "@fontsource/raleway"; // Defaults to weight 400.
 import ProfilePage from "./pages/Profile/ProfilePage";
+import EditProfilePage from "./pages/EditProfile/EditProfilePage.jsx"
 
 const theme = createTheme({
   typography: {
@@ -49,6 +50,7 @@ const App = () => {
               ></Route>
               <Route path="/Login" element={<LoginPage />}></Route>
               <Route path="/Profile" element={<ProfilePage />}></Route>
+              <Route path="/EditProfile" element={<EditProfilePage />}></Route>
             </Routes>
           </>
           <div>
