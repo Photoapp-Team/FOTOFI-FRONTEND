@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import React, { useEffect } from "react";
 import usePackage from "../../../hooks/usePackage";
+import AddServiceCard from "../../Cards/AddServiceCard";
 import ServiceCard from "../../Cards/ServiceCard/ServiceCard";
 
 const ServicesSection = ({ id }) => {
@@ -14,11 +15,12 @@ const ServicesSection = ({ id }) => {
               key={index}
               img={pack.displayPhotos}
               withFooter={false}
-              service={pack.name}
+              service={pack.serviceCategory}
               isLoaded={true}
             />
           );
         })}
+      <AddServiceCard />
     </Box>
   );
 };
