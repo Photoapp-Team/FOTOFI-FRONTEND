@@ -12,6 +12,7 @@ import "@fontsource/raleway"; // Defaults to weight 400.
 import PackageDetailPage from "./pages/PackageDetailPage/PackageDetailPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import ImageUpload from "./components/ImageUpload/ImageUpload";
+import NewSessionPage from "./pages/NewSessionPage/NewSessionPage";
 
 const theme = createTheme({
   typography: {
@@ -62,6 +63,10 @@ const App = () => {
                 <Route
                   path="/PackageDetail/:id"
                   element={<PackageDetailPage />}
+                ></Route>
+                <Route
+                  path="/NewSession/:id"
+                  element={<NewSessionPage />}
                 ></Route>
               </Routes>
             </>

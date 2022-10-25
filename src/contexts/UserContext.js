@@ -56,8 +56,13 @@ const UserContextProvider = ({ children }) => {
     setUser({});
   };
 
+  const createSession = async (sessionData) => {
+    const { comments, dateValue } = sessionData;
+    console.log(comments, dateValue);
+  };
+
   return (
-    <UserContext.Provider value={{ user, token, login, logout }}>
+    <UserContext.Provider value={{ user, token, login, logout, createSession }}>
       {children}
     </UserContext.Provider>
   );

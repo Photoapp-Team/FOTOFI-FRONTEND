@@ -9,6 +9,7 @@ import { List, ListItemText, ListItem } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import StarIcon from "@mui/icons-material/StarTwoTone";
 import "./PackageInfoCard.css";
+import { useNavigate } from "react-router-dom";
 
 export default function PackageInfoCard({
   minPrice,
@@ -20,11 +21,12 @@ export default function PackageInfoCard({
   minQuantityFinalPhotos,
   maxQuantityFinalPhotos,
   isLoaded,
+  serviceId,
 }) {
-  //   const navigate = useNavigate();
-  //   const handleOnClick = () => {
-  //     navigate(`/profile/${photographerId}`);
-  //   };
+  const navigate = useNavigate();
+  const handleOnClick = () => {
+    navigate(`/NewSession/${serviceId}`);
+  };
 
   return (
     <>
@@ -115,7 +117,11 @@ export default function PackageInfoCard({
             </ListItem>
           </List>
         </CardContent>
-        <Button name={"Agregar"} className={"schedule-button"} />
+        <Button
+          name={"Agregar"}
+          className={"schedule-button"}
+          onClick={handleOnClick}
+        />
       </Card>
     </>
   );

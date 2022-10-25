@@ -5,6 +5,7 @@ import { Grid, Container } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PackageGalleryCard from "../../components/Cards/PackageGalleryCard/PackageGalleryCard";
+import { AspectRatio } from "@mui/icons-material";
 
 const PackageDetailPage = () => {
   const params = useParams();
@@ -66,6 +67,7 @@ const PackageDetailPage = () => {
               maxQuantityPrevPhotos={packageData.maxQuantityPrevPhotos}
               minQuantityFinalPhotos={packageData.minQuantityFinalPhotos}
               maxQuantityFinalPhotos={packageData.maxQuantityFinalPhotos}
+              serviceId={packageData._id}
             />
           ) : (
             <PackageInfoCard isLoaded={false} />
