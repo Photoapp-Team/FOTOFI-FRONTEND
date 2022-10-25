@@ -9,10 +9,10 @@ import PackageGalleryCard from "../../components/Cards/PackageGalleryCard/Packag
 const PackageDetailPage = () => {
   const params = useParams();
 
-  const [packages, setPackages] = useState({});
   const [packageData, setPackageData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [fetchSucess, setFetchSucess] = useState(false);
   const { REACT_APP_API_ENDPOINT } = process.env;
   const url = `${REACT_APP_API_ENDPOINT}/packages/${params.id}`;
 
@@ -23,8 +23,9 @@ const PackageDetailPage = () => {
         console.log("haciendo fetch");
         const response = await axios.get(url);
         if (response) {
-          console.log(response.data.data.package);
+          console.log(response.data.success);
         }
+        setFetchSucess(response.data.success);
         setPackageData(response.data.data.package);
       } catch (err) {
         setError(err);
@@ -38,17 +39,23 @@ const PackageDetailPage = () => {
     <Container maxWidth="md">
       <Grid container spacing={2} justifyContent="center" alignItems="center">
         <Grid item xs={12} md={8}>
-          <PackageGalleryCard
-            isLoaded={!loading}
-            name="Luis"
-            // profilePic=""
-            // location=""
-            // photographerId=""
-            sx={1}
-          />
+          {fetchSucess ? (
+            <PackageGalleryCard
+              isLoaded={fetchSucess}
+              name="Luis"
+              photos={packageData.displayPhotos}
+              //!MANDAR INFO DESDE LA PAGINA ANTERIOR
+              // profilePic=""
+              // location=""
+              // photographerId=""
+              sx={1}
+            />
+          ) : (
+            <PackageGalleryCard isLoaded={fetchSucess} sx={1} />
+          )}
         </Grid>
         <Grid item xs={12} md={4}>
-          {packageData?.description ? (
+          {fetchSucess ? (
             <PackageInfoCard
               isLoaded={true}
               minPrice={packageData.minPrice}

@@ -14,6 +14,7 @@ export default function PackageGalleryCard({
   location,
   isLoaded,
   photographerId,
+  photos,
 }) {
   const navigate = useNavigate();
   const handleOnClick = () => {
@@ -61,6 +62,7 @@ export default function PackageGalleryCard({
       <CarouselGallery
         className="carouselGallery"
         isLoaded={isLoaded}
+        photos={photos}
       ></CarouselGallery>
     </Card>
   );

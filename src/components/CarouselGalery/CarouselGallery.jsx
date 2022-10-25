@@ -1,22 +1,7 @@
 import "../../../node_modules/react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
 import React from "react";
-import { Card } from "@mui/material";
 
-const images = [
-  {
-    original: "https://picsum.photos/id/1018/1000/600/",
-    thumbnail: "https://picsum.photos/id/1018/1000/600/",
-  },
-  {
-    original: "https://picsum.photos/id/1015/1000/600/",
-    thumbnail: "https://picsum.photos/id/1015/250/150/",
-  },
-  {
-    original: "https://picsum.photos/id/1019/1000/600/",
-    thumbnail: "https://picsum.photos/id/1019/250/150/",
-  },
-];
 const placeHolders = [
   {
     original:
@@ -24,24 +9,18 @@ const placeHolders = [
     thumbnail:
       "https://htmlcolorcodes.com/assets/images/colors/steel-gray-color-solid-background-1920x1080.png",
   },
-  {
-    original:
-      "https://htmlcolorcodes.com/assets/images/colors/steel-gray-color-solid-background-1920x1080.png",
-    thumbnail:
-      "https://htmlcolorcodes.com/assets/images/colors/steel-gray-color-solid-background-1920x1080.png",
-  },
-  {
-    original:
-      "https://htmlcolorcodes.com/assets/images/colors/steel-gray-color-solid-background-1920x1080.png",
-    thumbnail:
-      "https://htmlcolorcodes.com/assets/images/colors/steel-gray-color-solid-background-1920x1080.png",
-  },
 ];
 
-export default function CarouselGallery({ isLoaded }) {
-  return isLoaded ? (
-    <ImageGallery items={images} />
-  ) : (
-    <ImageGallery items={placeHolders} />
-  );
+export default function CarouselGallery({ isLoaded, photos }) {
+  let photogallery = {};
+  if (isLoaded) {
+    photogallery = photos.map((cv) => {
+      let object = { original: cv, thumbnail: cv };
+
+      return object;
+    });
+
+    return <ImageGallery items={photogallery} />;
+  }
+  return <ImageGallery items={placeHolders} />;
 }
