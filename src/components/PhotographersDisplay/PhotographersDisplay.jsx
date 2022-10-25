@@ -9,7 +9,8 @@ const PhotographersDisplay = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const usersPlaceholder = ["", "", "", "", "", ""];
-  const url = "http://localhost:8080/users?role=Photographer";
+  const { REACT_APP_API_ENDPOINT } = process.env;
+  const url = `${REACT_APP_API_ENDPOINT}/users?role=Photographer`;
   useEffect(() => {
     (async function () {
       try {
@@ -59,6 +60,7 @@ const PhotographersDisplay = () => {
               withFooter={false}
               key={user.username}
               isLoaded={true}
+              photographerId={user._id}
             />
           </>
         );

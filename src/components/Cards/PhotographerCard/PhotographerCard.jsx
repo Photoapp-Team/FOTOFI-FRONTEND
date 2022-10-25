@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import Skeleton from "@mui/material/Skeleton";
 import PhotographerCardFooter from "../PhotographerCardFooter";
 import StarTwoToneIcon from "@mui/icons-material/StarTwoTone";
+import { useNavigate } from "react-router-dom";
 
 export default function PhotographerCard({
   name,
@@ -18,11 +19,18 @@ export default function PhotographerCard({
   location,
   isLoaded,
   withFooter,
+  photographerId,
 }) {
+  const navigate = useNavigate();
+  const handleOnClick = () => {
+    navigate(`/profile/${photographerId}`);
+  };
+
   return (
     <Card
       sx={{ minWidth: 250, maxWidth: 250, borderRadius: 2, margin: 2 }}
       elevation={4}
+      onClick={handleOnClick}
     >
       <CardHeader
         className="cardHeader"
