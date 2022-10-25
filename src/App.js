@@ -1,3 +1,4 @@
+import ButtonAppBar from "./components/NavBar/NavBar";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import UserContextProvider from "./contexts/UserContext";
@@ -6,10 +7,11 @@ import FullRegistrationPage from "./pages/FullRegistrationPage/FullRegistrationP
 import BasicRegistrationPage from "./pages/BasicRegistration/BasicRegistrationPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
-import { green, purple, yellow, grey } from "@mui/material/colors";
+import { green, purple, yellow, grey, red, blue } from "@mui/material/colors";
 import "@fontsource/raleway"; // Defaults to weight 400.
-import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import PackageDetailPage from "./pages/PackageDetailPage/PackageDetailPage";
+import ProfilePage from "./pages/Profile/ProfilePage";
+import ImageUpload from "./components/ImageUpload/ImageUpload";
 
 const theme = createTheme({
   typography: {
@@ -27,6 +29,12 @@ const theme = createTheme({
     },
     accent: {
       main: yellow[500],
+    },
+    heart: {
+      main: red[500],
+    },
+    blue: {
+      main: blue[500],
     },
   },
 });
