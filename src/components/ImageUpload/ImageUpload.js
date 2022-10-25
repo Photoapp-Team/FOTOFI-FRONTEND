@@ -72,6 +72,8 @@ const ImageUpload = ({ text }) => {
     return () => files.forEach((file) => URL.revokeObjectURL(file.preview));
   }, []);
 
+  
+
   return (
     <section className="imagePreviewer">
       <div {...getRootProps({ className: "dropzone" })}>
