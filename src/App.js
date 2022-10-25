@@ -10,7 +10,7 @@ import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
 import { green, purple, yellow, grey, red, blue } from "@mui/material/colors";
 import "@fontsource/raleway"; // Defaults to weight 400.
 import PackageDetailPage from "./pages/PackageDetailPage/PackageDetailPage";
-import ProfilePage from "./pages/Profile/ProfilePage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import ImageUpload from "./components/ImageUpload/ImageUpload";
 
 const theme = createTheme({

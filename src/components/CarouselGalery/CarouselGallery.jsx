@@ -12,14 +12,12 @@ const placeHolders = [
 ];
 
 export default function CarouselGallery({ isLoaded, photos }) {
-  let photogallery = {};
   if (isLoaded) {
-    photogallery = photos.map((cv) => {
-      let object = { original: cv, thumbnail: cv };
-
-      return object;
-    });
-
+    const photogallery = photos.reduce((accum, photo) => {
+      const object = { original: photo, thumbnail: photo };
+      return [...accum, object];
+    }, []);
+    console.log("GALERIA", photogallery);
     return <ImageGallery items={photogallery} />;
   }
   return <ImageGallery items={placeHolders} />;
