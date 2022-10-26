@@ -1,4 +1,5 @@
 import * as yup from "yup";
+import { string } from "yup/lib/locale";
 
 const profilePicRules = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/;
 
@@ -35,4 +36,30 @@ export const registerSchema = yup.object().shape({
     gender: yup
     .string()
     .oneOf(["Hombre", "Mujer", "Otro"], "")
+})
+
+export const editSchema = yup.object().shape({
+    profilepic: yup
+    .string()
+    .matches(profilePicRules),
+    name: yup
+    .string()
+    .min(2, "El nombre debe tener por lo menos 2 caracteres")
+    .max(25, "No debe pasar de 25 caracteres")
+    .required("Requerido"),
+    lastname: yup
+    .string()
+    .min(4, "debe contener mínimo 4 caracteres")
+    .max(20, "No debe superar los 20 caracteres")
+    .required("Reqeurido"),
+    email: yup
+    .string()
+    .email("Ingresa un e-mail valido")
+    .required("Requerido"),
+    location: yup
+    .string()
+    .location("ingresa tú ubicación"),
+    telephone: yup
+    .number()
+    .min(yup.number,"Ingreso un número telefonico valido" )
 })

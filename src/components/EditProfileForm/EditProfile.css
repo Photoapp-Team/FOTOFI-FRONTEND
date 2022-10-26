@@ -27,15 +27,11 @@
   }
 
   .form-contain {
-    position: absolute;
+    margin: auto;
     align-items: center;
-    top: 15vh;
-    right: 12vw;
-    left: auto;
-    bottom: auto;
   }
 
-  .basic-registration-title {
+  .edit-profile-title {
     font-style: normal;
     font-weight: 650;
     font-size: 45px;
@@ -60,7 +56,7 @@
     padding: 80px;
   }
 
-  .form-container-basic-registration {
+  .container-edit-profile {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -94,7 +90,7 @@
     color: #a0aec0;
   }
 
-  .button-basic-registration {
+  .button-edit-profile {
     display: block;
     margin: 1rem 0;
     padding: 0.35rem 0.5rem;

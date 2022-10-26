@@ -4,12 +4,13 @@ import React from 'react';
 import "./EditProfile.css";
 import { Formik, Form, validateYupSchema } from "formik";
 import CustomInput from "../Inputs/CustomInput";
-import { registerSchema } from "../schemas";
+import { editSchema } from "../schemas";
 import Button from "../Button/Button";
 import { updateUser } from "../../services/updateUser";
 
 const onSubmit = async (values, actions) => {
     updateUser(values);
+    console.log(values);
     actions.resetForm();
   };
 
@@ -28,15 +29,15 @@ const EditProfileForm = () => {
         }}
       >
         <Paper elevation={3}> */}
-          <div className="box-layout-basic-registration">
-            <h1 className="basic-registration-title">Edita tú perfil</h1>
+          <div className="">
+            <h1 className="edit-profile-title">Edita tú perfil</h1>
             <Formik
-              initialValues={{ username: "", gender: "" }}
-              validationSchema={registerSchema}
+              initialValues={{  lastname: "", name: "", email: "" }}
+              validationSchema={editSchema}
               onSubmit={onSubmit}
             >
               {({ isSubmitting }) => (
-                <Form className="form-container-basic-registration">
+                <Form className="container-edit-profile">
                   <br />
                   <CustomInput
                     label="Nombre"
@@ -79,7 +80,7 @@ const EditProfileForm = () => {
                     type="submit"
                     text={"Submit"}
                     name={"Editar"}
-                    className={"button-basic-registration"}
+                    className={"button-edit-profile"}
                   />
                 </Form>
               )}
