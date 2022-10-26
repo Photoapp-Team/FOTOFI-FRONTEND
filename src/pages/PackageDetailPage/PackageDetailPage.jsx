@@ -20,7 +20,6 @@ const PackageDetailPage = () => {
     (async function () {
       try {
         setLoading(true);
-        console.log("haciendo fetch");
         const response = await axios.get(url);
         if (response) {
           console.log(response.data.success);
@@ -48,7 +47,6 @@ const PackageDetailPage = () => {
               // profilePic=""
               // location=""
               // photographerId=""
-              sx={1}
             />
           ) : (
             <PackageGalleryCard isLoaded={fetchSucess} sx={1} />
@@ -66,6 +64,7 @@ const PackageDetailPage = () => {
               maxQuantityPrevPhotos={packageData.maxQuantityPrevPhotos}
               minQuantityFinalPhotos={packageData.minQuantityFinalPhotos}
               maxQuantityFinalPhotos={packageData.maxQuantityFinalPhotos}
+              serviceId={packageData._id}
             />
           ) : (
             <PackageInfoCard isLoaded={false} />
