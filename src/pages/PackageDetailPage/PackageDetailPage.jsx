@@ -65,6 +65,7 @@ const PackageDetailPage = () => {
               minQuantityFinalPhotos={packageData.minQuantityFinalPhotos}
               maxQuantityFinalPhotos={packageData.maxQuantityFinalPhotos}
               serviceId={packageData._id}
+              photographerId={packageData.photographerId}
             />
           ) : (
             <PackageInfoCard isLoaded={false} />

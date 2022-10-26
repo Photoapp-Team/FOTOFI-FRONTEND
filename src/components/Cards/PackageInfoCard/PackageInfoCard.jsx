@@ -23,14 +23,17 @@ export default function PackageInfoCard({
   maxQuantityFinalPhotos,
   isLoaded,
   serviceId,
+  photographerId,
 }) {
   const { isUserLoggedIn, setAutomaticRedirection } = useUser();
   const navigate = useNavigate();
   const handleOnClick = () => {
     if (isUserLoggedIn) {
-      navigate(`/NewSession/${serviceId}`);
+      navigate(`/NewSession/${serviceId}?photographerId=${photographerId}`);
     } else {
-      setAutomaticRedirection(`/NewSession/${serviceId}`);
+      setAutomaticRedirection(
+        `/NewSession/${serviceId}?photographerId=${photographerId}`
+      );
       navigate(`/Login`);
     }
   };

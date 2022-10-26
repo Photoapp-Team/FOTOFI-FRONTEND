@@ -72,11 +72,6 @@ const UserContextProvider = ({ children }) => {
     setLogStatus(false);
   };
 
-  const createSession = async (sessionData) => {
-    const { comments, dateValue } = sessionData;
-    console.log(comments, dateValue);
-  };
-
   return (
     <UserContext.Provider
       value={{
@@ -84,7 +79,6 @@ const UserContextProvider = ({ children }) => {
         token,
         login,
         logout,
-        createSession,
         isUserLoggedIn,
         setAutomaticRedirection,
       }}
