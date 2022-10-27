@@ -9,7 +9,6 @@ import { useUser } from "../../contexts/UserContext";
 const ProfilePage = () => {
   const { user } = useUser();
   const params = useParams();
-  console.log(params);
   const { id } = params;
   const { REACT_APP_API_ENDPOINT } = process.env;
   const userId = "";

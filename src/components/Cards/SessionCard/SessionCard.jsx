@@ -10,10 +10,16 @@ import CardHeader from "@mui/material/CardHeader";
 import { List, ListItemText, ListItem } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import useFetchUser from "../../../services/useFetchUser";
+import useFetchBasicUser from "../../../services/useFetchBasicUser";
 
 export default function SessionCard({ data }) {
   const lastStatus = Object.keys(data.status).length - 2;
   const status = Object.keys(data.status)[lastStatus];
+  const clientData = useFetchBasicUser(data.userId);
+  const supplyerData = useFetchBasicUser(data.photographerId);
+
+  console.log(data.startDate);
+
   return (
     <>
       <Card
@@ -32,8 +38,8 @@ export default function SessionCard({ data }) {
         <CardHeader
           className="cardHeader"
           sx={{ p: 0.75 }}
-          avatar={<Avatar alt={`Sesion: ${data._id}`} src={"userData.profilePic"} />}
-          title={`Sesion: ${data._id}`}
+          avatar={<Avatar alt={`Sesion: ${data.username}`} src={clientData.data?.profilePic} />}
+          title={clientData.data?.username}
           subheader={"location"}
         />
         <Divider />
@@ -49,7 +55,7 @@ export default function SessionCard({ data }) {
           variant="subtitle"
           component="div"
           children={data.startDate}
-          align="left"
+          align="center"
           boxSizing="content-box"
           sx={{ p: 0.75 }}
         />

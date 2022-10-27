@@ -12,23 +12,26 @@ import "./PackageInfoCard.css";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../../contexts/UserContext";
 
-export default function PackageInfoCard({
-  minPrice,
-  maxPrice,
-  description,
-  deliveryTime,
-  minQuantityPrevPhotos,
-  maxQuantityPrevPhotos,
-  minQuantityFinalPhotos,
-  maxQuantityFinalPhotos,
-  isLoaded,
-  serviceId,
-  photographerId,
-}) {
+export default function PackageInfoCard({ data, isLoaded }) {
+  const {
+    minPrice,
+    maxPrice,
+    description,
+    deliveryTime,
+    minQuantityPrevPhotos,
+    maxQuantityPrevPhotos,
+    minQuantityFinalPhotos,
+    maxQuantityFinalPhotos,
+    serviceId,
+    photographerId,
+  } = data;
+
   const { isUserLoggedIn, setAutomaticRedirection } = useUser();
   const navigate = useNavigate();
   const handleOnClick = () => {
-    if (isUserLoggedIn) {
+    let token = localStorage.getItem("token");
+
+    if (token) {
       navigate(`/NewSession/${serviceId}?photographerId=${photographerId}`);
     } else {
       setAutomaticRedirection(`/NewSession/${serviceId}?photographerId=${photographerId}`);
