@@ -6,8 +6,15 @@ import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import "./NavigationTabs.css";
 
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import SessionCard from "../../Cards/SessionCard/SessionCard";
+import useFetchMySessions from "../../../services/useFetchMySessions";
+
 export default function NavigationTabs() {
   const [value, setValue] = useState("1");
+
+  var mySessions = useFetchMySessions();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -29,7 +36,23 @@ export default function NavigationTabs() {
           </TabList>
         </Box>
         <TabPanel value="1">Servicios</TabPanel>
-        <TabPanel value="2">Sesiones</TabPanel>
+        <TabPanel value="2">
+          <Container className="mainContainer">
+            <Grid>
+              {mySessions.data &&
+                mySessions.data.map((session, index) => {
+                  return (
+                    <>
+                      <SessionCard
+                        key={`${index}index${session._id}`}
+                        data={session}
+                      />
+                    </>
+                  );
+                })}
+            </Grid>
+          </Container>
+        </TabPanel>
         <TabPanel value="3">Galeria</TabPanel>
       </TabContext>
     </Box>

@@ -17,7 +17,6 @@ const ProfileCard = () => {
   const UserUrl = `${REACT_APP_API_ENDPOINT}/users/`;
   const { data, loading, error } = useFetch(UserUrl);
   if (data) {
-    console.log("data", data);
     const {
       profilePic,
       name,

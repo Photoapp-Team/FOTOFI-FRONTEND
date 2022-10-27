@@ -9,10 +9,7 @@ const UserContextProvider = ({ children }) => {
   const [automaticRedirectionUrl, setAutomaticRedirection] = useState("");
   const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log("user", user);
-    console.log("token", token);
-  }, [user]);
+  useEffect(() => {}, [user]);
 
   const redirecTo = (url) => {
     if (url === "") {
