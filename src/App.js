@@ -7,16 +7,16 @@ import FullRegistrationPage from "./pages/FullRegistrationPage/FullRegistrationP
 import BasicRegistrationPage from "./pages/BasicRegistration/BasicRegistrationPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
-import { green, purple, yellow, grey, red, blue } from "@mui/material/colors";
+import { green, purple, yellow, grey, red, blue, cyan } from "@mui/material/colors";
 import "@fontsource/raleway"; // Defaults to weight 400.
 import PackageDetailPage from "./pages/PackageDetailPage/PackageDetailPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
-import ImageUpload from "./components/ImageUpload/ImageUpload";
+import AddServicePage from "./pages/AddServicePage/AddServicePage";
 import NewSessionPage from "./pages/NewSessionPage/NewSessionPage";
 
 const theme = createTheme({
   typography: {
-    fontFamily: ["Ralewway", "Roboto", "Arial"].join(","),
+    fontFamily: ["Raleway", "Roboto", "Arial"].join(","),
   },
   palette: {
     primary: {
@@ -37,6 +37,9 @@ const theme = createTheme({
     blue: {
       main: blue[500],
     },
+    cyan: {
+      main: cyan[500],
+    },
   },
 });
 
@@ -47,27 +50,17 @@ const App = () => {
         <UserContextProvider>
           <div>
             <>
+              <ButtonAppBar />
               <Routes>
-                <Route
-                  path="/FullRegistration"
-                  element={<FullRegistrationPage />}
-                ></Route>
-                <Route
-                  path="/BasicRegistration"
-                  element={<BasicRegistrationPage />}
-                ></Route>
+                <Route path="/FullRegistration" element={<FullRegistrationPage />}></Route>
+                <Route path="/BasicRegistration" element={<BasicRegistrationPage />}></Route>
                 <Route path="/Login" element={<LoginPage />}></Route>
                 <Route path="/Main" element={<MainPage />}></Route>
                 <Route path="/Profile" element={<ProfilePage />}></Route>
                 <Route path="/Profile/:id" element={<ProfilePage />}></Route>
-                <Route
-                  path="/PackageDetail/:id"
-                  element={<PackageDetailPage />}
-                ></Route>
-                <Route
-                  path="/NewSession/:id"
-                  element={<NewSessionPage />}
-                ></Route>
+                <Route path="/PackageDetail/:id" element={<PackageDetailPage />}></Route>
+                <Route path="/AddService" element={<AddServicePage />}></Route>
+                <Route path="/NewSession/:id" element={<NewSessionPage />}></Route>
               </Routes>
             </>
           </div>

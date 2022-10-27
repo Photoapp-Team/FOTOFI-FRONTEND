@@ -1,13 +1,15 @@
+import { Box, Paper } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import "../ImageUpload/ImageUpload.css"
 import Button from "../Button/Button";
+import "./ImageUpload.css";
 
 const thumbsContainer = {
   display: "flex",
   flexDirection: "row",
   flexWrap: "wrap",
   marginTop: 16,
+  justifyContent: "center",
 };
 
 const thumb = {
@@ -34,20 +36,21 @@ const img = {
   height: "100%",
 };
 
-const ImageUpload = ({ text }) => {
+const ImageUpload = ({ phrase, classbox, classpaper, setFieldValue }) => {
   const [files, setFiles] = useState([]);
   const { getRootProps, getInputProps } = useDropzone({
     accept: {
       "image/*": [],
     },
     onDrop: (acceptedFiles) => {
-      console.log("acceptedFiles", acceptedFiles);
-      const newFiles = acceptedFiles.map((file) =>
-        Object.assign(file, {
-          preview: URL.createObjectURL(file),
-        })
+      setFiles(
+        acceptedFiles.map((file) =>
+          Object.assign(file, {
+            preview: URL.createObjectURL(file),
+          })
+        )
       );
-      setFiles([ ...files,newFiles[0] ]);
+      setFieldValue("files", acceptedFiles);
     },
   });
 
@@ -58,7 +61,6 @@ const ImageUpload = ({ text }) => {
           src={file.preview}
           style={img}
           // Revoke data uri after image is loaded
-          //Imagen singular
           onLoad={() => {
             URL.revokeObjectURL(file.preview);
           }}
@@ -72,21 +74,19 @@ const ImageUpload = ({ text }) => {
     return () => files.forEach((file) => URL.revokeObjectURL(file.preview));
   }, []);
 
-  
-
   return (
-    <section className="imagePreviewer">
-      <div {...getRootProps({ className: "dropzone" })}>
-        <input {...getInputProps()} />
-        <Button 
-        className="uploaderButton"
-        name="Escoger Archivos"/>
-      </div>
-      <div className="imageContainer" style={thumbsContainer}>{thumbs}</div> 
-    </section>
+    <Box className={classbox}>
+      <Paper elevation={3} className={classpaper}>
+        <div className="dropzone">
+          <div {...getRootProps({ className: "dropzone" })}>
+            <input {...getInputProps()} />
+            <div>{phrase}</div>
+          </div>
+          <aside style={thumbsContainer}>{thumbs}</aside>
+        </div>
+      </Paper>
+    </Box>
   );
 };
 
 export default ImageUpload;
-
-{/* <button className="uploaderText">{text}</button> */}

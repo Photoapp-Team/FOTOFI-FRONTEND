@@ -1,10 +1,9 @@
-import { Select } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { TextareaAutosize } from "@mui/material";
 import { useField } from "formik";
 import React from "react";
-import "../FullRegistrationForm/FullRegistrationForm.css";
 
-const CssSelect = styled(Select)({
+const CssTextareaAutosize = styled(TextareaAutosize)({
   // When the input is focused
   "& label.Mui-focused": {
     color: "#023E8A",
@@ -33,20 +32,24 @@ const CssSelect = styled(Select)({
   },
 });
 
-const CustomSelect = ({ label, ...props }) => {
+const CustomTextArea = (props) => {
   const [field, meta, helpers] = useField(props);
 
   return (
-    <>
-      <label>{label}</label>
-      <CssSelect
+    <div>
+      <TextareaAutosize
         {...field}
         {...props}
-        className={meta.touched && meta.error ? "input-error" : ""}
+        className={meta.touched && meta.error ? "Mui-error" : ""}
+        InputLabelProps={{
+          style: {
+            color: "#023E8A",
+          },
+        }}
       />
       {meta.touched && meta.error && <div className="error">{meta.error}</div>}
-    </>
+    </div>
   );
 };
 
-export default CustomSelect;
+export default CustomTextArea;
