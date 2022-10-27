@@ -1,6 +1,6 @@
 import React from "react";
-import BasicRegistrationForm from "../../components/BasicRegistrationForm";
-import { ReactComponent as ReactLogo } from "../../components/assets/Logo/Logo.svg";
+import BasicRegistrationForm from "../../components/Forms/BasicRegistrationForm";
+import { ReactComponent as ReactLogo } from "../../assets/Logo/Logo.svg";
 import "./BasicRegistrationPage.css";
 
 const BasicRegistrationPage = () => {

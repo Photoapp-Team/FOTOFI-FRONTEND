@@ -5,9 +5,9 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import "./NavigationTabs.css";
-import ServicesSection from "../ServicesSection/ServicesSection";
+import ServicesContainer from "../../Containers/ServicesContainerr/ServicesContainer";
 import { styled } from "@mui/material/styles";
-import SessionsContainer from "../../SessionsContainer";
+import SessionsContainer from "../../Containers/SessionsContainer";
 
 export default function NavigationTabs({ id }) {
   const [value, setValue] = useState("1");
@@ -44,7 +44,7 @@ export default function NavigationTabs({ id }) {
               justifyContent: "space-around",
             }}
           >
-            <ServicesSection id={id} />
+            <ServicesContainer id={id} />
           </TabPanel>
           <TabPanel value="2">
             <SessionsContainer id={id} />

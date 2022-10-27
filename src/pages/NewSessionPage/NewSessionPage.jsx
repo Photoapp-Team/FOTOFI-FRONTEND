@@ -7,7 +7,7 @@ import "react-calendar/dist/Calendar.css";
 import { Formik, Form, Field } from "formik";
 import { Navigate } from "react-router-dom";
 import CustomInput from "../../components/Inputs/CustomInput";
-import Button from "../../components/Button/Button";
+import Button from "../../components/Inputs/Button/Button";
 import { createSession } from "../../services/createSession";
 
 const NewSessionPage = () => {

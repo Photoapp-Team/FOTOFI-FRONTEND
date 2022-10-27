@@ -1,9 +1,9 @@
 import { useContext, useState, useEffect } from "react";
-import "./PhotographersDisplay.css";
+import "./PhotographersContainer.css";
 import axios from "axios";
-import PhotographerCard from "../Cards/PhotographerCard/PhotographerCard";
+import PhotographerCard from "../../Cards/PhotographerCard/PhotographerCard";
 
-const PhotographersDisplay = () => {
+const PhotographersContainer = () => {
   const [services, setServices] = useState({});
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -35,11 +35,7 @@ const PhotographersDisplay = () => {
         {usersPlaceholder.map((index) => {
           return (
             <>
-              <PhotographerCard
-                withFooter={false}
-                isLoaded={false}
-                key={index}
-              />
+              <PhotographerCard withFooter={false} isLoaded={false} key={index} />
             </>
           );
         })}
@@ -69,4 +65,4 @@ const PhotographersDisplay = () => {
   );
 };
 
-export default PhotographersDisplay;
+export default PhotographersContainer;

@@ -4,7 +4,7 @@ import usePackage from "../../../hooks/usePackage";
 import AddServiceCard from "../../Cards/AddServiceCard";
 import ServiceCard from "../../Cards/ServiceCard/ServiceCard";
 
-const ServicesSection = ({ id }) => {
+const ServicesContainer = ({ id }) => {
   const { data } = usePackage(id);
   return (
     <Box sx={{ display: "flex" }}>
@@ -25,4 +25,4 @@ const ServicesSection = ({ id }) => {
   );
 };
 
-export default ServicesSection;
+export default ServicesContainer;
