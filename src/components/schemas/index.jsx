@@ -36,4 +36,5 @@ export const addServiceSchema = yup.object().shape({
     .string()
     .oneOf(["BODAS", "BEBES", "ARQUITECTURA", "PRODUCTOS", "RETRATOS"], "Servicio No Valido")
     .required("Requerido"),
+  displayImages: yup.string(),
 });

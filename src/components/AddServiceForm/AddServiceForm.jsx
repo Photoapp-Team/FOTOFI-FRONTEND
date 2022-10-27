@@ -15,9 +15,10 @@ const AddServiceForm = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [coverPhoto, setCoverPhoto] = useState(false);
 
   const onSubmit = async (values, actions) => {
-    console.log("values", values);
+    console.log("values", values, "coverPhoto", coverPhoto);
     await new Promise((resolve) => setTimeout(resolve, 1000));
     actions.resetForm();
   };
@@ -88,6 +89,7 @@ const AddServiceForm = () => {
               classbox={"boxAddservice1"}
               classpaper={"paperAddservice1"}
               setFieldValue={setFieldValue}
+              name="displayImages"
             />
             <Box sx={{ ml: "5rem" }}>
               <h3>Elige una foto de portada</h3>
@@ -97,7 +99,7 @@ const AddServiceForm = () => {
               classbox={"boxAddservice2"}
               classpaper={"paperAddservice2"}
               name="imagenes"
-              setFieldValue={setFieldValue}
+              setCoverPhoto={setCoverPhoto}
             />
             <Box sx={{ ml: "5rem" }}>
               <h2>Configura tu paquete</h2>
