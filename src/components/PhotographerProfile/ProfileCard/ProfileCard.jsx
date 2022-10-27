@@ -13,7 +13,6 @@ import MainSection from "../MainSection/MainSection";
 
 const ProfileCard = ({ data }) => {
   if (data) {
-    console.log("data", data);
     const {
       profilePic,
       name,

@@ -8,27 +8,36 @@ import { Formik, Form, Field } from "formik";
 import { Navigate } from "react-router-dom";
 import CustomInput from "../../components/Inputs/CustomInput";
 import Button from "../../components/Button/Button";
-import { useUser } from "../../contexts/UserContext";
+import { createSession } from "../../services/createSession";
 
 const NewSessionPage = () => {
   const params = useParams();
-  const { createSession } = useUser();
-  const [dateValue, onChange] = useState(new Date());
-  const { REACT_APP_API_ENDPOINT } = process.env;
-  const url = `${REACT_APP_API_ENDPOINT}/packages/${params.id}`;
+  const queryParams = new URLSearchParams(window.location.search);
+  const photographerId = queryParams.get("photographerId");
+  const [startDate, onChange] = useState(new Date());
+  const token = localStorage.getItem("token");
 
   const onSubmit = (values, actions) => {
-    const sessionData = { ...values, dateValue };
-    createSession(sessionData);
-    actions.resetForm();
-    Navigate("/Profile");
+    if (token) {
+      const sessionData = {
+        ...values,
+        startDate,
+        package: params.id,
+        photographerId,
+      };
+      createSession(sessionData);
+      actions.resetForm();
+      Navigate("/Profile");
+    } else {
+      alert("Tienes que estar logeado para crear session");
+    }
   };
 
   return (
     <Container className="mainContainer" maxWidth="md" sx={{ p: 4 }}>
       <Grid container spacing={2} justifyContent="center" alignItems="center">
         <Grid item xs={12} md={8}>
-          <Calendar onChange={onChange} value={dateValue} />
+          <Calendar onChange={onChange} value={startDate} />
         </Grid>
         <Grid item xs={12} md={4}>
           <Formik initialValues={{}} onSubmit={onSubmit}>

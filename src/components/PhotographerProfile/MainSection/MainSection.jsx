@@ -1,9 +1,9 @@
-import { Box } from "@mui/material";
 import React from "react";
 import BasicTabs from "../NavigationTabs/NavigationTabs";
+import "./MainSection.css";
+import { Box } from "@mui/material";
 
 const MainSection = (id) => {
-  console.log("id", id);
   return (
     <>
       <Box sx={{ width: "100%" }}>

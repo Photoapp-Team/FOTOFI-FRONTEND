@@ -13,7 +13,7 @@ const ServicesSection = ({ id }) => {
           return (
             <ServiceCard
               key={index}
-              img={pack.displayPhotos}
+              img={pack.coverPhoto}
               withFooter={false}
               service={pack.serviceCategory}
               isLoaded={true}

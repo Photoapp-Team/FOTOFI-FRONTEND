@@ -19,7 +19,8 @@ const AddServiceForm = () => {
 
   const onSubmit = async (values, actions) => {
     console.log("values", values, "coverPhoto", coverPhoto);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    // await new Promise((resolve) => setTimeout(resolve, 1000));
+
     actions.resetForm();
   };
 
