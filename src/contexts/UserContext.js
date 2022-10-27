@@ -1,9 +1,22 @@
 import React, { useState, createContext, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 export const UserContext = createContext();
 
 const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [token, setToken] = useState();
+  const [isUserLoggedIn, setLogStatus] = useState(false);
+  const [automaticRedirectionUrl, setAutomaticRedirection] = useState("");
+  const navigate = useNavigate();
+
+  const redirecTo = (url) => {
+    if (url === "") {
+      navigate("/Main");
+    } else {
+      setAutomaticRedirection("");
+      navigate(url);
+    }
+  };
 
   const login = async (values) => {
     const { REACT_APP_API_ENDPOINT } = process.env;
@@ -42,6 +55,8 @@ const UserContextProvider = ({ children }) => {
 
       if (userData) {
         setUser(userData.data);
+        setLogStatus(true);
+        redirecTo(automaticRedirectionUrl);
       }
     }
   };
@@ -49,10 +64,28 @@ const UserContextProvider = ({ children }) => {
   const logout = () => {
     console.log("se está ejecutando logout");
     setUser({});
+    setLogStatus(false);
+  };
+
+  const createSession = async (sessionData) => {
+    const { comments, dateValue } = sessionData;
+    console.log(comments, dateValue);
   };
 
   return (
-    <UserContext.Provider value={{ user, token, login, logout }}>{children}</UserContext.Provider>
+    <UserContext.Provider
+      value={{
+        user,
+        token,
+        login,
+        logout,
+        createSession,
+        isUserLoggedIn,
+        setAutomaticRedirection,
+      }}
+    >
+      {children}
+    </UserContext.Provider>
   );
 };
 
