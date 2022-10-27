@@ -11,7 +11,6 @@ import { green, purple, yellow, grey, red, blue, cyan } from "@mui/material/colo
 import "@fontsource/raleway"; // Defaults to weight 400.
 import PackageDetailPage from "./pages/PackageDetailPage/PackageDetailPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
-import ImageUpload from "./components/ImageUpload/ImageUpload";
 import AddServicePage from "./pages/AddServicePage/AddServicePage";
 import NewSessionPage from "./pages/NewSessionPage/NewSessionPage";
 
