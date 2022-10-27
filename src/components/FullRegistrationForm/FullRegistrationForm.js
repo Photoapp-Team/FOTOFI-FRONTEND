@@ -39,12 +39,7 @@ const FullRegistrationForm = () => {
             <br />
             <br />
             <div className="form-section">
-              <CustomInput
-                label="Name"
-                name="name"
-                type="text"
-                placeholder="Ingresa tu nombre"
-              />
+              <CustomInput label="Name" name="name" type="text" placeholder="Ingresa tu nombre" />
               <CustomInput
                 label="Lastname"
                 name="lastname"
@@ -74,52 +69,28 @@ const FullRegistrationForm = () => {
                 placeholder="Escribe una contraseña"
               />
 
-              <CustomInput
-                label="Email"
-                name="email"
-                type="email"
-                placeholder="Ingresa tu email"
-              />
+              <CustomInput label="Email" name="email" type="email" placeholder="Ingresa tu email" />
             </div>
             <br />
             <br />
             <div>
               <h3>Dirección</h3>
             </div>
-            <CustomInput
-              label="City"
-              name="city"
-              type="text"
-              placeholder="Ingresa tu Ciudad"
-            />
+            <CustomInput label="City" name="city" type="text" placeholder="Ingresa tu Ciudad" />
             <CustomInput
               label="Suburb"
               name="suburb"
               type="text"
               placeholder="Ingresa tu colonia"
             />
-            <CustomInput
-              label="Street"
-              name="street"
-              type="text"
-              placeholder="Ingresa tu calle"
-            />
-            <CustomInput
-              label="Number"
-              name="number"
-              type="text"
-              placeholder="Número"
-            />
-            <CustomInput
-              label="ZipCode"
-              name="zipCode"
-              type="text"
-              placeholder="C.P."
-            />
+            <CustomInput label="Street" name="street" type="text" placeholder="Ingresa tu calle" />
+            <CustomInput label="Number" name="number" type="text" placeholder="Número" />
+            <CustomInput label="ZipCode" name="zipCode" type="text" placeholder="C.P." />
             <CustomSelect
               label="Gender"
               name="gender"
               placeholder="Por favor selecciona uno"
+              value=""
             >
               <MenuItem value="">Por favor selecciona una opción</MenuItem>
               <MenuItem value="Hombre">Hombre</MenuItem>

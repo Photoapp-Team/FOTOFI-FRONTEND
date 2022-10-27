@@ -2,7 +2,7 @@
   background-color: #f6f6f6;
 }
 
-.profile-paper-container {
+/* .profile-paper-container {
   margin-left: 98px;
   margin-top: 35px;
   width: 69%;
@@ -13,12 +13,11 @@
   margin-left: auto;
   margin-right: auto;
   z-index: 1;
-}
+}*/
 
 .profile-paper-container-main {
   margin-top: 115px !important;
   margin-left: 100px !important;
-  z-index: 1;
 }
 
 .button-profile-1 {

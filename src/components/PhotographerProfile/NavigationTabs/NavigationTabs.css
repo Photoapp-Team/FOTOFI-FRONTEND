@@ -1,5 +1,13 @@
 .profile-main-box {
   position: relative;
-  margin-top: 31vh !important;
   margin-left: 2vw;
+  width: 70vw;
+}
+
+.css-11yukd5-MuiTabs-indicator {
+  background-color: #3ba3bb !important;
+}
+
+.css-45tg57-MuiButtonBase-root-MuiTab-root {
+  color: #3ba3bb !important;
 }

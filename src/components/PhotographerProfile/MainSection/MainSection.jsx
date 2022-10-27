@@ -1,14 +1,14 @@
-import { Grid } from "@mui/material";
-import { Container } from "@mui/system";
 import React from "react";
 import BasicTabs from "../NavigationTabs/NavigationTabs";
-
 import "./MainSection.css";
+import { Box } from "@mui/material";
 
-const MainSection = () => {
+const MainSection = (id) => {
   return (
     <>
-      <BasicTabs />
+      <Box sx={{ width: "100%" }}>
+        <BasicTabs id={id} />
+      </Box>
     </>
   );
 };

@@ -34,10 +34,7 @@ const BasicRegistrationForm = () => {
             <h1 className="basic-registration-title">Crear una cuenta</h1>
             <p className="basic-registration-text">
               ¿Ya eres usuario?
-              <span className="basic-registration-text-link">
-                {" "}
-                Inicia sesión
-              </span>
+              <span className="basic-registration-text-link"> Inicia sesión</span>
             </p>
             <Formik
               initialValues={{ username: "", gender: "" }}
@@ -52,36 +49,42 @@ const BasicRegistrationForm = () => {
                     name="name"
                     type="text"
                     placeholder="Ingresa tu nombre"
+                    size="small"
                   />
                   <CustomInput
                     label="Apellido"
                     name="lastname"
                     type="text"
                     placeholder="Ingresa tu apellido"
+                    size="small"
                   />
                   <CustomInput
                     label="Username"
                     name="username"
                     type="text"
                     placeholder="Ingresa tu nombre de usuario"
+                    size="small"
                   />
                   <CustomInput
                     label="Email"
                     name="email"
                     type="email"
                     placeholder="Ingresa tu email"
+                    size="small"
                   />
                   <CustomInput
                     label="Password"
                     name="password"
                     type="password"
                     placeholder="Escribe una contraseña"
+                    size="small"
                   />
                   <CustomInput
                     label="ConfirmPassword"
                     name="confirmPassword"
                     type="password"
                     placeholder="Escribe una contraseña"
+                    size="small"
                   />
                   <Button
                     disabled={isSubmitting}
