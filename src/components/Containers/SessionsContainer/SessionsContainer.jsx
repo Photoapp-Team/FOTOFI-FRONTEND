@@ -7,7 +7,6 @@ import useFetchMySessions from "../../../services/useFetchMySessions";
 
 export default function SessionsContainer({ id }) {
   var mySessions = useFetchMySessions();
-  console.log(mySessions);
 
   return (
     <Container className="sessions-container">
