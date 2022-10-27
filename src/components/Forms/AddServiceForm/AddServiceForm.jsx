@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
-import ImageUpload from "../../components/ImageUpload/ImageUpload";
-import CustomSelect from "../../components/Inputs/CustomSelect";
-import { addServiceSchema, registerSchema } from "../../components/schemas";
+import ImageUpload from "../../../services/ImageUpload";
+import CustomSelect from "../../Inputs/CustomSelect";
+import { addServiceSchema, registerSchema } from "../../schemas";
 import axios from "axios";
 import { CssBaseline, MenuItem, TextareaAutosize } from "@mui/material";
 import { Box } from "@mui/system";
 import { Field, Form, Formik, useField } from "formik";
-import CustomInput from "../Inputs/CustomInput";
-import CustomTextArea from "../Inputs/CustomTextArea";
-import Button from "../Button/Button";
+import CustomInput from "../../Inputs/CustomInput";
+import Button from "../../Inputs/Button/Button";
 import { Height } from "@mui/icons-material";
 
 const AddServiceForm = () => {

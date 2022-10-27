@@ -5,9 +5,9 @@ import * as yup from "yup";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { MenuItem, Select } from "@mui/material";
-import CustomInput from "../Inputs/CustomInput";
-import { registerSchema } from "../schemas";
-import CustomSelect from "../Inputs/CustomSelect";
+import CustomInput from "../../Inputs/CustomInput";
+import { registerSchema } from "../../schemas";
+import CustomSelect from "../../Inputs/CustomSelect";
 import CssBaseline from "@mui/material/CssBaseline";
 import "./FullRegistrationForm.css";
 

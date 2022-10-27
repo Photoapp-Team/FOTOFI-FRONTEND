@@ -1,5 +1,5 @@
 import React from "react";
-import AddServiceForm from "../../components/AddServiceForm/AddServiceForm";
+import AddServiceForm from "../../components/Forms/AddServiceForm/AddServiceForm";
 
 const AddServicePage = () => {
   return (

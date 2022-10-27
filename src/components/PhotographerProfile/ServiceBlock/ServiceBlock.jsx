@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import React from "react";
-import Button from "../../Button/Button";
+import Button from "../../Inputs/Button/Button";
 import "./ServiceBlock.css";
 
 const ServiceBlock = ({ photoTags }) => {
@@ -21,11 +21,7 @@ const ServiceBlock = ({ photoTags }) => {
           photoTags.map((photoTag, index) => {
             return (
               <>
-                <Button
-                  key={index}
-                  name={photoTag}
-                  className={"button-service-block"}
-                />
+                <Button key={index} name={photoTag} className={"button-service-block"} />
               </>
             );
           })}

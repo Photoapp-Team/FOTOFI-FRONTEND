@@ -5,7 +5,7 @@ import "./ProfileCard.css";
 import ProfilePhoto from "../ProfilePhoto";
 import ProfileName from "../ProfileName/ProfileName";
 import RoleText from "../Role/RoleText";
-import Button from "../../Button/Button";
+import Button from "../../Inputs/Button/Button";
 import Address from "../Address/Address";
 import ServiceBlock from "../ServiceBlock/ServiceBlock";
 import CoverPhoto from "../CoverPhoto/CoverPhoto";
