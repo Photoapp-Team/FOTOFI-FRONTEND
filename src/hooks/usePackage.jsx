@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const usePackage = (id) => {
+const usePackage = ({ id }) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -10,6 +10,7 @@ const usePackage = (id) => {
   useEffect(() => {
     const { REACT_APP_API_ENDPOINT } = process.env;
     const url = `${REACT_APP_API_ENDPOINT}/packages/photographerId/${id}`;
+
     (async function () {
       try {
         setLoading(true);

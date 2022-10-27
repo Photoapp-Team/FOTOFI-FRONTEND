@@ -5,16 +5,9 @@
 }
 
 .css-11yukd5-MuiTabs-indicator {
-  background-color: #42b7d0;
+  background-color: #3ba3bb !important;
 }
 
-.css-1rbw7q5-MuiButtonBase-root-MuiTab-root {
-  color: #42b7d0;
-}
-.MuiTab-textColorPrimary {
-  color: #42b7d0;
-}
-
-.Mui-selected {
-  color: #42b7d0;
+.css-45tg57-MuiButtonBase-root-MuiTab-root {
+  color: #3ba3bb !important;
 }

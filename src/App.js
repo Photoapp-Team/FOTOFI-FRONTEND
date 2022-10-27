@@ -7,11 +7,13 @@ import FullRegistrationPage from "./pages/FullRegistrationPage/FullRegistrationP
 import BasicRegistrationPage from "./pages/BasicRegistration/BasicRegistrationPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
-import { green, purple, yellow, grey, red, blue } from "@mui/material/colors";
+import { green, purple, yellow, grey, red, blue, cyan } from "@mui/material/colors";
 import "@fontsource/raleway"; // Defaults to weight 400.
 import PackageDetailPage from "./pages/PackageDetailPage/PackageDetailPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import ImageUpload from "./components/ImageUpload/ImageUpload";
+import Button from "./components/Button/Button";
+import AddServicePage from "./pages/AddServicePage/AddServicePage";
 
 const theme = createTheme({
   typography: {
@@ -36,6 +38,9 @@ const theme = createTheme({
     blue: {
       main: blue[500],
     },
+    cyan: {
+      main: cyan[500],
+    },
   },
 });
 
@@ -46,6 +51,7 @@ const App = () => {
         <UserContextProvider>
           <div>
             <>
+              <ButtonAppBar />
               <Routes>
                 <Route path="/FullRegistration" element={<FullRegistrationPage />}></Route>
                 <Route path="/BasicRegistration" element={<BasicRegistrationPage />}></Route>
@@ -54,6 +60,7 @@ const App = () => {
                 <Route path="/Profile" element={<ProfilePage />}></Route>
                 <Route path="/Profile/:id" element={<ProfilePage />}></Route>
                 <Route path="/PackageDetail/:id" element={<PackageDetailPage />}></Route>
+                <Route path="/AddService" element={<AddServicePage />}></Route>
               </Routes>
             </>
           </div>

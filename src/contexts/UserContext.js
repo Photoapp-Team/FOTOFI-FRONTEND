@@ -5,11 +5,6 @@ const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [token, setToken] = useState();
 
-  useEffect(() => {
-    console.log("user", user);
-    console.log("token", token);
-  }, [user]);
-
   const login = async (values) => {
     const { REACT_APP_API_ENDPOINT } = process.env;
     const AUTH_URL = `${REACT_APP_API_ENDPOINT}/auth`;
@@ -57,9 +52,7 @@ const UserContextProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ user, token, login, logout }}>
-      {children}
-    </UserContext.Provider>
+    <UserContext.Provider value={{ user, token, login, logout }}>{children}</UserContext.Provider>
   );
 };
 

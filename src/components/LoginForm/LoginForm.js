@@ -38,10 +38,7 @@ const LoginForm = () => {
               ¿Eres un nuevo usuario?
               <span className="login-text-link"> Crear una cuenta</span>
             </p>
-            <Formik
-              initialValues={{ username: "", gender: "" }}
-              onSubmit={onSubmit}
-            >
+            <Formik initialValues={{ username: "", gender: "" }} onSubmit={onSubmit}>
               {({ isSubmitting }) => (
                 <Form className="form-container-login">
                   <br />
@@ -50,12 +47,14 @@ const LoginForm = () => {
                     name="email"
                     type="email"
                     placeholder="Ingresa tu email"
+                    size="small"
                   />
                   <CustomInput
                     label="Password"
                     name="password"
                     type="password"
                     placeholder="Escribe una contraseña"
+                    size="small"
                   />
                   <Button
                     disabled={isSubmitting}

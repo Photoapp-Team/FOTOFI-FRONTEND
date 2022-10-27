@@ -30,9 +30,9 @@ export default function NavigationTabs({ id }) {
         <Box>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <TabList onChange={handleChange} aria-label="lab API tabs example">
-              <Tab label="Servicios" value="1" />
-              <Tab label="Sesiones" value="2" />
-              <Tab label="Galeria" value="3" />
+              <Tab label="Servicios" value="1" sx={{ fontSize: 16 }} />
+              <Tab label="Sesiones" value="2" sx={{ fontSize: 16 }} />
+              <Tab label="Galeria" value="3" sx={{ fontSize: 16 }} />
             </TabList>
           </Box>
           <TabPanel

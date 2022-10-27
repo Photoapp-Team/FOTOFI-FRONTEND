@@ -1,9 +1,9 @@
-import { TextField } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { TextareaAutosize } from "@mui/material";
 import { useField } from "formik";
 import React from "react";
 
-const CssTextField = styled(TextField)({
+const CssTextareaAutosize = styled(TextareaAutosize)({
   // When the input is focused
   "& label.Mui-focused": {
     color: "#023E8A",
@@ -32,12 +32,12 @@ const CssTextField = styled(TextField)({
   },
 });
 
-const CustomInput = ({ ...props }) => {
+const CustomTextArea = (props) => {
   const [field, meta, helpers] = useField(props);
 
   return (
     <div>
-      <CssTextField
+      <TextareaAutosize
         {...field}
         {...props}
         className={meta.touched && meta.error ? "Mui-error" : ""}
@@ -52,4 +52,4 @@ const CustomInput = ({ ...props }) => {
   );
 };
 
-export default CustomInput;
+export default CustomTextArea;
