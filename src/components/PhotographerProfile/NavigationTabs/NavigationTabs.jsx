@@ -7,6 +7,7 @@ import TabPanel from "@mui/lab/TabPanel";
 import "./NavigationTabs.css";
 import ServicesSection from "../ServicesSection/ServicesSection";
 import { styled } from "@mui/material/styles";
+import SessionsContainer from "../../SessionsContainer";
 
 export default function NavigationTabs({ id }) {
   const [value, setValue] = useState("1");
@@ -45,7 +46,9 @@ export default function NavigationTabs({ id }) {
           >
             <ServicesSection id={id} />
           </TabPanel>
-          <TabPanel value="2">Sesiones</TabPanel>
+          <TabPanel value="2">
+            <SessionsContainer id={id} />
+          </TabPanel>
           <TabPanel value="3">Galeria</TabPanel>
         </Box>
       </TabContext>

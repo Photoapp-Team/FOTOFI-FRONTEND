@@ -8,7 +8,6 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import "./Address.css";
 
 const Address = (props) => {
-  console.log(props);
   return (
     <>
       <div className="profile-address">
