@@ -22,9 +22,11 @@ export default function PackageInfoCard({ data, isLoaded }) {
     maxQuantityPrevPhotos,
     minQuantityFinalPhotos,
     maxQuantityFinalPhotos,
-    serviceId,
+    _id,
     photographerId,
   } = data;
+
+  console.log("MIDATA::", data);
 
   const { isUserLoggedIn, setAutomaticRedirection } = useUser();
   const navigate = useNavigate();
@@ -32,9 +34,9 @@ export default function PackageInfoCard({ data, isLoaded }) {
     let token = localStorage.getItem("token");
 
     if (token) {
-      navigate(`/NewSession/${serviceId}?photographerId=${photographerId}`);
+      navigate(`/NewSession/${_id}?photographerId=${photographerId}`);
     } else {
-      setAutomaticRedirection(`/NewSession/${serviceId}?photographerId=${photographerId}`);
+      setAutomaticRedirection(`/NewSession/${_id}?photographerId=${photographerId}`);
       navigate(`/Login`);
     }
   };

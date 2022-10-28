@@ -34,33 +34,17 @@ export default function PhotographerCard({
     >
       <CardHeader
         className="cardHeader"
-        font
         sx={{ p: 0.75 }}
         avatar={
           isLoaded ? (
             <Avatar alt={name} src={profilePic} />
           ) : (
-            <Skeleton
-              animation="wave"
-              variant="circular"
-              width={40}
-              height={40}
-            />
+            <Skeleton animation="wave" variant="circular" width={40} height={40} />
           )
         }
-        title={
-          isLoaded ? (
-            name
-          ) : (
-            <Skeleton variant="text" width="60%" sx={{ fontSize: ".9rem" }} />
-          )
-        }
+        title={isLoaded ? name : <Skeleton variant="text" width="60%" sx={{ fontSize: ".9rem" }} />}
         subheader={
-          isLoaded ? (
-            location
-          ) : (
-            <Skeleton variant="text" width="40%" sx={{ fontSize: ".9rem" }} />
-          )
+          isLoaded ? location : <Skeleton variant="text" width="40%" sx={{ fontSize: ".9rem" }} />
         }
         action={
           <IconButton aria-label="ranking">
@@ -72,11 +56,7 @@ export default function PhotographerCard({
                 isLoaded ? (
                   ranking
                 ) : (
-                  <Skeleton
-                    variant="text"
-                    width="20px"
-                    sx={{ fontSize: ".75rem" }}
-                  />
+                  <Skeleton variant="text" width="20px" sx={{ fontSize: ".75rem" }} />
                 )
               }
               align="center"
