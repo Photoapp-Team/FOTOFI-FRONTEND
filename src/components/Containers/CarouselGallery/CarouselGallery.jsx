@@ -17,7 +17,7 @@ export default function CarouselGallery({ isLoaded, photos }) {
       const object = { original: photo, thumbnail: photo };
       return [...accum, object];
     }, []);
-    console.log("GALERIA", photogallery);
+
     return <ImageGallery items={photogallery} />;
   }
   return <ImageGallery items={placeHolders} />;

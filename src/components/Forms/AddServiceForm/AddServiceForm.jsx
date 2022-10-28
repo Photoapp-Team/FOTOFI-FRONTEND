@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
-import ImageUpload from "../../components/ImageUpload/ImageUpload";
-import CustomSelect from "../../components/Inputs/CustomSelect";
-import { addServiceSchema, registerSchema } from "../../components/schemas";
+import ImageUpload from "../../../services/ImageUpload";
+import CustomSelect from "../../Inputs/CustomSelect";
+import { addServiceSchema, registerSchema } from "../../schemas";
 import axios from "axios";
 import { CssBaseline, MenuItem, TextareaAutosize } from "@mui/material";
 import { Box } from "@mui/system";
 import { Field, Form, Formik, useField } from "formik";
-import CustomInput from "../Inputs/CustomInput";
-import CustomTextArea from "../Inputs/CustomTextArea";
-import Button from "../Button/Button";
+import CustomInput from "../../Inputs/CustomInput";
+import Button from "../../Inputs/Button/Button";
 import { Height } from "@mui/icons-material";
-import { createPackage } from "../../services/createPackage";
-import { Navigate } from "react-router-dom";
+import { createPackage } from "../../../services/createPackage";
+import { useUser } from "../../../contexts/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const AddServiceForm = () => {
   const emptyOption = { label: "Por favor selecciona una opción", value: "" };
@@ -19,11 +19,14 @@ const AddServiceForm = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const { REACT_APP_API_ENDPOINT } = process.env;
+  const { redirecTo, setAutomaticRedirection } = useUser();
+  const id = localStorage.getItem("userId");
+  const navigate = useNavigate();
 
   const onSubmit = async (values, actions) => {
     createPackage(values);
-    resetForm({});
-    Navigate("/Profile/:id");
+    actions.resetForm({ values: "" });
+    navigate(`/Profile/${id}`);
   };
 
   const url = `${REACT_APP_API_ENDPOINT}/services`;

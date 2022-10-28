@@ -36,7 +36,9 @@ const LoginForm = () => {
             <h1 className="login-title">Inicio de sesión</h1>
             <p className="login-text">
               ¿Eres un nuevo usuario?
-              <span className="login-text-link"> Crear una cuenta</span>
+              <a href="/BasicRegistration">
+                <span className="login-text-link"> Crear una cuenta</span>
+              </a>
             </p>
             <Formik initialValues={{ username: "", gender: "" }} onSubmit={onSubmit}>
               {({ isSubmitting }) => (

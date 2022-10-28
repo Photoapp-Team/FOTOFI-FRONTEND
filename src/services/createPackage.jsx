@@ -42,16 +42,12 @@ export const createPackage = async (values) => {
     displayPhotos,
   };
 
-  console.log(packageData);
-
   const packageResponse = await fetch(`${PACKAGE_URL}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(packageData),
   });
   const packageDataRes = await packageResponse.json();
-  console.log({ packageDataRes });
-  console.log({ coverPhoto }, { displayPhotos });
 
   let formData = new FormData();
   Object.entries(photoData).forEach(([propName, files]) => {
@@ -67,7 +63,6 @@ export const createPackage = async (values) => {
     body: formData,
   });
   const imageDataRes = await imageResponse.json();
-  console.log({ imageDataRes });
 
   return { packageDataRes, imageDataRes };
 };
