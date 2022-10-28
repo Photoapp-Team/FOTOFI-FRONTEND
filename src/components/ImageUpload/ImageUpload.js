@@ -36,7 +36,7 @@ const img = {
   height: "100%",
 };
 
-const ImageUpload = ({ phrase, classbox, classpaper, setFieldValue, setCoverPhoto }) => {
+const ImageUpload = ({ phrase, classbox, classpaper, setFieldValue, fieldName }) => {
   const [files, setFiles] = useState([]);
   const { getRootProps, getInputProps } = useDropzone({
     accept: {
@@ -50,8 +50,8 @@ const ImageUpload = ({ phrase, classbox, classpaper, setFieldValue, setCoverPhot
           })
         )
       );
-      if (setCoverPhoto) setCoverPhoto(acceptedFiles[0]);
-      else setFieldValue("files", acceptedFiles);
+      // if (setCoverPhoto) setCoverPhoto(acceptedFiles[0]);
+      setFieldValue(fieldName, acceptedFiles);
     },
   });
 

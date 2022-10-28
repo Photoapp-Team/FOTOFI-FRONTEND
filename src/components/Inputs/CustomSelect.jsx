@@ -35,15 +35,12 @@ const CssSelect = styled(Select)({
 
 const CustomSelect = ({ label, ...props }) => {
   const [field, meta, helpers] = useField(props);
+  console.log({ field });
 
   return (
     <>
       <label>{label}</label>
-      <CssSelect
-        {...field}
-        {...props}
-        className={meta.touched && meta.error ? "input-error" : ""}
-      />
+      <Select {...field} {...props} className={meta.touched && meta.error ? "input-error" : ""} />
       {meta.touched && meta.error && <div className="error">{meta.error}</div>}
     </>
   );
