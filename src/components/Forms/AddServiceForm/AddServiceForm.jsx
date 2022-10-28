@@ -8,7 +8,7 @@ import { Box } from "@mui/system";
 import { Field, Form, Formik, useField } from "formik";
 import CustomInput from "../../Inputs/CustomInput";
 import Button from "../../Inputs/Button/Button";
-import { Height } from "@mui/icons-material";
+import { createPackage } from "../../../services/createPackage";
 
 const AddServiceForm = () => {
   const [data, setData] = useState(null);
@@ -17,10 +17,8 @@ const AddServiceForm = () => {
   const [coverPhoto, setCoverPhoto] = useState(false);
 
   const onSubmit = async (values, actions) => {
-    console.log("values", values, "coverPhoto", coverPhoto);
-    // await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    actions.resetForm();
+    createPackage(values);
+    actions.resetForm({});
   };
   const { REACT_APP_API_ENDPOINT } = process.env;
 

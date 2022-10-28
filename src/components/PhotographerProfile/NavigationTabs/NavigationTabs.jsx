@@ -32,10 +32,9 @@ export default function NavigationTabs() {
         display: "flex",
         flexWrap: "wrap",
         "& > :not(style)": {
-          m: 1,
+          m: "auto",
         },
       }}
-      className="profile-main-box"
     >
       <TabContext value={value}>
         <Box>
@@ -55,7 +54,6 @@ export default function NavigationTabs() {
             sx={{
               display: "flex",
               flexdirection: "row",
-              justifyContent: "space-around",
             }}
           >
             <ServicesContainer id={id} isOwner={isOwner} />

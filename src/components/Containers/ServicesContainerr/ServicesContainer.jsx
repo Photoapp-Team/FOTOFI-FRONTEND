@@ -4,7 +4,6 @@ import usePackage from "../../../hooks/usePackage";
 import AddServiceCard from "../../Cards/AddServiceCard";
 import ServiceCard from "../../Cards/ServiceCard/ServiceCard";
 import { useNavigate, useParams } from "react-router-dom";
-import { useUser } from "../../../contexts/UserContext";
 
 const ServicesContainer = ({ isOwner }) => {
   const params = useParams();
@@ -15,7 +14,7 @@ const ServicesContainer = ({ isOwner }) => {
   const { data } = usePackage(id);
 
   return (
-    <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+    <Box sx={{ display: "flex", flexWrap: "wrap", m: "auto" }}>
       {data &&
         data.map((pack, index) => {
           return (
