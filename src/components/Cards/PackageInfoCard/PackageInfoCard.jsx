@@ -26,8 +26,6 @@ export default function PackageInfoCard({ data, isLoaded }) {
     photographerId,
   } = data;
 
-  console.log("MIDATA::", data);
-
   const { isUserLoggedIn, setAutomaticRedirection } = useUser();
   const navigate = useNavigate();
   const handleOnClick = () => {
