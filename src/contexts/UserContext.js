@@ -54,7 +54,6 @@ const UserContextProvider = ({ children }) => {
       const userData = await userResponse.json();
 
       if (userData) {
-        console.log({ userData });
         setUser(userData.data);
         localStorage.setItem("userId", userData.data.user._id);
         setLogStatus(true);
