@@ -1,7 +1,7 @@
 import "./MainPage.css";
 import ServiceFilter from "../../components/ServiceFilter";
 import { Typography } from "@mui/material";
-import PhotographersDisplay from "../../components/PhotographersDisplay";
+import PhotographersContainer from "../../components/Containers/PhotographersContainer";
 
 const MainPage = () => {
   return (
@@ -28,7 +28,7 @@ const MainPage = () => {
           align="left"
           boxSizing="content-box"
         />
-        <PhotographersDisplay></PhotographersDisplay>
+        <PhotographersContainer></PhotographersContainer>
       </div>
     </div>
   );

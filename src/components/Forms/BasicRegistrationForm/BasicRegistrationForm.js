@@ -3,12 +3,12 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import "./BasicRegistrationForm.css";
 import { Formik, Form, validateYupSchema } from "formik";
-import CustomInput from "../Inputs/CustomInput";
-import { registerSchema } from "../schemas";
-import { UserContext, useUser } from "../../contexts/UserContext";
+import CustomInput from "../../Inputs/CustomInput";
+import { registerSchema } from "../../schemas";
+import { UserContext, useUser } from "../../../contexts/UserContext";
 import { Navigate } from "react-router-dom";
-import { createBasicUser } from "../../services/registerUser";
-import Button from "../Button/Button";
+import { createBasicUser } from "../../../services/registerUser";
+import Button from "../../Inputs/Button/Button";
 
 const onSubmit = async (values, actions) => {
   createBasicUser(values);

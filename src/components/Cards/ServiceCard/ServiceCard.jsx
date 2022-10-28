@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import Skeleton from "@mui/material/Skeleton";
 import ServiceCardFooter from "../ServiceCardFooter";
+import { useNavigate } from "react-router-dom";
 
 export default function ServiceCard({
   service,
@@ -15,23 +16,27 @@ export default function ServiceCard({
   withFooter,
   minPrice,
   editMode,
+  packageId,
+  type,
 }) {
+  const navigate = useNavigate();
+  const handleOnClick = () => {
+    {
+      type == "package" ? navigate(`/PackageDetail/${packageId}`) : console.log(service);
+    }
+  };
+
   return (
     <>
       <Card
         className="serviceCard"
         sx={{ maxWidth: 250, borderRadius: 2, minWidth: 202, margin: 2 }}
         elevation={4}
+        onClick={handleOnClick}
       >
         <CardActionArea sx={{ maxWidth: 300, padding: ".5rem" }}>
           {isLoaded ? (
-            <CardMedia
-              className="cardImg"
-              component="img"
-              height="140"
-              image={img}
-              alt={service}
-            />
+            <CardMedia className="cardImg" component="img" height="140" image={img} alt={service} />
           ) : (
             <Skeleton variant="rectangular" height={140} align="center" />
           )}
@@ -52,11 +57,7 @@ export default function ServiceCard({
           </CardContent>
         </CardActionArea>
         {withFooter ? (
-          <ServiceCardFooter
-            editMode={editMode}
-            isLoaded={isLoaded}
-            minPrice={minPrice}
-          />
+          <ServiceCardFooter editMode={editMode} isLoaded={isLoaded} minPrice={minPrice} />
         ) : (
           <></>
         )}

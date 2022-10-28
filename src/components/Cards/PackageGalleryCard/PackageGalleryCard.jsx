@@ -5,7 +5,7 @@ import CardHeader from "@mui/material/CardHeader";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import Skeleton from "@mui/material/Skeleton";
-import CarouselGallery from "../../CarouselGalery/CarouselGallery";
+import CarouselGallery from "../../Containers/CarouselGallery";
 import { useNavigate } from "react-router-dom";
 
 export default function PackageGalleryCard({
@@ -23,10 +23,7 @@ export default function PackageGalleryCard({
 
   return (
     <Card sx={{ borderRadius: 1, margin: 0 }} elevation={2}>
-      <Typography
-        sx={{ margin: 1 }}
-        children={`${name} > Tipode de foto >`}
-      ></Typography>
+      <Typography sx={{ margin: 1 }} children={`${name} > Tipode de foto >`}></Typography>
       <CardHeader
         onClick={handleOnClick}
         className="cardHeader"
@@ -36,27 +33,12 @@ export default function PackageGalleryCard({
           isLoaded ? (
             <Avatar alt={name} src={profilePic} />
           ) : (
-            <Skeleton
-              animation="wave"
-              variant="circular"
-              width={40}
-              height={40}
-            />
+            <Skeleton animation="wave" variant="circular" width={40} height={40} />
           )
         }
-        title={
-          isLoaded ? (
-            name
-          ) : (
-            <Skeleton variant="text" width="60%" sx={{ fontSize: ".9rem" }} />
-          )
-        }
+        title={isLoaded ? name : <Skeleton variant="text" width="60%" sx={{ fontSize: ".9rem" }} />}
         subheader={
-          isLoaded ? (
-            location
-          ) : (
-            <Skeleton variant="text" width="40%" sx={{ fontSize: ".9rem" }} />
-          )
+          isLoaded ? location : <Skeleton variant="text" width="40%" sx={{ fontSize: ".9rem" }} />
         }
       />
       <CarouselGallery

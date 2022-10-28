@@ -3,7 +3,7 @@ import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import Typography from "@mui/material/Typography";
 import Skeleton from "@mui/material/Skeleton";
-import Button from "../../Button/Button";
+import Button from "../../Inputs/Button/Button";
 import CardContent from "@mui/material/CardContent";
 import { List, ListItemText, ListItem } from "@mui/material";
 import Divider from "@mui/material/Divider";
@@ -12,28 +12,29 @@ import "./PackageInfoCard.css";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../../contexts/UserContext";
 
-export default function PackageInfoCard({
-  minPrice,
-  maxPrice,
-  description,
-  deliveryTime,
-  minQuantityPrevPhotos,
-  maxQuantityPrevPhotos,
-  minQuantityFinalPhotos,
-  maxQuantityFinalPhotos,
-  isLoaded,
-  serviceId,
-  photographerId,
-}) {
+export default function PackageInfoCard({ data, isLoaded }) {
+  const {
+    minPrice,
+    maxPrice,
+    description,
+    deliveryTime,
+    minQuantityPrevPhotos,
+    maxQuantityPrevPhotos,
+    minQuantityFinalPhotos,
+    maxQuantityFinalPhotos,
+    _id,
+    photographerId,
+  } = data;
+
   const { isUserLoggedIn, setAutomaticRedirection } = useUser();
   const navigate = useNavigate();
   const handleOnClick = () => {
-    if (isUserLoggedIn) {
-      navigate(`/NewSession/${serviceId}?photographerId=${photographerId}`);
+    let token = localStorage.getItem("token");
+
+    if (token) {
+      navigate(`/NewSession/${_id}?photographerId=${photographerId}`);
     } else {
-      setAutomaticRedirection(
-        `/NewSession/${serviceId}?photographerId=${photographerId}`
-      );
+      setAutomaticRedirection(`/NewSession/${_id}?photographerId=${photographerId}`);
       navigate(`/Login`);
     }
   };
@@ -52,11 +53,7 @@ export default function PackageInfoCard({
               isLoaded ? (
                 `MX$${minPrice} - MX$${maxPrice}`
               ) : (
-                <Skeleton
-                  variant="text"
-                  width="60%"
-                  sx={{ fontSize: ".9rem" }}
-                />
+                <Skeleton variant="text" width="60%" sx={{ fontSize: ".9rem" }} />
               )
             }
           ></Typography>
@@ -67,11 +64,7 @@ export default function PackageInfoCard({
               isLoaded ? (
                 description
               ) : (
-                <Skeleton
-                  variant="text"
-                  width="60%"
-                  sx={{ fontSize: ".9rem" }}
-                />
+                <Skeleton variant="text" width="60%" sx={{ fontSize: ".9rem" }} />
               )
             }
           ></Typography>
@@ -84,11 +77,7 @@ export default function PackageInfoCard({
                   isLoaded ? (
                     `De ${minQuantityPrevPhotos} a ${maxQuantityPrevPhotos} fotos`
                   ) : (
-                    <Skeleton
-                      variant="text"
-                      width="60%"
-                      sx={{ fontSize: ".9rem" }}
-                    />
+                    <Skeleton variant="text" width="60%" sx={{ fontSize: ".9rem" }} />
                   )
                 }
               />
@@ -100,11 +89,7 @@ export default function PackageInfoCard({
                   isLoaded ? (
                     `Se entregan de ${minQuantityFinalPhotos} a ${maxQuantityFinalPhotos} fotos editadas en alta resolucion para que las imprimas.`
                   ) : (
-                    <Skeleton
-                      variant="text"
-                      width="60%"
-                      sx={{ fontSize: ".9rem" }}
-                    />
+                    <Skeleton variant="text" width="60%" sx={{ fontSize: ".9rem" }} />
                   )
                 }
               />
@@ -116,22 +101,14 @@ export default function PackageInfoCard({
                   isLoaded ? (
                     `Tiempo de entrega ${deliveryTime}`
                   ) : (
-                    <Skeleton
-                      variant="text"
-                      width="60%"
-                      sx={{ fontSize: ".9rem" }}
-                    />
+                    <Skeleton variant="text" width="60%" sx={{ fontSize: ".9rem" }} />
                   )
                 }
               />
             </ListItem>
           </List>
         </CardContent>
-        <Button
-          name={"Agregar"}
-          className={"schedule-button"}
-          onClick={handleOnClick}
-        />
+        <Button name={"Agregar"} className={"schedule-button"} onClick={handleOnClick} />
       </Card>
     </>
   );

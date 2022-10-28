@@ -1,5 +1,5 @@
 import React from "react";
-import FullRegistrationForm from "../../components/FullRegistrationForm";
+import FullRegistrationForm from "../../components/Forms/FullRegistrationForm";
 
 const FullRegistrationPage = () => {
   return (
