@@ -55,8 +55,6 @@ export const createPackage = async (values) => {
       formData.append(propName, photo);
     });
   });
-  //   formData.append("coverPhoto", coverPhoto[0]);
-  //   formData.append("displayPhotos", displayPhotos);
 
   const imageResponse = await fetch(`${IMAGE_URL}${packageDataRes.data.package._id}`, {
     method: "POST",
