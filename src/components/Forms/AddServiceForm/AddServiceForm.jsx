@@ -22,8 +22,9 @@ const AddServiceForm = () => {
 
     actions.resetForm();
   };
+  const { REACT_APP_API_ENDPOINT } = process.env;
 
-  const url = "http://localhost:8080/services";
+  const url = `${REACT_APP_API_ENDPOINT}/services`;
   useEffect(() => {
     (async function () {
       try {

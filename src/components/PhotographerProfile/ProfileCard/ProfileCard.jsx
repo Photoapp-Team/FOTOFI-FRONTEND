@@ -38,7 +38,6 @@ const ProfileCard = ({ data }) => {
             },
           }}
         >
-          <CoverPhoto coverPhoto={coverPhoto} />
           <Paper
             elevation={3}
             sx={{
