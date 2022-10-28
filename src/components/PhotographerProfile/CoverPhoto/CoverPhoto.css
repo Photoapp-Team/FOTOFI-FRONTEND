@@ -1,0 +1,16 @@
+.profile-coverphoto-container img {
+  position: absolute;
+  margin-top: 0;
+  max-height: 260px;
+  min-width: 100%;
+  z-index: 0;
+}
+
+.profile-coverphoto-container {
+  position: absolute;
+  margin-top: 0;
+  height: 260px;
+  max-height: 260px;
+  width: 100%;
+  z-index: 0;
+}

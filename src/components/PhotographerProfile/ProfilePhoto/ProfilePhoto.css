@@ -1,0 +1,11 @@
+.profilepic {
+  display: flex;
+  width: 85px;
+  height: 85px;
+  margin-top: 45px;
+}
+.profilepic img {
+  border-radius: 50%;
+  object-fit: scale-down;
+  border: 2px solid #42b7d0;
+}

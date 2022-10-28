@@ -1,0 +1,101 @@
+.login {
+  background-image: url(../../assets/backgroundImages/pexels-eberhard-grossgasteiger-629162.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+}
+
+.logo-container {
+  position: absolute;
+  height: 96px;
+  width: 443px;
+  left: 5vw;
+  top: 50vh;
+}
+
+.logo-container svg path {
+  fill: #ffffff;
+}
+
+.logo-container svg polygon {
+  fill: #ffffff;
+}
+
+.logo-container svg rect {
+  fill: #ffffff;
+}
+
+.box-container-login {
+  position: absolute;
+  top: 30vh;
+  right: 15vw;
+  left: auto;
+  bottom: auto;
+}
+
+.login-title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 47px;
+  padding-left: 20px;
+  margin-bottom: 0px;
+}
+
+.login-text {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 27px;
+  padding-left: 20px;
+  margin-top: 5px;
+}
+
+.login-text-link {
+  color: blue;
+}
+
+.box-layout-login {
+  padding: 40px;
+}
+
+.form-container-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 95%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* 
+  input.input-error,
+  select.input-error {
+    border-color: #fc8181;
+  }
+
+  input,
+  select {
+    display: block;
+    width: 100%;
+    padding: 1rem 1rem;
+    font-size: 1rem;
+    color: white;
+    border: 2px solid #4a5568;
+    background-color: #2d3748;
+    border-radius: 10px;
+    outline: none;
+    margin: 10px;
+  }
+
+  input:focus,
+  select:focus {
+    border-color: #4299e1;
+  }
+  
+  input::placeholder,
+  select::placeholder {
+    color: #a0aec0;
+  } */

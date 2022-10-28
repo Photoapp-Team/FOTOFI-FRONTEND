@@ -1,0 +1,103 @@
+.imagePreviewer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border: 5px solid #5ca4ea;
+  border-radius: 15px;
+  background-color: #5ca4ea;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  margin-bottom: 5vh;
+  margin-top: 5vh;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+}
+
+.uploaderButton {
+  background-color: #5ca4ea;
+  border: 2px solid white;
+  color: white;
+  font-weight: 600;
+  border-radius: 5px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+    Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+/* text-align: center;
+    color: black;
+    font-weight: 600;
+    border-radius: 10px solid;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+
+.button-addService {
+  display: block;
+  margin: 1rem 0;
+  padding: 0.35rem 0.5rem;
+  background-color: #42b7d0;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  width: 170px;
+  height: 35px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.dropzone {
+  width: 100%;
+  max-height: 50%;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.boxAddservice1 {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 5rem;
+  width: 65%;
+  max-height: 300px;
+  height: auto;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.paperAddservice1 {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1;
+  width: 95%;
+  height: auto;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.boxAddservice2 {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 5rem;
+  width: 25%;
+  max-height: 200px;
+  height: auto;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.paperAddservice2 {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1;
+  width: 95%;
+  height: auto;
+  justify-content: flex-start;
+  align-items: center;
+}
