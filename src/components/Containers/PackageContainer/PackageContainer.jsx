@@ -9,7 +9,6 @@ import PackageInfoCard from "../../Cards/PackageInfoCard";
 export default function PackageContainer({ data }) {
   const packageData = data.data;
   const fetchSuccess = !data.loading;
-
   return (
     <Container maxWidth="md">
       <Grid container spacing={2} justifyContent="center" alignItems="center">

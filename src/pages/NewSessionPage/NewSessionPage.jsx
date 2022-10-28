@@ -5,10 +5,10 @@ import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { Formik, Form, Field } from "formik";
-import { Navigate } from "react-router-dom";
 import CustomInput from "../../components/Inputs/CustomInput";
 import Button from "../../components/Inputs/Button/Button";
 import { createSession } from "../../services/createSession";
+import { useNavigate } from "react-router-dom";
 
 const NewSessionPage = () => {
   const params = useParams();
@@ -16,6 +16,7 @@ const NewSessionPage = () => {
   const photographerId = queryParams.get("photographerId");
   const [startDate, onChange] = useState(new Date());
   const token = localStorage.getItem("token");
+  const navigate = useNavigate();
 
   const onSubmit = (values, actions) => {
     if (token) {
@@ -27,7 +28,7 @@ const NewSessionPage = () => {
       };
       createSession(sessionData);
       actions.resetForm();
-      Navigate("/Profile");
+      navigate("/Profile");
     } else {
       alert("Tienes que estar logeado para crear session");
     }

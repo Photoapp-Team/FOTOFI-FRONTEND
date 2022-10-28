@@ -1,35 +1,14 @@
-import { useContext, useState, useEffect } from "react";
 import "./PhotographersContainer.css";
-import axios from "axios";
 import PhotographerCard from "../../Cards/PhotographerCard/PhotographerCard";
+import useFetchPhotographers from "../../../services/useFetchPhotographers";
 
 const PhotographersContainer = () => {
-  const [services, setServices] = useState({});
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
   const usersPlaceholder = ["", "", "", "", "", ""];
-  const { REACT_APP_API_ENDPOINT } = process.env;
-  const url = `${REACT_APP_API_ENDPOINT}/users?role=Photographer`;
-  useEffect(() => {
-    (async function () {
-      try {
-        setLoading(true);
-        console.log("haciendo fetch");
-        const response = await axios.get(url);
-        if (response) {
-          console.log(response);
-        }
-        setData(response.data.data.users);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    })();
-  }, [url]);
 
-  if (!data) {
+  const fetchPhotographers = useFetchPhotographers();
+  const photographersData = fetchPhotographers.data;
+
+  if (!photographersData) {
     return (
       <div className="photographersDisplayLoading">
         {usersPlaceholder.map((index) => {
@@ -44,7 +23,7 @@ const PhotographersContainer = () => {
   }
   return (
     <div className="photographersDisplay">
-      {data.map((user, index) => {
+      {photographersData.map((user, index) => {
         return (
           <>
             <PhotographerCard
