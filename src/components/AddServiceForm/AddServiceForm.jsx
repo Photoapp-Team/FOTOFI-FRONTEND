@@ -10,10 +10,11 @@ import CustomInput from "../Inputs/CustomInput";
 import CustomTextArea from "../Inputs/CustomTextArea";
 import Button from "../Button/Button";
 import { Height } from "@mui/icons-material";
-import { createPackage } from "../../../services/createPackage";
+import { createPackage } from "../../services/createPackage";
 
 const AddServiceForm = () => {
-  const [data, setData] = useState(null);
+  const emptyOption =  {label:"Por favor selecciona una opción",value:""}
+  const [categories, setCategories] = useState([emptyOption]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -31,7 +32,9 @@ const AddServiceForm = () => {
         const response = await axios.get(url);
         if (response) {
         }
-        setData(response.data.data.services);
+        // setData(response.data.data.services);
+        const options = response.data.data.services.map(service => ({ label:service.name, value: service.name}))
+        setCategories([emptyOption,...options]);
       } catch (err) {
         setError(err);
       } finally {
@@ -44,7 +47,7 @@ const AddServiceForm = () => {
     <>
       <CssBaseline />
       <Formik
-        initialValues={{ serviceCategory: "" }}
+        initialValues={{ serviceCategory: emptyOption.value}}
         // validationSchema={addServiceSchema}
         onSubmit={onSubmit}
       >
@@ -59,34 +62,15 @@ const AddServiceForm = () => {
               </Box>
               <Box>
                 <CustomSelect
+                  displayEmpty
                   name="serviceCategory"
-                  placeholder="Por favor selecciona uno"
-                  size="small"
-                  defaultValue=""
-                  onChange={(option) => {
-                    console.log(option.target);
-                    setFieldValue("serviceCategory", option.target.value);
-                  }}
-                  value={
-                    data
-                      ? data.find((category) => {
-                          console.log({ category }, { values: values.serviceCategory });
-                          return category.name === values.serviceCategory;
-                        })
-                      : ""
-                  }
+                  label="Por favor selecciona uno"
+                  sx={{minWidth: "200px"}}
                 >
-                  <MenuItem key={0} value="">
-                    Por favor selecciona una opción
-                  </MenuItem>
-                  {data &&
-                    data.map((item, index) => {
-                      return (
-                        <MenuItem key={item.name} value={item.name}>
-                          {item.name}
-                        </MenuItem>
-                      );
-                    })}
+                  {
+                    categories.map(({label,value},index) => (<MenuItem key={index} value={value}>
+                    {label}</MenuItem>))
+                  }
                 </CustomSelect>
               </Box>
             </Box>
