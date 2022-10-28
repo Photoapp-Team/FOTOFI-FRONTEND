@@ -11,7 +11,7 @@ const UserContextProvider = ({ children }) => {
 
   const redirecTo = (url) => {
     if (url === "") {
-      navigate("/Main");
+      navigate("/");
     } else {
       setAutomaticRedirection("");
       navigate(url);

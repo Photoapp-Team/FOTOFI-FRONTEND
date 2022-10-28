@@ -55,7 +55,7 @@ const App = () => {
                 <Route path="/FullRegistration" element={<FullRegistrationPage />}></Route>
                 <Route path="/BasicRegistration" element={<BasicRegistrationPage />}></Route>
                 <Route path="/Login" element={<LoginPage />}></Route>
-                <Route path="/Main" element={<MainPage />}></Route>
+                <Route path="/" element={<MainPage />}></Route>
                 <Route path="/Profile" element={<ProfilePage />}></Route>
                 <Route path="/Profile/:id" element={<ProfilePage />}></Route>
                 <Route path="/PackageDetail/:id" element={<PackageDetailPage />}></Route>
