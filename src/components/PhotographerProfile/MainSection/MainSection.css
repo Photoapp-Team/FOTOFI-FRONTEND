@@ -1,3 +1,7 @@
-.mainContainer {
-  background-color: blue;
+
+.profile-main-box {
+  position: relative;
+  margin-left: 2vw;
+  width: auto;
+  max-width: 100%;
 }

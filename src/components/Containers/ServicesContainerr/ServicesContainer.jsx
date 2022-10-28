@@ -1,16 +1,20 @@
 import { Box } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import usePackage from "../../../hooks/usePackage";
 import AddServiceCard from "../../Cards/AddServiceCard";
 import ServiceCard from "../../Cards/ServiceCard/ServiceCard";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const ServicesContainer = ({ id }) => {
-  const { data } = usePackage(id);
+const ServicesContainer = ({ isOwner }) => {
+  const params = useParams();
+  const { id } = params;
   const navigate = useNavigate();
 
+  const userId = localStorage.getItem("userId");
+  const { data } = usePackage(id);
+
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", flexWrap: "wrap", m: "auto" }}>
       {data &&
         data.map((pack, index) => {
           return (
@@ -25,7 +29,7 @@ const ServicesContainer = ({ id }) => {
             />
           );
         })}
-      <AddServiceCard />
+      {isOwner ? <AddServiceCard /> : <></>}
     </Box>
   );
 };

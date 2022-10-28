@@ -14,6 +14,7 @@ const ServiceBlock = ({ photoTags }) => {
           justifyContent: "space-around",
           width: "100%",
           height: 188,
+          mb: "5vh",
         }}
         className="profile-service-buttons"
       >

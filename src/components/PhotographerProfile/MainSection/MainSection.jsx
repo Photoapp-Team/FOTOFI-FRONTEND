@@ -6,7 +6,16 @@ import { Box } from "@mui/material";
 const MainSection = (id) => {
   return (
     <>
-      <Box sx={{ width: "100%" }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          "& > :not(style)": {
+            m: 1,
+          },
+        }}
+        className="profile-main-box"
+      >
         <BasicTabs id={id} />
       </Box>
     </>
