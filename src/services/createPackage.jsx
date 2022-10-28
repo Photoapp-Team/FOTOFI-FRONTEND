@@ -40,17 +40,13 @@ export const createPackage = async (values) => {
     coverPhoto,
     displayPhotos,
   };
-
-  console.log(packageData);
-
+  
   const packageResponse = await fetch(`${PACKAGE_URL}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(packageData),
   });
   const packageDataRes = await packageResponse.json();
-  console.log({ packageDataRes });
-  console.log({ coverPhoto }, { displayPhotos });
 
   let formData = new FormData();
   Object.entries(photoData).forEach(([propName, files]) => {
@@ -58,15 +54,12 @@ export const createPackage = async (values) => {
       formData.append(propName, photo);
     });
   });
-  //   formData.append("coverPhoto", coverPhoto[0]);
-  //   formData.append("displayPhotos", displayPhotos);
 
   const imageResponse = await fetch(`${IMAGE_URL}${packageDataRes.data.package._id}`, {
     method: "POST",
     body: formData,
   });
   const imageDataRes = await imageResponse.json();
-  console.log({ imageDataRes });
 
   return { packageDataRes, imageDataRes };
 };
