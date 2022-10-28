@@ -12,7 +12,7 @@ const ProfilePage = () => {
   const { id } = params;
   const { REACT_APP_API_ENDPOINT } = process.env;
   const userId = "";
-  const UserUrl = `${REACT_APP_API_ENDPOINT}/users`;
+  const UserUrl = `${REACT_APP_API_ENDPOINT}/users/${id}`;
   const { data, loading, error } = useFetch(UserUrl);
   if (data)
     return (

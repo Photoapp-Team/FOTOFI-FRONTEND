@@ -10,18 +10,16 @@ export default function useFetch(url) {
     (async function () {
       try {
         const token = localStorage.getItem("token");
-        let userId = "";
-        let userUrl = "";
-        if (token) {
-          const payload = token.split(".")[1];
-          userId = JSON.parse(atob(payload)).id;
-          userUrl = `${url}/${userId}`;
-        }
+        // let userId = "";
+        // let userUrl = "";
+        // if (token) {
+        //   const payload = token.split(".")[1];
+        //   userId = JSON.parse(atob(payload)).id;
+        //   userUrl = `${url}/${userId}`;
+        // }
         setLoading(true);
-        const response = await axios.get(userUrl, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+        const response = await axios.get(url, {
+          headers: {},
         });
         setData(response.data.data.user);
       } catch (err) {
