@@ -24,7 +24,16 @@ const ProfilePage = () => {
             <CoverPhoto coverPhoto={coverPhoto} />
           </Box>
           <ProfileCard id={id} data={data} />
-          <Box sx={{ display: "flex", flexWrap: "wrap", mt: 17, maxWidth: "63vw", width: "auto" }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              mt: 35,
+              maxWidth: "63vw",
+              width: "auto",
+              position: "relative",
+            }}
+          >
             <MainSection id={id} />
           </Box>
         </Box>

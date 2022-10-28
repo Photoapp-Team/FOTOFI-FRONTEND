@@ -1,3 +1,4 @@
+import { file } from "@babel/types";
 import React from "react";
 const { REACT_APP_API_ENDPOINT } = process.env;
 
@@ -40,7 +41,7 @@ export const createPackage = async (values) => {
     coverPhoto,
     displayPhotos,
   };
-  
+
   const packageResponse = await fetch(`${PACKAGE_URL}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },

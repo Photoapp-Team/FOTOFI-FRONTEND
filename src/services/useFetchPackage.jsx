@@ -15,7 +15,6 @@ export default function useFetchPackage(packageId) {
         if (!token) {
           token = "";
         }
-        console.log("URL:", `${REACT_APP_API_ENDPOINT}/packages/${packageId}`);
         setLoading(true);
         const response = await axios.get(`${REACT_APP_API_ENDPOINT}/packages/${packageId}`, {
           headers: {

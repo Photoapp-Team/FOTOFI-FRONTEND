@@ -1,4 +1,4 @@
-import { Select } from "@mui/material";
+import { Select, InputLabel } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useField } from "formik";
 import React from "react";
@@ -38,8 +38,9 @@ const CustomSelect = ({ label, ...props }) => {
 
   return (
     <>
-      <label>{label}</label>
-      <CssSelect
+      {/* <InputLabel id="demo-controlled-open-select-label">{label}</InputLabel> */}
+      <Select
+        labelId="demo-controlled-open-select-label"
         {...field}
         {...props}
         className={meta.touched && meta.error ? "input-error" : ""}

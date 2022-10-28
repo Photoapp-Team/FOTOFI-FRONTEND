@@ -9,6 +9,7 @@ import { UserContext, useUser } from "../../../contexts/UserContext";
 import { Navigate } from "react-router-dom";
 import { createBasicUser } from "../../../services/registerUser";
 import Button from "../../Inputs/Button/Button";
+import { Switch } from "@mui/material";
 
 const onSubmit = async (values, actions) => {
   createBasicUser(values);
@@ -25,7 +26,7 @@ const BasicRegistrationForm = () => {
           "& > :not(style)": {
             m: 1,
             width: 550,
-            height: 600,
+            height: "auto",
           },
         }}
       >
@@ -34,7 +35,9 @@ const BasicRegistrationForm = () => {
             <h1 className="basic-registration-title">Crear una cuenta</h1>
             <p className="basic-registration-text">
               ¿Ya eres usuario?
-              <span className="basic-registration-text-link"> Inicia sesión</span>
+              <a href="/Login">
+                <span className="basic-registration-text-link"> Inicia sesión</span>
+              </a>
             </p>
             <Formik
               initialValues={{ username: "", gender: "" }}
