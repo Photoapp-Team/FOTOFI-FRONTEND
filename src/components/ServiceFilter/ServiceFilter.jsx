@@ -2,15 +2,15 @@ import { useContext, useState, useEffect } from "react";
 import ServiceCard from "../../components/Cards/ServiceCard/ServiceCard";
 import "./ServiceFilter.css";
 import axios from "axios";
-import { Typography } from "@mui/material";
-import AddServiceCard from "../Cards/AddServiceCard";
+
 const ServiceFilter = () => {
   const [services, setServices] = useState({});
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const servicePlaceholder = ["", "", "", "", "", ""];
-  const url = "http://localhost:8080/services";
+  const { REACT_APP_API_ENDPOINT } = process.env;
+  const url = `${REACT_APP_API_ENDPOINT}/services`;
   useEffect(() => {
     (async function () {
       try {
