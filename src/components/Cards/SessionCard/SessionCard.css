@@ -1,3 +1,45 @@
 .cardImg {
   border-radius: 0.5rem;
 }
+
+.sessioncard-Solicitada {
+  box-shadow: 0px 2px 4px -1px rgba(39, 14, 227, 0.2), 0px 4px 5px 0px rgb(0 0 0 / 14%),
+    0px 1px 10px 0px rgba(32, 10, 230, 0.12);
+  background-color: rgba(0, 0, 255, 0.006);
+}
+
+.sessioncard-Programada {
+  box-shadow: 0px 2px 4px -1px rgba(39, 14, 227, 0.2), 0px 4px 5px 0px rgb(0 0 0 / 14%),
+    0px 1px 10px 0px rgba(32, 10, 230, 0.12);
+  background-color: rgba(0, 0, 255, 0.006);
+}
+
+.sessioncard-Aprobada {
+  box-shadow: 0px 2px 4px -1px rgba(18, 203, 166, 0.2), 0px 4px 5px 0px rgb(0 0 0 / 14%),
+    0px 1px 10px 0px rgba(32, 10, 230, 0.12);
+  background-color: rgba(0, 0, 255, 0.006);
+}
+
+.sessioncard-Pagada {
+  box-shadow: 0px 2px 4px -1px rgba(29, 29, 209, 0.2), 0px 4px 5px 0px rgb(0 0 0 / 14%),
+    0px 1px 10px 0px rgba(32, 10, 230, 0.12);
+  background-color: rgba(0, 0, 255, 0.006);
+}
+
+.sessioncard-Cancelada {
+  box-shadow: 0px 2px 4px -1px rgba(209, 15, 15, 0.2), 0px 4px 5px 0px rgb(0 0 0 / 14%),
+    0px 1px 10px 0px rgba(32, 10, 230, 0.12);
+  background-color: rgba(0, 0, 255, 0.006);
+}
+
+.sessioncard-Lista {
+  box-shadow: 0px 2px 4px -1px rgba(39, 14, 227, 0.2), 0px 4px 5px 0px rgb(0 0 0 / 14%),
+    0px 1px 10px 0px rgba(32, 10, 230, 0.12);
+  background-color: rgba(0, 0, 255, 0.006);
+}
+
+.sessioncard-Entregada {
+  box-shadow: 0px 2px 4px -1px rgba(39, 14, 227, 0), 0px 4px 5px 0px rgb(0 0 0 / 0%),
+    0px 1px 10px 0px rgba(32, 10, 230, 0);
+  background-color: rgba(0, 0, 255, 0);
+}
