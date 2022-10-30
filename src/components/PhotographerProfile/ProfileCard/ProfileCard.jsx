@@ -71,7 +71,7 @@ const ProfileCard = ({ data }) => {
                 }}
               >
                 <div>
-                  <ProfilePhoto profilePic={profilePic} />
+                  <ProfilePhoto photoclass={"profilepic"} profilePic={profilePic} />
                 </div>
                 <>
                   <ProfileName name={name} lastname={lastname} />

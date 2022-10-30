@@ -9,3 +9,15 @@
   object-fit: scale-down;
   border: 2px solid #42b7d0;
 }
+
+.sessionUserProfilepic {
+  display: flex;
+  width: 60px;
+  height: 60px;
+}
+
+.sessionUserProfilepic img {
+  border-radius: 50%;
+  object-fit: scale-down;
+  border: 2px solid #42b7d0;
+}

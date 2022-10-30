@@ -7,6 +7,7 @@ import CustomBreadcrumbs from "../../Inputs/CustomBreadcrumbs";
 import { useNavigate, useParams } from "react-router-dom";
 import { Form, Formik } from "formik";
 import { uploadSessionPhotos } from "../../../services/uploadSessionPhotos";
+import SessionInfoContainer from "../SessionInfoContainer/SessionInfoContainer";
 
 const SessionGallery = () => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const SessionGallery = () => {
   const onSubmit = async (values) => {
     const { REACT_APP_API_ENDPOINT } = process.env;
     const sessionUrl = `${REACT_APP_API_ENDPOINT}/upload/sessions/prev/${id}`;
+
     uploadSessionPhotos(sessionUrl, values);
     // navigate(`/Profile/${id}`);
   };
@@ -23,7 +25,7 @@ const SessionGallery = () => {
   return (
     <>
       <Box>
-        <CustomBreadcrumbs />
+        <SessionInfoContainer />
       </Box>
       <Formik
         initialValues={{ previewPics: "" }}
@@ -44,7 +46,7 @@ const SessionGallery = () => {
                 fieldName={"previewPics"}
               />
               <Box
-                sx={{ mx: "auto", display: "flex", justifyContent: "center", position: "fixed" }}
+                sx={{ mx: "auto", display: "flex", justifyContent: "center", position: "relative" }}
               >
                 <Button
                   sx={{ mb: 25 }}

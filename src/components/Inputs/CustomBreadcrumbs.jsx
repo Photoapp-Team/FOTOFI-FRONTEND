@@ -7,7 +7,7 @@ import WhatshotIcon from "@mui/icons-material/Whatshot";
 import GrainIcon from "@mui/icons-material/Grain";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 
-function CustomBreadcrumbs() {
+function CustomBreadcrumbs({ sessionName }) {
   function handleClick(event) {
     event.preventDefault();
     console.info("You clicked a breadcrumb.");
@@ -20,7 +20,7 @@ function CustomBreadcrumbs() {
     >
       <Breadcrumbs
         aria-label="breadcrumb"
-        sx={{ display: "flex", justifyContent: "flex-end", mr: "5vw", color: "white" }}
+        sx={{ display: "flex", justifyContent: "flex-end", mr: "5vw" }}
       >
         <Link
           underline="hover"
@@ -40,9 +40,9 @@ function CustomBreadcrumbs() {
           <CameraAltIcon sx={{ mr: 0.5 }} fontSize="inherit" />
           Sesiones
         </Link>
-        <Typography sx={{ display: "flex", alignItems: "center" }} color="white">
+        <Typography sx={{ display: "flex", alignItems: "center" }}>
           <GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-          Breadcrumb
+          {sessionName}
         </Typography>
       </Breadcrumbs>
     </div>
