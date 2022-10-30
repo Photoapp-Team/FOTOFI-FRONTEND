@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Divider, Grow } from "@mui/material";
 import React from "react";
 import { useParams } from "react-router-dom";
 import useFetchUniqueSession from "../../../services/useFetchUniqueSession";
@@ -19,13 +19,26 @@ const SessionInfoContainer = () => {
         <Box>
           <CustomBreadcrumbs sessionName={data.name} />
         </Box>
-        <Box sx={{ display: "flex", gap: 1, width: "auto", alignItems: "center", maxHeight: 60 }}>
+        <Box
+          sx={{
+            display: "flex",
+            gap: 1,
+            width: "auto",
+            alignItems: "center",
+            maxHeight: 60,
+            ml: 5,
+            mt: 2,
+          }}
+        >
           <ProfilePhoto photoclass={"sessionUserProfilepic"} profilePic={sessionUser.profilePic} />
-          <Box sx={{ display: "flex", gap: 4, justifyContent: "space-evenly" }}>
-            {sessionUser.name}
-            {sessionUser.lastname}
+          <Box sx={{ display: "flex", gap: 1, justifyContent: "flex-start", width: 200 }}>
+            <Box>{sessionUser.name}</Box>
+            <Box>{sessionUser.lastname}</Box>
           </Box>
         </Box>
+        <Box sx={{ mt: 1, ml: 13 }}>Lugar: {data.location}</Box>
+        <Box sx={{ mt: 1, ml: 13, mb: 3 }}>Status: {data.status.requested}</Box>
+        <Divider variant="middle" />
       </>
     );
   }

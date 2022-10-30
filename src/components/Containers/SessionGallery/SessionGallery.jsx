@@ -8,6 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Form, Formik } from "formik";
 import { uploadSessionPhotos } from "../../../services/uploadSessionPhotos";
 import SessionInfoContainer from "../SessionInfoContainer/SessionInfoContainer";
+import "./SessionGallery.css";
 
 const SessionGallery = () => {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ const SessionGallery = () => {
   };
 
   return (
-    <>
+    <Box className="sessionGallery">
       <Box>
         <SessionInfoContainer />
       </Box>
@@ -35,7 +36,7 @@ const SessionGallery = () => {
         {({ isSubmitting, setFieldValue, values }) => (
           <Form className="formContainer">
             <Box
-              sx={{ my: "30vh", mx: "auto", width: "80%", minHeight: "30vh", alignItems: "center" }}
+              sx={{ my: "17vh", mx: "auto", width: "80%", minHeight: "30vh", alignItems: "center" }}
             >
               <ImageUpload
                 phrase={"Arrastra tus fotos de preview aqui o haz click"}
@@ -61,7 +62,7 @@ const SessionGallery = () => {
           </Form>
         )}
       </Formik>
-    </>
+    </Box>
   );
 };
 
