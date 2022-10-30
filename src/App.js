@@ -62,7 +62,7 @@ const App = () => {
                 <Route path="/PackageDetail/:id" element={<PackageDetailPage />}></Route>
                 <Route path="/AddService" element={<AddServicePage />}></Route>
                 <Route path="/NewSession/:id" element={<NewSessionPage />}></Route>
-                <Route path="/Session" element={<SessionPage />}></Route>
+                <Route path="/Session/:id" element={<SessionPage />}></Route>
               </Routes>
             </>
           </div>

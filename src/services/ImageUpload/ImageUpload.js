@@ -1,7 +1,6 @@
 import { Box, Paper } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import Button from "../../components/Inputs/Button/Button";
 import "./ImageUpload.css";
 
 const thumbsContainer = {
@@ -50,7 +49,6 @@ const ImageUpload = ({ phrase, classbox, classpaper, setFieldValue, fieldName })
           })
         )
       );
-      // if (setCoverPhoto) setCoverPhoto(acceptedFiles[0]);
       setFieldValue(fieldName, acceptedFiles);
     },
   });
