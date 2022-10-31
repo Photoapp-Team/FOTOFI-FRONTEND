@@ -69,12 +69,16 @@ const App = () => {
                 element={<SuscriptionPage />}
                 
               ></Route>
-
-              </Routes>
-            </>
-          </div>
-        </UserContextProvider>
-      </ThemeProvider>
+              <Route
+                path="/BasicRegistration"
+                element={<BasicRegistrationPage />}
+              ></Route>
+              <Route path="/Login" element={<LoginPage />}></Route>
+            </Routes>
+          </>
+        </div>
+      </UserContextProvider>
+     </ThemeProvider>
     </>
   );
 };
