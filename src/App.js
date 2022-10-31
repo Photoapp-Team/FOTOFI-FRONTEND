@@ -13,6 +13,7 @@ import PackageDetailPage from "./pages/PackageDetailPage/PackageDetailPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import AddServicePage from "./pages/AddServicePage/AddServicePage";
 import NewSessionPage from "./pages/NewSessionPage/NewSessionPage";
+import SelectionPage from "./pages/SelectionPage";
 
 const theme = createTheme({
   typography: {
@@ -61,6 +62,7 @@ const App = () => {
                 <Route path="/PackageDetail/:id" element={<PackageDetailPage />}></Route>
                 <Route path="/AddService" element={<AddServicePage />}></Route>
                 <Route path="/NewSession/:id" element={<NewSessionPage />}></Route>
+                <Route path="/Seleccion/" element={<SelectionPage />}></Route>
               </Routes>
             </>
           </div>

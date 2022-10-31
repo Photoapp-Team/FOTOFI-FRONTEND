@@ -18,12 +18,15 @@ export default function ServiceCard({
   editMode,
   packageId,
   type,
+  setFilters,
 }) {
   const navigate = useNavigate();
   const handleOnClick = () => {
-    {
-      type == "package" ? navigate(`/PackageDetail/${packageId}`) : console.log(service);
+    if (type == "package") {
     }
+    console.log(service);
+
+    setFilters({ photoTags: service });
   };
 
   return (

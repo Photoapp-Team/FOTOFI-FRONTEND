@@ -7,6 +7,9 @@ export default function useFetchPhotographers() {
   const [loading, setLoading] = useState(false);
   const { REACT_APP_API_ENDPOINT } = process.env;
 
+  const [filters, setFilters] = useState({});
+  console.log("INSIDE FETCH:", filters);
+
   useEffect(() => {
     (async function () {
       try {
@@ -16,9 +19,13 @@ export default function useFetchPhotographers() {
           token = "";
         }
         setLoading(true);
-        const response = await axios.get(`${REACT_APP_API_ENDPOINT}/users?role=Photographer`, {
+        const response = await axios.get(`${REACT_APP_API_ENDPOINT}/users`, {
           headers: {
             Authorization: `Bearer ${token}`,
+          },
+          params: {
+            role: "Photographer",
+            ...filters,
           },
         });
         setData(response.data.data.users);
@@ -28,7 +35,7 @@ export default function useFetchPhotographers() {
         setLoading(false);
       }
     })();
-  }, []);
+  }, [filters]);
 
-  return { data, error, loading };
+  return { data, error, loading, setFilters };
 }
