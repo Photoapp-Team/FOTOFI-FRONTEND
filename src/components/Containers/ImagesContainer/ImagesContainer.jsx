@@ -7,8 +7,9 @@ import ImageList from "@mui/material/ImageList";
 import Skeleton from "@mui/material/Skeleton";
 import Button from "../../Inputs/Button/Button";
 import useWindowDimensions from "../../../services/useResize";
+import { sendSelectedImages } from "../../../services/sendSelectedImages";
 
-export default function ImageContainer({ previewPics, loaded }) {
+export default function ImageContainer({ previewPics, loaded, sessionId }) {
   const selectedImages = [];
   const { width } = useWindowDimensions();
   const calculateCol = (width) => {
@@ -20,15 +21,21 @@ export default function ImageContainer({ previewPics, loaded }) {
   };
 
   const handleSubmit = () => {
-    console.log(selectedImages);
+    sendSelectedImages(selectedImages, sessionId, previewPics);
   };
+
   if (loaded) {
     return (
       <Container maxWidth="lg">
         <Box sx={{ height: 700, overflowY: "scroll" }}>
           <ImageList variant="masonry" cols={calculateCol(width)} gap={8}>
             {previewPics.map((image) => (
-              <ImageCard key={image.name} image={image} selectedImages={selectedImages} />
+              <ImageCard
+                key={image.name}
+                image={image}
+                selectedImages={selectedImages}
+                onSubmit={handleSubmit}
+              />
             ))}
           </ImageList>
         </Box>

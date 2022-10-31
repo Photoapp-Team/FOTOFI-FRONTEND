@@ -16,6 +16,7 @@ export default function ImageCard({ image, selectedImages }) {
       selectedImages.push(image.name);
     }
   };
+
   return (
     <ImageListItem key={image.name}>
       <img
