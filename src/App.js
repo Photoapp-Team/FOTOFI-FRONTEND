@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
 import { green, purple, yellow, grey, red, blue, cyan } from "@mui/material/colors";
 import "@fontsource/raleway"; // Defaults to weight 400.
+import SuscriptionPage from "./pages/Suscriptionpage/SuscriptionPage"
 import PackageDetailPage from "./pages/PackageDetailPage/PackageDetailPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import AddServicePage from "./pages/AddServicePage/AddServicePage";
@@ -63,6 +64,10 @@ const App = () => {
                 <Route path="/AddService" element={<AddServicePage />}></Route>
                 <Route path="/NewSession/:id" element={<NewSessionPage />}></Route>
                 <Route path="/Session/:id" element={<SessionPage />}></Route>
+                <Route
+                path="/Suscription"
+                element={<SuscriptionPage />}
+              ></Route>
               </Routes>
             </>
           </div>
