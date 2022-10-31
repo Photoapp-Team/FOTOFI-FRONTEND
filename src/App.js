@@ -67,7 +67,9 @@ const App = () => {
                 <Route
                 path="/Suscription"
                 element={<SuscriptionPage />}
+                
               ></Route>
+
               </Routes>
             </>
           </div>
