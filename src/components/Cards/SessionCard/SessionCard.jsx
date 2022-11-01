@@ -9,8 +9,8 @@ import CardHeader from "@mui/material/CardHeader";
 import { List, ListItemText, ListItem } from "@mui/material";
 import Divider from "@mui/material/Divider";
 
-import useFetchBasicUser from "../../../services/useFetchBasicUser";
-import useFetchPackage from "../../../services/useFetchPackage";
+import useFetchBasicUser from "../../../services/FetchServices/useFetchBasicUser";
+import useFetchPackage from "../../../services/FetchServices/useFetchPackage";
 import { dateFormater } from "../../../services/dateFormater";
 import { statusFormater } from "../../../services/statusFormater";
 
