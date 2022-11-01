@@ -1,0 +1,123 @@
+.basic {
+    /* background-image: url(../../components/assets/backgroundImages/pexels-luis-del-río-15286.jpg); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .logo-container {
+    position: absolute;
+    height: 96px;
+    width: 443px;
+    left: 200px;
+    top: 436px;
+  }
+
+  .logo-container svg path {
+    fill: #ffffff;
+  }
+
+  .logo-container svg polygon {
+    fill: #ffffff;
+  }
+
+  .logo-container svg rect {
+    fill: #ffffff;
+  }
+
+  .form-contain {
+    margin: auto;
+    align-items: center;
+  }
+
+  .edit-profile-title {
+    font-style: normal;
+    font-weight: 650;
+    font-size: 45px;
+    line-height: 47px;
+    margin: 0px;
+    flex-direction: column;
+  }
+
+  .basic-registration-text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    margin-top: 15px;
+  }
+
+  .basic-registration-text-link {
+    color: blueviolet;
+  }
+
+  .box-layout-basic-registration {
+    padding: 80px;
+  }
+
+  .container-edit-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 98%;
+    max-width: 1000px;
+    margin: 0;
+  }
+
+  input,
+  select {
+    width: 100%;
+    padding: 1rem 1rem;
+    font-size: 1rem;
+    color: white;
+    border: 2px solid #4a5568;
+    background-color: #2d3748;
+    border-radius: 10px;
+    outline: none;
+    margin: 10px;
+  }
+
+  input:focus,
+  select:focus {
+    border-color: #4299e1;
+  }
+
+  input::placeholder,
+  select::placeholder {
+    color: #a0aec0;
+  }
+
+  .button-edit-profile {
+    display: block;
+    margin: 1rem 0;
+    padding: 0.35rem 0.5rem;
+    background-color: #42b7d0;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    width: 170px;
+    height: 35px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  }
+
+  input.input-error,
+  select.input-error {
+    border-color: #fc8181;
+  }
+
+  button:disabled {
+    opacity: 0.35;
+  }
+
+  .error {
+    color: rgb(250, 0, 0);
+    font-size: 0.75rem;
+    text-align: left;
+    margin-top: 0.25rem;
+  }
