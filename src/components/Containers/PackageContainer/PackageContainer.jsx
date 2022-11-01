@@ -2,7 +2,7 @@ import React from "react";
 import "./PackageContainer.css";
 import { Grid } from "@mui/material";
 import Container from "@mui/material/Container";
-import useFetchPackage from "../../../services/useFetchPackage";
+import useFetchPackage from "../../../services/FetchServices/useFetchPackage";
 import PackageGalleryCard from "../../Cards/PackageGalleryCard/PackageGalleryCard";
 import PackageInfoCard from "../../Cards/PackageInfoCard";
 

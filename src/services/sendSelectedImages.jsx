@@ -6,21 +6,19 @@ export const sendSelectedImages = async (selectedImages, sessionId, previewPics)
   const id = sessionId;
   const imagesArray = selectedImages;
   const preview = previewPics;
-  console.log("SELECCION:", imagesArray);
-  console.log("URL;,", `${USER_URL}/${id}`);
-  console.log("preview", preview);
-  const finalPics = [];
 
-  previewPics.forEach((picture) => {
-    if (picture.name.includes(imagesArray)) {
-      finalPics.push({ name: picture.name, link: picture.link });
+  const finalPics = preview.reduce((accum, photo) => {
+    if (imagesArray.includes(photo.name)) {
+      const object = { ...photo, isChecked: true };
+      return [...accum, object];
     }
-    console.log(finalPics);
-  });
+    return accum;
+  }, []);
+
   const response = await fetch(`${USER_URL}/${id}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(selectedImages),
+    body: JSON.stringify({ selectedPics: finalPics }),
   });
   const data = await response.json();
 

@@ -1,6 +1,6 @@
 import "./PhotographersContainer.css";
 import PhotographerCard from "../../Cards/PhotographerCard/PhotographerCard";
-import useFetchPhotographers from "../../../services/useFetchPhotographers";
+import useFetchPhotographers from "../../../services/FetchServices/useFetchPhotographers";
 
 const PhotographersContainer = ({ photographersData }) => {
   const usersPlaceholder = ["", "", "", "", "", ""];

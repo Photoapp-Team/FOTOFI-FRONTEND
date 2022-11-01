@@ -4,7 +4,7 @@ import { Typography } from "@mui/material";
 import PhotographersContainer from "../../components/Containers/PhotographersContainer";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-import useFetchPhotographers from "../../services/useFetchPhotographers";
+import useFetchPhotographers from "../../services/FetchServices/useFetchPhotographers";
 
 const MainPage = () => {
   const fetchPhotographers = useFetchPhotographers();

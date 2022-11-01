@@ -1,6 +1,6 @@
 import * as React from "react";
 import ImageContainer from "../components/Containers/ImagesContainer/ImagesContainer";
-import useFetchSession from "../services/useFetchSession";
+import useFetchSession from "../services/FetchServices/useFetchSession";
 import { useParams } from "react-router-dom";
 
 export default function SelectionPage() {
