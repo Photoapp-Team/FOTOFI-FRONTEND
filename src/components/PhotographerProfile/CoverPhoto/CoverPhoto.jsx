@@ -1,10 +1,10 @@
 import React from "react";
 import "./CoverPhoto.css";
 
-const CoverPhoto = (props) => {
+const CoverPhoto = ({ coverPhoto }) => {
   return (
     <div className="profile-coverphoto-container">
-      <img src={props.coverPhoto} />
+      <img src={coverPhoto} />
     </div>
   );
 };

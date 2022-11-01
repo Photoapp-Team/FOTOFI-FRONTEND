@@ -7,7 +7,7 @@ import CustomBreadcrumbs from "../../components/Inputs/CustomBreadcrumbs";
 import { useNavigate, useParams } from "react-router-dom";
 import { Form, Formik } from "formik";
 import { uploadSessionPhotos } from "../../services/uploadSessionPhotos";
-import SessionInfoContainer from "../../components/Containers/SessionInfoContainer/SessionInfoContainer";
+import SessionInfoCard from "../../components/Cards/SessionInfoCard/SessionInfoCard";
 import "./RatePage.css";
 import CustomInput from "../../components/Inputs/CustomInput";
 import { rateSession } from "../../services/FetchServices/rateSession";
@@ -25,7 +25,7 @@ const RatePage = () => {
   return (
     <Box className="sessionGallery">
       <Box>
-        <SessionInfoContainer />
+        <SessionInfoCard />
       </Box>
       <Formik
         initialValues={{}}
