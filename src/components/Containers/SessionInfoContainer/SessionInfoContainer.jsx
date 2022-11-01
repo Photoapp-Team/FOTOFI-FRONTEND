@@ -2,7 +2,7 @@ import { Box, Divider, Grow } from "@mui/material";
 import React from "react";
 import { useParams } from "react-router-dom";
 import useFetchUniqueSession from "../../../services/useFetchUniqueSession";
-import useFetchUser from "../../../services/useFetchUser";
+import useFetchUser from "../../../services/FetchServices/useFetchUser";
 import CustomBreadcrumbs from "../../Inputs/CustomBreadcrumbs";
 import ProfilePhoto from "../../PhotographerProfile/ProfilePhoto";
 
