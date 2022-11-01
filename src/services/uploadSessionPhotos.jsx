@@ -1,10 +1,16 @@
 export const uploadSessionPhotos = async (sessionUrl, values) => {
-  const { previewPics } = values;
-
+  const { previewPics, finalPics } = values;
   let formData = new FormData();
-  previewPics.forEach((previewPic, index, array) => {
-    formData.append("previewPics", previewPic);
-  });
+
+  if (previewPics) {
+    previewPics.forEach((previewPic, index, array) => {
+      formData.append("previewPics", previewPic);
+    });
+  } else {
+    finalPics.forEach((finalPic, index, array) => {
+      formData.append("finalPics", finalPic);
+    });
+  }
 
   const response = await fetch(sessionUrl, {
     method: "POST",
