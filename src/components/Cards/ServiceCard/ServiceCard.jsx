@@ -7,7 +7,6 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import Skeleton from "@mui/material/Skeleton";
 import ServiceCardFooter from "../ServiceCardFooter";
-import { useNavigate } from "react-router-dom";
 
 export default function ServiceCard({
   service,
@@ -20,11 +19,9 @@ export default function ServiceCard({
   type,
   setFilters,
 }) {
-  const navigate = useNavigate();
   const handleOnClick = () => {
-    if (type == "package") {
+    if (type === "package") {
     }
-    console.log(service);
 
     setFilters({ photoTags: service });
   };

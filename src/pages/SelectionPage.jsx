@@ -7,7 +7,6 @@ export default function SelectionPage() {
   const params = useParams();
   const sessionId = params.id;
 
-  console.log(sessionId);
   const session = useFetchSession(sessionId);
   let previewPics = {};
   if (session.data) {

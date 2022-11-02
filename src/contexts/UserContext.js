@@ -4,10 +4,18 @@ export const UserContext = createContext();
 
 const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState();
+  const [userId, setUserId] = useState("");
   const [token, setToken] = useState();
   const [isUserLoggedIn, setLogStatus] = useState(false);
   const [automaticRedirectionUrl, setAutomaticRedirection] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("userId")) {
+      setUserId(localStorage.getItem("userId"));
+      setLogStatus(true);
+    }
+  }, []);
 
   const redirecTo = (url) => {
     if (url === "") {
@@ -63,9 +71,10 @@ const UserContextProvider = ({ children }) => {
   };
 
   const logout = () => {
-    console.log("se está ejecutando logout");
     setUser({});
     setLogStatus(false);
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
   };
 
   return (
@@ -77,6 +86,8 @@ const UserContextProvider = ({ children }) => {
         logout,
         isUserLoggedIn,
         setAutomaticRedirection,
+        userId,
+        setLogStatus,
       }}
     >
       {children}

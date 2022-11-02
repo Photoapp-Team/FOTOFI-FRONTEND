@@ -1,10 +1,6 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { Formik, Form, Field } from "formik";
-import * as yup from "yup";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import { MenuItem, Select } from "@mui/material";
+import { Formik, Form } from "formik";
+import { MenuItem } from "@mui/material";
 import CustomInput from "../../Inputs/CustomInput";
 import { registerSchema } from "../../schemas";
 import CustomSelect from "../../Inputs/CustomSelect";
@@ -12,7 +8,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import "./FullRegistrationForm.css";
 
 const onSubmit = async (values, actions) => {
-  console.log("values", values);
   await new Promise((resolve) => setTimeout(resolve, 1000));
   actions.resetForm();
 };
