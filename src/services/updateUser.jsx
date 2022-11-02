@@ -3,14 +3,17 @@ const { REACT_APP_API_ENDPOINT } = process.env;
 const USER_URL = `${REACT_APP_API_ENDPOINT}/users/`;
 
 export const updateUser = async (values) => {
-    const { name, lastname, email, location, phoneNumber, webPage } = values;
+    const { name, lastname, password, city, suburb, street, number, zipCode, phoneNumber } = values;
     const userData = {
         name,
         lastname,
-        email,
-        location,
+        password,
+        city,
+        suburb,
+        street,
+        number,
+        zipCode,
         phoneNumber,
-        webPage,
     };
     const response = await fetch(`${USER_URL}`, {
         method: "PATCH",

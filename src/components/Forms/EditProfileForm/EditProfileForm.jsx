@@ -9,17 +9,30 @@ import Button from "../../Inputs/Button/Button";
 import { updateUser } from "../../../services/updateUser";
 import { useUser } from "../../../contexts/UserContext";
 import ImageUpload from "../../../services/ImageUpload/ImageUpload"
+import useFetchUser from "../../../services/FetchServices/useFetchUser";
+import { useParams } from "react-router-dom";
+import { updateProfilePic } from "../../../services/updateProfilePhotos";
 
 
-const onSubmit = async (values, actions) => {
-  updateUser(values);
-  actions.resetForm();
-};
 
 const EditProfileForm = () => {
-  const { user } = useUser();
+  const params = useParams();
+  const { id } = params
+  const { REACT_APP_API_ENDPOINT } = process.env
+  const URL = `${REACT_APP_API_ENDPOINT}/users/6350b364ada26911fb09a1a7`
+  const { data } = useFetchUser(URL)
+  const onSubmit = async (values, actions) => {
+    updateProfilePic(values, id);
+    updateUser(values, id);
+    actions.resetForm();
+  };
+  let user = ""
+  if (data) {
+    console.log(data);
+    user = data
+  }
   return (
-    <div className="form-contain">
+    <>{user && <div className="form-contain">
       <Box
         sx={{
           display: "flex",
@@ -40,16 +53,14 @@ const EditProfileForm = () => {
                 profilepic: "",
                 name: `${user.name}`,
                 lastname: `${user.lastname}`,
-                email: `${user.email}`,
-                username: `${user.username}`,
                 password: `${user.password}`,
-                city: `${user.city}`,
-                suburb: `${user.suburb}`,
-                street: `${user.street}`,
-                number: `${user.number}`,
-                zipCode: `${user.zipCode}`,
+                city: `${user.location.city}`,
+                suburb: `${user.location.suburb}`,
+                street: `${user.location.street}`,
+                number: `${user.location.number}`,
+                zipCode: `${user.location.zipCode}`,
                 phoneNumber: `${user.phoneNumber}`,
-                webPage: `${user.webPage}`,
+                // webPage: `${user.data.webPage}`,
               }}
               validationSchema={editSchema}
               onSubmit={onSubmit}
@@ -81,16 +92,6 @@ const EditProfileForm = () => {
                   <CustomInput
                     label="Apellido"
                     name="lastname"
-                    type="text"
-                  />
-                  <CustomInput
-                    label="Email"
-                    name="email"
-                    type="email"
-                  />
-                  <CustomInput
-                    label="Username"
-                    name="username"
                     type="text"
                   />
                   <CustomInput
@@ -147,7 +148,7 @@ const EditProfileForm = () => {
         </Paper>
       </Box>
     </div>
-  );
+    }</>);
 };
 
 export default EditProfileForm;

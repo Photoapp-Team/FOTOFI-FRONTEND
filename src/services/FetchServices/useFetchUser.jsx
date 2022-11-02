@@ -5,6 +5,7 @@ export default function useFetchUser(url) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  console.log(url)
 
   useEffect(() => {
     (async function () {
