@@ -1,4 +1,3 @@
-import ButtonAppBar from "./components/NavBar/NavBar";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import UserContextProvider from "./contexts/UserContext";
@@ -6,7 +5,7 @@ import MainPage from "./pages/MainPage/MainPage";
 import FullRegistrationPage from "./pages/FullRegistrationPage/FullRegistrationPage";
 import BasicRegistrationPage from "./pages/BasicRegistrationPage/BasicRegistrationPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { green, purple, yellow, grey, red, blue, cyan } from "@mui/material/colors";
 import "@fontsource/raleway"; // Defaults to weight 400.
 import PackageDetailPage from "./pages/PackageDetailPage/PackageDetailPage";
@@ -16,6 +15,7 @@ import NewSessionPage from "./pages/NewSessionPage/NewSessionPage";
 import SelectionPage from "./pages/SelectionPage";
 import SessionPage from "./pages/SessionPage/SessionPage";
 import RatePage from "./pages/RatePage/RatePage";
+import Navbar from "./components/Navbar";
 
 const theme = createTheme({
   typography: {
@@ -53,7 +53,7 @@ const App = () => {
         <UserContextProvider>
           <div>
             <>
-              <ButtonAppBar />
+              <Navbar />
               <Routes>
                 <Route path="/FullRegistration" element={<FullRegistrationPage />}></Route>
                 <Route path="/BasicRegistration" element={<BasicRegistrationPage />}></Route>
