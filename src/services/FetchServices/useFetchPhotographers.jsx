@@ -8,7 +8,6 @@ export default function useFetchPhotographers() {
   const { REACT_APP_API_ENDPOINT } = process.env;
 
   const [filters, setFilters] = useState({});
-  console.log("INSIDE FETCH:", filters);
 
   useEffect(() => {
     (async function () {

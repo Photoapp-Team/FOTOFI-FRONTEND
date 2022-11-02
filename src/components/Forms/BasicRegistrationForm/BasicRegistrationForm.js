@@ -1,22 +1,23 @@
-import React, { useContext } from "react";
+import React from "react";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import "./BasicRegistrationForm.css";
-import { Formik, Form, validateYupSchema } from "formik";
+import { Formik, Form } from "formik";
 import CustomInput from "../../Inputs/CustomInput";
 import { registerSchema } from "../../schemas";
-import { UserContext, useUser } from "../../../contexts/UserContext";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { createBasicUser } from "../../../services/registerUser";
 import Button from "../../Inputs/Button/Button";
-import { Switch } from "@mui/material";
-
-const onSubmit = async (values, actions) => {
-  createBasicUser(values);
-  actions.resetForm();
-};
 
 const BasicRegistrationForm = () => {
+  const navigate = useNavigate();
+
+  const onSubmit = async (values, actions) => {
+    createBasicUser(values);
+    actions.resetForm();
+    navigate("/");
+  };
+
   return (
     <div className="box-container-basic-registration">
       <Box

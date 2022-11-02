@@ -4,17 +4,18 @@ import Paper from "@mui/material/Paper";
 import "./LoginForm.css";
 import { Formik, Form } from "formik";
 import CustomInput from "../../Inputs/CustomInput";
-import { registerSchema } from "../../schemas";
 import { useUser } from "../../../contexts/UserContext";
 import Button from "../../Inputs/Button/Button";
 import { Navigate } from "react-router-dom";
 
 const LoginForm = () => {
+  const { setLogStatus } = useUser();
   const { login } = useUser();
 
   const onSubmit = (values, actions) => {
     login(values);
     actions.resetForm();
+    setLogStatus(true);
     Navigate("/Profile");
   };
 
