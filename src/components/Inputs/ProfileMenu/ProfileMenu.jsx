@@ -11,7 +11,6 @@ import { useUser } from "../../../contexts/UserContext";
 import "./ProfileMenu.css";
 
 function ProfileMenu({ data }) {
-  console.log("DATA:", data);
   const navigate = useNavigate();
   const { logout, userId } = useUser();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
