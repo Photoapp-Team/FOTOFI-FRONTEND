@@ -24,8 +24,7 @@ const SessionWorkspace = () => {
     const payload = token.split(".")[1];
     currentUserId = JSON.parse(atob(payload)).id;
   }
-  console.log({ currentUserId });
-  if (data && data.photographerId[0] === data.photographerId[0]) {
+  if (data && currentUserId === data.photographerId[0]) {
     console.log("data en workspace", { data });
     if (data && sessionUser) {
       const currentStatus = statusFormater(data.status).reverse()[0];
@@ -96,7 +95,7 @@ const SessionWorkspace = () => {
         );
       }
     }
-  } else if (data && data.userId[0] === data.userId[0]) {
+  } else if (data && currentUserId === data.userId[0]) {
     if (data && sessionUser) {
       const currentStatus = statusFormater(data.status).reverse()[0];
       if (currentStatus === "Por seleccionar") {
@@ -126,6 +125,23 @@ const SessionWorkspace = () => {
                 />
               </Box>
               <RateSession />;
+            </Box>
+          </>
+        );
+      } else {
+        return (
+          <>
+            <Box className="sessionGallery">
+              <Box>
+                <SessionInfoCard
+                  data={data}
+                  sessionUser={sessionUser}
+                  currentStatus={currentStatus}
+                />
+              </Box>
+              <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+                <WaitingSessionStatus user={"fotógrafo"} />
+              </Box>
             </Box>
           </>
         );
