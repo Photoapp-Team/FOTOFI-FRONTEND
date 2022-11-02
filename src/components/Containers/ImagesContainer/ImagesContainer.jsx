@@ -26,40 +26,52 @@ export default function ImageContainer({ previewPics, loaded, sessionId }) {
 
   if (loaded) {
     return (
-      <Container maxWidth="lg">
-        <Box sx={{ height: 700, overflowY: "scroll" }}>
-          <ImageList variant="masonry" cols={calculateCol(width)} gap={8}>
-            {previewPics.map((image) => (
-              <ImageCard
-                key={image.name}
-                image={image}
-                selectedImages={selectedImages}
-                onSubmit={handleSubmit}
-              />
-            ))}
-          </ImageList>
-        </Box>
-        <Button
-          type="submit"
-          text={"Submit"}
-          name={"Enviar"}
-          className={"button-basic-registration"}
-          onClick={handleSubmit}
-        />
-      </Container>
+      <>
+        <Container maxWidth="lg">
+          <Box sx={{ mb: 0, mx: "auto" }}>
+            <h4>Por favor selecciona las imágenes que quieres que se editen</h4>
+          </Box>
+          <Box sx={{ height: 700, overflowY: "scroll" }}>
+            <ImageList variant="masonry" cols={calculateCol(width)} gap={8}>
+              {previewPics.map((image) => (
+                <ImageCard
+                  key={image.name}
+                  image={image}
+                  selectedImages={selectedImages}
+                  onSubmit={handleSubmit}
+                />
+              ))}
+            </ImageList>
+          </Box>
+          <Button
+            type="submit"
+            text={"Submit"}
+            name={"Enviar"}
+            className={"button-basic-registration"}
+            onClick={handleSubmit}
+          />
+        </Container>
+      </>
     );
   }
 
   return (
-    <Container maxWidth="lg">
-      <Box sx={{ height: 700, overflowY: "scroll" }}>
-        <ImageList variant="masonry" cols={4} gap={8}>
-          <Skeleton variant="rectangular" width={210} height={500} />
-          <Skeleton variant="rectangular" width={210} height={500} />
-          <Skeleton variant="rectangular" width={210} height={500} />
-          <Skeleton variant="rectangular" width={210} height={500} />
-        </ImageList>
-      </Box>
-    </Container>
+    <>
+      <Container maxWidth="lg">
+        <Box>
+          <h4 sx={{ mb: 0, mx: "auto" }}>
+            Por favor selecciona las imágenes que quieres que se editen
+          </h4>
+        </Box>
+        <Box sx={{ height: 700, overflowY: "scroll" }}>
+          <ImageList variant="masonry" cols={4} gap={8}>
+            <Skeleton variant="rectangular" width={210} height={500} />
+            <Skeleton variant="rectangular" width={210} height={500} />
+            <Skeleton variant="rectangular" width={210} height={500} />
+            <Skeleton variant="rectangular" width={210} height={500} />
+          </ImageList>
+        </Box>
+      </Container>
+    </>
   );
 }
