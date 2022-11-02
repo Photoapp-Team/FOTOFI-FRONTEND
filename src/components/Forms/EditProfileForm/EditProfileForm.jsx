@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import "./EditProfile.css";
@@ -7,6 +7,8 @@ import CustomInput from "../../Inputs/CustomInput";
 import { editSchema } from "../../schemas/index";
 import Button from "../../Inputs/Button/Button";
 import { updateUser } from "../../../services/updateUser";
+import { useUser } from "../../../contexts/UserContext";
+import ImageUpload from "../../../services/ImageUpload/ImageUpload"
 
 
 const onSubmit = async (values, actions) => {
@@ -15,6 +17,7 @@ const onSubmit = async (values, actions) => {
 };
 
 const EditProfileForm = () => {
+  const { user } = useUser();
   return (
     <div className="form-contain">
       <Box
@@ -32,48 +35,103 @@ const EditProfileForm = () => {
           <div className="">
             <h1 className="edit-profile-title">Edita tú perfil</h1>
             <Formik
-              initialValues={{ lastname: "", name: "", email: "" }}
+              initialValues={{
+                ...user,
+                profilepic: "",
+                name: `${user.name}`,
+                lastname: `${user.lastname}`,
+                email: `${user.email}`,
+                username: `${user.username}`,
+                password: `${user.password}`,
+                city: `${user.city}`,
+                suburb: `${user.suburb}`,
+                street: `${user.street}`,
+                number: `${user.number}`,
+                zipCode: `${user.zipCode}`,
+                phoneNumber: `${user.phoneNumber}`,
+                webPage: `${user.webPage}`,
+              }}
               validationSchema={editSchema}
               onSubmit={onSubmit}
             >
-              {({ isSubmitting }) => (
+              {({ isSubmitting, setFieldValue }) => (
                 <Form className="container-edit-profile">
                   <br />
+                  <ImageUpload
+                    phrase={"Arrastra tu foto de portada aqui o haz click"}
+                    classbox={"boxAddservice2"}
+                    classpaper={"paperAddservice2"}
+                    name="profilePic"
+                    setFieldValue={setFieldValue}
+                    fieldName={"profilePic"}
+                  />
+                  <ImageUpload
+                    phrase={"Arrastra tu foto de portada aqui o haz click"}
+                    classbox={"boxAddservice2"}
+                    classpaper={"paperAddservice2"}
+                    name="coverPhoto"
+                    setFieldValue={setFieldValue}
+                    fieldName={"coverPhoto"}
+                  />
                   <CustomInput
                     label="Nombre"
                     name="name"
                     type="text"
-                  //placeholder="Ingresa tu nombre"
                   />
                   <CustomInput
                     label="Apellido"
                     name="lastname"
                     type="text"
-                  //placeholder="Ingresa tu apellido"
                   />
                   <CustomInput
                     label="Email"
                     name="email"
                     type="email"
-                  //placeholder="Ingresa tu nuevo email"
                   />
                   <CustomInput
-                    label="Ubicación"
-                    name="location"
+                    label="Username"
+                    name="username"
                     type="text"
-                  //placeholder="Ingresa tu nueva ubicación"
+                  />
+                  <CustomInput
+                    label="Password"
+                    name="password"
+                    type="password"
+                  />
+                  <CustomInput
+                    label="City"
+                    name="city"
+                    type="text"
+                  />
+                  <CustomInput
+                    label="Suburb"
+                    name="suburb"
+                    type="text"
+                  />
+                  <CustomInput
+                    label="Street"
+                    name="street"
+                    type="text"
+                  />
+                  <CustomInput
+                    label="Number"
+                    name="number"
+                    type="text"
+                  />
+                  <CustomInput
+                    label="ZipCode"
+                    name="zipCode"
+                    type="text"
                   />
                   <CustomInput
                     label="Número telefonico"
                     name="phoneNumber"
                     type="number"
-                  //placeholder="Ingresa número telefónico"
                   />
                   <CustomInput
                     label="Página Web"
                     name="webPage"
                     type="text"
-                  //placeholder="Ingresa página WEB"
                   />
                   <Button
                     disabled={isSubmitting}
@@ -89,7 +147,7 @@ const EditProfileForm = () => {
         </Paper>
       </Box>
     </div>
-  )
-}
+  );
+};
 
 export default EditProfileForm;
