@@ -15,6 +15,7 @@ export default function PhotographerCard({
   name,
   coverImg,
   ranking,
+  rankingCount,
   profilePic,
   location,
   isLoaded,
@@ -55,6 +56,19 @@ export default function PhotographerCard({
               children={
                 isLoaded ? (
                   ranking
+                ) : (
+                  <Skeleton variant="text" width="20px" sx={{ fontSize: ".75rem" }} />
+                )
+              }
+              align="center"
+            />
+            <Typography
+              sx={{ p: 0.75 }}
+              variant="caption"
+              component="div"
+              children={
+                isLoaded ? (
+                  `(${rankingCount})`
                 ) : (
                   <Skeleton variant="text" width="20px" sx={{ fontSize: ".75rem" }} />
                 )

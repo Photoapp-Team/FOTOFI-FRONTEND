@@ -1,10 +1,9 @@
-import { Box, Divider, Grow } from "@mui/material";
+import { Box, Divider } from "@mui/material";
 import React from "react";
 import CustomBreadcrumbs from "../../Inputs/CustomBreadcrumbs";
 import ProfilePhoto from "../../PhotographerProfile/ProfilePhoto";
 
 const SessionInfoCard = ({ data, sessionUser, currentStatus }) => {
-  console.log({ data }, { sessionUser }, { currentStatus });
   if (data && sessionUser) {
     return (
       <>

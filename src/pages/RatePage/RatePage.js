@@ -1,12 +1,9 @@
 import { Box } from "@mui/material";
 import React from "react";
-import { useState } from "react";
 import RatingInput from "../../components/Inputs/Rating/RatingInput";
 import Button from "../../components/Inputs/Button/Button";
-import CustomBreadcrumbs from "../../components/Inputs/CustomBreadcrumbs";
 import { useNavigate, useParams } from "react-router-dom";
 import { Form, Formik } from "formik";
-import { uploadSessionPhotos } from "../../services/uploadSessionPhotos";
 import SessionInfoCard from "../../components/Cards/SessionInfoCard/SessionInfoCard";
 import "./RatePage.css";
 import CustomInput from "../../components/Inputs/CustomInput";
