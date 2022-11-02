@@ -7,6 +7,10 @@ import SessionInfoCard from "../../Cards/SessionInfoCard/SessionInfoCard";
 import "./SessionWorkspace.css";
 import SessionPrevUpload from "../SessionPrevUpload/SessionPrevUpload";
 import SessionFinalUpload from "../SessionFinalUpload/SessionFinalUpload";
+import ImageContainer from "../ImagesContainer/ImagesContainer";
+import WaitingSessionStatus from "../WaitingSessionStatus/WaitingSessionStatus";
+import RateSession from "../RateSession/RateSession";
+import ConfirmSession from "../ConfirmSession/ConfirmSession";
 
 const SessionWorkspace = () => {
   const params = useParams();
@@ -14,42 +18,119 @@ const SessionWorkspace = () => {
   const { REACT_APP_API_ENDPOINT } = process.env;
   const url = `${REACT_APP_API_ENDPOINT}/sessions/session/${id}`;
   const { data, sessionUser } = useFetchUniqueSession(url);
-  if (data && sessionUser) {
-    const currentStatus = statusFormater(data.status)[1];
-
-    if (currentStatus === "Pagada") {
-      return (
-        <>
-          <Box className="sessionGallery">
-            <Box>
-              <SessionInfoCard
-                data={data}
-                sessionUser={sessionUser}
-                currentStatus={currentStatus}
-              />
+  const token = localStorage.getItem("token");
+  let currentUserId = "";
+  if (token) {
+    const payload = token.split(".")[1];
+    currentUserId = JSON.parse(atob(payload)).id;
+  }
+  console.log({ currentUserId });
+  if (data && data.photographerId[0] === data.photographerId[0]) {
+    console.log("data en workspace", { data });
+    if (data && sessionUser) {
+      const currentStatus = statusFormater(data.status).reverse()[0];
+      console.log(currentStatus);
+      if (currentStatus === "Solicitada") {
+        return (
+          <>
+            <Box className="sessionGallery">
+              <Box>
+                <SessionInfoCard
+                  data={data}
+                  sessionUser={sessionUser}
+                  currentStatus={currentStatus}
+                />
+              </Box>
+              <ConfirmSession sessionId={data._id} />
             </Box>
-            <SessionPrevUpload id={id} />
-          </Box>
-        </>
-      );
+          </>
+        );
+      } else if (currentStatus === "Pagada") {
+        return (
+          <>
+            <Box className="sessionGallery">
+              <Box>
+                <SessionInfoCard
+                  data={data}
+                  sessionUser={sessionUser}
+                  currentStatus={currentStatus}
+                />
+              </Box>
+              <SessionPrevUpload id={id} />
+            </Box>
+          </>
+        );
+      } else if (currentStatus === "Fotos seleccionadas") {
+        return (
+          <>
+            <Box className="sessionGallery">
+              <Box>
+                <SessionInfoCard
+                  data={data}
+                  sessionUser={sessionUser}
+                  currentStatus={currentStatus}
+                />
+              </Box>
+              <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+                <SessionFinalUpload id={id} selectedPics={data.selectedPics} />
+              </Box>
+            </Box>
+          </>
+        );
+      } else {
+        return (
+          <>
+            <Box className="sessionGallery">
+              <Box>
+                <SessionInfoCard
+                  data={data}
+                  sessionUser={sessionUser}
+                  currentStatus={currentStatus}
+                />
+              </Box>
+              <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+                <WaitingSessionStatus user={"usuario"} />
+              </Box>
+            </Box>
+          </>
+        );
+      }
     }
-    if (currentStatus === "Fotos seleccionadas")
-      return (
-        <>
-          <Box className="sessionGallery">
-            <Box>
-              <SessionInfoCard
-                data={data}
-                sessionUser={sessionUser}
-                currentStatus={currentStatus}
-              />
+  } else if (data && data.userId[0] === data.userId[0]) {
+    if (data && sessionUser) {
+      const currentStatus = statusFormater(data.status).reverse()[0];
+      if (currentStatus === "Por seleccionar") {
+        return (
+          <>
+            <Box className="sessionGallery">
+              <Box>
+                <SessionInfoCard
+                  data={data}
+                  sessionUser={sessionUser}
+                  currentStatus={currentStatus}
+                />
+              </Box>
+              <ImageContainer previewPics={data.previewPics} loaded={true} sessionId={data.Id} />;
             </Box>
-            <Box sx={{ display: "flex", flexWrap: "wrap" }}>
-              <SessionFinalUpload id={id} selectedPics={data.selectedPics} />
+          </>
+        );
+      } else if (currentStatus === "Entregada") {
+        return (
+          <>
+            <Box className="sessionGallery">
+              <Box>
+                <SessionInfoCard
+                  data={data}
+                  sessionUser={sessionUser}
+                  currentStatus={currentStatus}
+                />
+              </Box>
+              <RateSession />;
             </Box>
-          </Box>
-        </>
-      );
+          </>
+        );
+      }
+    }
   }
 };
 
