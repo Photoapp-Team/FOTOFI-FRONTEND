@@ -1,7 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
-import "./BasicRegistrationForm.css";
+import "./UserRegistrationForm.css";
 import { Formik, Form } from "formik";
 import CustomInput from "../../Inputs/CustomInput";
 import { registerSchema } from "../../schemas";
@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { createBasicUser } from "../../../services/registerUser";
 import Button from "../../Inputs/Button/Button";
 
-const BasicRegistrationForm = () => {
+const UserRegistrationForm = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (values, actions) => {
@@ -95,4 +95,4 @@ const BasicRegistrationForm = () => {
   );
 };
 
-export default BasicRegistrationForm;
+export default UserRegistrationForm;

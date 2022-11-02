@@ -1,5 +1,5 @@
 import React from "react";
-import UserRegistrationForm from "../../components/Forms/BasicRegistrationForm";
+import UserRegistrationForm from "../../components/Forms/UserRegistrationForm";
 import { ReactComponent as ReactLogo } from "../../assets/Logo/Logo.svg";
 import "./RegistrationPage.css";
 import { Container } from "@mui/system";
