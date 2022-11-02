@@ -15,95 +15,83 @@ const BasicRegistrationForm = () => {
   const onSubmit = async (values, actions) => {
     createBasicUser(values);
     actions.resetForm();
-    navigate("/");
+    navigate("/login");
   };
 
   return (
-    <div className="box-container-basic-registration">
-      <Box
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          "& > :not(style)": {
-            m: 1,
-            width: 550,
-            height: "auto",
-          },
-        }}
-      >
-        <Paper elevation={3}>
-          <div className="box-layout-basic-registration">
-            <h1 className="basic-registration-title">Crear una cuenta</h1>
-            <p className="basic-registration-text">
-              ¿Ya eres usuario?
-              <a href="/Login">
-                <span className="basic-registration-text-link"> Inicia sesión</span>
-              </a>
-            </p>
-            <Formik
-              initialValues={{ username: "", gender: "" }}
-              validationSchema={registerSchema}
-              onSubmit={onSubmit}
-            >
-              {({ isSubmitting }) => (
-                <Form className="form-container-basic-registration">
-                  <br />
-                  <CustomInput
-                    label="Nombre"
-                    name="name"
-                    type="text"
-                    placeholder="Ingresa tu nombre"
-                    size="small"
-                  />
-                  <CustomInput
-                    label="Apellido"
-                    name="lastname"
-                    type="text"
-                    placeholder="Ingresa tu apellido"
-                    size="small"
-                  />
-                  <CustomInput
-                    label="Username"
-                    name="username"
-                    type="text"
-                    placeholder="Ingresa tu nombre de usuario"
-                    size="small"
-                  />
-                  <CustomInput
-                    label="Email"
-                    name="email"
-                    type="email"
-                    placeholder="Ingresa tu email"
-                    size="small"
-                  />
-                  <CustomInput
-                    label="Password"
-                    name="password"
-                    type="password"
-                    placeholder="Escribe una contraseña"
-                    size="small"
-                  />
-                  <CustomInput
-                    label="ConfirmPassword"
-                    name="confirmPassword"
-                    type="password"
-                    placeholder="Escribe una contraseña"
-                    size="small"
-                  />
-                  <Button
-                    disabled={isSubmitting}
-                    type="submit"
-                    text={"Submit"}
-                    name={"Enviar"}
-                    className={"button-basic-registration"}
-                  />
-                </Form>
-              )}
-            </Formik>
-          </div>
-        </Paper>
-      </Box>
-    </div>
+    <Paper elevation={3}>
+      <div className="box-layout-basic-registration">
+        <h1 className="basic-registration-title">Crear una cuenta</h1>
+        <p className="basic-registration-text">
+          ¿Ya eres usuario?
+          <a href="/Login">
+            <span className="basic-registration-text-link"> Inicia sesión</span>
+          </a>
+        </p>
+        <Formik
+          initialValues={{ username: "", gender: "" }}
+          validationSchema={registerSchema}
+          onSubmit={onSubmit}
+        >
+          {({ isSubmitting }) => (
+            <Form className="form-container-basic-registration">
+              <br />
+              <CustomInput
+                label="Nombre"
+                name="name"
+                type="text"
+                placeholder="Ingresa tu nombre"
+                size="small"
+              />
+              <CustomInput
+                label="Apellido"
+                name="lastname"
+                type="text"
+                placeholder="Ingresa tu apellido"
+                size="small"
+              />
+              <CustomInput
+                label="Username"
+                name="username"
+                type="text"
+                placeholder="Ingresa tu nombre de usuario"
+                size="small"
+              />
+              <CustomInput
+                label="Email"
+                name="email"
+                type="email"
+                placeholder="Ingresa tu email"
+                size="small"
+              />
+              <CustomInput
+                label="Password"
+                name="password"
+                type="password"
+                placeholder="Escribe una contraseña"
+                size="small"
+                autoComplete="new-password"
+              />
+              <CustomInput
+                label="ConfirmPassword"
+                name="confirmPassword"
+                type="password"
+                placeholder="Escribe una contraseña"
+                size="small"
+                autoComplete="new-password"
+              />
+              <Button
+                disabled={isSubmitting}
+                type="submit"
+                text={"Submit"}
+                name={"Enviar"}
+                className={"button-basic-registration"}
+              />
+            </Form>
+          )}
+        </Formik>
+      </div>
+    </Paper>
   );
 };
 

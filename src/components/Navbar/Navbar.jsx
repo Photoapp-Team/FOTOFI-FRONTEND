@@ -30,7 +30,6 @@ function Navbar() {
   };
 
   const myUser = useFetchBasicUser(userId);
-  console.log("MyUser:", myUser);
 
   return (
     <AppBar position="sticky" sx={{ background: "#f5f5f5" }}>
@@ -64,7 +63,7 @@ function Navbar() {
 
                   <Button
                     variant="contained"
-                    href="/Basicregistration"
+                    href="/Registration"
                     sx={{
                       background: "transparent",
                       color: "#42b7d0",

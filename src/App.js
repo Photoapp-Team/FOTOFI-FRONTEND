@@ -2,8 +2,6 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import UserContextProvider from "./contexts/UserContext";
 import MainPage from "./pages/MainPage/MainPage";
-import FullRegistrationPage from "./pages/FullRegistrationPage/FullRegistrationPage";
-import BasicRegistrationPage from "./pages/BasicRegistrationPage/BasicRegistrationPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { green, purple, yellow, grey, red, blue, cyan } from "@mui/material/colors";
@@ -16,6 +14,7 @@ import SelectionPage from "./pages/SelectionPage";
 import SessionPage from "./pages/SessionPage/SessionPage";
 import RatePage from "./pages/RatePage/RatePage";
 import Navbar from "./components/Navbar";
+import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 
 const theme = createTheme({
   typography: {
@@ -55,8 +54,7 @@ const App = () => {
             <>
               <Navbar />
               <Routes>
-                <Route path="/FullRegistration" element={<FullRegistrationPage />}></Route>
-                <Route path="/BasicRegistration" element={<BasicRegistrationPage />}></Route>
+                <Route path="/Registration" element={<RegistrationPage />}></Route>
                 <Route path="/Login" element={<LoginPage />}></Route>
                 <Route path="/" element={<MainPage />}></Route>
                 <Route path="/Profile" element={<ProfilePage />}></Route>
