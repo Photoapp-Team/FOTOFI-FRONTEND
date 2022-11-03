@@ -47,6 +47,7 @@ const SessionWorkspace = () => {
                 data={data}
                 sessionUser={sessionUser}
                 setStatusWorkspace={setStatusWorkspace}
+                statusWorkspace={statusWorkspace}
               />
             </Box>
           </>
@@ -138,7 +139,7 @@ const SessionWorkspace = () => {
         );
       }
     }
-  } else if (data && currentUserId === data.userId[0]) {
+  } else if (data && data.userId[0] === data.userId[0]) {
     if (data && sessionUser) {
       const currentStatus = statusFormater(data.status).reverse()[0];
       if (currentStatus === "Programada") {
@@ -192,7 +193,7 @@ const SessionWorkspace = () => {
                   currentStatus={currentStatus}
                 />
               </Box>
-              <RateSession />;
+              <RateSession data={data} />;
             </Box>
           </>
         );

@@ -6,12 +6,30 @@ import RatingInput from "../../Inputs/Rating/RatingInput";
 import Button from "../../Inputs/Button/Button";
 import { useNavigate, useParams } from "react-router-dom";
 import { Form, Formik } from "formik";
-import SessionInfoCard from "../../Cards/SessionInfoCard/SessionInfoCard";
+import { saveAs } from "file-saver";
+import JSZip from "jszip";
+import FileSaver from "file-saver";
 
-const RateSession = () => {
+const RateSession = ({ data }) => {
   const navigate = useNavigate();
   const params = useParams();
   const { id } = params;
+
+  const zip = new JSZip();
+
+  const onClick = async () => {
+    console.log({ data });
+    // const img = zip.folder("images");
+    // data.finalPics.map((file) => {
+    //   img.file(`${file.name}`, file, { base64: true });
+    //   zip.generateAsync({ type: "blob" }).then(function (file) {
+    //     saveAs(file, "example.zip");
+    //   });
+    //   return;
+    // });
+
+    // FileSaver.saveAs("https://httpbin.org/image", "image.jpg");
+  };
 
   const onSubmit = async (values) => {
     rateSession(values, id);
@@ -19,10 +37,12 @@ const RateSession = () => {
   };
 
   return (
-    <Box className="sessionGallery">
-      <Box>
-        <SessionInfoCard />
-      </Box>
+    <>
+      <Button
+        onClick={() => {
+          onClick();
+        }}
+      />
       <Formik
         initialValues={{}}
         // validationSchema={addServiceSchema}
@@ -80,7 +100,7 @@ const RateSession = () => {
           </Form>
         )}
       </Formik>
-    </Box>
+    </>
   );
 };
 

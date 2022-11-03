@@ -11,7 +11,7 @@ import Typography from "@mui/material/Typography";
 import "./ConfirmSession.css";
 import { dateFormater } from "../../../services/dateFormater";
 
-const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace }) => {
+const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, statusWorkspace }) => {
   const [approveSession, setApproveSession] = useState(false);
 
   const onClick = async (value) => {
@@ -35,8 +35,9 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace }) =>
         scheduled: Date.now(),
       },
     };
-    updateSession(sessionId, newValues);
+    const updatedSession = updateSession(sessionId, newValues);
     setStatusWorkspace("1");
+    console.log({ statusWorkspace });
   };
 
   let fecha = dateFormater(data.startDate);
