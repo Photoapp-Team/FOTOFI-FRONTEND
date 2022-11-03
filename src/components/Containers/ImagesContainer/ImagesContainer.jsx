@@ -8,8 +8,9 @@ import Skeleton from "@mui/material/Skeleton";
 import Button from "../../Inputs/Button/Button";
 import useWindowDimensions from "../../../services/useResize";
 import { sendSelectedImages } from "../../../services/sendSelectedImages";
+import { updateSession } from "../../../services/updateSession";
 
-export default function ImageContainer({ previewPics, loaded, sessionId }) {
+export default function ImageContainer({ previewPics, loaded, sessionId, setStatusWorkspace }) {
   const selectedImages = [];
   const { width } = useWindowDimensions();
   const calculateCol = (width) => {
@@ -22,6 +23,13 @@ export default function ImageContainer({ previewPics, loaded, sessionId }) {
 
   const handleSubmit = () => {
     sendSelectedImages(selectedImages, sessionId, previewPics);
+    const newValue = {
+      selected: {
+        approved: Date.now(),
+      },
+    };
+    updateSession(sessionId, newValue);
+    setStatusWorkspace("pp");
   };
 
   if (loaded) {

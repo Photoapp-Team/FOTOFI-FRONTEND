@@ -20,18 +20,22 @@ const style = {
   p: 4,
 };
 
-const SessionPrevUpload = ({ id }) => {
+const SessionPrevUpload = ({ id, setStatusWorkspace }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const navigate = useNavigate();
 
   const onSubmit = async (values) => {
     const { REACT_APP_API_ENDPOINT } = process.env;
     const sessionUrl = `${REACT_APP_API_ENDPOINT}/upload/sessions/prev/${id}`;
-
-    uploadSessionPhotos(sessionUrl, values);
-    // navigate(`/Profile/${id}`);
+    const newValues = {
+      ...values,
+      status: {
+        prevUploaded: Date.now(),
+      },
+    };
+    uploadSessionPhotos(sessionUrl, newValues);
+    setStatusWorkspace("t");
   };
 
   return (
