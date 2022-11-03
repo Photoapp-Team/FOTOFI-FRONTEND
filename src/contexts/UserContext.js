@@ -7,13 +7,16 @@ const UserContextProvider = ({ children }) => {
   const [userId, setUserId] = useState("");
   const [token, setToken] = useState();
   const [isUserLoggedIn, setLogStatus] = useState(false);
+  const [photographers, setPhotographers] = useState();
+  const [mySessions, setMySessions] = useState();
   const [automaticRedirectionUrl, setAutomaticRedirection] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (localStorage.getItem("userId")) {
+    if (localStorage.getItem("token")) {
+      setToken(localStorage.getItem("token"));
       setUserId(localStorage.getItem("userId"));
-      setLogStatus(true);
+      automaticFetchMyUser();
     }
   }, []);
 
@@ -23,6 +26,26 @@ const UserContextProvider = ({ children }) => {
     } else {
       setAutomaticRedirection("");
       navigate(url);
+    }
+  };
+
+  const automaticFetchMyUser = async () => {
+    const { REACT_APP_API_ENDPOINT } = process.env;
+    const AUTH_URL = `${REACT_APP_API_ENDPOINT}/users/${userId}`;
+
+    const userResponse = await fetch(`${AUTH_URL}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+    });
+    const userData = await userResponse.json();
+
+    if (!userData) {
+      setToken(localStorage.removeItem("token"));
+      setUserId(localStorage.removeItem("userId"));
+      setLogStatus(false);
+    } else {
+      setUser(userData.data.user);
+      setLogStatus(true);
     }
   };
 
@@ -45,6 +68,7 @@ const UserContextProvider = ({ children }) => {
 
     if (!tokenData) alert("Ingresaste mal tus datos");
     else {
+      setLogStatus(true);
       setToken(tokenData.data.token);
       localStorage.setItem("token", tokenData.data.token);
       const temp = tokenData.data.token.split(".")[1];
