@@ -3,14 +3,12 @@ import Typography from "@mui/material/Typography";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "@mui/material/Link";
 import HomeIcon from "@mui/icons-material/Home";
-import WhatshotIcon from "@mui/icons-material/Whatshot";
 import GrainIcon from "@mui/icons-material/Grain";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 
 function CustomBreadcrumbs({ sessionName }) {
   function handleClick(event) {
     event.preventDefault();
-    console.info("You clicked a breadcrumb.");
   }
   return (
     <div

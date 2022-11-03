@@ -1,0 +1,23 @@
+.main-container {
+  height: 90vh;
+}
+
+.page-container {
+  background-image: url(../../assets/backgroundImages/pexels-eberhard-grossgasteiger-629162.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+}
+
+.logo-container svg path {
+  fill: #ffffff;
+}
+
+.logo-container svg polygon {
+  fill: #ffffff;
+}
+
+.logo-container svg rect {
+  fill: #ffffff;
+}

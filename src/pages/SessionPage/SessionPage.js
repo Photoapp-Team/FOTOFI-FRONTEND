@@ -1,11 +1,11 @@
 import React from "react";
-import SessionGallery from "../../components/Containers/SessionGallery/SessionGallery";
+import SessionWorkspace from "../../components/Containers/SessionWorkspace/SessionWorkspace";
 import "./SessionPage.css";
 
 const SessionPage = () => {
   return (
     <div className="sessionPage">
-      <SessionGallery />
+      <SessionWorkspace />
     </div>
   );
 };

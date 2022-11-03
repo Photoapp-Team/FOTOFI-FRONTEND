@@ -74,8 +74,8 @@ const ImageUpload = ({ phrase, classbox, classpaper, setFieldValue, fieldName })
   }, []);
 
   return (
-    <Box className={classbox}>
-      <Paper elevation={3} className={classpaper}>
+    <Box className={classbox} sx={{ borderRadius: "16px" }}>
+      <Paper elevation={3} className={classpaper} sx={{ borderRadius: "16px" }}>
         <div className="dropzone">
           <div {...getRootProps({ className: "dropzone" })}>
             <input {...getInputProps()} />

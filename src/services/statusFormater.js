@@ -18,9 +18,12 @@ export const statusFormater = (packageStatusObject) => {
     statusArray.push("Cancelada");
   }
   if (status.preUploaded) {
-    statusArray.push("Lista");
+    statusArray.push("Por seleccionar");
   }
-  if (status.preUploaded) {
+  if (status.selected) {
+    statusArray.push("Fotos seleccionadas");
+  }
+  if (status.delivered) {
     statusArray.push("Entregada");
   }
 
