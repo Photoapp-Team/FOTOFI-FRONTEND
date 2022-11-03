@@ -7,7 +7,11 @@ export default function useFetchPhotographers() {
   const [loading, setLoading] = useState(false);
   const { REACT_APP_API_ENDPOINT } = process.env;
 
-  const [filters, setFilters] = useState({});
+  const [photographerFilters, setPhotographerFilters] = useState({ photoTags: [] });
+
+  const updatePhotoTags = (photoTags) => {
+    setPhotographerFilters({ ...photographerFilters, photoTags });
+  };
 
   useEffect(() => {
     (async function () {
@@ -24,7 +28,7 @@ export default function useFetchPhotographers() {
           },
           params: {
             role: "Photographer",
-            ...filters,
+            ...photographerFilters,
           },
         });
         setData(response.data.data.users);
@@ -34,7 +38,7 @@ export default function useFetchPhotographers() {
         setLoading(false);
       }
     })();
-  }, [filters]);
+  }, [photographerFilters]);
 
-  return { data, error, loading, setFilters };
+  return { data, error, loading, updatePhotoTags };
 }
