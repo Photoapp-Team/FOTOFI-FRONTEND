@@ -11,6 +11,7 @@ const UserContextProvider = ({ children }) => {
   const [mySessions, setMySessions] = useState();
   const [automaticRedirectionUrl, setAutomaticRedirection] = useState("");
   const navigate = useNavigate();
+  const [filters, setFilters] = useState([]);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -112,6 +113,8 @@ const UserContextProvider = ({ children }) => {
         setAutomaticRedirection,
         userId,
         setLogStatus,
+        filters,
+        setFilters,
       }}
     >
       {children}

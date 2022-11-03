@@ -32,7 +32,7 @@ function Navbar() {
   const myUser = useFetchBasicUser(userId);
 
   return (
-    <AppBar position="sticky" sx={{ background: "#f5f5f5" }}>
+    <AppBar className="navbar">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <div className="headerContainer">
