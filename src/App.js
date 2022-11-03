@@ -13,10 +13,10 @@ import NewSessionPage from "./pages/NewSessionPage/NewSessionPage";
 import SelectionPage from "./pages/SelectionPage";
 import SessionPage from "./pages/SessionPage/SessionPage";
 import RatePage from "./pages/RatePage/RatePage";
-import EditProfile from "./pages/EditProfilePage/EditProfilePage"
+import EditProfile from "./pages/EditProfilePage/EditProfilePage";
 import Navbar from "./components/Navbar";
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
-
+import LandingPage from "./pages/LandingPage/LandingPage";
 
 const theme = createTheme({
   typography: {
@@ -61,13 +61,14 @@ const App = () => {
                 <Route path="/" element={<MainPage />}></Route>
                 <Route path="/Profile" element={<ProfilePage />}></Route>
                 <Route path="/Profile/:id" element={<ProfilePage />}></Route>
-                <Route path="/PackageDetail/:id" element={<PackageDetailPage />}></Route>
+                <Route path="/Package/:id" element={<PackageDetailPage />}></Route>
                 <Route path="/AddService" element={<AddServicePage />}></Route>
                 <Route path="/NewSession/:id" element={<NewSessionPage />}></Route>
                 <Route path="/Selection/:id" element={<SelectionPage />}></Route>
                 <Route path="/Session/:id" element={<SessionPage />}></Route>
                 <Route path="/Rate/:id" element={<RatePage />}></Route>
                 <Route path="/EditProfile" element={<EditProfile />}></Route>
+                <Route path="/Landing" element={<LandingPage />}></Route>
               </Routes>
             </>
           </div>
