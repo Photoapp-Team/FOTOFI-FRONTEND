@@ -20,9 +20,6 @@ export default function ServiceCard({
   setFilters,
 }) {
   const handleOnClick = () => {
-    if (type === "package") {
-    }
-
     setFilters({ photoTags: service });
   };
 

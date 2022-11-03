@@ -1,0 +1,125 @@
+.first-container {
+  background-image: url(../../assets/backgroundImages/fondo_morado.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 95vh;
+  width: 100vw;
+}
+
+.second-container {
+  background-color: #fbf8fc;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 42vh;
+  width: 100vw;
+}
+
+.popular-services-container {
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.third-container {
+  background-image: url(../../assets/backgroundImages/fondo_morado.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 42vh;
+  width: 100vw;
+}
+
+.fourth-container {
+  height: 95vh;
+  width: 100vw;
+}
+
+.fifth-container {
+  background-image: url(../../assets/backgroundImages/fondo_morado_rotated.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 95vh;
+  width: 100vw;
+}
+
+.sixth-container {
+  height: 95vh;
+  width: 100vw;
+}
+
+.title {
+  text-shadow: 2px 2px 8px #350c0c95;
+  font-weight: bolder;
+}
+
+.service-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.photographers-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+}
+.popular-services {
+  display: flex;
+  background-image: url(../../assets/backgroundImages/fondo_morado_small.png);
+  border-radius: 1rem;
+  background-size: cover;
+  font-weight: 800 !important;
+  color: white;
+  justify-content: center;
+  text-align: center;
+  text-shadow: 2px 2px 8px #350c0c95;
+  padding: 1rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+}
+
+.best-experience,
+.photographer-offer {
+  display: flex;
+  font-weight: 800 !important;
+  justify-content: center;
+  text-align: left;
+  text-shadow: 2px 2px 8px #350c0c95;
+  padding: 2rem;
+}
+
+.explore-photographers-text,
+.best-jobs-text {
+  color: white;
+  text-align: left;
+  text-shadow: 2px 2px 8px #350c0c95;
+}
+
+.hero-pic {
+  position: absolute;
+  right: 20px;
+  bottom: -20px;
+}
+
+.random-image {
+  border-radius: 0.5rem;
+  margin: 2rem;
+  height: 12rem;
+  width: 20rem;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.property-item {
+  width: inherit;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.property-container {
+  display: flex;
+  flex-direction: column !important;
+  justify-content: space-between;
+  height: 40vh;
+}

@@ -63,7 +63,7 @@ const LoginForm = () => {
                     disabled={isSubmitting}
                     type="submit"
                     name={"Enviar"}
-                    className={"button-login"}
+                    className={"buttonLogin"}
                   />
                 </Form>
               )}
