@@ -11,24 +11,26 @@ import ImageContainer from "../ImagesContainer/ImagesContainer";
 import WaitingSessionStatus from "../WaitingSessionStatus/WaitingSessionStatus";
 import RateSession from "../RateSession/RateSession";
 import ConfirmSession from "../ConfirmSession/ConfirmSession";
+import ApproveSession from "../ApproveSession/ApproveSession";
+import CancelledSession from "../CancelledSession/CancelledSession";
+import { useState } from "react";
+import { useEffect } from "react";
+import ConfirmPaymentSession from "../ConfirmPaymentSession/ConfirmPaymentSession";
 
 const SessionWorkspace = () => {
+  const [statusWorkspace, setStatusWorkspace] = useState("");
   const params = useParams();
   const { id } = params;
   const { REACT_APP_API_ENDPOINT } = process.env;
   const url = `${REACT_APP_API_ENDPOINT}/sessions/session/${id}`;
   const { data, sessionUser } = useFetchUniqueSession(url);
-  const token = localStorage.getItem("token");
-  let currentUserId = "";
-  if (token) {
-    const payload = token.split(".")[1];
-    currentUserId = JSON.parse(atob(payload)).id;
-  }
+  const currentUserId = localStorage.getItem("userId");
+
+  useEffect(() => {}, [statusWorkspace]);
+
   if (data && currentUserId === data.photographerId[0]) {
-    console.log("data en workspace", { data });
     if (data && sessionUser) {
       const currentStatus = statusFormater(data.status).reverse()[0];
-      console.log(currentStatus);
       if (currentStatus === "Solicitada") {
         return (
           <>
@@ -40,7 +42,27 @@ const SessionWorkspace = () => {
                   currentStatus={currentStatus}
                 />
               </Box>
-              <ConfirmSession sessionId={data._id} />
+              <ConfirmSession
+                sessionId={data._id}
+                data={data}
+                sessionUser={sessionUser}
+                setStatusWorkspace={setStatusWorkspace}
+              />
+            </Box>
+          </>
+        );
+      } else if (currentStatus === "Aprobada") {
+        return (
+          <>
+            <Box className="sessionGallery">
+              <Box>
+                <SessionInfoCard
+                  data={data}
+                  sessionUser={sessionUser}
+                  currentStatus={currentStatus}
+                />
+              </Box>
+              <ConfirmPaymentSession sessionId={data._id} setStatusWorkspace={setStatusWorkspace} />
             </Box>
           </>
         );
@@ -71,7 +93,28 @@ const SessionWorkspace = () => {
                 />
               </Box>
               <Box sx={{ display: "flex", flexWrap: "wrap" }}>
-                <SessionFinalUpload id={id} selectedPics={data.selectedPics} />
+                <SessionFinalUpload
+                  id={id}
+                  selectedPics={data.selectedPics}
+                  setStatusWorkspace={setStatusWorkspace}
+                />
+              </Box>
+            </Box>
+          </>
+        );
+      } else if (currentStatus === "Cancelada") {
+        return (
+          <>
+            <Box className="sessionGallery">
+              <Box>
+                <SessionInfoCard
+                  data={data}
+                  sessionUser={sessionUser}
+                  currentStatus={currentStatus}
+                />
+              </Box>
+              <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+                <CancelledSession user={"usuario"} setStatusWorkspace={setStatusWorkspace} />
               </Box>
             </Box>
           </>
@@ -98,7 +141,7 @@ const SessionWorkspace = () => {
   } else if (data && currentUserId === data.userId[0]) {
     if (data && sessionUser) {
       const currentStatus = statusFormater(data.status).reverse()[0];
-      if (currentStatus === "Por seleccionar") {
+      if (currentStatus === "Programada") {
         return (
           <>
             <Box className="sessionGallery">
@@ -109,7 +152,32 @@ const SessionWorkspace = () => {
                   currentStatus={currentStatus}
                 />
               </Box>
-              <ImageContainer previewPics={data.previewPics} loaded={true} sessionId={data.Id} />;
+              <ApproveSession
+                data={data}
+                sessionId={data._id}
+                setStatusWorkspace={setStatusWorkspace}
+              />
+            </Box>
+          </>
+        );
+      } else if (currentStatus === "Por seleccionar") {
+        return (
+          <>
+            <Box className="sessionGallery">
+              <Box>
+                <SessionInfoCard
+                  data={data}
+                  sessionUser={sessionUser}
+                  currentStatus={currentStatus}
+                />
+              </Box>
+              <ImageContainer
+                previewPics={data.previewPics}
+                loaded={true}
+                sessionId={data.Id}
+                setStatusWorkspace={setStatusWorkspace}
+              />
+              ;
             </Box>
           </>
         );
@@ -125,6 +193,23 @@ const SessionWorkspace = () => {
                 />
               </Box>
               <RateSession />;
+            </Box>
+          </>
+        );
+      } else if (currentStatus === "Cancelada") {
+        return (
+          <>
+            <Box className="sessionGallery">
+              <Box>
+                <SessionInfoCard
+                  data={data}
+                  sessionUser={sessionUser}
+                  currentStatus={currentStatus}
+                />
+              </Box>
+              <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+                <CancelledSession user={"fotógrafo"} />
+              </Box>
             </Box>
           </>
         );
