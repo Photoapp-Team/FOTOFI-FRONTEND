@@ -10,7 +10,9 @@ export const createBasicUser = async (values) => {
     username,
     email,
     password,
+    role: "User",
   };
+
   const response = await fetch(`${USER_URL}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
