@@ -18,6 +18,7 @@ import EditProfile from "./pages/EditProfilePage/EditProfilePage";
 import Navbar from "./components/Navbar";
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 import PaymentPage from "./pages/PaymentPage/PaymentPage";
+import PaymentSuscription from "./pages/PaymentSuscription/PaymentSuscription";
 
 const theme = createTheme({
   typography: {
@@ -67,6 +68,8 @@ const App = () => {
                 <Route path="/NewSession/:id" element={<NewSessionPage />}></Route>
                 <Route path="/Selection/:id" element={<SelectionPage />}></Route>
                 <Route path="/Session/:id" element={<SessionPage />}></Route>
+                <Route path="/Payment/:id" element={<PaymentPage />}></Route>
+                <Route path="/Suscription/:id" element={<PaymentSuscription />}></Route>
               </Routes>
             </>
           </div>

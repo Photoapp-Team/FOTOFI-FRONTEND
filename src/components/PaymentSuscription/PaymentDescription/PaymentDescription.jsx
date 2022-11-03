@@ -1,13 +1,18 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import "./PaymentDescription.css";
-import { Link, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import Button from '../../Inputs/Button/Button';
 import { useState } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 function PaymentDescription(props) {
   const { nombre } = props;
   const [clicked, setClicked] = useState('No');
+  const params = useParams();
+  const { id } = params;
+  const userId = localStorage.getItem("userId");
+  const navigate = useNavigate ();
 
   return (
     <div className= "payment-description">
@@ -39,18 +44,19 @@ function PaymentDescription(props) {
         > 
         A nuestros clientes les notificamos que sus datos personales que registren dentro de nuestra plataforma serán públicos, FOTOFI no se hace responsable del mal manejo de la información proporcionada.   
         </Typography>
-        <Button 
+        <Button
+        
         type="submit"
         name={"LO QUIERO"}
         className={"button-login"}
+        onClick={() => {
+            navigate(`/PaymentSuscription/${id}`)
+        }}
 
         ></Button>
         <Link
-            component="button"
+            to={`/profile/${id}`}
             variant="body2"
-            onClick={() => {
-                console.info("I'm a button.");
-            }}
             >
             No quiero este increible beneficio  
             </Link>  
