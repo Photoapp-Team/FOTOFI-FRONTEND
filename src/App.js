@@ -15,6 +15,7 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import AddServicePage from "./pages/AddServicePage/AddServicePage";
 import NewSessionPage from "./pages/NewSessionPage/NewSessionPage";
 import SessionPage from "./pages/SessionPage/SessionPage";
+import PaymentPage from "./pages/PaymentPage/PaymentPage";
 
 const theme = createTheme({
   typography: {
@@ -64,6 +65,7 @@ const App = () => {
                 <Route path="/AddService" element={<AddServicePage />}></Route>
                 <Route path="/NewSession/:id" element={<NewSessionPage />}></Route>
                 <Route path="/Session/:id" element={<SessionPage />}></Route>
+                <Route path="/Payment" element={<PaymentPage/>}></Route>
                 <Route
                 path="/Suscription"
                 element={<SuscriptionPage />}
