@@ -8,6 +8,7 @@ import { registerSchema } from "../../schemas";
 import { useNavigate } from "react-router-dom";
 import { createBasicUser } from "../../../services/registerUser";
 import Button from "../../Inputs/Button/Button";
+import { ReactComponent as ReactLogo } from "../../../assets/Logo/Logo.svg";
 
 const UserRegistrationForm = () => {
   const navigate = useNavigate();
@@ -19,7 +20,10 @@ const UserRegistrationForm = () => {
   };
 
   return (
-    <Paper elevation={3}>
+    <Paper elevation={3} sx={{}}>
+      <Box className="userRegistrationLogo">
+        <ReactLogo className="userRegistrationLogo" color="black" />
+      </Box>
       <div className="box-layout-basic-registration">
         <h1 className="basic-registration-title">Crear una cuenta</h1>
         <p className="basic-registration-text">
