@@ -7,23 +7,26 @@ import CustomInput from "../../Inputs/CustomInput";
 import { editSchema } from "../../schemas/index";
 import Button from "../../Inputs/Button/Button";
 import { updateUser } from "../../../services/updateUser";
-import { useUser } from "../../../contexts/UserContext";
+//import { useUser } from "../../../contexts/UserContext";
 import ImageUpload from "../../../services/ImageUpload/ImageUpload"
 import useFetchUser from "../../../services/FetchServices/useFetchUser";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { updateProfilePic } from "../../../services/updateProfilePhotos";
 
 
 
 const EditProfileForm = () => {
+  const navigate = useNavigate();
   const params = useParams();
   const { id } = params
   const { REACT_APP_API_ENDPOINT } = process.env
   const URL = `${REACT_APP_API_ENDPOINT}/users/6350b364ada26911fb09a1a7`
   const { data } = useFetchUser(URL)
-  const onSubmit = async (values, actions) => {
+  const handleOnSubmit = (values, actions) => {
+    console.log(values, actions)
     updateProfilePic(values, id);
     updateUser(values, id);
+    navigate(`/profile/${id}`)
     actions.resetForm();
   };
   let user = ""
@@ -40,7 +43,6 @@ const EditProfileForm = () => {
           "& > :not(style)": {
             m: 1,
             width: 550,
-            height: 600,
           },
         }}
       >
@@ -63,7 +65,7 @@ const EditProfileForm = () => {
                 // webPage: `${user.data.webPage}`,
               }}
               validationSchema={editSchema}
-              onSubmit={onSubmit}
+              onSubmit={handleOnSubmit}
             >
               {({ isSubmitting, setFieldValue }) => (
                 <Form className="container-edit-profile">
@@ -125,15 +127,16 @@ const EditProfileForm = () => {
                     type="text"
                   />
                   <CustomInput
-                    label="Número telefonico"
+                    label="Número telefónico"
                     name="phoneNumber"
                     type="number"
                   />
-                  <CustomInput
+                  {/* <CustomInput
                     label="Página Web"
                     name="webPage"
                     type="text"
-                  />
+                  /> */}
+                  {/* <input type="submit" value="enviar" /> */}
                   <Button
                     disabled={isSubmitting}
                     type="submit"

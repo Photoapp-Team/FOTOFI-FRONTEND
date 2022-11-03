@@ -7,10 +7,11 @@ import RoleText from "../Role/RoleText";
 import Button from "../../Inputs/Button/Button";
 import Address from "../Address/Address";
 import ServiceBlock from "../ServiceBlock/ServiceBlock";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const ProfileCard = ({ data }) => {
   const [isOwner, setIsOwner] = useState(false);
+  const navigate = useNavigate();
   const params = useParams();
   const { id } = params;
   const userId = localStorage.getItem("userId");
@@ -87,7 +88,7 @@ const ProfileCard = ({ data }) => {
                   )}
                 </>
                 <>
-                  <Button name={"Editar perfil"} className={"button-profile-2"} />
+                  <Button name={"Editar perfil"} className={"button-profile-2"} onClick={() => { navigate(`/EditProfile/${id}`) }} />
                 </>
                 <>
                   {premium.isPremium === true ? (

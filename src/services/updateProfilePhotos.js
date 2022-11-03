@@ -17,7 +17,7 @@ export const updateProfilePic = async (values, id) => {
     let formData = new FormData();
     Object.entries(updatePhoto).forEach(([propName, files]) => {
         files.forEach((photo, index) => {
-            FormData.append(propName, photo);
+            formData.append(propName, photo);
         })
     })
 
