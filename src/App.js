@@ -6,6 +6,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { green, purple, yellow, grey, red, blue, cyan } from "@mui/material/colors";
 import "@fontsource/raleway"; // Defaults to weight 400.
+import SuscriptionPage from "./pages/PaymentSuscription/PaymentSuscription";
 import PackageDetailPage from "./pages/PackageDetailPage/PackageDetailPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import AddServicePage from "./pages/AddServicePage/AddServicePage";
@@ -16,6 +17,8 @@ import RatePage from "./pages/RatePage/RatePage";
 import EditProfile from "./pages/EditProfilePage/EditProfilePage";
 import Navbar from "./components/Navbar";
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
+import PaymentPage from "./pages/PaymentPage/PaymentPage";
+import PaymentSuscription from "./pages/PaymentSuscription/PaymentSuscription";
 
 const theme = createTheme({
   typography: {
@@ -65,8 +68,8 @@ const App = () => {
                 <Route path="/NewSession/:id" element={<NewSessionPage />}></Route>
                 <Route path="/Selection/:id" element={<SelectionPage />}></Route>
                 <Route path="/Session/:id" element={<SessionPage />}></Route>
-                <Route path="/Rate/:id" element={<RatePage />}></Route>
-                <Route path="/EditProfile" element={<EditProfile />}></Route>
+                <Route path="/Payment/:id" element={<PaymentPage />}></Route>
+                <Route path="/Suscription/:id" element={<PaymentSuscription />}></Route>
               </Routes>
             </>
           </div>

@@ -1,0 +1,21 @@
+.payment-banner img {
+    width: 100%;
+    height: 150%;
+    object-fit: cover;
+  }
+  
+  .payment-banner {
+    height: 300px;
+    max-height: 300px;
+    width: 100%;
+  }   
+
+  .payment-banner p {
+    font-size: 3rem;
+    color: white;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
