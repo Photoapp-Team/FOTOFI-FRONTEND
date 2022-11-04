@@ -9,6 +9,10 @@ export default function useFetchUniqueSession(url) {
   const { REACT_APP_API_ENDPOINT } = process.env;
 
   useEffect(() => {
+    refreshData();
+  }, [url]);
+
+  const refreshData = () => {
     (async function () {
       try {
         setLoading(true);
@@ -26,7 +30,7 @@ export default function useFetchUniqueSession(url) {
         setLoading(false);
       }
     })();
-  }, [url]);
+  };
 
-  return { data, error, loading, sessionUser };
+  return { data, error, loading, sessionUser, refreshData };
 }
