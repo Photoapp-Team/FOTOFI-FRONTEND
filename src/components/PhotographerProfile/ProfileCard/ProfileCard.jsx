@@ -9,16 +9,15 @@ import Address from "../Address/Address";
 import ServiceBlock from "../ServiceBlock/ServiceBlock";
 import { useNavigate, useNavigation, useParams } from "react-router-dom";
 
-
 const ProfileCard = ({ data }) => {
   const [isOwner, setIsOwner] = useState(false);
   const params = useParams();
   const { id } = params;
   const userId = localStorage.getItem("userId");
-  const navigate = useNavigate ();
+  const navigate = useNavigate();
   const onClick = () => {
-    navigate(`/Payment/${id}`)
-  }
+    navigate(`/Payment/${id}`);
+  };
 
   useEffect(() => {
     if (userId === id) setIsOwner(true);
@@ -88,9 +87,13 @@ const ProfileCard = ({ data }) => {
                   {premium.isPremium === true ? (
                     <Button name={"Mis sesiones"} className={"button-profile-1"} />
                   ) : (
-                    <Button name={"Volverse PRO"} className={"button-profile-1"} onClick={()=>{
-                      onClick()
-                    }}/>
+                    <Button
+                      name={"Volverse PRO"}
+                      className={"button-profile-1"}
+                      onClick={() => {
+                        onClick();
+                      }}
+                    />
                   )}
                 </>
                 <>
