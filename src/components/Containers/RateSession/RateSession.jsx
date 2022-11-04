@@ -1,13 +1,13 @@
 import React from "react";
 import CustomInput from "../../Inputs/CustomInput";
 import { rateSession } from "../../../services/FetchServices/rateSession";
-import { Box } from "@mui/material";
+import { Box, Divider } from "@mui/material";
 import RatingInput from "../../Inputs/Rating/RatingInput";
 import Button from "../../Inputs/Button/Button";
 import { useNavigate, useParams } from "react-router-dom";
 import { Form, Formik } from "formik";
 import { saveAs } from "file-saver";
-import JSZip from "jszip";
+import JSZip, { file } from "jszip";
 import FileSaver from "file-saver";
 
 const RateSession = ({ data }) => {
@@ -15,18 +15,39 @@ const RateSession = ({ data }) => {
   const params = useParams();
   const { id } = params;
 
-  const zip = new JSZip();
+  let zip = new JSZip();
 
+  const getFileType = (url) => {
+    let fileExtention = /\.[0-9a-z]+$/i;
+    let fileExtResult = fileExtention.exec(url);
+    if (!fileExtResult) return "";
+    return fileExtResult;
+  };
   const onClick = async () => {
-    // const img = zip.folder("images");
-    // data.finalPics.map((file) => {
-    //   img.file(`${file.name}`, file, { base64: true });
-    //   zip.generateAsync({ type: "blob" }).then(function (file) {
-    //     saveAs(file, "example.zip");
-    //   });
-    //   return;
-    // });
-    // FileSaver.saveAs("https://httpbin.org/image", "image.jpg");
+
+    let imgUrl = [];
+    let imageBlob = [];
+
+    data.finalPics.map((link) => {
+      imgUrl.push(link.link);
+    });
+
+    imgUrl.forEach((url, index) => {
+      imageBlob.push(
+        fetch(url)
+          .then((response) => response.blob())
+          .then((file) => ({ url, file }))
+      );
+    });
+    let finalZip = await Promise.all(imageBlob);
+    finalZip.forEach(({ url, file }, index) => {
+      const fileType = getFileType(url);
+      let imageFile = new File([file], `Archivo${index}`, { fileType });
+      zip.file(`${imageFile.name}.${fileType}`, imageFile, { base64: true });
+    });
+    zip.generateAsync({ type: "blob" }).then(function (blob) {
+      saveAs(blob, "collection.zip");
+    });
   };
 
   const onSubmit = async (values) => {
@@ -36,11 +57,6 @@ const RateSession = ({ data }) => {
 
   return (
     <>
-      <Button
-        onClick={() => {
-          onClick();
-        }}
-      />
       <Formik
         initialValues={{}}
         // validationSchema={addServiceSchema}
@@ -71,6 +87,28 @@ const RateSession = ({ data }) => {
                   alignItems: "center",
                 }}
               >
+                <Box sx={{ textAlign: "center", display: "flex", alignItems: "center", mb: 10 }}>
+                  <Box>
+                    <h4>¡Tus fotos están Listas!</h4>
+                    <h4>¡Sólo da click en el botón de descargar!</h4>
+                    <Box sx={{ m: "auto", display: "flex", justifyContent: "center" }}>
+                      <Button
+                        className="buttonLogin"
+                        text={"Download"}
+                        name={"Descargar Fotos"}
+                        onClick={() => {
+                          onClick();
+                        }}
+                      />
+                    </Box>
+                  </Box>
+                </Box>
+                <Box sx={{ textAlign: "center", display: "flex", alignItems: "center" }}>
+                  <Box>
+                    <h4>¡Aydudanos con tus comentarios!</h4>
+                    <h4>¡Tu opinión es muy importante para nosotros!</h4>
+                  </Box>
+                </Box>
                 <CustomInput
                   label="Comentarios"
                   name="comments"

@@ -35,7 +35,7 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, stat
         scheduled: Date.now(),
       },
     };
-    const updatedSession = updateSession(sessionId, newValues);
+    const updatedSession = await updateSession(sessionId, newValues);
     setStatusWorkspace("1");
   };
 
