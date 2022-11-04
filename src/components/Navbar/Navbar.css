@@ -6,7 +6,7 @@
   display: flex;
   width: 100vw;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -17,4 +17,9 @@
 
 .icon-button {
   background-color: transparent;
+}
+
+.navbar {
+  background-color: #ffffff !important;
+  position: sticky !important;
 }

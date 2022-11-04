@@ -2,8 +2,10 @@ import { useContext, useState, useEffect } from "react";
 import ServiceCard from "../../components/Cards/ServiceCard/ServiceCard";
 import "./ServiceFilter.css";
 import axios from "axios";
+import { filter } from "jszip";
+import { Container } from "@mui/system";
 
-const ServiceFilter = ({ setFilters }) => {
+const ServiceFilter = () => {
   const [services, setServices] = useState({});
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -31,34 +33,31 @@ const ServiceFilter = ({ setFilters }) => {
 
   if (!data) {
     return (
-      <div className="serviceFilterLoading">
-        {servicePlaceholder.map((index) => {
-          return (
-            <>
-              <ServiceCard withFooter={false} isLoaded={false} key={index} />
-            </>
-          );
-        })}
-      </div>
+      <Container maxWidth="xl">
+        <div className="serviceFilterLoading">
+          {servicePlaceholder.map((_, index) => {
+            return <ServiceCard withFooter={false} isLoaded={false} key={index} />;
+          })}
+        </div>
+      </Container>
     );
   }
   return (
-    <div className="serviceFilter">
-      {data.map((service, index) => {
-        return (
-          <>
+    <Container maxWidth="xl">
+      <div className="serviceFilter">
+        {data.map((service, index) => {
+          return (
             <ServiceCard
               withFooter={false}
               service={service.name}
               key={service.name}
               img={service.coverPhoto}
               isLoaded={true}
-              setFilters={setFilters}
             />
-          </>
-        );
-      })}
-    </div>
+          );
+        })}
+      </div>
+    </Container>
   );
 };
 

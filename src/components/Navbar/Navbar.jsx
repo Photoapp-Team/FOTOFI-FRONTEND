@@ -7,15 +7,13 @@ import Fotofilogo from "../../images/fotofi.png";
 import SearchBar from "../SearchBar/Search";
 import { useUser } from "../../contexts/UserContext";
 import "./Navbar.css";
-import useFetchBasicUser from "../../services/FetchServices/useFetchBasicUser";
 import ProfileMenu from "../Inputs/ProfileMenu";
 
 function Navbar() {
-  const { isUserLoggedIn } = useUser();
+  const { isUserLoggedIn, user } = useUser();
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const userId = localStorage.getItem("userId");
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -29,10 +27,8 @@ function Navbar() {
     setAnchorElUser(null);
   };
 
-  const myUser = useFetchBasicUser(userId);
-
   return (
-    <AppBar position="sticky" sx={{ background: "#f5f5f5" }}>
+    <AppBar className="navbar">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <div className="headerContainer">
@@ -45,8 +41,8 @@ function Navbar() {
               <SearchBar />
             </div>
             <div className="rightCornerNav">
-              {isUserLoggedIn && myUser?.data ? (
-                <ProfileMenu data={myUser.data} />
+              {isUserLoggedIn && user?.name ? (
+                <ProfileMenu data={user} />
               ) : (
                 <>
                   <Button
