@@ -1,9 +1,13 @@
+import { CheckOutlined } from '@mui/icons-material';
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
+
 const { REACT_APP_API_ENDPOINT } = process.env;
 const { REACT_APP_PRODUCT_KEY} = process.env;
 
+const ProductDisplay = ({id}) => (
 
-const ProductDisplay = () => (
   <section>
     <div className="product">
       <Logo />
@@ -15,6 +19,7 @@ const ProductDisplay = () => (
     <form action={`${REACT_APP_API_ENDPOINT}/payments/create-checkout-session`} method="POST">
       {/* Add a hidden field with the lookup_key of your Price */}
       <input type="hidden" name="lookup_key" value={`${REACT_APP_PRODUCT_KEY}`} />
+      <input type="hidden" name="userId" value={`${id}`} />
       <button id="checkout-and-portal-button" type="submit">
         Verificar
       </button>
@@ -22,7 +27,7 @@ const ProductDisplay = () => (
   </section>
 );
 
-const SuccessDisplay = ({ sessionId }) => {
+const SuccessDisplay = ({ sessionId, id }) => {
   return (
     <section>
       <div className="product Box-root">
@@ -57,9 +62,13 @@ export default function SubscriptionPage() {
   let [success, setSuccess] = useState(false);
   let [sessionId, setSessionId] = useState('');
 
+  const params = useParams();
+    const { id } = params;
+
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
+    
 
     if (query.get('success')) {
       setSuccess(true);
@@ -75,9 +84,9 @@ export default function SubscriptionPage() {
   }, [sessionId]);
 
   if (!success && message === '') {
-    return <ProductDisplay />;
+    return <ProductDisplay id={id} />;
   } else if (success && sessionId !== '') {
-    return <SuccessDisplay sessionId={sessionId} />;
+    return <SuccessDisplay sessionId={sessionId} id={id} />;
   } else {
     return <Message message={message} />;
   }
