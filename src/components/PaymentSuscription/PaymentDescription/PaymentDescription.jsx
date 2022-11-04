@@ -50,7 +50,7 @@ function PaymentDescription(props) {
         name={"LO QUIERO"}
         className={"button-login"}
         onClick={() => {
-            navigate(`/PaymentSuscription/${id}`)
+            navigate(`/Suscription/${id}`)
         }}
 
         ></Button>
