@@ -10,7 +10,6 @@ export default function useFetchBasicUser(userId) {
   const [currentUserId, setCurrentUserId] = useState("");
 
   const updateUser = (userId) => {
-    console.log("dentroupdate:", userId);
     setCurrentUserId(userId);
   };
 

@@ -33,31 +33,27 @@ const ServiceFilter = () => {
 
   if (!data) {
     return (
-      <Container maxWidth="xl">
-        <div className="serviceFilterLoading">
-          {servicePlaceholder.map((_, index) => {
-            return <ServiceCard withFooter={false} isLoaded={false} key={index} />;
-          })}
-        </div>
-      </Container>
+      <div className="serviceFilterLoading">
+        {servicePlaceholder.map((_, index) => {
+          return <ServiceCard withFooter={false} isLoaded={false} key={index} />;
+        })}
+      </div>
     );
   }
   return (
-    <Container maxWidth="xl">
-      <div className="serviceFilter">
-        {data.map((service, index) => {
-          return (
-            <ServiceCard
-              withFooter={false}
-              service={service.name}
-              key={service.name}
-              img={service.coverPhoto}
-              isLoaded={true}
-            />
-          );
-        })}
-      </div>
-    </Container>
+    <div className="serviceFilter">
+      {data.map((service, index) => {
+        return (
+          <ServiceCard
+            withFooter={false}
+            service={service.name}
+            key={service.name}
+            img={service.coverPhoto}
+            isLoaded={true}
+          />
+        );
+      })}
+    </div>
   );
 };
 
