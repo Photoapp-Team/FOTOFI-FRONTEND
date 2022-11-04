@@ -16,6 +16,7 @@ export default function PackageCard({
   minPrice,
   editMode,
   packageId,
+  isOwner,
 }) {
   const navigate = useNavigate();
   const handleOnClick = () => {
@@ -28,7 +29,7 @@ export default function PackageCard({
         className="serviceCard"
         sx={{ maxWidth: 250, borderRadius: 2, minWidth: 202, margin: 2 }}
         elevation={4}
-        onClick={handleOnClick}
+        onClick={isOwner ? "" : handleOnClick}
       >
         <CardActionArea sx={{ maxWidth: 300, padding: ".5rem" }}>
           {isLoaded ? (
