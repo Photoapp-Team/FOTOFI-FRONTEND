@@ -2,20 +2,38 @@ const { REACT_APP_API_ENDPOINT } = process.env;
 
 const USER_URL = `${REACT_APP_API_ENDPOINT}/users/`;
 
-export const updateUser = async (values) => {
-    const { name, lastname, email, location, phoneNumber, webPage } = values;
-    const userData = {
+export const updateUser = async (values, id) => {
+    const { name, lastname, password, city, state, country, suburb, street, number, zipCode, phoneNumber, facebook, instagram, www, profilePic, coverPhoto } = values;
+    const updateData = {
+        profilePic,
+        coverPhoto,
         name,
         lastname,
-        email,
-        location,
+        password,
+        location: {
+            city,
+            state,
+            country,
+            suburb,
+            street,
+            number,
+            zipCode,
+        },
         phoneNumber,
-        webPage,
+        socialNetwork: {
+            facebook,
+            instagram,
+            www,
+        },
     };
-    const response = await fetch(`${USER_URL}`, {
+    const token = localStorage.getItem("token")
+    const response = await fetch(`${USER_URL}/${id}`, {
         method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userData),
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(updateData),
     });
     const data = await response.json();
 

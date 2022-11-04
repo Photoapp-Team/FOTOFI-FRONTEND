@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import "./EditProfile.css";
@@ -7,16 +7,37 @@ import CustomInput from "../../Inputs/CustomInput";
 import { editSchema } from "../../schemas/index";
 import Button from "../../Inputs/Button/Button";
 import { updateUser } from "../../../services/updateUser";
+import { useUser } from "../../../contexts/UserContext";
+import ImageUpload from "../../../services/ImageUpload/ImageUpload"
+import useFetchUser from "../../../services/FetchServices/useFetchUser";
+import { useNavigate, useParams } from "react-router-dom";
+import { updateProfilePic } from "../../../services/updateProfilePhotos";
 
 
-const onSubmit = async (values, actions) => {
-  updateUser(values);
-  actions.resetForm();
-};
 
 const EditProfileForm = () => {
+  const navigate = useNavigate();
+  const use = useUser();
+  console.log(use, "use");
+  const params = useParams();
+  const { id } = params
+  const { REACT_APP_API_ENDPOINT } = process.env
+  const URL = `${REACT_APP_API_ENDPOINT}/users/${id}`
+  const { data } = useFetchUser(URL)
+  const handleOnSubmit = (values, actions) => {
+    console.log(values, actions)
+    updateProfilePic(values, id);
+    updateUser(values, id);
+    navigate(`/profile/${id}`)
+    actions.resetForm();
+  };
+  let user = ""
+  if (data) {
+    console.log(data);
+    user = data
+  }
   return (
-    <div className="form-contain">
+    <>{user && <div className="form-contain">
       <Box
         sx={{
           display: "flex",
@@ -24,7 +45,6 @@ const EditProfileForm = () => {
           "& > :not(style)": {
             m: 1,
             width: 550,
-            height: 600,
           },
         }}
       >
@@ -32,48 +52,115 @@ const EditProfileForm = () => {
           <div className="">
             <h1 className="edit-profile-title">Edita tú perfil</h1>
             <Formik
-              initialValues={{ lastname: "", name: "", email: "" }}
+              initialValues={{
+                ...user,
+                profilepic: "",
+                name: `${user.name}`,
+                lastname: `${user.lastname}`,
+                password: `${user.password}`,
+                city: `${user.location.city}`,
+                state: `${user.location.state}`,
+                country: `${user.location.country}`,
+                suburb: `${user.location.suburb}`,
+                street: `${user.location.street}`,
+                number: `${user.location.number}`,
+                zipCode: `${user.location.zipCode}`,
+                phoneNumber: `${user.phoneNumber}`,
+                // facebook: `${user.socialNetwork.facebook}`,
+                // instagram: `${user.socialNetwork.instagram}`,
+                // www: `${user.socialNetwork.www}`,
+              }}
               validationSchema={editSchema}
-              onSubmit={onSubmit}
+              onSubmit={handleOnSubmit}
             >
-              {({ isSubmitting }) => (
+              {({ isSubmitting, setFieldValue }) => (
                 <Form className="container-edit-profile">
                   <br />
+                  <ImageUpload
+                    phrase={"Arrastra la nueva foto de perfil"}
+                    classbox={"boxAddservice2"}
+                    classpaper={"paperAddservice2"}
+                    name="profilePic"
+                    setFieldValue={setFieldValue}
+                    fieldName={"profilePic"}
+                  />
+                  <ImageUpload
+                    phrase={"Arrastra tú nueva foto de portada"}
+                    classbox={"boxAddservice2"}
+                    classpaper={"paperAddservice2"}
+                    name="coverPhoto"
+                    setFieldValue={setFieldValue}
+                    fieldName={"coverPhoto"}
+                  />
                   <CustomInput
                     label="Nombre"
                     name="name"
                     type="text"
-                  //placeholder="Ingresa tu nombre"
                   />
                   <CustomInput
                     label="Apellido"
                     name="lastname"
                     type="text"
-                  //placeholder="Ingresa tu apellido"
                   />
                   <CustomInput
-                    label="Email"
-                    name="email"
-                    type="email"
-                  //placeholder="Ingresa tu nuevo email"
+                    label="Password"
+                    name="password"
+                    type="password"
                   />
                   <CustomInput
-                    label="Ubicación"
-                    name="location"
+                    label="City"
+                    name="city"
                     type="text"
-                  //placeholder="Ingresa tu nueva ubicación"
                   />
                   <CustomInput
-                    label="Número telefonico"
+                    label="State"
+                    name="state"
+                    type="text"
+                  />
+                  <CustomInput
+                    label="Country"
+                    name="country"
+                    type="text"
+                  />
+                  <CustomInput
+                    label="Suburb"
+                    name="suburb"
+                    type="text"
+                  />
+                  <CustomInput
+                    label="Street"
+                    name="street"
+                    type="text"
+                  />
+                  <CustomInput
+                    label="Number"
+                    name="number"
+                    type="text"
+                  />
+                  <CustomInput
+                    label="ZipCode"
+                    name="zipCode"
+                    type="text"
+                  />
+                  <CustomInput
+                    label="Número telefónico"
                     name="phoneNumber"
                     type="number"
-                  //placeholder="Ingresa número telefónico"
                   />
                   <CustomInput
-                    label="Página Web"
-                    name="webPage"
+                    label="facebook"
+                    name="facebook"
                     type="text"
-                  //placeholder="Ingresa página WEB"
+                  />
+                  <CustomInput
+                    label="instagram"
+                    name="instagram"
+                    type="text"
+                  />
+                  <CustomInput
+                    label="www"
+                    name="www"
+                    type="text"
                   />
                   <Button
                     disabled={isSubmitting}
@@ -89,7 +176,7 @@ const EditProfileForm = () => {
         </Paper>
       </Box>
     </div>
-  )
-}
+    }</>);
+};
 
 export default EditProfileForm;
