@@ -5,6 +5,19 @@ import { useParams } from 'react-router-dom';
 
 const { REACT_APP_API_ENDPOINT } = process.env;
 const { REACT_APP_PRODUCT_KEY} = process.env;
+const createCheckout = (event,userId)=>{
+  console.log(event.target)
+  fetch(`${REACT_APP_API_ENDPOINT}/payments/create-checkout-session`,{
+    method: "POST",
+    headers:{
+      "Content-Type": "application/json"
+    },
+    body:JSON.stringify({ 
+      "lookup_key":`${REACT_APP_PRODUCT_KEY}`,
+        userId:  userId
+    })
+  })
+}
 
 const ProductDisplay = ({id}) => (
 
@@ -16,11 +29,11 @@ const ProductDisplay = ({id}) => (
         <h5>$1.00 / mensual</h5>
       </div>
     </div>
-    <form action={`${REACT_APP_API_ENDPOINT}/payments/create-checkout-session`} method="POST">
+    <form action={`${REACT_APP_API_ENDPOINT}/payments/create-checkout-session`} method="POST" >
       {/* Add a hidden field with the lookup_key of your Price */}
       <input type="hidden" name="lookup_key" value={`${REACT_APP_PRODUCT_KEY}`} />
       <input type="hidden" name="userId" value={`${id}`} />
-      <button id="checkout-and-portal-button" type="submit">
+      <button id="checkout-and-portal-button" type="submit" >
         Verificar
       </button>
     </form>
