@@ -10,7 +10,7 @@ import { styled } from "@mui/material/styles";
 import SessionsContainer from "../../Containers/SessionsContainer";
 import { useParams } from "react-router";
 
-export default function NavigationTabs() {
+export default function NavigationTabs({ role }) {
   const [isOwner, setIsOwner] = useState(false);
   const [value, setValue] = useState("1");
   const params = useParams();
@@ -56,7 +56,7 @@ export default function NavigationTabs() {
               flexdirection: "row",
             }}
           >
-            <ServicesContainer id={id} isOwner={isOwner} />
+            <ServicesContainer id={id} isOwner={isOwner} role={role} />
           </TabPanel>
           <TabPanel value="2">
             <SessionsContainer id={id} isOwner={isOwner} />

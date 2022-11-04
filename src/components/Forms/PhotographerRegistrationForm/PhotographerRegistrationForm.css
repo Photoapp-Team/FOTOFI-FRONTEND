@@ -1,6 +1,6 @@
 .form-container {
   max-width: 1200px;
-  max-height: 2000px;
+  max-height: 100vh;
   margin: 0 auto;
 }
 
@@ -11,9 +11,9 @@
   margin: 0 auto;
   align-items:flex-start;
   height: auto;
-  max-width: 1200px;
+  max-width: 1600px;
   box-sizing: border-box;
-  max-height: 550px;
+  max-height: 525px;
 }
 
 .form-info {
@@ -54,5 +54,11 @@
 
 .button-basic-registration {
     margin:auto;
+}
+
+.photographer-registration-logo {
+    margin-left: 55px;
+    max-width: 80px;
+    flex-direction: column;
 }
 

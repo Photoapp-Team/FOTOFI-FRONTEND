@@ -3,7 +3,7 @@ import BasicTabs from "../NavigationTabs/NavigationTabs";
 import "./MainSection.css";
 import { Box } from "@mui/material";
 
-const MainSection = (id) => {
+const MainSection = ({ id, role }) => {
   return (
     <>
       <Box
@@ -16,7 +16,7 @@ const MainSection = (id) => {
         }}
         className="profile-main-box"
       >
-        <BasicTabs id={id} />
+        <BasicTabs id={id} role={role} />
       </Box>
     </>
   );
