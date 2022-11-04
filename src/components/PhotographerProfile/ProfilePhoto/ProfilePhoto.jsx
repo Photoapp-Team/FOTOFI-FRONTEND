@@ -11,5 +11,3 @@ const ProfilePhoto = ({ profilePic, photoclass }) => {
 };
 
 export default ProfilePhoto;
-
-export default ProfilePhoto 
