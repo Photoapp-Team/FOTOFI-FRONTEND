@@ -35,18 +35,25 @@ export default function ServiceCard({ service, img, isLoaded, withFooter, minPri
     <>
       <Card
         className={selected}
-        sx={{ maxWidth: 120, borderRadius: 2, minWidth: 90, margin: 2 }}
+        sx={{ maxWidth: 120, borderRadius: 2, minWidth: 90, margin: { xs: 0.5, md: 2 } }}
         elevation={elevation}
         onClick={handleOnClick}
       >
         <CardActionArea sx={{ maxWidth: 300, padding: ".5rem" }}>
           {isLoaded ? (
-            <CardMedia className="cardImg" component="img" height="75" image={img} alt={service} />
+            <CardMedia
+              className="cardImg"
+              component="img"
+              image={img}
+              alt={service}
+              height="75"
+              sx={{ display: { xs: "none", md: "flex" } }}
+            />
           ) : (
             <Skeleton variant="rectangular" height={80} align="center" />
           )}
 
-          <CardContent sx={{ p: 0, pt: 1 }}>
+          <CardContent sx={{ p: { xs: 0, md: 0 }, pt: { xs: 0, md: 1 } }}>
             {isLoaded ? (
               <Typography
                 className="cardTitle"
