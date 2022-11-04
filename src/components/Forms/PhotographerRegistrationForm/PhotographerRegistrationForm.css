@@ -1,0 +1,58 @@
+.form-container {
+  max-width: 1200px;
+  max-height: 2000px;
+  margin: 0 auto;
+}
+
+.main-container {
+  flex-direction: center;
+  padding: 15px;
+  padding-bottom: 15px;
+  margin: 0 auto;
+  align-items:flex-start;
+  height: auto;
+  max-width: 1200px;
+  box-sizing: border-box;
+  max-height: 550px;
+}
+
+.form-info {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+.form-direction {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+.form-contact {
+    font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+.form-passsword {
+    font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+.button-basic-registration {
+    margin:auto;
+}
+

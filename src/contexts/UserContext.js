@@ -11,14 +11,20 @@ const UserContextProvider = ({ children }) => {
   const [mySessions, setMySessions] = useState();
   const [automaticRedirectionUrl, setAutomaticRedirection] = useState("");
   const navigate = useNavigate();
+  const [filters, setFilters] = useState([]);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
       setToken(localStorage.getItem("token"));
       setUserId(localStorage.getItem("userId"));
-      automaticFetchMyUser();
     }
   }, []);
+
+  useEffect(() => {
+    if (token && userId) {
+      automaticFetchMyUser();
+    }
+  }, [token, userId]);
 
   const redirecTo = (url) => {
     if (url === "") {
@@ -39,6 +45,7 @@ const UserContextProvider = ({ children }) => {
     });
     const userData = await userResponse.json();
 
+    console.log("USERDATA:", userData);
     if (!userData) {
       setToken(localStorage.removeItem("token"));
       setUserId(localStorage.removeItem("userId"));
@@ -88,6 +95,7 @@ const UserContextProvider = ({ children }) => {
       if (userData) {
         setUser(userData.data);
         localStorage.setItem("userId", userData.data.user._id);
+        setUserId(userData.data.user._id);
         setLogStatus(true);
         redirecTo(automaticRedirectionUrl);
       }
@@ -112,6 +120,8 @@ const UserContextProvider = ({ children }) => {
         setAutomaticRedirection,
         userId,
         setLogStatus,
+        filters,
+        setFilters,
       }}
     >
       {children}

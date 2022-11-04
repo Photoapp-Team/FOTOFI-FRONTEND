@@ -1,20 +1,24 @@
 import "./PhotographersContainer.css";
 import PhotographerCard from "../../Cards/PhotographerCard/PhotographerCard";
 import useFetchPhotographers from "../../../services/FetchServices/useFetchPhotographers";
-import { accordionClasses } from "@mui/material";
+import { useEffect } from "react";
+import { useUser } from "../../../contexts/UserContext";
+import { Container } from "@mui/material";
 
-const PhotographersContainer = ({ photographersData }) => {
+const PhotographersContainer = () => {
   const usersPlaceholder = ["", "", "", "", "", ""];
+  const { filters } = useUser();
+  const { updatePhotoTags, data: photographersData, loading } = useFetchPhotographers();
+
+  useEffect(() => {
+    updatePhotoTags(filters);
+  }, [filters]);
 
   if (!photographersData) {
     return (
       <div className="photographersDisplayLoading">
-        {usersPlaceholder.map((index) => {
-          return (
-            <>
-              <PhotographerCard withFooter={false} isLoaded={false} key={index} />
-            </>
-          );
+        {usersPlaceholder.map((_, index) => {
+          return <PhotographerCard withFooter={false} isLoaded={false} key={index} />;
         })}
       </div>
     );
@@ -30,37 +34,33 @@ const PhotographersContainer = ({ photographersData }) => {
           const rateAverage = ratesSum / ratesCount;
 
           return (
-            <>
-              <PhotographerCard
-                name={user.username}
-                coverImg={user.coverPhoto}
-                ranking={rateAverage}
-                rankingCount={ratesCount}
-                profilePic={user.profilePic}
-                location={user.location.city}
-                withFooter={false}
-                key={user.username}
-                isLoaded={true}
-                photographerId={user._id}
-              />
-            </>
+            <PhotographerCard
+              name={user.username}
+              coverImg={user.coverPhoto}
+              ranking={rateAverage}
+              rankingCount={ratesCount}
+              profilePic={user.profilePic}
+              location={user.location.city}
+              withFooter={false}
+              key={user.username}
+              isLoaded={true}
+              photographerId={user._id}
+            />
           );
         } else {
           return (
-            <>
-              <PhotographerCard
-                name={user.username}
-                coverImg={user.coverPhoto}
-                ranking="-"
-                rankingCount={0}
-                profilePic={user.profilePic}
-                location={user.location.city}
-                withFooter={false}
-                key={user.username}
-                isLoaded={true}
-                photographerId={user._id}
-              />
-            </>
+            <PhotographerCard
+              name={user.username}
+              coverImg={user.coverPhoto}
+              ranking="-"
+              rankingCount={0}
+              profilePic={user.profilePic}
+              location={user.location.city}
+              withFooter={false}
+              key={user.username}
+              isLoaded={true}
+              photographerId={user._id}
+            />
           );
         }
       })}

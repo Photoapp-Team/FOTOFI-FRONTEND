@@ -5,6 +5,8 @@ import PaymentDescription from "../../components/PaymentSuscription/PaymentDescr
 import Button from "../../components/Inputs/Button/Button";
 import "./PaymentPage.css";
 import Link from '@mui/material/Link';
+import PaymentSuscription  from "../PaymentSuscription/PaymentSuscription";
+
 
 
 const PaymentPage = () => {

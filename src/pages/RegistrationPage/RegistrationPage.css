@@ -1,13 +1,15 @@
 .main-container {
   height: 90vh;
+  display: flex;
 }
 
 .page-container {
   background-image: url(../../assets/backgroundImages/pexels-eberhard-grossgasteiger-629162.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
+  display: flex;
 }
 
 .logo-container svg path {
@@ -20,4 +22,50 @@
 
 .logo-container svg rect {
   fill: #ffffff;
+}
+
+@media screen and (max-width: 320px) {
+  .userRegistrationContainer {
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    max-width: 90%;
+  }
+  .logo-container {
+    display: none;
+  }
+  .main-container {
+    height: 90vh;
+    display: flex;
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .logo-container {
+    display: none;
+  }
+  .userRegistrationContainer {
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    width: auto;
+    max-width: 80%;
+  }
+  .main-container {
+    width: 90%;
+    max-width: 90%;
+    display: flex;
+    gap: 20px;
+    margin: auto;
+    align-items: center !important;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .userRegistrationContainer {
+    margin-left: 60% !important;
+    width: auto;
+  }
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import UserRegistrationForm from "../../components/Forms/UserRegistrationForm";
 import { ReactComponent as ReactLogo } from "../../assets/Logo/Logo.svg";
 import "./RegistrationPage.css";
@@ -10,7 +10,7 @@ import CardActionArea from "@mui/material/CardActionArea";
 import Typography from "@mui/material/Typography";
 import PhotographerRegistrationForm from "../../components/Forms/PhotographerRegistrationForm";
 const RegistrationPage = () => {
-  const [userType, setUserType] = React.useState(null);
+  const [userType, setUserType] = useState(null);
 
   return (
     <div className="page-container">
@@ -23,7 +23,6 @@ const RegistrationPage = () => {
               display: "flex",
               flexWrap: "wrap",
               justifyContent: "space-around",
-              alignItems: "center",
             }}
           >
             <Grid item xs={12}>
@@ -113,7 +112,7 @@ const RegistrationPage = () => {
               <></>
             )}
             {userType === "User" ? (
-              <Grid item xs={12} md={4}>
+              <Grid item xs={12} md={4} mdOffset={2} className="userRegistrationContainer">
                 <UserRegistrationForm />
               </Grid>
             ) : (

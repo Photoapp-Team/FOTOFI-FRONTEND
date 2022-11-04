@@ -26,6 +26,7 @@ const ServicesContainer = ({ isOwner }) => {
               isLoaded={true}
               type="package"
               packageId={pack._id}
+              isOwner={isOwner}
             />
           );
         })}

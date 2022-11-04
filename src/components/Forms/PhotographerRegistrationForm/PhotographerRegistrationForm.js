@@ -28,139 +28,142 @@ const PhotographerRegistrationForm = () => {
       {({ isSubmitting }) => (
         <Form className="form-container">
           <Container>
-            <Paper elevation={3}>
+            <Paper elevation={8}>
               <Grid
                 className="main-container"
                 container
                 sx={{
                   display: "flex",
                   flexWrap: "wrap",
-                  justifyContent: "space-around",
-                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
                 <Grid item xs={12} sm={6} md={3}>
-                  <div>
-                    <h3>Informacion Personal</h3>
+                  <div className="form-info">
+                    <h3>Información</h3>
                   </div>
-                  <div className="form-section">
+                  <div className="form-section-info">
                     <CustomInput
-                      label="profilePic"
+                      label="Foto de perfil"
                       name="profilePic"
                       type="text"
-                      placeholder="Elige una foto de perfil"
                     />
                     <CustomInput
-                      label="coverPhoto"
+                      label="Foto de portada"
                       name="coverPhoto"
                       type="text"
-                      placeholder="Elige una foto de perfil"
                     />
                   </div>
-                  <div className="form-section">
+                  <div className="form-section-two">
                     <CustomInput
-                      label="Username"
+                      label="Nickname"
                       name="username"
                       type="text"
-                      placeholder="Ingresa tu nombre de usuario"
                     />
                     <CustomInput
-                      label="Name"
+                      label="Nombre"
                       name="name"
                       type="text"
-                      placeholder="Ingresa tu nombre"
                     />
                     <CustomInput
-                      label="Lastname"
+                      label="Apellido"
                       name="lastname"
                       type="text"
-                      placeholder="Ingresa tu apellido"
+                    />
+                    <CustomInput
+                      label="Genero"
+                      name="gender"
+                      type="text"
                     />
                   </div>
                 </Grid>
 
                 <Grid item xs={12} sm={6} md={3}>
-                  <div>
+                  <div className="form-direction">
                     <h3>Dirección</h3>
                   </div>
                   <CustomInput
-                    label="Country"
+                    label="País"
                     name="country"
                     type="text"
-                    placeholder="Ingresa tu País"
                   />
                   <CustomInput
-                    label="City"
+                    label="Ciudad"
                     name="city"
                     type="text"
-                    placeholder="Ingresa tu Ciudad"
                   />
                   <CustomInput
-                    label="State"
+                    label="Estado"
                     name="state"
                     type="text"
-                    placeholder="Ingresa tu Estado"
                   />
                   <CustomInput
-                    label="Suburb"
+                    label="Colonia"
                     name="suburb"
                     type="text"
-                    placeholder="Ingresa tu colonia"
                   />
                   <CustomInput
-                    label="Street"
+                    label="Calle"
                     name="street"
                     type="text"
-                    placeholder="Ingresa tu calle"
                   />
-                  <CustomInput label="Number" name="number" type="text" placeholder="Número" />
-                  <CustomInput label="ZipCode" name="zipCode" type="text" placeholder="C.P." />
+                  <CustomInput
+                    label="Número de casa"
+                    name="number"
+                    type="text"
+                  />
+                  <CustomInput
+                    label="Código postal"
+                    name="zipCode"
+                    type="text"
+                  />
                 </Grid>
                 <Grid item xs={12} sm={6} md={3}>
-                  <div>
+                  <div className="form-contact">
                     <h3>Contacto</h3>
                   </div>
                   <CustomInput
                     label="Email"
                     name="email"
                     type="email"
-                    placeholder="Ingresa tu email"
                   />
                   <CustomInput
-                    label="phoneNumber"
+                    label="Número telefónico"
                     name="phoneNumber"
                     type="text"
-                    placeholder="Ingresa tu Telefono"
                   />
                   <CustomInput
-                    label="facebook"
+                    label="Facebook"
                     name="facebook"
                     type="text"
-                    placeholder="Ingresa tu Facebook"
                   />
                   <CustomInput
-                    label="instagram"
+                    label="Instagram"
                     name="instagram"
                     type="text"
-                    placeholder="Ingresa tu instagram"
                   />
-                  <CustomInput label="www:" name="www:" type="text" placeholder="Ingresa tu www:" />
+                  <CustomInput
+                    label="www:"
+                    name="www:"
+                    type="text"
+                  />
                 </Grid>
 
                 <Grid item xs={12} sm={6} md={3}>
+                  <div className="form-password">
+                    <h3>Contraseña</h3>
+                  </div>
                   <CustomInput
-                    label="Password"
+                    label="Contraseña"
                     name="password"
                     type="password"
-                    placeholder="Escribe una contraseña"
                     size="small"
                     autoComplete="new-password"
                   />
                   <CustomInput
-                    label="ConfirmPassword"
+                    label="Confirmar contraseña"
                     name="confirmPassword"
                     type="password"
-                    placeholder="Escribe una contraseña"
                     size="small"
                     autoComplete="new-password"
                   />

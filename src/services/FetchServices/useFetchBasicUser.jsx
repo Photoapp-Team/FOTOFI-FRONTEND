@@ -6,24 +6,36 @@ export default function useFetchBasicUser(userId) {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const { REACT_APP_API_ENDPOINT } = process.env;
-  useEffect(() => {
-    (async function () {
-      try {
-        const token = localStorage.getItem("token");
-        setLoading(true);
-        const response = await axios.get(`${REACT_APP_API_ENDPOINT}/users/basicinfo/${userId}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setData(response.data.data.user);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    })();
-  }, []);
 
-  return { data, error, loading };
+  const [currentUserId, setCurrentUserId] = useState("");
+
+  const updateUser = (userId) => {
+    setCurrentUserId(userId);
+  };
+
+  useEffect(() => {
+    if (userId) {
+      (async function () {
+        try {
+          const token = localStorage.getItem("token");
+          setLoading(true);
+          const response = await axios.get(
+            `${REACT_APP_API_ENDPOINT}/users/basicinfo/${currentUserId}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          setData(response.data.data.user);
+        } catch (err) {
+          setError(err);
+        } finally {
+          setLoading(false);
+        }
+      })();
+    }
+  }, [currentUserId]);
+
+  return { data, error, loading, updateUser };
 }

@@ -29,13 +29,13 @@ export default function PhotographerCard({
 
   return (
     <Card
-      sx={{ minWidth: 200, maxWidth: 250, borderRadius: 2, margin: 2 }}
+      sx={{ minWidth: 250, maxWidth: 250, borderRadius: 2, margin: 2 }}
       elevation={4}
       onClick={handleOnClick}
     >
       <CardHeader
         className="cardHeader"
-        sx={{ p: 0.75 }}
+        sx={{ p: 0.75, minHeight: 60, maxHeight: 60 }}
         avatar={
           isLoaded ? (
             <Avatar alt={name} src={profilePic} />
@@ -85,9 +85,8 @@ export default function PhotographerCard({
       {isLoaded ? (
         <CardMedia
           className="cardCover"
-          sx={{ borderBottomRadius: 3 }}
+          sx={{ borderBottomRadius: 3, minHeight: 194, maxHeight: 194 }}
           component="img"
-          height="194"
           image={coverImg}
           alt="Cover Picture"
         />

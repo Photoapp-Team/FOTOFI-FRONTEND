@@ -7,12 +7,6 @@ export default function useFetchPhotographers() {
   const [loading, setLoading] = useState(false);
   const { REACT_APP_API_ENDPOINT } = process.env;
 
-  const [photographerFilters, setPhotographerFilters] = useState({ photoTags: [] });
-
-  const updatePhotoTags = (photoTags) => {
-    setPhotographerFilters({ ...photographerFilters, photoTags });
-  };
-
   useEffect(() => {
     (async function () {
       try {
@@ -22,13 +16,9 @@ export default function useFetchPhotographers() {
           token = "";
         }
         setLoading(true);
-        const response = await axios.get(`${REACT_APP_API_ENDPOINT}/users`, {
+        const response = await axios.get(`${REACT_APP_API_ENDPOINT}/users?role=Photographer`, {
           headers: {
             Authorization: `Bearer ${token}`,
-          },
-          params: {
-            role: "Photographer",
-            ...photographerFilters,
           },
         });
         setData(response.data.data.users);
@@ -38,7 +28,7 @@ export default function useFetchPhotographers() {
         setLoading(false);
       }
     })();
-  }, [photographerFilters]);
+  }, []);
 
-  return { data, error, loading, updatePhotoTags };
+  return { data, error, loading };
 }
