@@ -9,8 +9,11 @@ import Button from "../../Inputs/Button/Button";
 import useWindowDimensions from "../../../services/useResize";
 import { sendSelectedImages } from "../../../services/sendSelectedImages";
 import { updateSession } from "../../../services/updateSession";
+import { useParams } from "react-router-dom";
 
-export default function ImageContainer({ previewPics, loaded, sessionId, setStatusWorkspace }) {
+export default function ImageContainer({ previewPics, loaded, setStatusWorkspace }) {
+  const params = useParams();
+  const { id } = params;
   const selectedImages = [];
   const { width } = useWindowDimensions();
   const calculateCol = (width) => {
@@ -21,15 +24,17 @@ export default function ImageContainer({ previewPics, loaded, sessionId, setStat
     return integerCol;
   };
 
-  const handleSubmit = () => {
-    sendSelectedImages(selectedImages, sessionId, previewPics);
-    const newValue = {
-      selected: {
-        approved: Date.now(),
-      },
-    };
-    updateSession(sessionId, newValue);
-    setStatusWorkspace("pp");
+  const handleSubmit = async () => {
+    const selected = await sendSelectedImages(selectedImages, id, previewPics);
+    if (selected) {
+      const newValue = {
+        status: {
+          selected: Date.now(),
+        },
+      };
+      const updatedSession = await updateSession(id, newValue);
+      setStatusWorkspace(updatedSession);
+    }
   };
 
   if (loaded) {

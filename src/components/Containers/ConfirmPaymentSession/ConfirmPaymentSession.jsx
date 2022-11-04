@@ -11,8 +11,8 @@ const ConfirmPaymentSession = ({ sessionId, setStatusWorkspace }) => {
         payed: Date.now(),
       },
     };
-    updateSession(sessionId, newValue);
-    setStatusWorkspace("payed");
+    const updatedSession = await updateSession(sessionId, newValue);
+    setStatusWorkspace(updatedSession);
   };
 
   return (

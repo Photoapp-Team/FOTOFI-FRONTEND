@@ -23,8 +23,8 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, stat
           cancelled: Date.now(),
         },
       };
-      updateSession(sessionId, newValue);
-      setStatusWorkspace("cancelled");
+      const updatedSession = await updateSession(sessionId, newValue);
+      setStatusWorkspace(updatedSession);
     }
   };
 
@@ -36,7 +36,7 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, stat
       },
     };
     const updatedSession = await updateSession(sessionId, newValues);
-    setStatusWorkspace("1");
+    setStatusWorkspace(updatedSession);
   };
 
   let fecha = dateFormater(data.startDate);

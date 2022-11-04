@@ -8,9 +8,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Form, Formik } from "formik";
 import { saveAs } from "file-saver";
 import JSZip, { file } from "jszip";
-import FileSaver from "file-saver";
 
-const RateSession = ({ data }) => {
+const RateSession = ({ data, setStatusWorkspace }) => {
   const navigate = useNavigate();
   const params = useParams();
   const { id } = params;
@@ -51,8 +50,10 @@ const RateSession = ({ data }) => {
   };
 
   const onSubmit = async (values) => {
-    rateSession(values, id);
-    navigate("/");
+    const sessionRated = await rateSession(values, id);
+    if (sessionRated) {
+      navigate("/");
+    }
   };
 
   return (
