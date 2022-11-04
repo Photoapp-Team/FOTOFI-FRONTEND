@@ -17,7 +17,6 @@ const RateSession = ({ data }) => {
 
   let zip = new JSZip();
 
-  //   folder.generateAsync({ type: "blob" }).then((content) => saveAs(content, "files"));
   const getFileType = (url) => {
     let fileExtention = /\.[0-9a-z]+$/i;
     let fileExtResult = fileExtention.exec(url);
