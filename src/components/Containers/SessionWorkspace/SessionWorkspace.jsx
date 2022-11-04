@@ -32,6 +32,7 @@ const SessionWorkspace = () => {
 
   if (data && currentUserId === data.photographerId[0]) {
     if (data && sessionUser) {
+      console.log(data);
       const currentStatus = statusFormater(data.status).reverse()[0];
       if (currentStatus === "Solicitada") {
         return (
@@ -97,7 +98,7 @@ const SessionWorkspace = () => {
               </Box>
               <Box sx={{ display: "flex", flexWrap: "wrap" }}>
                 <SessionFinalUpload
-                  id={id}
+                  sessionId={data._id}
                   selectedPics={data.selectedPics}
                   setStatusWorkspace={setStatusWorkspace}
                 />
@@ -177,7 +178,7 @@ const SessionWorkspace = () => {
               <ImageContainer
                 previewPics={data.previewPics}
                 loaded={true}
-                sessionId={data.Id}
+                sessionId={data._id}
                 setStatusWorkspace={setStatusWorkspace}
               />
               ;

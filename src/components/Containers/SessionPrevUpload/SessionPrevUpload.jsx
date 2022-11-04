@@ -2,11 +2,12 @@ import React from "react";
 import Typography from "@mui/material/Typography";
 import { Form, Formik } from "formik";
 import { uploadSessionPhotos } from "../../../services/uploadSessionPhotos";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ImageUpload from "../../../services/ImageUpload";
 import Button from "../../Inputs/Button/Button";
 import { Backdrop, Box, Fade, Modal } from "@mui/material";
 import { useState } from "react";
+import { updateSession } from "../../../services/updateSession";
 
 const style = {
   position: "absolute",
@@ -20,22 +21,30 @@ const style = {
   p: 4,
 };
 
-const SessionPrevUpload = ({ id, setStatusWorkspace }) => {
+const SessionPrevUpload = ({ setStatusWorkspace, sessionId }) => {
+  const params = useParams();
+  const { id } = params;
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const onClick = () => {
+    setStatusWorkspace("updatedSession");
+  };
+
   const onSubmit = async (values) => {
     const { REACT_APP_API_ENDPOINT } = process.env;
     const sessionUrl = `${REACT_APP_API_ENDPOINT}/upload/sessions/prev/${id}`;
-    const newValues = {
-      ...values,
-      status: {
-        prevUploaded: Date.now(),
-      },
-    };
-    uploadSessionPhotos(sessionUrl, newValues);
-    setStatusWorkspace("t");
+    const updatedSessionPhotos = await uploadSessionPhotos(sessionUrl, values);
+    if (updatedSessionPhotos) {
+      const newValues = {
+        status: {
+          preUploaded: Date.now(),
+        },
+      };
+      const updatedSession = await updateSession(sessionId, newValues);
+      setStatusWorkspace(updatedSession);
+    }
   };
 
   return (
@@ -88,6 +97,14 @@ const SessionPrevUpload = ({ id, setStatusWorkspace }) => {
                     <Typography id="transition-modal-description" sx={{ mt: 2 }}>
                       Tus fotos se subieron con éxito
                     </Typography>
+                    <Button
+                      onClick={onClick}
+                      sx={{ mb: 25 }}
+                      disabled={isSubmitting}
+                      text={"Aceptar"}
+                      className={"button-basic-registration"}
+                      name={"Aceptar"}
+                    />
                   </Box>
                 </Fade>
               </Modal>

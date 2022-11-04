@@ -18,16 +18,16 @@ const ApproveSession = ({ data, sessionId, setStatusWorkspace }) => {
           approved: Date.now(),
         },
       };
-      updateSession(sessionId, newValue);
-      setStatusWorkspace("fg");
+      const updatedSession = await updateSession(sessionId, newValue);
+      setStatusWorkspace(updatedSession);
     } else if (value === "reject") {
       const newValue = {
         status: {
           cancelled: Date.now(),
         },
       };
-      updateSession(sessionId, newValue);
-      setStatusWorkspace("dd");
+      const updatedSession = await updateSession(sessionId, newValue);
+      setStatusWorkspace(updatedSession);
     }
   };
 

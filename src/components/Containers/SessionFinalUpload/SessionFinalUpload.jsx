@@ -11,6 +11,8 @@ import { Form, Formik } from "formik";
 import { uploadSessionPhotos } from "../../../services/uploadSessionPhotos";
 import Button from "../../Inputs/Button/Button";
 import "./SessionFinalUpload.css";
+import { useParams } from "react-router-dom";
+import { updateSession } from "../../../services/updateSession";
 
 const thumb = {
   display: "flex",
@@ -31,17 +33,22 @@ const img = {
   overflow: "hidden",
 };
 
-const SessionFinalUpload = ({ selectedPics, id, setStatusWorkspace }) => {
+const SessionFinalUpload = ({ selectedPics, sessionId, setStatusWorkspace }) => {
+  const params = useParams();
+  const { id } = params;
   const onSubmit = async (values) => {
     const { REACT_APP_API_ENDPOINT } = process.env;
     const sessionUrl = `${REACT_APP_API_ENDPOINT}/upload/sessions/final/${id}`;
-    const newValues = {
-      status: {
-        delivered: Date.now(),
-      },
-    };
-    uploadSessionPhotos(sessionUrl, newValues);
-    setStatusWorkspace("s");
+    const updatedSessionPhotos = await uploadSessionPhotos(sessionUrl, values);
+    if (updatedSessionPhotos) {
+      const newValues = {
+        status: {
+          delivered: Date.now(),
+        },
+      };
+      const updatedSession = await updateSession(sessionId, newValues);
+      setStatusWorkspace(updatedSession);
+    }
   };
   return (
     <>
