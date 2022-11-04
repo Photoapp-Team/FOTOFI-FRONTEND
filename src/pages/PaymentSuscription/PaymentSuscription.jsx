@@ -2,6 +2,8 @@ import { CheckOutlined } from '@mui/icons-material';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import "./PaymentSuscription.css";
+import imgpremium from "../../images/imgpremium";
+
 
 const { REACT_APP_API_ENDPOINT } = process.env;
 const { REACT_APP_PRODUCT_KEY} = process.env;
@@ -24,6 +26,7 @@ const ProductDisplay = ({id}) => (
   <section>
     <div>
       <div className= "box-suscription">
+        <img src= {imgpremium}/>
         <h2>Orden de Compra</h2>
         <h5>Suscripción</h5>  
         <h2>$150.00 / mensual</h2>
@@ -45,7 +48,7 @@ const SuccessDisplay = ({ sessionId, id }) => {
   return (
     <section>
       <div className="product Box-root">
-        <Logo />
+        <img src="./images/imgpremium.png" />
         <div className="description Box-root">
           <h3>La Suscripción se a activado con éxito!</h3>
         </div>
@@ -57,9 +60,11 @@ const SuccessDisplay = ({ sessionId, id }) => {
           name="session_id"
           value={sessionId}
         />
-        <button id="checkout-and-portal-button" type="submit">
-          Gestiona tu información de facturación
-        </button>
+        <button 
+          type="submit"
+          id="checkout-and-portal-button"
+          className={"button-login"}
+        >VERIFICAR</button>
       </form>
     </section>
   );
