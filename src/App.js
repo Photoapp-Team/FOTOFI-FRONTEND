@@ -15,7 +15,7 @@ import SelectionPage from "./pages/SelectionPage";
 import SessionPage from "./pages/SessionPage/SessionPage";
 import RatePage from "./pages/RatePage/RatePage";
 import EditProfile from "./pages/EditProfilePage/EditProfilePage";
-import Navbar from "./components/Navbar";
+import Meganav from "./components/Meganav";
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import PaymentPage from "./pages/PaymentPage/PaymentPage";

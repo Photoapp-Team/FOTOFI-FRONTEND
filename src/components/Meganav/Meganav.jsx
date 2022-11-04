@@ -6,10 +6,10 @@ import Button from "@mui/material/Button";
 import Fotofilogo from "../../images/fotofi.png";
 import SearchBar from "../SearchBar/Search";
 import { useUser } from "../../contexts/UserContext";
-import "./Navbar.css";
+import "./Meganav.css";
 import ProfileMenu from "../Inputs/ProfileMenu";
 
-function Navbar() {
+function Meganav() {
   const { isUserLoggedIn, user } = useUser();
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -77,4 +77,4 @@ function Navbar() {
     </AppBar>
   );
 }
-export default Navbar;
+export default Meganav;
