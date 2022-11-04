@@ -31,7 +31,7 @@ export const createPhotographer = async (values) => {
     lastname,
     email,
     password,
-    gender: "o",
+    gender: "",
     profilePic,
     role: "Photographer",
     premium: { isPremiun: false },

@@ -17,11 +17,14 @@ export default function useFetchMySessions() {
           userId = JSON.parse(atob(payload)).id;
         }
         setLoading(true);
-        const response = await axios.get(`${REACT_APP_API_ENDPOINT}/sessions/userId/${userId}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axios.get(
+          `${REACT_APP_API_ENDPOINT}/sessions/userId/${userId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         setData(response.data.data.sessions);
       } catch (err) {
         setError(err);

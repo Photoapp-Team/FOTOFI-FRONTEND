@@ -23,6 +23,7 @@ const RateSession = ({ data, setStatusWorkspace }) => {
     return fileExtResult;
   };
   const onClick = async () => {
+
     let imgUrl = [];
     let imageBlob = [];
 

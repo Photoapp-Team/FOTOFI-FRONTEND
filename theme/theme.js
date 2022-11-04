@@ -1,5 +1,5 @@
 const theme = createTheme({
-  status: {
-    danger: "#f5ff00",
-  },
+    status: {
+        danger: "#f5ff00",
+    },
 });

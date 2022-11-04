@@ -95,6 +95,7 @@ const UserContextProvider = ({ children }) => {
       if (userData) {
         setUser(userData.data);
         localStorage.setItem("userId", userData.data.user._id);
+        setUserId(userData.data.user._id);
         setLogStatus(true);
         redirecTo(automaticRedirectionUrl);
       }
