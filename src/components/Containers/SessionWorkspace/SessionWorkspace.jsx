@@ -32,7 +32,6 @@ const SessionWorkspace = () => {
 
   if (data && currentUserId === data.photographerId[0]) {
     if (data && sessionUser) {
-      console.log(data);
       const currentStatus = statusFormater(data.status).reverse()[0];
       if (currentStatus === "Solicitada") {
         return (
