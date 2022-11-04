@@ -23,10 +23,12 @@ const SessionWorkspace = () => {
   const { id } = params;
   const { REACT_APP_API_ENDPOINT } = process.env;
   const url = `${REACT_APP_API_ENDPOINT}/sessions/session/${id}`;
-  const { data, sessionUser } = useFetchUniqueSession(url);
+  const { data, sessionUser, refreshData } = useFetchUniqueSession(url);
   const currentUserId = localStorage.getItem("userId");
 
-  useEffect(() => {}, [statusWorkspace]);
+  useEffect(() => {
+    refreshData();
+  }, [statusWorkspace]);
 
   if (data && currentUserId === data.photographerId[0]) {
     if (data && sessionUser) {
@@ -78,7 +80,7 @@ const SessionWorkspace = () => {
                   currentStatus={currentStatus}
                 />
               </Box>
-              <SessionPrevUpload id={id} />
+              <SessionPrevUpload sessionId={data._id} setStatusWorkspace={setStatusWorkspace} />
             </Box>
           </>
         );
@@ -139,7 +141,7 @@ const SessionWorkspace = () => {
         );
       }
     }
-  } else if (data && data.userId[0] === data.userId[0]) {
+  } else if (data && currentUserId === data.userId[0]) {
     if (data && sessionUser) {
       const currentStatus = statusFormater(data.status).reverse()[0];
       if (currentStatus === "Programada") {
