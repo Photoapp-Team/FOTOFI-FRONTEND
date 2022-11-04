@@ -57,7 +57,7 @@ const App = () => {
         <UserContextProvider>
           <div>
             <>
-              <Navbar />
+              <Meganav />
               <Routes>
                 <Route path="/Registration" element={<RegistrationPage />}></Route>
                 <Route path="/Login" element={<LoginPage />}></Route>
