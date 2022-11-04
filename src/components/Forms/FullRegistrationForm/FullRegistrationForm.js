@@ -12,7 +12,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import "./FullRegistrationForm.css";
 
 const onSubmit = async (values, actions) => {
-  console.log("values", values);
   await new Promise((resolve) => setTimeout(resolve, 1000));
   actions.resetForm();
 };
