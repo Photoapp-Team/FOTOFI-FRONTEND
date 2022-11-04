@@ -7,7 +7,7 @@ import CustomInput from "../../Inputs/CustomInput";
 import { editSchema } from "../../schemas/index";
 import Button from "../../Inputs/Button/Button";
 import { updateUser } from "../../../services/updateUser";
-//import { useUser } from "../../../contexts/UserContext";
+import { useUser } from "../../../contexts/UserContext";
 import ImageUpload from "../../../services/ImageUpload/ImageUpload"
 import useFetchUser from "../../../services/FetchServices/useFetchUser";
 import { useNavigate, useParams } from "react-router-dom";
@@ -17,10 +17,12 @@ import { updateProfilePic } from "../../../services/updateProfilePhotos";
 
 const EditProfileForm = () => {
   const navigate = useNavigate();
+  const use = useUser();
+  console.log(use, "use");
   const params = useParams();
   const { id } = params
   const { REACT_APP_API_ENDPOINT } = process.env
-  const URL = `${REACT_APP_API_ENDPOINT}/users/6350b364ada26911fb09a1a7`
+  const URL = `${REACT_APP_API_ENDPOINT}/users/${id}`
   const { data } = useFetchUser(URL)
   const handleOnSubmit = (values, actions) => {
     console.log(values, actions)
@@ -57,12 +59,16 @@ const EditProfileForm = () => {
                 lastname: `${user.lastname}`,
                 password: `${user.password}`,
                 city: `${user.location.city}`,
+                state: `${user.location.state}`,
+                country: `${user.location.country}`,
                 suburb: `${user.location.suburb}`,
                 street: `${user.location.street}`,
                 number: `${user.location.number}`,
                 zipCode: `${user.location.zipCode}`,
                 phoneNumber: `${user.phoneNumber}`,
-                // webPage: `${user.data.webPage}`,
+                // facebook: `${user.socialNetwork.facebook}`,
+                // instagram: `${user.socialNetwork.instagram}`,
+                // www: `${user.socialNetwork.www}`,
               }}
               validationSchema={editSchema}
               onSubmit={handleOnSubmit}
@@ -71,7 +77,7 @@ const EditProfileForm = () => {
                 <Form className="container-edit-profile">
                   <br />
                   <ImageUpload
-                    phrase={"Arrastra tu foto de portada aqui o haz click"}
+                    phrase={"Arrastra la nueva foto de perfil"}
                     classbox={"boxAddservice2"}
                     classpaper={"paperAddservice2"}
                     name="profilePic"
@@ -79,7 +85,7 @@ const EditProfileForm = () => {
                     fieldName={"profilePic"}
                   />
                   <ImageUpload
-                    phrase={"Arrastra tu foto de portada aqui o haz click"}
+                    phrase={"Arrastra tú nueva foto de portada"}
                     classbox={"boxAddservice2"}
                     classpaper={"paperAddservice2"}
                     name="coverPhoto"
@@ -107,6 +113,16 @@ const EditProfileForm = () => {
                     type="text"
                   />
                   <CustomInput
+                    label="State"
+                    name="state"
+                    type="text"
+                  />
+                  <CustomInput
+                    label="Country"
+                    name="country"
+                    type="text"
+                  />
+                  <CustomInput
                     label="Suburb"
                     name="suburb"
                     type="text"
@@ -131,12 +147,21 @@ const EditProfileForm = () => {
                     name="phoneNumber"
                     type="number"
                   />
-                  {/* <CustomInput
-                    label="Página Web"
-                    name="webPage"
+                  <CustomInput
+                    label="facebook"
+                    name="facebook"
                     type="text"
-                  /> */}
-                  {/* <input type="submit" value="enviar" /> */}
+                  />
+                  <CustomInput
+                    label="instagram"
+                    name="instagram"
+                    type="text"
+                  />
+                  <CustomInput
+                    label="www"
+                    name="www"
+                    type="text"
+                  />
                   <Button
                     disabled={isSubmitting}
                     type="submit"

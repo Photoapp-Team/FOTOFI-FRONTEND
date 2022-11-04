@@ -87,7 +87,7 @@ const PhotographerRegistrationForm = () => {
                     label="Country"
                     name="country"
                     type="text"
-                    placeholder="Ingresa tu Pais"
+                    placeholder="Ingresa tu País"
                   />
                   <CustomInput
                     label="City"
@@ -99,7 +99,7 @@ const PhotographerRegistrationForm = () => {
                     label="State"
                     name="state"
                     type="text"
-                    placeholder="Ingresa tu estado"
+                    placeholder="Ingresa tu Estado"
                   />
                   <CustomInput
                     label="Suburb"
