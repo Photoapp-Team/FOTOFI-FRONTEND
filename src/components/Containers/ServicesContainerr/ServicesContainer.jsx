@@ -5,7 +5,7 @@ import AddServiceCard from "../../Cards/AddServiceCard";
 import PackageCard from "../../Cards/PackageCard/PackageCard";
 import { useNavigate, useParams } from "react-router-dom";
 
-const ServicesContainer = ({ isOwner }) => {
+const ServicesContainer = ({ isOwner, role }) => {
   const params = useParams();
   const { id } = params;
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ const ServicesContainer = ({ isOwner }) => {
             />
           );
         })}
-      {isOwner ? <AddServiceCard /> : <></>}
+      {isOwner && role === "Photographer" ? <AddServiceCard /> : <></>}
     </Box>
   );
 };
