@@ -11,6 +11,8 @@ import Paper from "@mui/material/Paper";
 import { useNavigate } from "react-router-dom";
 import Button from "../../Inputs/Button/Button";
 import { createPhotographer } from "../../../services/registerPhotographer";
+import { ReactComponent as ReactLogo } from "../../../assets/Logo/Logo.svg";
+
 
 const PhotographerRegistrationForm = () => {
   const navigate = useNavigate();
@@ -28,6 +30,7 @@ const PhotographerRegistrationForm = () => {
       {({ isSubmitting }) => (
         <Form className="form-container">
           <Container>
+            <ReactLogo className="photographer-registration-logo" color="black" />
             <Paper elevation={8}>
               <Grid
                 className="main-container"
