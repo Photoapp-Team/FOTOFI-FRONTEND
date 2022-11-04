@@ -101,3 +101,49 @@
   justify-content: flex-start;
   align-items: center;
 }
+
+.boxSession {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1;
+  width: 95%;
+  height: auto;
+  min-height: 30vh;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.paperSession {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1;
+  width: 95%;
+  height: auto;
+  min-height: 30vh;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.boxSessionFinal {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1;
+  width: 95%;
+  min-width: 20vw;
+  height: auto;
+  min-height: 30vh;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.paperSessionFinal {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1;
+  width: 95%;
+  min-width: 95%;
+  height: auto;
+  min-height: 30vh;
+  justify-content: flex-start;
+  align-items: center;
+}

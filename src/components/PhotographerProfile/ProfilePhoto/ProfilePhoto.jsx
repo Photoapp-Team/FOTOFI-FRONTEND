@@ -1,10 +1,15 @@
-import React from 'react'
-import './ProfilePhoto.css'
+import { Box } from "@mui/material";
+import React from "react";
+import "./ProfilePhoto.css";
 
-const ProfilePhoto = ({profilePic}) => {
+const ProfilePhoto = ({ profilePic, photoclass }) => {
   return (
-    <div className="profilepic"><img src={profilePic} /></div>
-  )
-}
+    <Box className={photoclass}>
+      <img src={profilePic} />
+    </Box>
+  );
+};
+
+export default ProfilePhoto;
 
 export default ProfilePhoto 

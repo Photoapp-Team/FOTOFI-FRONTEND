@@ -19,15 +19,18 @@ const CssTextField = styled(TextField)({
     // Border color when hovered
     "&:hover fieldset": {
       borderColor: "#42B7D0",
-      border: "2px solid #42B7D0",
+      border: "1px solid #42B7D0",
     },
     // Border color when clicking the input
     "&.Mui-focused fieldset": {
       borderColor: "#023E8A",
-      border: "3px solid #42B7D0",
+      border: "1px solid #42B7D0",
     },
     "&.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root": {
       color: "#023E8A",
+    },
+    "& input::placeholder": {
+      fontSize: "5px",
     },
   },
 });

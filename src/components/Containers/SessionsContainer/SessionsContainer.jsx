@@ -3,7 +3,7 @@ import "./SessionsContainer.css";
 import SessionCard from "../../Cards/SessionCard/SessionCard";
 import { Grid } from "@mui/material";
 import Container from "@mui/material/Container";
-import useFetchMySessions from "../../../services/useFetchMySessions";
+import useFetchMySessions from "../../../services/FetchServices/useFetchMySessions";
 
 export default function SessionsContainer({ id }) {
   var mySessions = useFetchMySessions();

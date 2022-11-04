@@ -1,18 +1,25 @@
-import ButtonAppBar from "./components/NavBar/NavBar";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import UserContextProvider from "./contexts/UserContext";
 import MainPage from "./pages/MainPage/MainPage";
-import FullRegistrationPage from "./pages/FullRegistrationPage/FullRegistrationPage";
-import BasicRegistrationPage from "./pages/BasicRegistrationPage/BasicRegistrationPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { green, purple, yellow, grey, red, blue, cyan } from "@mui/material/colors";
 import "@fontsource/raleway"; // Defaults to weight 400.
+import SuscriptionPage from "./pages/PaymentSuscription/PaymentSuscription";
 import PackageDetailPage from "./pages/PackageDetailPage/PackageDetailPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import AddServicePage from "./pages/AddServicePage/AddServicePage";
 import NewSessionPage from "./pages/NewSessionPage/NewSessionPage";
+import SelectionPage from "./pages/SelectionPage";
+import SessionPage from "./pages/SessionPage/SessionPage";
+import RatePage from "./pages/RatePage/RatePage";
+import EditProfile from "./pages/EditProfilePage/EditProfilePage";
+import Navbar from "./components/Navbar";
+import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
+import LandingPage from "./pages/LandingPage/LandingPage";
+import PaymentPage from "./pages/PaymentPage/PaymentPage";
+import PaymentSuscription from "./pages/PaymentSuscription/PaymentSuscription";
 
 const theme = createTheme({
   typography: {
@@ -50,17 +57,23 @@ const App = () => {
         <UserContextProvider>
           <div>
             <>
-              <ButtonAppBar />
+              <Navbar />
               <Routes>
-                <Route path="/FullRegistration" element={<FullRegistrationPage />}></Route>
-                <Route path="/BasicRegistration" element={<BasicRegistrationPage />}></Route>
+                <Route path="/Registration" element={<RegistrationPage />}></Route>
                 <Route path="/Login" element={<LoginPage />}></Route>
                 <Route path="/" element={<MainPage />}></Route>
                 <Route path="/Profile" element={<ProfilePage />}></Route>
                 <Route path="/Profile/:id" element={<ProfilePage />}></Route>
-                <Route path="/PackageDetail/:id" element={<PackageDetailPage />}></Route>
+                <Route path="/Package/:id" element={<PackageDetailPage />}></Route>
                 <Route path="/AddService" element={<AddServicePage />}></Route>
                 <Route path="/NewSession/:id" element={<NewSessionPage />}></Route>
+                <Route path="/Selection/:id" element={<SelectionPage />}></Route>
+                <Route path="/Session/:id" element={<SessionPage />}></Route>
+                <Route path="/Rate/:id" element={<RatePage />}></Route>
+                <Route path="/EditProfile" element={<EditProfile />}></Route>
+                <Route path="/Landing" element={<LandingPage />}></Route>
+                <Route path="/Payment/:id" element={<PaymentPage />}></Route>
+                <Route path="/Suscription/:id" element={<PaymentSuscription />}></Route>
               </Routes>
             </>
           </div>

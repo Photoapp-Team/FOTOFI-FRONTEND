@@ -1,7 +1,6 @@
 import { Box, Paper } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import Button from "../../components/Inputs/Button/Button";
 import "./ImageUpload.css";
 
 const thumbsContainer = {
@@ -50,7 +49,6 @@ const ImageUpload = ({ phrase, classbox, classpaper, setFieldValue, fieldName })
           })
         )
       );
-      // if (setCoverPhoto) setCoverPhoto(acceptedFiles[0]);
       setFieldValue(fieldName, acceptedFiles);
     },
   });
@@ -76,8 +74,8 @@ const ImageUpload = ({ phrase, classbox, classpaper, setFieldValue, fieldName })
   }, []);
 
   return (
-    <Box className={classbox}>
-      <Paper elevation={3} className={classpaper}>
+    <Box className={classbox} sx={{ borderRadius: "16px" }}>
+      <Paper elevation={3} className={classpaper} sx={{ borderRadius: "16px" }}>
         <div className="dropzone">
           <div {...getRootProps({ className: "dropzone" })}>
             <input {...getInputProps()} />

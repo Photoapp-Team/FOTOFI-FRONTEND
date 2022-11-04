@@ -15,6 +15,7 @@ export default function PhotographerCard({
   name,
   coverImg,
   ranking,
+  rankingCount,
   profilePic,
   location,
   isLoaded,
@@ -34,7 +35,7 @@ export default function PhotographerCard({
     >
       <CardHeader
         className="cardHeader"
-        sx={{ p: 0.75 }}
+        sx={{ p: 0.75, minHeight: 60, maxHeight: 60 }}
         avatar={
           isLoaded ? (
             <Avatar alt={name} src={profilePic} />
@@ -61,6 +62,19 @@ export default function PhotographerCard({
               }
               align="center"
             />
+            <Typography
+              sx={{ p: 0.75 }}
+              variant="caption"
+              component="div"
+              children={
+                isLoaded ? (
+                  `(${rankingCount})`
+                ) : (
+                  <Skeleton variant="text" width="20px" sx={{ fontSize: ".75rem" }} />
+                )
+              }
+              align="center"
+            />
             <div className="starIconContainer">
               <StarTwoToneIcon className="StarIcon" />
             </div>
@@ -71,9 +85,8 @@ export default function PhotographerCard({
       {isLoaded ? (
         <CardMedia
           className="cardCover"
-          sx={{ borderBottomRadius: 3 }}
+          sx={{ borderBottomRadius: 3, minHeight: 194, maxHeight: 194 }}
           component="img"
-          height="194"
           image={coverImg}
           alt="Cover Picture"
         />

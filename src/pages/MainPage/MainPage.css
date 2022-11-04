@@ -12,6 +12,9 @@
   width: 100vw;
 }
 
-.filterContainer {
-  background-color: #ccd1d1;
+.filter-container {
+  background-color: #36949423;
+}
+.main-page-container {
+  padding-top: 0 !important;
 }
