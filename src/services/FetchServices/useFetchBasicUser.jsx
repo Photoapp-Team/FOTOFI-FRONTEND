@@ -6,6 +6,16 @@ export default function useFetchBasicUser(userId) {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const { REACT_APP_API_ENDPOINT } = process.env;
+<<<<<<< Updated upstream
+=======
+
+  const [currentUserId, setCurrentUserId] = useState("");
+
+  const updateUser = (userId) => {
+    setCurrentUserId(userId);
+  };
+
+>>>>>>> Stashed changes
   useEffect(() => {
     (async function () {
       try {

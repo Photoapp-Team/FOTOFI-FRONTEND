@@ -37,7 +37,6 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, stat
     };
     const updatedSession = updateSession(sessionId, newValues);
     setStatusWorkspace("1");
-    console.log({ statusWorkspace });
   };
 
   let fecha = dateFormater(data.startDate);

@@ -35,7 +35,11 @@ export default function ServiceCard({ service, img, isLoaded, withFooter, minPri
     <>
       <Card
         className={selected}
+<<<<<<< Updated upstream
         sx={{ maxWidth: 120, borderRadius: 2, minWidth: 90, margin: 2 }}
+=======
+        sx={{ maxWidth: 120, borderRadius: 2, minWidth: 90, margin: { xs: 0.5, md: 1 } }}
+>>>>>>> Stashed changes
         elevation={elevation}
         onClick={handleOnClick}
       >

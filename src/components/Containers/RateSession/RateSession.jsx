@@ -18,7 +18,6 @@ const RateSession = ({ data }) => {
   const zip = new JSZip();
 
   const onClick = async () => {
-    console.log({ data });
     // const img = zip.folder("images");
     // data.finalPics.map((file) => {
     //   img.file(`${file.name}`, file, { base64: true });
@@ -27,7 +26,6 @@ const RateSession = ({ data }) => {
     //   });
     //   return;
     // });
-
     // FileSaver.saveAs("https://httpbin.org/image", "image.jpg");
   };
 
