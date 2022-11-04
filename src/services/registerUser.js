@@ -11,6 +11,7 @@ export const createBasicUser = async (values) => {
     email,
     password,
     role: "User",
+    premium: { isPremium: false },
   };
 
   const response = await fetch(`${USER_URL}`, {

@@ -17,9 +17,14 @@ const UserContextProvider = ({ children }) => {
     if (localStorage.getItem("token")) {
       setToken(localStorage.getItem("token"));
       setUserId(localStorage.getItem("userId"));
-      automaticFetchMyUser();
     }
   }, []);
+
+  useEffect(() => {
+    if (token && userId) {
+      automaticFetchMyUser();
+    }
+  }, [token, userId]);
 
   const redirecTo = (url) => {
     if (url === "") {
@@ -40,6 +45,7 @@ const UserContextProvider = ({ children }) => {
     });
     const userData = await userResponse.json();
 
+    console.log("USERDATA:", userData);
     if (!userData) {
       setToken(localStorage.removeItem("token"));
       setUserId(localStorage.removeItem("userId"));
