@@ -29,7 +29,7 @@ export default function PhotographerCard({
 
   return (
     <Card
-      sx={{ minWidth: 250, maxWidth: 250, borderRadius: 2, margin: 2 }}
+      sx={{ minWidth: 200, maxWidth: 250, borderRadius: 2, margin: 2 }}
       elevation={4}
       onClick={handleOnClick}
     >

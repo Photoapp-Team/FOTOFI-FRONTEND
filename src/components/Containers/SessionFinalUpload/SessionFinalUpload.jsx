@@ -31,13 +31,17 @@ const img = {
   overflow: "hidden",
 };
 
-const SessionFinalUpload = ({ selectedPics, id }) => {
+const SessionFinalUpload = ({ selectedPics, id, setStatusWorkspace }) => {
   const onSubmit = async (values) => {
     const { REACT_APP_API_ENDPOINT } = process.env;
     const sessionUrl = `${REACT_APP_API_ENDPOINT}/upload/sessions/final/${id}`;
-
-    uploadSessionPhotos(sessionUrl, values);
-    // navigate(`/Profile/${id}`);
+    const newValues = {
+      status: {
+        delivered: Date.now(),
+      },
+    };
+    uploadSessionPhotos(sessionUrl, newValues);
+    setStatusWorkspace("s");
   };
   return (
     <>

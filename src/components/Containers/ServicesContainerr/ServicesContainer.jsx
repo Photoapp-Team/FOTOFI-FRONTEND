@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import usePackage from "../../../hooks/usePackage";
 import AddServiceCard from "../../Cards/AddServiceCard";
-import ServiceCard from "../../Cards/ServiceCard/ServiceCard";
+import PackageCard from "../../Cards/PackageCard/PackageCard";
 import { useNavigate, useParams } from "react-router-dom";
 
 const ServicesContainer = ({ isOwner }) => {
@@ -18,7 +18,7 @@ const ServicesContainer = ({ isOwner }) => {
       {data &&
         data.map((pack, index) => {
           return (
-            <ServiceCard
+            <PackageCard
               key={index}
               img={pack.coverPhoto}
               withFooter={false}
