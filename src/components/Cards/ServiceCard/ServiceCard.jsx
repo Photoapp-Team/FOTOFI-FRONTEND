@@ -8,6 +8,7 @@ import { CardActionArea } from "@mui/material";
 import Skeleton from "@mui/material/Skeleton";
 import ServiceCardFooter from "../ServiceCardFooter";
 import { useUser } from "../../../contexts/UserContext";
+import Alert from "../../../services/Alerts/makeAlerts";
 
 export default function ServiceCard({ service, img, isLoaded, withFooter, minPrice, editMode }) {
   const [elevation, setElevation] = React.useState(0);

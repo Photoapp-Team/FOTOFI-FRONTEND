@@ -1,5 +1,6 @@
 import React, { useState, createContext, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import makeAlert from "../services/Alerts/makeAlerts";
 export const UserContext = createContext();
 
 const UserContextProvider = ({ children }) => {
@@ -93,6 +94,7 @@ const UserContextProvider = ({ children }) => {
       const userData = await userResponse.json();
 
       if (userData) {
+        makeAlert("Session iniciada con exito", "success");
         setUser(userData.data);
         localStorage.setItem("userId", userData.data.user._id);
         setUserId(userData.data.user._id);
@@ -103,6 +105,7 @@ const UserContextProvider = ({ children }) => {
   };
 
   const logout = () => {
+    makeAlert("Session cerrada", "error");
     setUser({});
     setLogStatus(false);
     localStorage.removeItem("token");
