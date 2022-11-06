@@ -13,6 +13,7 @@ import { useUser } from "../../contexts/UserContext";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { dateFormater } from "../../services/dateFormater";
+import Typography from "@mui/material/Typography";
 
 const NewSessionPage = () => {
   const MySwal = withReactContent(Swal);
@@ -58,6 +59,15 @@ const NewSessionPage = () => {
 
   return (
     <Container className="mainContainer" maxWidth="md" sx={{ p: 4 }}>
+      <Typography
+        sx={{ px: 4, pt: 2 }}
+        className="filterTitle"
+        variant="h4"
+        component="div"
+        children="Selecciona una fecha para agendar tu sessión"
+        align="center"
+        boxSizing="content-box"
+      />
       <Grid container spacing={2} justifyContent="center" alignItems="center">
         <Grid item xs={12} md={8}>
           <Calendar onChange={onChange} value={startDate} />
