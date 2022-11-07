@@ -18,8 +18,7 @@ const RatePage = () => {
   const { id } = params;
 
   const onSubmit = async (values) => {
-    console.log(values);
-    Swal.fire({
+    MySwal.fire({
       title: `Confirma tu calificación! `,
       icon: `question`,
       showCancelButton: true,

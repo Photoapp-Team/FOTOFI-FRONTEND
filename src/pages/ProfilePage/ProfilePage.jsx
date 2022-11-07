@@ -10,21 +10,34 @@ import "./ProfilePage.css";
 import ProfileDetailCard from "../../components/Cards/ProfileDetailCard/ProfileDetailCard";
 
 const ProfilePage = () => {
-  const { user } = useUser();
   const params = useParams();
   const { id } = params;
   const { REACT_APP_API_ENDPOINT } = process.env;
   const UserUrl = `${REACT_APP_API_ENDPOINT}/users/${id}`;
   const { data, loading, error } = useFetch(UserUrl);
   const [isOwner, setIsOwner] = useState(false);
+  const [isPremium, setIsPremium] = useState(false);
+  const [isPhotographer, setIsPhotographer] = useState(false);
   const userId = localStorage.getItem("userId");
   useEffect(() => {
-    if (userId === id) setIsOwner(true);
-    else setIsOwner(false);
-  }, []);
+    if (userId === id) {
+      setIsOwner(true);
+    } else {
+      setIsOwner(false);
+    }
+    if (data?.role === "Photographer") {
+      setIsPhotographer(true);
+    } else {
+      setIsPhotographer(false);
+    }
+    if (data?.premium?.isPremium) {
+      setIsPremium(true);
+    } else {
+      setIsPremium(false);
+    }
+  }, [userId, id, data]);
 
   if (data?.name) {
-    console.log("DATAENPROF", data);
     return (
       <>
         <Box>
@@ -38,7 +51,13 @@ const ProfilePage = () => {
             md={3}
             sx={{ display: "flex", justifyContent: "center", alignItems: "flex-start" }}
           >
-            <ProfileDetailCard userData={data} role={data.role} />
+            <ProfileDetailCard
+              userData={data}
+              role={data.role}
+              isOwner={isOwner}
+              isPhotographer={isPhotographer}
+              isPremium={isPremium}
+            />
           </Grid>
 
           <Grid item className="main-section-container" sx={{}} xs={12} md={8}>

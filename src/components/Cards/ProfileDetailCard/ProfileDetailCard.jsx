@@ -4,11 +4,8 @@ import { Paper } from "@mui/material";
 import IdentityCard from "../IdentityCard/IdentityCard";
 import ConctactCard from "../ContactCard/ContactCard";
 import SpecialityCard from "../SpecialityCard/SpecialityCardCard";
-import { useNavigate } from "react-router-dom";
-import Button from "../../Inputs/Button/Button";
 
-export default function ProfileDetailCard({ userData, role }) {
-  const navigate = useNavigate();
+export default function ProfileDetailCard({ userData, role, isOwner, isPhotographer, isPremium }) {
   let haveTags = null;
   if (userData?.photoTags?.length > 0) {
     haveTags = true;
@@ -16,17 +13,31 @@ export default function ProfileDetailCard({ userData, role }) {
     haveTags = false;
   }
 
-  if (userData?.name) {
+  if (isPhotographer) {
     return (
       <Paper className="profile-info-container" sx={{ width: 320, minHeight: 400 }} elevation={7}>
-        <IdentityCard userData={userData} role={role} />
+        <IdentityCard
+          userData={userData}
+          role={role}
+          isPremium={isPremium}
+          isOwner={isOwner}
+          isPhotographer={true}
+        />
 
-        {userData.role === "Photographer" ? <ConctactCard userData={userData} /> : <></>}
-        {userData.role === "Photographer" && haveTags ? (
-          <SpecialityCard userData={userData} />
-        ) : (
-          <></>
-        )}
+        <ConctactCard userData={userData} />
+        {haveTags ? <SpecialityCard userData={userData} /> : <></>}
+      </Paper>
+    );
+  } else {
+    return (
+      <Paper className="profile-info-container" sx={{ width: 320, minHeight: 400 }} elevation={7}>
+        <IdentityCard
+          userData={userData}
+          role={role}
+          isPremium={false}
+          isOwner={isOwner}
+          isPhotographer={false}
+        />
       </Paper>
     );
   }

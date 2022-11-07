@@ -1,13 +1,10 @@
 import * as React from "react";
 import "./SpecialityCard.css";
-import { Card, Grid, Typography } from "@mui/material";
-import { useUser } from "../../../contexts/UserContext";
+import { Card, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import Button from "../../Inputs/Button/Button";
 export default function SpecialityCard({ userData }) {
   const { premium, photoTags } = userData;
-  const { user } = useUser();
-  console.log(user);
   if (premium.isPremium) {
     return (
       <>

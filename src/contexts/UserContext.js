@@ -47,7 +47,6 @@ const UserContextProvider = ({ children }) => {
     });
     const userData = await userResponse.json();
 
-    console.log("USERDATA:", userData);
     if (!userData) {
       setToken(localStorage.removeItem("token"));
       setUserId(localStorage.removeItem("userId"));
