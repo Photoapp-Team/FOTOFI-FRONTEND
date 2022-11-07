@@ -10,7 +10,7 @@ export default function SessionsContainer({ id }) {
 
   return (
     <Container className="sessions-container">
-      <Grid>
+      <Grid sx={{ display: "flex", flexWrap: "wrap", m: "auto" }}>
         {mySessions.data &&
           mySessions.data.map((session, index) => {
             return (

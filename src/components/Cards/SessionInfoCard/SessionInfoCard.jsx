@@ -1,7 +1,7 @@
 import { Box, Divider } from "@mui/material";
 import React from "react";
 import CustomBreadcrumbs from "../../Inputs/CustomBreadcrumbs";
-import ProfilePhoto from "../../PhotographerProfile/ProfilePhoto";
+import Avatar from "@mui/material/Avatar";
 
 const SessionInfoCard = ({ data, sessionUser, currentStatus }) => {
   if (data && sessionUser) {
@@ -22,9 +22,11 @@ const SessionInfoCard = ({ data, sessionUser, currentStatus }) => {
                 mt: 2,
               }}
             >
-              <ProfilePhoto
-                photoclass={"sessionUserProfilepic"}
-                profilePic={sessionUser.profilePic}
+              <Avatar
+                className="user-avatar"
+                alt="USER PROFILE PIC"
+                src={sessionUser.profilePic}
+                sx={{ width: 70, height: 70, m: 2 }}
               />
             </Box>
             <Box

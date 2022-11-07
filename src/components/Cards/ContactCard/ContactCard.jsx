@@ -9,6 +9,7 @@ import MarkEmailReadOutlinedIcon from "@mui/icons-material/MarkEmailReadOutlined
 import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import Button from "../../Inputs/Button/Button";
 
 export default function ConctactCard({ userData }) {
   const { location, premium } = userData;
@@ -28,7 +29,10 @@ export default function ConctactCard({ userData }) {
             py: 1,
           }}
         >
-          <Box sx={{ display: "flex", justifyContent: "space-evenly", width: "inherit" }}>
+          <Button name={"Contactar"} className={"buttonLogin"}>
+            Contactar
+          </Button>
+          <Box sx={{ display: "flex", justifyContent: "center", width: "inherit" }}>
             <Box
               className="icon-box"
               sx={{ display: "flex", justifyContent: "center", alignItems: "center", p: 1 }}
@@ -46,7 +50,7 @@ export default function ConctactCard({ userData }) {
               <Typography children={`C.P ${location.zipCode}`} variant="subtitle1" sx={{}} />
             </Box>
           </Box>
-          <Box sx={{ display: "flex", justifyContent: "space-evenly", width: "inherit" }}>
+          <Box sx={{ display: "flex", justifyContent: "center", width: "inherit" }}>
             <Box
               className="icon-box"
               sx={{ display: "flex", justifyContent: "center", alignItems: "center", p: 1 }}
@@ -57,7 +61,7 @@ export default function ConctactCard({ userData }) {
               <Typography children={`${userData.phoneNumber}`} variant="subtitle1" sx={{}} />
             </Box>
           </Box>
-          <Box sx={{ display: "flex", justifyContent: "space-evenly", width: "inherit" }}>
+          <Box sx={{ display: "flex", justifyContent: "center", width: "inherit" }}>
             <Box
               className="icon-box"
               sx={{ display: "flex", justifyContent: "center", alignItems: "center", p: 1 }}
@@ -68,7 +72,7 @@ export default function ConctactCard({ userData }) {
               <Typography children={`${userData.email}`} variant="subtitle1" sx={{}} />
             </Box>
           </Box>
-          <Box sx={{ display: "flex", justifyContent: "space-evenly", width: "inherit" }}>
+          <Box sx={{ display: "flex", justifyContent: "center", width: "inherit" }}>
             <Box
               className="icon-box"
               sx={{ display: "flex", justifyContent: "center", alignItems: "center", p: 1 }}
@@ -91,5 +95,7 @@ export default function ConctactCard({ userData }) {
         </Card>
       </>
     );
+  } else {
+    return <></>;
   }
 }

@@ -9,10 +9,7 @@ const MainSection = ({ id, role }) => {
       <Box
         sx={{
           display: "flex",
-          flexWrap: "wrap",
-          "& > :not(style)": {
-            m: 1,
-          },
+          flexDirection: "row",
         }}
         className="profile-main-box"
       >

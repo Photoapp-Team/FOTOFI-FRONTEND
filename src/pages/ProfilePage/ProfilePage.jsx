@@ -5,19 +5,23 @@ import MainSection from "../../components/PhotographerProfile/MainSection/MainSe
 import useFetch from "../../hooks/useFetch";
 import { useUser } from "../../contexts/UserContext";
 import CoverPhoto from "../../components/PhotographerProfile/CoverPhoto/CoverPhoto";
-import PhotographerProfileCard from "../../components/PhotographerProfile/PhotographerProfileCard/PhotographerProfileCard";
-import UserProfileCard from "../../components/PhotographerProfile/UserProfileCard/UserProfileCard";
-import { Container } from "@mui/system";
-import "./NewProfilePage.css";
+import { useEffect, useState } from "react";
+import "./ProfilePage.css";
 import ProfileDetailCard from "../../components/Cards/ProfileDetailCard/ProfileDetailCard";
 
-const NewProfilePage = () => {
+const ProfilePage = () => {
   const { user } = useUser();
   const params = useParams();
   const { id } = params;
   const { REACT_APP_API_ENDPOINT } = process.env;
   const UserUrl = `${REACT_APP_API_ENDPOINT}/users/${id}`;
   const { data, loading, error } = useFetch(UserUrl);
+  const [isOwner, setIsOwner] = useState(false);
+  const userId = localStorage.getItem("userId");
+  useEffect(() => {
+    if (userId === id) setIsOwner(true);
+    else setIsOwner(false);
+  }, []);
 
   if (data?.name) {
     console.log("DATAENPROF", data);
@@ -46,4 +50,4 @@ const NewProfilePage = () => {
   }
 };
 
-export default NewProfilePage;
+export default ProfilePage;
