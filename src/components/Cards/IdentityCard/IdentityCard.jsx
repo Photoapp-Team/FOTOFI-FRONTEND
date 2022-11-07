@@ -34,15 +34,28 @@ export default function IdentityCard({ userData }) {
           <Typography children={`${name} ${lastname}`} variant="h5" sx={{ p: 1 }} />
           <Typography children={role} sx={{ p: 1 }} />
           {_id === user?._id ? (
-            <Button
-              name={"Editar Perfil"}
-              className={"buttonLogin"}
-              onClick={() => {
-                navigate(`/editprofile/${_id}`);
-              }}
-            >
-              Editar mi perfil
-            </Button>
+            <>
+              <Button
+                name={"Editar Perfil"}
+                className={"buttonLogin"}
+                onClick={() => {
+                  navigate(`/editprofile/${_id}`);
+                }}
+              >
+                Editar mi perfil
+              </Button>
+              {userData.premium.isPremium === false && userData.role === "Photographer" ? (
+                <Button
+                  name={"Volverse PRO"}
+                  className={"button-profile-1"}
+                  onClick={() => {
+                    navigate(`/Payment/${userData._id}`);
+                  }}
+                />
+              ) : (
+                <></>
+              )}
+            </>
           ) : (
             <></>
           )}
