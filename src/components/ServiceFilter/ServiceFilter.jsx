@@ -4,6 +4,7 @@ import "./ServiceFilter.css";
 import axios from "axios";
 import { filter } from "jszip";
 import { Container } from "@mui/system";
+import { Box } from "@mui/material";
 
 const ServiceFilter = () => {
   const [services, setServices] = useState({});
@@ -41,7 +42,7 @@ const ServiceFilter = () => {
     );
   }
   return (
-    <div className="serviceFilter">
+    <Box className="serviceFilter">
       {data.map((service, index) => {
         return (
           <ServiceCard
@@ -53,7 +54,7 @@ const ServiceFilter = () => {
           />
         );
       })}
-    </div>
+    </Box>
   );
 };
 

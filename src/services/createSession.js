@@ -23,7 +23,6 @@ export const createSession = async (sessionData) => {
     body: JSON.stringify(sessionData),
   });
   const data = await response.json();
-  console.log(data);
   if (data.success === true) {
     MySwal.fire({
       title: <strong>Session creada con exito! </strong>,

@@ -1,0 +1,16 @@
+.info-box {
+  width: 240px;
+}
+.icon-box {
+  width: 80px;
+  color: #656565;
+}
+.info-box h6 {
+  text-decoration: underline;
+}
+
+.contactcard {
+  border-color: transparent !important;
+  border-radius: 10 !important;
+  box-shadow: none !important;
+}

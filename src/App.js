@@ -20,6 +20,7 @@ import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import PaymentPage from "./pages/PaymentPage/PaymentPage";
 import PaymentSuscription from "./pages/PaymentSuscription/PaymentSuscription";
+import NewProfilePage from "./pages/NewProfilePage/NewProfilePage";
 
 const theme = createTheme({
   typography: {
@@ -64,6 +65,7 @@ const App = () => {
                 <Route path="/" element={<MainPage />}></Route>
                 <Route path="/Profile" element={<ProfilePage />}></Route>
                 <Route path="/Profile/:id" element={<ProfilePage />}></Route>
+                <Route path="/NewProfile/:id" element={<NewProfilePage />}></Route>
                 <Route path="/Package/:id" element={<PackageDetailPage />}></Route>
                 <Route path="/AddService" element={<AddServicePage />}></Route>
                 <Route path="/NewSession/:id" element={<NewSessionPage />}></Route>

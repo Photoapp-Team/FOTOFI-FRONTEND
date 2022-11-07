@@ -1,5 +1,5 @@
 .profile-service-block {
-  margin-top: 110px;
+  margin-top: 20px;
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
@@ -10,7 +10,7 @@
   align-items: baseline;
   text-align: left;
   color: #656565;
-  width: 100%;
+  width: 90%;
 }
 
 .profile-service-buttons {
@@ -25,7 +25,7 @@
   padding: 0.35rem 0.5rem;
   background-color: #324a51;
   color: #95b0b7;
-  width: 90%;
+  width: 80%;
   height: 38px;
   border: none;
   border-radius: 5px;

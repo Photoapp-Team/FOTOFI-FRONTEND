@@ -14,9 +14,9 @@ export default function SessionsContainer({ id }) {
         {mySessions.data &&
           mySessions.data.map((session, index) => {
             return (
-              <>
+              <Grid item>
                 <SessionCard key={`${index}index${session._id}`} data={session} />
-              </>
+              </Grid>
             );
           })}
       </Grid>

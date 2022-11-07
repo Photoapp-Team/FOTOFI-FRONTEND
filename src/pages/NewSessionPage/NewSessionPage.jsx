@@ -58,7 +58,17 @@ const NewSessionPage = () => {
   };
 
   return (
-    <Container className="mainContainer" maxWidth="md" sx={{ p: 4 }}>
+    <Container
+      className="mainContainer"
+      maxWidth="md"
+      sx={{
+        p: 4,
+        alignItems: "center",
+        justifyContent: "space-evenly",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <Typography
         sx={{ px: 4, pt: 2 }}
         className="filterTitle"
@@ -69,10 +79,10 @@ const NewSessionPage = () => {
         boxSizing="content-box"
       />
       <Grid container spacing={2} justifyContent="center" alignItems="center">
-        <Grid item xs={12} md={8}>
+        <Grid item xs={12} md={8} display="flex" justifyContent="center" alignItems="center">
           <Calendar onChange={onChange} value={startDate} />
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={4} display="flex" justifyContent="center" alignItems="center">
           <Formik initialValues={{}} onSubmit={onSubmit}>
             {({ isSubmitting }) => (
               <Form className="new-session-form">
