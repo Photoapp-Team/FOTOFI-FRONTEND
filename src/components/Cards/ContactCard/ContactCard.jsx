@@ -1,7 +1,6 @@
 import * as React from "react";
 import "./ContactCard.css";
-import { Card, Grid, Typography } from "@mui/material";
-import { useUser } from "../../../contexts/UserContext";
+import { Card, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import WhereToVoteSharpIcon from "@mui/icons-material/WhereToVoteSharp";
 import PhoneInTalkOutlinedIcon from "@mui/icons-material/PhoneInTalkOutlined";
@@ -13,8 +12,6 @@ import Button from "../../Inputs/Button/Button";
 
 export default function ConctactCard({ userData }) {
   const { location, premium } = userData;
-  const { user } = useUser();
-  console.log(user);
   if (premium.isPremium) {
     return (
       <>
