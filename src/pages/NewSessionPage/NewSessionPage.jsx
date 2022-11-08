@@ -1,28 +1,31 @@
 import "./NewSessionPage.css";
 import { useParams } from "react-router-dom";
-import { Grid, Container, Alert } from "@mui/material";
-import React, { useState, useEffect } from "react";
+import { Grid, Container } from "@mui/material";
+import React, { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form } from "formik";
 import CustomInput from "../../components/Inputs/CustomInput";
 import Button from "../../components/Inputs/Button/Button";
 import { createSession } from "../../services/createSession";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../contexts/UserContext";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import { dateFormater } from "../../services/dateFormater";
 import Typography from "@mui/material/Typography";
 
 const NewSessionPage = () => {
+  const MySwal = withReactContent(Swal);
   const params = useParams();
-  const { isUserLoggedIn, user } = useUser();
+  const { user } = useUser();
   const queryParams = new URLSearchParams(window.location.search);
   const photographerId = queryParams.get("photographerId");
   const [startDate, onChange] = useState(new Date());
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
-  const [alert, setAlert] = useState(null);
-  const [alertMessage, setAlertMessage] = useState("");
-  const onSubmit = (values, actions) => {
+
+  const onSubmit = async (values, actions) => {
     if (token) {
       const sessionData = {
         ...values,
@@ -30,23 +33,42 @@ const NewSessionPage = () => {
         package: params.id,
         photographerId,
       };
-      console.log(user._id);
-      createSession(sessionData);
-      actions.resetForm();
-      setAlertMessage("sesion creada con exito");
-      setAlert("success");
-      const timeout = setTimeout(() => {
-        navigate(`/Profile/${user._id}`);
-      }, 3000);
+      const date = dateFormater(sessionData.startDate);
+
+      Swal.fire({
+        title: `Quieres crear una session para el ${date}`,
+        icon: `question`,
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Confirmar",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          createSession(sessionData).then((sessionResult) => {
+            navigate(`/Profile/${user._id}`);
+          });
+        }
+      });
     } else {
-      setAlertMessage("Tienes que estar logeado para crear session");
-      setAlert("error");
+      Swal.fire({
+        title: `Tienes que estar logeado para cerar una session`,
+        icon: `error`,
+      });
     }
   };
 
   return (
-    <Container className="mainContainer" maxWidth="md" sx={{ p: 4 }}>
-      {alert ? <Alert severity={alert}>{alertMessage}</Alert> : <></>}
+    <Container
+      className="mainContainer"
+      maxWidth="md"
+      sx={{
+        p: 4,
+        alignItems: "center",
+        justifyContent: "space-evenly",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <Typography
         sx={{ px: 4, pt: 2 }}
         className="filterTitle"
@@ -56,11 +78,11 @@ const NewSessionPage = () => {
         align="center"
         boxSizing="content-box"
       />
-      <Grid container spacing={2} justifyContent="center" alignItems="center" height="inherit">
-        <Grid item xs={12} md={8}>
+      <Grid container spacing={2} justifyContent="center" alignItems="center">
+        <Grid item xs={12} md={8} display="flex" justifyContent="center" alignItems="center">
           <Calendar onChange={onChange} value={startDate} />
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={4} display="flex" justifyContent="center" alignItems="center">
           <Formik initialValues={{}} onSubmit={onSubmit}>
             {({ isSubmitting }) => (
               <Form className="new-session-form">

@@ -2,11 +2,7 @@ import React from "react";
 import "./CoverPhoto.css";
 
 const CoverPhoto = ({ coverPhoto }) => {
-  return (
-    <div className="profile-coverphoto-container">
-      <img src={coverPhoto} />
-    </div>
-  );
+  return <div className="profile-coverphoto-container"></div>;
 };
 
 export default CoverPhoto;

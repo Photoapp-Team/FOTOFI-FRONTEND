@@ -8,15 +8,30 @@ import SessionInfoCard from "../../components/Cards/SessionInfoCard/SessionInfoC
 import "./RatePage.css";
 import CustomInput from "../../components/Inputs/CustomInput";
 import { rateSession } from "../../services/FetchServices/rateSession";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const RatePage = () => {
+  const MySwal = withReactContent(Swal);
   const navigate = useNavigate();
   const params = useParams();
   const { id } = params;
 
   const onSubmit = async (values) => {
-    rateSession(values, id);
-    navigate("/");
+    MySwal.fire({
+      title: `Confirma tu calificación! `,
+      icon: `question`,
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Confirmar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        rateSession(values, id).then((sessionResult) => {
+          navigate(`/`);
+        });
+      }
+    });
   };
 
   return (
