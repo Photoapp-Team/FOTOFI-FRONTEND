@@ -54,7 +54,7 @@ function Meganav() {
                       fontSize: ".75rem",
                       margin: ".5rem",
                     }}
-                    children="Log in"
+                    children="Inicia Sesion"
                   />
 
                   <Button
@@ -66,7 +66,7 @@ function Meganav() {
                       fontSize: ".75rem",
                       margin: ".5rem",
                     }}
-                    children="Sing Up"
+                    children="Registrate"
                   />
                 </>
               )}
