@@ -2,7 +2,6 @@ import { Select, InputLabel } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useField } from "formik";
 import React from "react";
-import "../Forms/PhotographerRegistrationForm/PhotographerRegistrationForm.css";
 
 const CssSelect = styled(Select)({
   // When the input is focused
