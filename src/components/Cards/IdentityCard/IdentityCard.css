@@ -1,0 +1,11 @@
+.user-avatar {
+  border-width: 2px;
+  border-style: solid;
+  border-color: aqua;
+}
+
+.identitycard {
+  border-color: transparent !important;
+  border-radius: 10 !important;
+  box-shadow: none !important;
+}

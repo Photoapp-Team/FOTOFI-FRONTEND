@@ -21,6 +21,7 @@ import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import PaymentPage from "./pages/PaymentPage/PaymentPage";
 import PaymentSuscription from "./pages/PaymentSuscription/PaymentSuscription";
+import NewProfilePage from "./pages/ProfilePage/ProfilePage";
 
 const theme = createTheme({
   typography: {

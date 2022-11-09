@@ -1,5 +1,7 @@
 import React, { useState, createContext, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 export const UserContext = createContext();
 
 const UserContextProvider = ({ children }) => {
@@ -12,7 +14,7 @@ const UserContextProvider = ({ children }) => {
   const [automaticRedirectionUrl, setAutomaticRedirection] = useState("");
   const navigate = useNavigate();
   const [filters, setFilters] = useState([]);
-
+  const MySwal = withReactContent(Swal);
   useEffect(() => {
     if (localStorage.getItem("token")) {
       setToken(localStorage.getItem("token"));
@@ -45,7 +47,6 @@ const UserContextProvider = ({ children }) => {
     });
     const userData = await userResponse.json();
 
-    console.log("USERDATA:", userData);
     if (!userData) {
       setToken(localStorage.removeItem("token"));
       setUserId(localStorage.removeItem("userId"));
@@ -70,11 +71,16 @@ const UserContextProvider = ({ children }) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(loginData),
     });
-
     const tokenData = await tokenResponse.json();
 
-    if (!tokenData) alert("Ingresaste mal tus datos");
-    else {
+    if (tokenResponse.ok === false) {
+      MySwal.fire({
+        title: <strong>Hubo un error!</strong>,
+        text: "los datos no son correctos",
+        icon: `error`,
+      });
+    }
+    if (tokenResponse.ok === true) {
       setLogStatus(true);
       setToken(tokenData.data.token);
       localStorage.setItem("token", tokenData.data.token);
@@ -92,7 +98,11 @@ const UserContextProvider = ({ children }) => {
 
       const userData = await userResponse.json();
 
-      if (userData) {
+      if (userData.success === true) {
+        MySwal.fire({
+          title: <strong>Sesión iniciada con exito!</strong>,
+          icon: `success`,
+        });
         setUser(userData.data);
         localStorage.setItem("userId", userData.data.user._id);
         setUserId(userData.data.user._id);
@@ -103,6 +113,11 @@ const UserContextProvider = ({ children }) => {
   };
 
   const logout = () => {
+    MySwal.fire({
+      title: <strong>Sesión cerrada</strong>,
+      icon: `info`,
+    });
+
     setUser({});
     setLogStatus(false);
     localStorage.removeItem("token");

@@ -1,9 +1,11 @@
-.profile-coverphoto-container img {
+.profile-coverphoto-container {
   position: absolute;
   margin-top: 0;
   max-height: 260px;
   min-width: 100%;
-  z-index: 0;
+  z-index: -1;
+  background: rgb(58, 157, 209);
+  background: linear-gradient(180deg, rgba(58, 157, 209, 1) 0%, rgba(21, 59, 68, 1) 100%);
 }
 
 .profile-coverphoto-container {
@@ -12,5 +14,5 @@
   height: 260px;
   max-height: 260px;
   width: 100%;
-  z-index: 0;
+  z-index: -1;
 }
