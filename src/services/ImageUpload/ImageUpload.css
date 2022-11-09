@@ -169,3 +169,25 @@
   align-items: center;
   border-radius: 50%;
 }
+
+.boxRegister2 {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1;
+  width: 300px;
+  height: 150px;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.paperRegister2 {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1;
+  width: 300px;
+  height: 150px;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 50%;
+}

@@ -48,6 +48,7 @@ const MultiStepForm = ({ children, initialValues, onSubmit }) => {
             className="form-container"
             onSubmit={formik.handleSubmit}
             initialValues={snapshot}
+            setFieldValue={formik.setFieldValue}
             sx={{ display: "flex", justifyContent: "center", m: "auto" }}
           >
             <Stepper activeStep={stepNumber} sx={{ px: 20, py: 5 }}>

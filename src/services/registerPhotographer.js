@@ -24,6 +24,7 @@ export const createPhotographer = async (values) => {
     www,
     coverPhoto,
   } = values;
+
   const userData = {
     coverPhoto,
     username,
@@ -31,7 +32,7 @@ export const createPhotographer = async (values) => {
     lastname,
     email,
     password,
-    gender: "",
+    gender,
     profilePic,
     role: "Photographer",
     premium: { isPremiun: false },
