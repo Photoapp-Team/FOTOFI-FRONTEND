@@ -16,6 +16,7 @@ import SessionPage from "./pages/SessionPage/SessionPage";
 import RatePage from "./pages/RatePage/RatePage";
 import EditProfile from "./pages/EditProfilePage/EditProfilePage";
 import Meganav from "./components/Meganav";
+import Footer from "./components/FooterLayout/FooterLayout";
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import PaymentPage from "./pages/PaymentPage/PaymentPage";
@@ -76,6 +77,7 @@ const App = () => {
                 <Route path="/Payment/:id" element={<PaymentPage />}></Route>
                 <Route path="/Suscription/:id" element={<PaymentSuscription />}></Route>
               </Routes>
+              <Footer />
             </>
           </div>
         </UserContextProvider>
