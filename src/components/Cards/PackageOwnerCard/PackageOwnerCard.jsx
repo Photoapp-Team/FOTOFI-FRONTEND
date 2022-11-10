@@ -13,7 +13,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { deletePackage } from "../../../services/FetchServices/deletePackage";
 
-export default function PackageOwnerCard({ service, img, isLoaded, packageId, userId }) {
+export default function PackageOwnerCard({ service, img, isLoaded, packageId }) {
   const navigate = useNavigate();
   const MySwal = withReactContent(Swal);
   const userId = localStorage.getItem("userId");
