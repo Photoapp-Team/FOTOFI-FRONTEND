@@ -43,6 +43,7 @@ const CustomSelect = ({ label, ...props }) => {
         {...field}
         {...props}
         className={meta.touched && meta.error ? "input-error" : ""}
+        variant="standard"
       />
       {meta.touched && meta.error && <div className="error">{meta.error}</div>}
     </>

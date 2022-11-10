@@ -1,9 +1,10 @@
+import { Box } from "@mui/material";
 import React from "react";
 import Button from "../../Inputs/Button/Button";
 
 const FormNavigation = (props) => {
   return (
-    <div style={{ display: "flex", marginTop: 50, justifyContent: "center", gap: 20 }}>
+    <Box sx={{ display: "flex", width: "60%", my: "30px", mx: "auto" }}>
       {props.hasPrevious && (
         <Button
           name={"Atrás"}
@@ -18,7 +19,7 @@ const FormNavigation = (props) => {
         className={"button-basic-registration"}
         name={props.isLastStep ? "Enviar" : "Siguiente"}
       />
-    </div>
+    </Box>
   );
 };
 

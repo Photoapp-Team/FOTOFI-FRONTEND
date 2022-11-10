@@ -6,6 +6,7 @@ import FormNavigation from "./FormNavigation";
 import Confirm from "./Steps/Confirm";
 import FormBasicInfo from "./Steps/FormBasicInfo";
 import FormPersonalData from "./Steps/FormPersonalData";
+import "./NewMultiStepForm.css";
 
 const NewMultiStepForm = ({ children, initialValues, onSubmit }) => {
   const emptyOption = { label: "Por favor selecciona una opción", value: "default" };
@@ -89,9 +90,9 @@ const NewMultiStepForm = ({ children, initialValues, onSubmit }) => {
             display: "flex",
             justifyContent: "center",
             m: "auto",
-            width: "50%",
-            maxWidth: "50%",
+            width: "60%",
           }}
+          className="paperMultiStepForm"
         >
           <Form
             initialValues={snapshot}
@@ -99,18 +100,17 @@ const NewMultiStepForm = ({ children, initialValues, onSubmit }) => {
               display: "flex",
               justifyContent: "center",
               m: "auto",
-              width: "50%",
-              maxWidth: "50%",
+              width: "70%",
+              maxWidth: "70%",
             }}
           >
-            <Stepper activeStep={activeStep}>
+            <Stepper activeStep={activeStep} sx={{ px: 10, py: 5 }}>
               {steps.map((label) => (
                 <Step key={label}>
                   <StepLabel>{label}</StepLabel>
                 </Step>
               ))}
             </Stepper>
-            {step}
             {_renderStepContent(stepNumber, setFieldValue)}
             <FormNavigation
               isLastStep={isLastStep}

@@ -1,5 +1,6 @@
 import * as React from "react";
 import NewMultiStepForm from "./NewMultiStepForm";
+import "./NewPhotographerRegistrationForm.css";
 
 const NewPhotographerRegistrationForm = () => {
   const emptyOption = { label: "Por favor selecciona una opción", value: "default" };
