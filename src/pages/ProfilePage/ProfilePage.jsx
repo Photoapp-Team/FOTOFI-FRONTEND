@@ -61,7 +61,7 @@ const ProfilePage = () => {
           </Grid>
 
           <Grid item className="main-section-container" sx={{}} xs={12} md={8}>
-            <MainSection id={id} role={data.role} />
+            <MainSection id={id} role={data.role} userData={data} />
           </Grid>
         </Grid>
       </>
