@@ -21,7 +21,7 @@ import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import PaymentPage from "./pages/PaymentPage/PaymentPage";
 import PaymentSuscription from "./pages/PaymentSuscription/PaymentSuscription";
-import NewProfilePage from "./pages/ProfilePage/ProfilePage";
+import PayResponsePage from "./pages/PayResponsePage/PayResponsePage";
 
 const theme = createTheme({
   typography: {
@@ -76,6 +76,7 @@ const App = () => {
                 <Route path="/Landing" element={<LandingPage />}></Route>
                 <Route path="/Payment/:id" element={<PaymentPage />}></Route>
                 <Route path="/Suscription/:id" element={<PaymentSuscription />}></Route>
+                <Route path="/PayResponse/:id" element={<PayResponsePage />}></Route>
               </Routes>
               <Footer />
             </>
