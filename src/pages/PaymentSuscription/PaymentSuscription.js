@@ -2,55 +2,43 @@ import { CheckOutlined } from "@mui/icons-material";
 import { Button, Card, CardActions, CardContent, Grid, Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import "./PaymentSuscription.css";
 
 const { REACT_APP_API_ENDPOINT } = process.env;
 const { REACT_APP_PRODUCT_KEY } = process.env;
+
 const ProductDisplay = ({ id }) => (
-  <section>
-      <Grid container>
+  <section className="suscriptions-container">
+    <Grid container sx={{ display: "flex", justifyContent: "center" }}>
+      <Card sx={{ minWidth: 275, maxWidth: 500 }}>
+        <CardContent>
+          <Typography variant="h3" component="div">
+            Plan fotografo Pro
+          </Typography>
+          <Typography variant="h4" sx={{ mb: 1.5 }} color="text.secondary">
+            $1.00 / mensual
+          </Typography>
+          <ul>
+            <li>Sesiones Ilimitadas</li>
+            <li>Calendario Personal</li>
+            <li>Manejo de Sesiones</li>
+            <li>Preview de fotos de cada sesión</li>
+            <li>Link de descarga de sesión para el cliente</li>
+            <li>Acceso a cientos de clientes</li>
+          </ul>
+        </CardContent>
+        <CardActions sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+          <form action={`${REACT_APP_API_ENDPOINT}/payments/create-checkout-session`} method="POST">
+            {/* Add a hidden field with the lookup_key of your Price */}
+            <input type="hidden" name="lookup_key" value={`${REACT_APP_PRODUCT_KEY}`} />
+            <input type="hidden" name="userId" value={`${id}`} />
 
-  
-        <Grid item xs={6}>
-          <Card sx={{ minWidth: 275, maxWidth: 500 }}>
-            <CardContent>
-
-              <Typography variant="h3" component="div">
-                Plan fotografo Pro
-              </Typography>
-              <Typography variant="h4" sx={{ mb: 1.5 }} color="text.secondary">
-              $1.00 / mensual
-              </Typography>
-                <ul>
-                <li>
-                  Sesiones Ilimitadas
-                </li>
-                <li>
-                Calendario Personal
-                </li>
-                <li>
-                Manejo de Sesiones
-                </li>
-                <li>
-                Preview de fotos de cada sesión
-                </li>
-                <li>
-                Link de descarga de sesión para el cliente
-                </li>
-                <li>
-                Acceso a cientos de clientes
-                </li>
-                </ul>
-            </CardContent>
-            <CardActions>
-              <form action={`${REACT_APP_API_ENDPOINT}/payments/create-checkout-session`} method="POST" >
-                {/* Add a hidden field with the lookup_key of your Price */}
-                <input type="hidden" name="lookup_key" value={`${REACT_APP_PRODUCT_KEY}`} />
-                <input type="hidden" name="userId" value={`${id}`} />
-                  <Button type="submit" size="small" variant="contained">Pagar</Button>
-              </form>
-            </CardActions>
-          </Card>
-        </Grid>
+            <Button type="submit" size="small" variant="contained">
+              Pagar
+            </Button>
+          </form>
+        </CardActions>
+      </Card>
     </Grid>
   </section>
 );
@@ -75,7 +63,7 @@ const SuccessDisplay = ({ sessionId, id }) => {
 };
 
 const Message = ({ message }) => (
-  <section>
+  <section className="section-container">
     <p>{message}</p>
   </section>
 );

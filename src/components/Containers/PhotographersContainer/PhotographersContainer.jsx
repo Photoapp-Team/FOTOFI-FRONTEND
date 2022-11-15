@@ -8,11 +8,21 @@ import { Container } from "@mui/material";
 const PhotographersContainer = () => {
   const usersPlaceholder = ["", "", "", "", "", ""];
   const { filters } = useUser();
-  const { updatePhotoTags, data: photographersData, loading } = useFetchPhotographers();
+  const { searchWord } = useUser();
+  const {
+    updatePhotoTags,
+    filteredData: photographersData,
+    loading,
+    updateSearchWord,
+  } = useFetchPhotographers();
 
   useEffect(() => {
     updatePhotoTags(filters);
   }, [filters]);
+
+  useEffect(() => {
+    updateSearchWord(searchWord);
+  }, [searchWord]);
 
   if (!photographersData) {
     return (

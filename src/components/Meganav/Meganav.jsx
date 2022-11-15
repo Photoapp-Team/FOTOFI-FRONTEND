@@ -8,10 +8,10 @@ import SearchBar from "../SearchBar/Search";
 import { useUser } from "../../contexts/UserContext";
 import "./Meganav.css";
 import ProfileMenu from "../Inputs/ProfileMenu";
-
+import { useLocation } from "react-router-dom";
 function Meganav() {
   const { isUserLoggedIn, user } = useUser();
-
+  const currentLocation = useLocation();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -22,6 +22,7 @@ function Meganav() {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+  console.log(currentLocation);
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
@@ -37,9 +38,7 @@ function Meganav() {
                 <img src={Fotofilogo} className="fotofiLogo" />
               </a>
             </div>
-            <div>
-              <SearchBar />
-            </div>
+            <div>{currentLocation.pathname === "/" && <SearchBar />}</div>
             <div className="rightCornerNav">
               {isUserLoggedIn && user?.name ? (
                 <ProfileMenu data={user} />

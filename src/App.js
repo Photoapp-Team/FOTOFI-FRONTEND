@@ -6,7 +6,6 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { green, purple, yellow, grey, red, blue, cyan } from "@mui/material/colors";
 import "@fontsource/raleway"; // Defaults to weight 400.
-import SuscriptionPage from "./pages/PaymentSuscription/PaymentSuscription";
 import PackageDetailPage from "./pages/PackageDetailPage/PackageDetailPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import AddServicePage from "./pages/AddServicePage/AddServicePage";
@@ -19,8 +18,9 @@ import Meganav from "./components/Meganav";
 import Footer from "./components/FooterLayout/FooterLayout";
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 import LandingPage from "./pages/LandingPage/LandingPage";
-import PaymentPage from "./pages/PaymentPage/PaymentPage";
 import PaymentSuscription from "./pages/PaymentSuscription/PaymentSuscription";
+import PaymentPage from "./pages/PaymentPage/PaymentPage";
+
 import PayResponsePage from "./pages/PayResponsePage/PayResponsePage";
 
 const theme = createTheme({

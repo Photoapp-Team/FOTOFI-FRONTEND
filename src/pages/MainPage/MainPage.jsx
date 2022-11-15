@@ -4,9 +4,18 @@ import ServiceFilter from "../../components/ServiceFilter";
 import { Typography } from "@mui/material";
 import PhotographersContainer from "../../components/Containers/PhotographersContainer";
 import Grid from "@mui/material/Grid";
-import Container from "@mui/material/Container";
+import { useUser } from "../../contexts/UserContext";
+import { useEffect } from "react";
 
 const MainPage = () => {
+  const { setSearchWord } = useUser();
+
+  useEffect(() => {
+    return () => {
+      setSearchWord("");
+    };
+  }, []);
+
   return (
     <Grid container spacing={2} justifyContent="center" alignItems="center">
       <Grid item sm={12} className="filter-container">
