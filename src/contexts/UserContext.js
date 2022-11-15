@@ -14,6 +14,7 @@ const UserContextProvider = ({ children }) => {
   const [automaticRedirectionUrl, setAutomaticRedirection] = useState("");
   const navigate = useNavigate();
   const [filters, setFilters] = useState([]);
+  const [searchWord, setSearchWord] = useState("");
   const MySwal = withReactContent(Swal);
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -137,6 +138,8 @@ const UserContextProvider = ({ children }) => {
         setLogStatus,
         filters,
         setFilters,
+        searchWord,
+        setSearchWord,
       }}
     >
       {children}
