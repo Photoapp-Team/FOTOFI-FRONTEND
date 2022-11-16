@@ -97,7 +97,7 @@ const SessionWorkspace = () => {
               </Box>
               <Box sx={{ display: "flex", flexWrap: "wrap" }}>
                 <SessionFinalUpload
-                  id={id}
+                  sessionId={data._id}
                   selectedPics={data.selectedPics}
                   setStatusWorkspace={setStatusWorkspace}
                 />
@@ -177,7 +177,7 @@ const SessionWorkspace = () => {
               <ImageContainer
                 previewPics={data.previewPics}
                 loaded={true}
-                sessionId={data.Id}
+                sessionId={data._id}
                 setStatusWorkspace={setStatusWorkspace}
               />
               ;

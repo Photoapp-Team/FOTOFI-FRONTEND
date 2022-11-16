@@ -1,6 +1,7 @@
 const { REACT_APP_API_ENDPOINT } = process.env;
 
 const USER_URL = `${REACT_APP_API_ENDPOINT}/users/`;
+const IMAGE_URL = `${REACT_APP_API_ENDPOINT}/upload/profile/`;
 
 export const createPhotographer = async (values) => {
   const {
@@ -10,7 +11,6 @@ export const createPhotographer = async (values) => {
     email,
     password,
     gender,
-    profilePic,
     phoneNumber,
     city,
     state,
@@ -22,23 +22,37 @@ export const createPhotographer = async (values) => {
     facebook,
     instagram,
     www,
+    photoTags,
     coverPhoto,
+    profilePic,
   } = values;
+
   const userData = {
-    coverPhoto,
     username,
     name,
     lastname,
     email,
     password,
-    gender: "o",
-    profilePic,
+    gender,
     role: "Photographer",
     premium: { isPremiun: false },
     phoneNumber,
     location: { city, state, country, suburb, street, number, zipCode },
     socialNetworks: { facebook, instagram, www },
+    photoTags: photoTags,
   };
+
+  const updatePhoto = {
+    coverPhoto,
+    profilePic,
+  };
+
+  let formData = new FormData();
+  Object.entries(updatePhoto).forEach(([propName, files]) => {
+    files.forEach((photo, index) => {
+      formData.append(propName, photo);
+    });
+  });
 
   const response = await fetch(`${USER_URL}`, {
     method: "POST",
@@ -46,6 +60,17 @@ export const createPhotographer = async (values) => {
     body: JSON.stringify(userData),
   });
   const data = await response.json();
+  const { _id } = data;
+  if (data) {
+    console.log(data.data.createdUser._id);
+
+    const picProfileResponse = await fetch(`${IMAGE_URL}${data.data.createdUser._id}`, {
+      method: "POST",
+      body: formData,
+    });
+
+    const updatePhotoRes = await picProfileResponse.json();
+  }
 
   return data;
 };

@@ -40,8 +40,6 @@ export const addServiceSchema = yup.object().shape({
 });
 
 export const photographerRegisterSchema = yup.object().shape({
-  profilepic: yup.string(),
-  coverPhoto: yup.string(),
   name: yup
     .string()
     .min(3, "El nombre debe de tener al menos 3 caracteres")
@@ -65,10 +63,10 @@ export const photographerRegisterSchema = yup.object().shape({
     .string()
     .oneOf([yup.ref("password"), null], "Las contraseñas deben de coincidir")
     .required("Requerido"),
+  gender: yup.string().oneOf(["h", "m", "o"], ""),
 });
 
 export const editSchema = yup.object().shape({
-  profilepic: yup.string().matches(profilePicRules),
   name: yup
     .string()
     .min(2, "El nombre debe tener por lo menos 2 caracteres")
@@ -78,9 +76,24 @@ export const editSchema = yup.object().shape({
     .string()
     .min(4, "debe contener mínimo 4 caracteres")
     .max(20, "No debe superar los 20 caracteres")
-    .required("Reqeurido"),
-  email: yup.string().email("Ingresa un e-mail valido").required("Requerido"),
-  location: yup.string(),
-  // .("ingresa tú ubicación"),
-  telephone: yup.number().min(yup.number, "Ingreso un número telefonico valido"),
+    .required("Requerido"),
+  password: yup
+    .string()
+    .min(3, "La constraseña debe de tener al menos 3 caracteres")
+    .required("Requerido"),
+  city: yup
+    .string()
+    .min(2, "Debe contener por lo menos 3 caracteres")
+    .max(15, "No debe superar los 15 caracteres"),
+  suburb: yup
+    .string()
+    .min(2, "Debe contener por lo menos 3 caracteres")
+    .max(30, "No debe superar los 30 caracteres"),
+  street: yup
+    .string()
+    .min(2, "Debe contener por lo menos 3 caracteres")
+    .max(30, "No debe superar los 30 caracteres"),
+  number: yup.number(),
+  zipCode: yup.number(),
+  phoneNumber: yup.number(),
 });

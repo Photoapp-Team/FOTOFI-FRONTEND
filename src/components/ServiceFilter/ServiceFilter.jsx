@@ -1,9 +1,9 @@
 import { useContext, useState, useEffect } from "react";
-import ServiceCard from "../../components/Cards/ServiceCard/ServiceCard";
+import ServiceFilterCard from "../../components/Cards/ServiceFilterCard/ServiceFilterCard";
 import "./ServiceFilter.css";
 import axios from "axios";
-import { filter } from "jszip";
-import { Container } from "@mui/system";
+
+import { Box } from "@mui/material";
 
 const ServiceFilter = () => {
   const [services, setServices] = useState({});
@@ -35,16 +35,16 @@ const ServiceFilter = () => {
     return (
       <div className="serviceFilterLoading">
         {servicePlaceholder.map((_, index) => {
-          return <ServiceCard withFooter={false} isLoaded={false} key={index} />;
+          return <ServiceFilterCard withFooter={false} isLoaded={false} key={index} />;
         })}
       </div>
     );
   }
   return (
-    <div className="serviceFilter">
+    <Box className="serviceFilter">
       {data.map((service, index) => {
         return (
-          <ServiceCard
+          <ServiceFilterCard
             withFooter={false}
             service={service.name}
             key={service.name}
@@ -53,7 +53,7 @@ const ServiceFilter = () => {
           />
         );
       })}
-    </div>
+    </Box>
   );
 };
 

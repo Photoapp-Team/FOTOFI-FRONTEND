@@ -1,0 +1,25 @@
+.profile-page-container {
+  width: 100vw;
+}
+
+.main-section-container {
+  height: inherit !important;
+  width: 100%;
+  height: 100%;
+
+  padding-top: 15rem;
+}
+
+@media only screen and (max-width: 900px) {
+  .profile-main-box {
+    padding-top: 0 !important;
+  }
+  .main-section-container {
+    display: flex;
+    justify-content: center !important;
+    align-items: flex-start;
+  }
+}
+.profile-container {
+  padding-top: 80px;
+}

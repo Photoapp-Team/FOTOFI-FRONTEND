@@ -1,1 +1,18 @@
+.form-container-login {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.box-layout-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
+@media screen and (min-width: 768px) {
+  .login-form-fotofi-logo {
+    display: none;
+  }
+}

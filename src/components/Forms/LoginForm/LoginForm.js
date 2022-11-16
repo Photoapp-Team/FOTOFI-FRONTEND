@@ -7,6 +7,7 @@ import CustomInput from "../../Inputs/CustomInput";
 import { useUser } from "../../../contexts/UserContext";
 import Button from "../../Inputs/Button/Button";
 import { Navigate } from "react-router-dom";
+import Fotofilogo from "../../../images/fotofi.png";
 
 const LoginForm = () => {
   const { setLogStatus } = useUser();
@@ -14,26 +15,33 @@ const LoginForm = () => {
 
   const onSubmit = (values, actions) => {
     login(values);
-    actions.resetForm();
     setLogStatus(true);
     Navigate("/Profile");
   };
 
   return (
     <div className="box-container-login">
-      <Box
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          "& > :not(style)": {
-            m: 1,
-            width: 500,
-            height: 500,
-          },
-        }}
-      >
-        <Paper elevation={3}>
-          <div className="box-layout-login">
+      <Box>
+        <Paper
+          elevation={3}
+          sx={{ display: "flex", justifyContent: "center", margin: 2, p: 4, alignItems: "center" }}
+        >
+          <div
+            className="box-layout-login"
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              margin: 2,
+              p: 2,
+              alignItems: "center",
+            }}
+          >
+            <img
+              src={Fotofilogo}
+              className="login-form-fotofi-logo"
+              width={250}
+              sx={{ p: 2, m: 2 }}
+            />
             <h1 className="login-title">Inicio de sesión</h1>
             <p className="login-text">
               ¿Eres un nuevo usuario?
@@ -41,9 +49,18 @@ const LoginForm = () => {
                 <span className="login-text-link"> Crear una cuenta</span>
               </a>
             </p>
-            <Formik initialValues={{ username: "", gender: "" }} onSubmit={onSubmit}>
+            <Formik initialValues={{ username: "", password: "" }} onSubmit={onSubmit}>
               {({ isSubmitting }) => (
-                <Form className="form-container-login">
+                <Form
+                  className="form-container-login"
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    margin: 2,
+                    p: 2,
+                    alignItems: "center",
+                  }}
+                >
                   <br />
                   <CustomInput
                     label="Email"
@@ -51,6 +68,7 @@ const LoginForm = () => {
                     type="email"
                     placeholder="Ingresa tu email"
                     size="small"
+                    sx={{ m: 2 }}
                   />
                   <CustomInput
                     label="Password"
@@ -58,6 +76,7 @@ const LoginForm = () => {
                     type="password"
                     placeholder="Escribe una contraseña"
                     size="small"
+                    sx={{ m: 2 }}
                   />
                   <Button
                     disabled={isSubmitting}

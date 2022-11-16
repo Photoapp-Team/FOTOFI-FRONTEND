@@ -65,3 +65,51 @@ button:disabled {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
+
+.button-basic-registration {
+  display: block;
+  min-width: 100px;
+  margin: 1rem 0;
+  padding: 0.35rem 0.5rem;
+  background-color: #8a0e0e;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.go-pro-button {
+  display: block;
+  margin: 1rem 0;
+  padding: 0.35rem 0.5rem;
+  background-color: #0c9c0e;
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  width: 170px;
+  height: 35px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.button-basic-registration-mobile {
+  display: block;
+  min-width: 80px;
+  margin: 1rem 0;
+  padding: 0.35rem 0.5rem;
+  background-color: #42b7d0;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}

@@ -49,6 +49,7 @@ const CustomInput = ({ ...props }) => {
             color: "#023E8A",
           },
         }}
+        variant="standard"
       />
       {meta.touched && meta.error && <div className="error">{meta.error}</div>}
     </div>

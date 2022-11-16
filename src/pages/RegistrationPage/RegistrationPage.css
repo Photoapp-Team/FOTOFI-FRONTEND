@@ -1,5 +1,6 @@
 .main-container {
-  height: 90vh;
+  height: auto;
+  width: 100%;
   display: flex;
 }
 
@@ -7,8 +8,8 @@
   background-image: url(../../assets/backgroundImages/pexels-eberhard-grossgasteiger-629162.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100%;
-  width: 100%;
+  height: auto;
+  width: 100vw;
   display: flex;
 }
 

@@ -1,0 +1,16 @@
+.speciality-container {
+  width: 290px !important;
+  border-color: #656565;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 16px;
+}
+.button-service-block {
+  width: 280px;
+}
+
+.specialitycard {
+  border-color: transparent !important;
+  border-radius: 10 !important;
+  box-shadow: none !important;
+}

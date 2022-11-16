@@ -6,7 +6,6 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { green, purple, yellow, grey, red, blue, cyan } from "@mui/material/colors";
 import "@fontsource/raleway"; // Defaults to weight 400.
-import SuscriptionPage from "./pages/PaymentSuscription/PaymentSuscription";
 import PackageDetailPage from "./pages/PackageDetailPage/PackageDetailPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import AddServicePage from "./pages/AddServicePage/AddServicePage";
@@ -15,11 +14,14 @@ import SelectionPage from "./pages/SelectionPage";
 import SessionPage from "./pages/SessionPage/SessionPage";
 import RatePage from "./pages/RatePage/RatePage";
 import EditProfile from "./pages/EditProfilePage/EditProfilePage";
-import Navbar from "./components/Navbar";
+import Meganav from "./components/Meganav";
+import Footer from "./components/FooterLayout/FooterLayout";
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 import LandingPage from "./pages/LandingPage/LandingPage";
-import PaymentPage from "./pages/PaymentPage/PaymentPage";
 import PaymentSuscription from "./pages/PaymentSuscription/PaymentSuscription";
+import PaymentPage from "./pages/PaymentPage/PaymentPage";
+
+import PayResponsePage from "./pages/PayResponsePage/PayResponsePage";
 
 const theme = createTheme({
   typography: {
@@ -57,7 +59,7 @@ const App = () => {
         <UserContextProvider>
           <div>
             <>
-              <Navbar />
+              <Meganav />
               <Routes>
                 <Route path="/Registration" element={<RegistrationPage />}></Route>
                 <Route path="/Login" element={<LoginPage />}></Route>
@@ -70,11 +72,13 @@ const App = () => {
                 <Route path="/Selection/:id" element={<SelectionPage />}></Route>
                 <Route path="/Session/:id" element={<SessionPage />}></Route>
                 <Route path="/Rate/:id" element={<RatePage />}></Route>
-                <Route path="/EditProfile" element={<EditProfile />}></Route>
+                <Route path="/EditProfile/:id" element={<EditProfile />}></Route>
                 <Route path="/Landing" element={<LandingPage />}></Route>
                 <Route path="/Payment/:id" element={<PaymentPage />}></Route>
                 <Route path="/Suscription/:id" element={<PaymentSuscription />}></Route>
+                <Route path="/PayResponse/:id" element={<PayResponsePage />}></Route>
               </Routes>
+              <Footer />
             </>
           </div>
         </UserContextProvider>

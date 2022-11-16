@@ -2,8 +2,7 @@ const { REACT_APP_API_ENDPOINT } = process.env;
 
 const USER_URL = `${REACT_APP_API_ENDPOINT}/sessions/session`;
 
-export const sendSelectedImages = async (selectedImages, sessionId, previewPics) => {
-  const id = sessionId;
+export const sendSelectedImages = async (selectedImages, id, previewPics) => {
   const imagesArray = selectedImages;
   const preview = previewPics;
 

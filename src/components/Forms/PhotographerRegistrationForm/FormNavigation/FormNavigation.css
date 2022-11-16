@@ -1,0 +1,10 @@
+@media screen and (max-width: 425px) {
+  .formNavigation {
+    width: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+    gap: 20px;
+  }
+}

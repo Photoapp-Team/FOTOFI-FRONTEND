@@ -1,0 +1,9 @@
+@media screen and(max-width: 425px) {
+  .formBasicInfo {
+    padding-left: none !important;
+  }
+}
+
+/* .MuiSelect-standard {
+
+} */
