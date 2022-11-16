@@ -1,5 +1,6 @@
 .main-container {
-  height: 90vh;
+  height: auto;
+  width: 100%;
   display: flex;
 }
 
@@ -8,9 +9,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   height: auto;
-  width: auto;
-  min-height: 100%;
-  min-width: 100%;
+  width: 100vw;
   display: flex;
 }
 

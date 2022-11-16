@@ -40,8 +40,6 @@ export const addServiceSchema = yup.object().shape({
 });
 
 export const photographerRegisterSchema = yup.object().shape({
-  profilepic: yup.string(),
-  coverPhoto: yup.string(),
   name: yup
     .string()
     .min(3, "El nombre debe de tener al menos 3 caracteres")
@@ -65,6 +63,7 @@ export const photographerRegisterSchema = yup.object().shape({
     .string()
     .oneOf([yup.ref("password"), null], "Las contraseñas deben de coincidir")
     .required("Requerido"),
+  gender: yup.string().oneOf(["h", "m", "o"], ""),
 });
 
 export const editSchema = yup.object().shape({

@@ -9,7 +9,7 @@ import CardContent from "@mui/material/CardContent";
 import CardActionArea from "@mui/material/CardActionArea";
 import Typography from "@mui/material/Typography";
 import PhotographerRegistrationForm from "../../components/Forms/PhotographerRegistrationForm/PhotographerRegistrationForm";
-import NewPhotographerRegistrationForm from "../../components/Forms/PhotographerRegistrationForm/NewPhotographerRegistrationForm";
+
 const RegistrationPage = () => {
   const [userType, setUserType] = useState(null);
 
@@ -107,7 +107,7 @@ const RegistrationPage = () => {
 
             {userType === "Photographer" ? (
               <Grid item xs={12} md={12}>
-                <NewPhotographerRegistrationForm />{" "}
+                <PhotographerRegistrationForm />{" "}
               </Grid>
             ) : (
               <></>

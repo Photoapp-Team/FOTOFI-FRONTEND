@@ -1,18 +1,18 @@
-import { Paper, Step, StepLabel, Stepper } from "@mui/material";
+import { MobileStepper, Paper, Step, StepLabel, Stepper, useMediaQuery } from "@mui/material";
 import { Form, Formik } from "formik";
 import React from "react";
 import { useState, Children } from "react";
-import FormNavigation from "./FormNavigation";
-import Confirm from "./Steps/Confirm";
-import FormBasicInfo from "./Steps/FormBasicInfo";
-import FormPersonalData from "./Steps/FormPersonalData";
-import "./NewMultiStepForm.css";
+import FormNavigation from "../FormNavigation/FormNavigation";
+import Confirm from "../Steps/Confirm/Confirm";
+import FormBasicInfo from "../Steps/FormBasicInfo";
+import FormPersonalData from "../Steps/FormPersonalData/FormPersonalData";
+import { photographerRegisterSchema } from "../../../schemas/index";
+import "./MultiStepForm.css";
 
-const NewMultiStepForm = ({ children, initialValues, onSubmit }) => {
+const MultiStepForm = ({ children, initialValues, onSubmit }) => {
   const emptyOption = { label: "Por favor selecciona una opción", value: "default" };
   const [stepNumber, setStepNumber] = useState(0);
   const [activeStep, setActiveStep] = useState(0);
-  //   const steps = Children.toArray(children);
   const [snapshot, setSnapshot] = useState(initialValues);
 
   const steps = ["Información Básica", "Datos de Contacto", "Confirmación"];
@@ -56,6 +56,8 @@ const NewMultiStepForm = ({ children, initialValues, onSubmit }) => {
     }
   };
 
+  const phone = useMediaQuery("(max-width: 425px)");
+
   return (
     <Formik
       sx={{ height: "auto", m: 1 }}
@@ -80,7 +82,7 @@ const NewMultiStepForm = ({ children, initialValues, onSubmit }) => {
         www: "",
         photoTags: [],
       }}
-      //validationSchema={photographerRegisterSchema}
+      validationSchema={photographerRegisterSchema}
       onSubmit={handleSubmit}
     >
       {({ setFieldValue, values }) => (
@@ -103,17 +105,36 @@ const NewMultiStepForm = ({ children, initialValues, onSubmit }) => {
               width: "70%",
               maxWidth: "70%",
             }}
+            className="formMultiStepForm"
           >
-            <Stepper activeStep={activeStep} sx={{ px: 10, py: 5 }}>
-              {steps.map((label) => (
-                <Step key={label}>
-                  <StepLabel>{label}</StepLabel>
-                </Step>
-              ))}
-            </Stepper>
+            {phone ? (
+              <MobileStepper
+                variant="dots"
+                steps={3}
+                activeStep={activeStep}
+                sx={{
+                  maxWidth: 400,
+                  height: "20px",
+                  flexGrow: 1,
+                  position: "relative",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              ></MobileStepper>
+            ) : (
+              <Stepper activeStep={activeStep} sx={{ px: 10, py: 5 }}>
+                {steps.map((label) => (
+                  <Step key={label}>
+                    <StepLabel>{label}</StepLabel>
+                  </Step>
+                ))}
+              </Stepper>
+            )}
+
             {_renderStepContent(stepNumber, setFieldValue)}
             <FormNavigation
               isLastStep={isLastStep}
+              phone={phone}
               hasPrevious={stepNumber > 0}
               onBackClick={() => previous(values)}
             />
@@ -124,6 +145,6 @@ const NewMultiStepForm = ({ children, initialValues, onSubmit }) => {
   );
 };
 
-export default NewMultiStepForm;
+export default MultiStepForm;
 
 export const FormStep = ({ children }) => children;
