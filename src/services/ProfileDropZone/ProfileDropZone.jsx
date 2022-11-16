@@ -25,7 +25,19 @@ export function ProfileDropZone({ setFieldValue, fieldName }) {
       setFieldValue(fieldName, acceptedFiles);
     },
   });
-  let thumb = {};
+
+  let dynamicBorderRadius = fieldName === "profilePic" ? "50%" : "2px";
+
+  let thumb = {
+    display: "inline-flex",
+    borderRadius: { dynamicBorderRadius },
+    marginBottom: 8,
+    marginRight: 8,
+    width: "auto",
+    height: 100,
+    padding: 4,
+    boxSizing: "border-box",
+  };
 
   const thumbsContainer = {
     display: "flex",
@@ -33,33 +45,6 @@ export function ProfileDropZone({ setFieldValue, fieldName }) {
     flexWrap: "wrap",
     justifyContent: "center",
   };
-
-  if (fieldName === "coverPhoto") {
-    thumb = {
-      display: "inline-flex",
-      borderRadius: 2,
-      border: "1px solid #eaeaea",
-      marginBottom: 8,
-      marginRight: 8,
-      width: "auto",
-      height: 100,
-      padding: 4,
-      boxSizing: "border-box",
-    };
-  }
-  if (fieldName === "profilePic") {
-    thumb = {
-      display: "inline-flex",
-      borderRadius: "50%",
-      border: "1px solid #eaeaea",
-      marginBottom: 8,
-      marginRight: 8,
-      width: "auto",
-      height: "100px",
-      padding: 4,
-      boxSizing: "border-box",
-    };
-  }
 
   const thumbInner = {
     display: "flex",
@@ -108,11 +93,11 @@ export function ProfileDropZone({ setFieldValue, fieldName }) {
   return (
     <div className="container">
       <aside style={thumbsContainer}>{thumbs}</aside>
-      <div {...getRootProps({ className: "dropzone" })}>
+      <div {...getRootProps({ className: "profileDropZone" })}>
         <Button
           type="button"
-          name={"Seleccionar"}
-          className={"button-basic-registration"}
+          name="Seleccionar"
+          className="button-basic-registration"
           onClick={open}
         />
       </div>
