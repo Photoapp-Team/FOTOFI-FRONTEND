@@ -3,6 +3,11 @@ import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import Toolbar from "@mui/material/Toolbar";
+import useFetchPhotographers from "../../services/FetchServices/useFetchPhotographers";
+import { Form, Formik } from "formik";
+import { useUser } from "../../contexts/UserContext";
+import { useNavigate } from "react-router-dom";
+import { ConstructionOutlined } from "@mui/icons-material";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -38,22 +43,44 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("sm")]: {
-      width: "12ch",
+      width: "4ch",
       "&:focus": {
-        width: "20ch",
+        width: "30ch",
       },
     },
   },
 }));
 
 const SearchBar = () => {
+  const navigate = useNavigate();
+
+  const { setSearchWord } = useUser();
+  const { searchWord } = useUser();
+  const handleOnChange = (event) => {
+    setSearchWord(event.target.value.toLowerCase());
+  };
+
+  const handleClick = (event) => {
+    console.log("target:", event.target);
+
+    //console.log("hiciste click");
+    //   navigate("/");
+  };
   return (
     <Toolbar sx={{ display: { xs: "none", md: "flex" }, mr: 1, color: "black" }}>
-      <Search>
+      <Search onClick={handleClick}>
         <SearchIconWrapper>
           <SearchIcon />
         </SearchIconWrapper>
-        <StyledInputBase placeholder="Search…" inputProps={{ "aria-label": "search" }} />
+
+        <StyledInputBase
+          label="search"
+          name="search"
+          type="text"
+          value={searchWord}
+          placeholder="Filtra por nombre o ciudad "
+          onChange={handleOnChange}
+        />
       </Search>
     </Toolbar>
   );

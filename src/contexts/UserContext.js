@@ -14,6 +14,7 @@ const UserContextProvider = ({ children }) => {
   const [automaticRedirectionUrl, setAutomaticRedirection] = useState("");
   const navigate = useNavigate();
   const [filters, setFilters] = useState([]);
+  const [searchWord, setSearchWord] = useState("");
   const MySwal = withReactContent(Swal);
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -71,11 +72,16 @@ const UserContextProvider = ({ children }) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(loginData),
     });
-
     const tokenData = await tokenResponse.json();
 
-    if (!tokenData) alert("Ingresaste mal tus datos");
-    else {
+    if (tokenResponse.ok === false) {
+      MySwal.fire({
+        title: <strong>Hubo un error!</strong>,
+        text: "los datos no son correctos",
+        icon: `error`,
+      });
+    }
+    if (tokenResponse.ok === true) {
       setLogStatus(true);
       setToken(tokenData.data.token);
       localStorage.setItem("token", tokenData.data.token);
@@ -93,9 +99,9 @@ const UserContextProvider = ({ children }) => {
 
       const userData = await userResponse.json();
 
-      if (userData) {
+      if (userData.success === true) {
         MySwal.fire({
-          title: <strong>Session iniciada con exito!</strong>,
+          title: <strong>Sesión iniciada con exito!</strong>,
           icon: `success`,
         });
         setUser(userData.data);
@@ -109,7 +115,7 @@ const UserContextProvider = ({ children }) => {
 
   const logout = () => {
     MySwal.fire({
-      title: <strong>Session cerrada </strong>,
+      title: <strong>Sesión cerrada</strong>,
       icon: `info`,
     });
 
@@ -132,6 +138,8 @@ const UserContextProvider = ({ children }) => {
         setLogStatus,
         filters,
         setFilters,
+        searchWord,
+        setSearchWord,
       }}
     >
       {children}

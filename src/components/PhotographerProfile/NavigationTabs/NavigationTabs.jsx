@@ -9,8 +9,9 @@ import ServicesContainer from "../../Containers/ServicesContainerr/ServicesConta
 import { styled } from "@mui/material/styles";
 import SessionsContainer from "../../Containers/SessionsContainer";
 import { useParams } from "react-router";
+import GalleryContainer from "../../Containers/GalleryContainer";
 
-export default function NavigationTabs({ role }) {
+export default function NavigationTabs({ role, userData }) {
   const [isOwner, setIsOwner] = useState(false);
   const [value, setValue] = useState("1");
   const params = useParams();
@@ -61,7 +62,9 @@ export default function NavigationTabs({ role }) {
           <TabPanel value="2">
             <SessionsContainer id={id} isOwner={isOwner} />
           </TabPanel>
-          <TabPanel value="3">Galeria</TabPanel>
+          <TabPanel value="3">
+            <GalleryContainer id={id} isOwner={isOwner} userData={userData} />
+          </TabPanel>
         </Box>
       </TabContext>
     </Box>

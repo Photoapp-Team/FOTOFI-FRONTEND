@@ -1,5 +1,4 @@
 .profile-page-container {
-  height: 95vh;
   width: 100vw;
 }
 
@@ -22,6 +21,5 @@
   }
 }
 .profile-container {
-  height: 95vh;
   padding-top: 80px;
 }
