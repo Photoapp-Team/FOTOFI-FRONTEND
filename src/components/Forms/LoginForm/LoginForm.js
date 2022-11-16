@@ -15,7 +15,6 @@ const LoginForm = () => {
 
   const onSubmit = (values, actions) => {
     login(values);
-    actions.resetForm();
     setLogStatus(true);
     Navigate("/Profile");
   };
@@ -50,7 +49,7 @@ const LoginForm = () => {
                 <span className="login-text-link"> Crear una cuenta</span>
               </a>
             </p>
-            <Formik initialValues={{ username: "", gender: "" }} onSubmit={onSubmit}>
+            <Formik initialValues={{ username: "", password: "" }} onSubmit={onSubmit}>
               {({ isSubmitting }) => (
                 <Form
                   className="form-container-login"

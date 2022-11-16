@@ -147,3 +147,47 @@
   justify-content: flex-start;
   align-items: center;
 }
+
+.boxRegister1 {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1;
+  width: 85px;
+  height: 85px;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.paperRegister1 {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1;
+  width: 85px;
+  height: 85px;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.boxRegister2 {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  width: 90%;
+  height: auto;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.paperRegister2 {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  width: 90%;
+  height: auto;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 50%;
+}

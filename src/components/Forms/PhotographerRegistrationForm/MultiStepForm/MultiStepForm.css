@@ -1,0 +1,31 @@
+@media screen and (max-width: 768px) {
+  .paperMultiStepForm {
+    width: 100% !important;
+  }
+}
+
+.MuiStepper-root {
+  color: #42b7d0;
+}
+
+.css-1lngiup-MuiSvgIcon-root-MuiStepIcon-root.Mui-active {
+  color: #42b7d0 !important;
+}
+
+.css-1lngiup-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed {
+  color: #42b7d0 !important;
+}
+
+.css-1c1l3f3-MuiMobileStepper-dot {
+  background-color: #42b7d0 !important;
+  height: 15px !important;
+  width: 15px !important;
+}
+.css-114p2tk-MuiMobileStepper-dot {
+  height: 15px !important;
+  width: 15px !important;
+}
+
+.formMultiStepForm {
+  width: 85%;
+}

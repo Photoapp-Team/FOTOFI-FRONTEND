@@ -2,7 +2,6 @@ import { Select, InputLabel } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useField } from "formik";
 import React from "react";
-import "../Forms/PhotographerRegistrationForm/PhotographerRegistrationForm.css";
 
 const CssSelect = styled(Select)({
   // When the input is focused
@@ -44,6 +43,7 @@ const CustomSelect = ({ label, ...props }) => {
         {...field}
         {...props}
         className={meta.touched && meta.error ? "input-error" : ""}
+        variant="standard"
       />
       {meta.touched && meta.error && <div className="error">{meta.error}</div>}
     </>

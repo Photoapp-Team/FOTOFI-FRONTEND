@@ -8,7 +8,8 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActionArea from "@mui/material/CardActionArea";
 import Typography from "@mui/material/Typography";
-import PhotographerRegistrationForm from "../../components/Forms/PhotographerRegistrationForm";
+import PhotographerRegistrationForm from "../../components/Forms/PhotographerRegistrationForm/PhotographerRegistrationForm";
+
 const RegistrationPage = () => {
   const [userType, setUserType] = useState(null);
 
