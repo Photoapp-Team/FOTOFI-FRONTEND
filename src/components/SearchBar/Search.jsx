@@ -60,12 +60,7 @@ const SearchBar = () => {
     setSearchWord(event.target.value.toLowerCase());
   };
 
-  const handleClick = (event) => {
-    console.log("target:", event.target);
-
-    //console.log("hiciste click");
-    //   navigate("/");
-  };
+  const handleClick = (event) => {};
   return (
     <Toolbar sx={{ display: { xs: "none", md: "flex" }, mr: 1, color: "black" }}>
       <Search onClick={handleClick}>
