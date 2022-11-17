@@ -17,7 +17,7 @@ export default function useFetchAvailableDates(photographerId) {
         }
         setLoading(true);
         const response = await axios.get(
-          `${REACT_APP_API_ENDPOINT}/sessions/unavaiableDates/${photographerId}`,
+          `${REACT_APP_API_ENDPOINT}/sessions/unavailableDates/${photographerId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
