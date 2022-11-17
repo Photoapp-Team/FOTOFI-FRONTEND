@@ -16,12 +16,11 @@ export default function PackageContainer({ data }) {
           {fetchSuccess ? (
             <PackageGalleryCard
               isLoaded={fetchSuccess}
-              name="Luis"
               photos={packageData.displayPhotos}
-              //!MANDAR INFO DESDE LA PAGINA ANTERIOR
-              // profilePic=""
-              // location=""
-              // photographerId=""
+            //!MANDAR INFO DESDE LA PAGINA ANTERIOR
+            // profilePic=""
+            // location=""
+            // photographerId=""
             />
           ) : (
             <PackageGalleryCard isLoaded={fetchSuccess} sx={1} />
