@@ -14,6 +14,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { dateFormater } from "../../services/dateFormater";
 import Typography from "@mui/material/Typography";
+import useFetchAvailableDates from "../../services/FetchServices/useFetchAvailableDates";
 
 const NewSessionPage = () => {
   const MySwal = withReactContent(Swal);
@@ -24,6 +25,14 @@ const NewSessionPage = () => {
   const [startDate, onChange] = useState(new Date());
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+  const availableDates = useFetchAvailableDates(photographerId).data;
+  const avaiableDatesArray = [];
+  if (availableDates) {
+    availableDates.forEach((date) => {
+      const newDate = new Date(date);
+      avaiableDatesArray.push(String(newDate));
+    });
+  }
 
   const onSubmit = async (values, actions) => {
     if (token) {
@@ -80,7 +89,20 @@ const NewSessionPage = () => {
       />
       <Grid container spacing={2} justifyContent="center" alignItems="center">
         <Grid item xs={12} md={8} display="flex" justifyContent="center" alignItems="center">
-          <Calendar onChange={onChange} value={startDate} />
+          {availableDates && (
+            <Calendar
+              onChange={onChange}
+              value={startDate}
+              minDate={startDate}
+              tileDisabled={(myDates, date) => {
+                console.log(avaiableDatesArray);
+
+                if (avaiableDatesArray.includes(String(myDates.date))) {
+                  return true;
+                }
+              }}
+            />
+          )}
         </Grid>
         <Grid item xs={12} md={4} display="flex" justifyContent="center" alignItems="center">
           <Formik initialValues={{}} onSubmit={onSubmit}>

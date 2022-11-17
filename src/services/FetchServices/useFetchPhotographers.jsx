@@ -16,7 +16,6 @@ export default function useFetchPhotographers() {
   };
 
   const updateSearchWord = (searchWord) => {
-    console.log(searchWord);
     setPhotographerSearch(searchWord);
   };
 
@@ -61,7 +60,6 @@ export default function useFetchPhotographers() {
           return accum;
         }, []);
         setFilteredData(searchResult);
-        console.log(data);
       } else {
         setFilteredData(data);
       }
