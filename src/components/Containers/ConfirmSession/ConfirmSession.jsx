@@ -1,4 +1,4 @@
-import { Box, CssBaseline, Divider, Paper } from "@mui/material";
+import { Box, CssBaseline, Divider, FormControl, Grid, Paper } from "@mui/material";
 import { Form, Formik } from "formik";
 import React, { useState } from "react";
 import { updateSession } from "../../../services/updateSession";
@@ -8,11 +8,15 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import "./ConfirmSession.css";
 import { dateFormater } from "../../../services/dateFormater";
+import { confirmSessionSchema } from "../../schemas";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import "./ConfirmSession.css";
 
 const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, statusWorkspace }) => {
   const [approveSession, setApproveSession] = useState(false);
+  const MySwal = withReactContent(Swal);
 
   const onClick = async (value) => {
     if (value === "confirm") {
@@ -24,11 +28,18 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, stat
         },
       };
       const updatedSession = await updateSession(sessionId, newValue);
-      setStatusWorkspace(updatedSession);
+      if (updatedSession) {
+        MySwal.fire({
+          title: <strong>Sesión Cancelada!</strong>,
+          text: "La sesión fue cancelada",
+          icon: `error`,
+        });
+        setStatusWorkspace(updatedSession);
+      }
     }
   };
 
-  const onSubmit = async (values, actions) => {
+  const onSubmit = async (values) => {
     const newValues = {
       ...values,
       status: {
@@ -36,7 +47,13 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, stat
       },
     };
     const updatedSession = await updateSession(sessionId, newValues);
-    setStatusWorkspace(updatedSession);
+    if (updatedSession) {
+      MySwal.fire({
+        title: <strong>Sesión Confirmada!</strong>,
+        icon: `success`,
+      });
+      setStatusWorkspace(updatedSession);
+    }
   };
 
   let fecha = dateFormater(data.startDate);
@@ -95,95 +112,151 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, stat
         </Card>
       )}
       {approveSession && (
-        <>
+        <Box sx={{ mt: "50px" }}>
           <CssBaseline />
           <Formik
-            initialValues={{}}
-            // validationSchema={addServiceSchema}
+            initialValues={{
+              name: "",
+              location: "",
+              price: "",
+              quantityPrevPhotos: "",
+              quantityFinalPhotos: "",
+              deliveryTime: "",
+            }}
+            validationSchema={confirmSessionSchema}
             onSubmit={onSubmit}
           >
-            {({ isSubmitting, setFieldValue, values }) => (
-              <Paper sx={{ width: 500, height: "auto", m: "auto", borderRadius: 4 }}>
-                <Form
-                  sx={{
-                    display: "flex",
-                    width: 250,
-                    m: "auto",
-                    p: 2,
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Box sx={{ m: "auto", textAlign: "center" }}>
-                    <h1>Detalles de la sesión</h1>
-                  </Box>
-                  <Divider variant="middle" />
-                  <Box sx={{ m: "auto", textAlign: "center" }}>
-                    <h2>Configura la sesión</h2>
-                  </Box>
-                  <Box sx={{ m: "auto", textAlign: "center" }}>
-                    <h4 className="confirmSessionText">Precio</h4>
-
-                    <CustomInput
-                      sx={{ width: 250 }}
-                      label="Precio"
-                      name="price"
-                      type="text"
-                      placeholder="Precio"
-                      size="small"
-                    />
-                  </Box>
-                  <Box sx={{ m: "auto", textAlign: "center" }}>
-                    <h4 className="confirmSessionText">¿Cuántas fotos incluye? (Preview)</h4>
-                    <Box sx={{ m: "auto", textAlign: "center" }}>
-                      <CustomInput
-                        sx={{ width: 250 }}
-                        label="Fotos sin Editar"
-                        name="quantityPrevPhotos"
-                        type="text"
-                        placeholder="Min"
-                        size="small"
+            {({ isSubmitting, values }) => (
+              <Paper
+                elevation={8}
+                sx={{
+                  maxWidth: 500,
+                  height: "auto",
+                  mx: "auto",
+                  borderRadius: 4,
+                  pb: "20px",
+                  mb: "10px",
+                }}
+              >
+                <Form>
+                  <Grid
+                    container
+                    spacing={1}
+                    sx={{ px: 10 }}
+                    className="gridContainerConfirmSession"
+                  >
+                    <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
+                      <h1>Detalles de la sesión</h1>
+                    </Grid>
+                    <Divider variant="middle" />
+                    <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
+                      <h2>Configura la sesión</h2>
+                    </Grid>
+                    <Grid item xs={12} sm={12} sx={{ textAlign: "center", lineHeight: "1px" }}>
+                      <h4>Nombre de la Sesión</h4>
+                    </Grid>
+                    <Grid item xs={12} sm={12}>
+                      <FormControl fullWidth>
+                        <CustomInput
+                          fullWidth
+                          label="Nombre"
+                          name="name"
+                          type="text"
+                          placeholder="Nombre"
+                          size="small"
+                        />
+                      </FormControl>
+                    </Grid>
+                    <Grid item xs={12} sm={12} sx={{ textAlign: "center", lineHeight: "1px" }}>
+                      <h4>Lugar donde será la sesión</h4>
+                    </Grid>
+                    <Grid item xs={12} sm={12}>
+                      <FormControl fullWidth>
+                        <CustomInput
+                          fullWidth
+                          label="Locación"
+                          name="location"
+                          type="text"
+                          placeholder="Locación"
+                          size="small"
+                        />
+                      </FormControl>
+                    </Grid>
+                    <Grid item xs={12} sm={12} sx={{ textAlign: "center", lineHeight: "1px" }}>
+                      <h4>Precio</h4>
+                    </Grid>
+                    <Grid item xs={12} sm={12}>
+                      <FormControl fullWidth>
+                        <CustomInput
+                          fullWidth
+                          label="Precio"
+                          name="price"
+                          type="text"
+                          placeholder="Precio"
+                          size="small"
+                        />
+                      </FormControl>
+                    </Grid>
+                    <Grid item xs={12} sm={12} sx={{ textAlign: "center", lineHeight: "1px" }}>
+                      <h4>¿Cuántas fotos incluye? (Preview)</h4>
+                    </Grid>
+                    <Grid item xs={12} sm={12}>
+                      <FormControl fullWidth>
+                        <CustomInput
+                          fullWidth
+                          label="Fotos sin Editar"
+                          name="quantityPrevPhotos"
+                          type="text"
+                          placeholder="Min"
+                          size="small"
+                        />
+                      </FormControl>
+                    </Grid>
+                    <Grid item xs={12} sm={12} sx={{ textAlign: "center", lineHeight: "1px" }}>
+                      <h4>¿Cuántas fotos vas a entregar? </h4>
+                    </Grid>
+                    <Grid item xs={12} sm={12}>
+                      <FormControl fullWidth>
+                        <CustomInput
+                          fullWidth
+                          label="Fotos Editadas"
+                          name="quantityFinalPhotos"
+                          type="text"
+                          placeholder="Min"
+                          size="small"
+                        />
+                      </FormControl>
+                    </Grid>
+                    <Grid item xs={12} sm={12} sx={{ textAlign: "center", lineHeight: "1px" }}>
+                      <h4>Tiempo estimado de entrega</h4>
+                    </Grid>
+                    <Grid item xs={12} sm={12}>
+                      <FormControl fullWidth>
+                        <CustomInput
+                          fullWidth
+                          label="Tiempo"
+                          name="deliveryTime"
+                          type="text"
+                          placeholder="Tiempo"
+                          size="small"
+                        />
+                      </FormControl>
+                    </Grid>
+                    <Box sx={{ display: "flex", m: "auto", justifyContent: "center", my: 5 }}>
+                      <Button
+                        disabled={isSubmitting}
+                        type="submit"
+                        text={"Submit"}
+                        name={"Aceptar"}
+                        className={"buttonApproveSession"}
                       />
                     </Box>
-                  </Box>
-                  <Box sx={{ m: "auto", textAlign: "center" }}>
-                    <h4 className="confirmSessionText">¿Cuántas fotos vas a entregar? </h4>
-                    <Box sx={{ m: "auto", textAlign: "center" }}>
-                      <CustomInput
-                        sx={{ width: 250 }}
-                        label="Fotos Editadas"
-                        name="quantityFinalPhotos"
-                        type="text"
-                        placeholder="Min"
-                        size="small"
-                      />
-                    </Box>
-                  </Box>
-                  <Box sx={{ m: "auto", textAlign: "center" }}>
-                    <h4 className="confirmSessionText">Tiempo estimado de entrega</h4>
-                    <CustomInput
-                      sx={{ width: 250 }}
-                      label="Tiempo"
-                      name="deliveryTime"
-                      type="text"
-                      placeholder="Tiempo"
-                      size="small"
-                    />
-                  </Box>
-                  <Box sx={{ display: "flex", m: "auto", justifyContent: "center", my: 5 }}>
-                    <Button
-                      disabled={isSubmitting}
-                      type="submit"
-                      text={"Submit"}
-                      name={"Aceptar"}
-                      className={"buttonApproveSession"}
-                    />
-                  </Box>
+                  </Grid>
                 </Form>
               </Paper>
             )}
           </Formik>
-        </>
+        </Box>
       )}
     </>
   );
