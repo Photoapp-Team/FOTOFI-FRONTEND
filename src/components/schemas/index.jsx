@@ -1,4 +1,3 @@
-import { YouTube } from "@mui/icons-material";
 import * as yup from "yup";
 
 const profilePicRules =
