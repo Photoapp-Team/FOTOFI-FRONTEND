@@ -1,32 +1,47 @@
 import React, { useEffect, useState } from "react";
-import ImageUpload from "../../../services/ImageUpload";
 import CustomSelect from "../../Inputs/CustomSelect";
-import { addServiceSchema, registerSchema } from "../../schemas";
+import { addServiceSchema } from "../../schemas";
 import axios from "axios";
-import { CssBaseline, MenuItem, TextareaAutosize } from "@mui/material";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import { Alert, CircularProgress, FormControl, Grid, MenuItem, Paper } from "@mui/material";
 import { Box } from "@mui/system";
-import { Field, Form, Formik, useField } from "formik";
+import { ErrorMessage, Form, Formik } from "formik";
 import CustomInput from "../../Inputs/CustomInput";
 import Button from "../../Inputs/Button/Button";
-import { Height } from "@mui/icons-material";
 import { createPackage } from "../../../services/createPackage";
 import { useUser } from "../../../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
+import { ProfileDropZone } from "../../../services/ProfileDropZone/ProfileDropZone";
+import "./AddServiceForm.css";
+import { ServiceDropZone } from "../../../services/ServiceDropZone/ServiceDropZone";
+import { SignalCellularNull } from "@mui/icons-material";
 
 const AddServiceForm = () => {
   const emptyOption = { label: "Por favor selecciona una opción", value: "" };
   const [categories, setCategories] = useState([emptyOption]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [loadingUpload, setLoadingUpload] = useState(false);
+  const [success, setSuccess] = React.useState(false);
   const { REACT_APP_API_ENDPOINT } = process.env;
-  const { redirecTo, setAutomaticRedirection } = useUser();
   const id = localStorage.getItem("userId");
   const navigate = useNavigate();
+  const MySwal = withReactContent(Swal);
+
+  useEffect(() => {}, [loadingUpload]);
 
   const onSubmit = async (values, actions) => {
-    createPackage(values);
-    actions.resetForm({ values: "" });
-    navigate(`/Profile/${id}`);
+    const newPackage = await createPackage(values);
+    if (!newPackage) {
+      setLoadingUpload(true);
+      setSuccess(false);
+    } else if (newPackage) {
+      setSuccess(true);
+      setLoading(false);
+      actions.resetForm({ values: "" });
+      navigate(`/Profile/${id}`);
+    }
   };
 
   const url = `${REACT_APP_API_ENDPOINT}/services`;
@@ -38,7 +53,6 @@ const AddServiceForm = () => {
         const response = await axios.get(url);
         if (response) {
         }
-        // setData(response.data.data.services);
         const options = response.data.data.services.map((service) => ({
           label: service.name,
           value: service.name,
@@ -53,159 +67,239 @@ const AddServiceForm = () => {
   }, []);
 
   return (
-    <>
-      <CssBaseline />
+    <Box>
       <Formik
-        initialValues={{ serviceCategory: emptyOption.value }}
-        // validationSchema={addServiceSchema}
+        initialValues={{
+          serviceCategory: emptyOption.value,
+          displayPhotos: [],
+          coverPhoto: [],
+          minPrice: "",
+          maxPrice: "",
+          description: "",
+          minQuantityPrevPhotos: "",
+          maxQuantityPrevPhotos: "",
+          minQuantityFinalPhotos: "",
+          maxQuantityFinalPhotos: "",
+          deliveryTime: "",
+        }}
+        validationSchema={addServiceSchema}
         onSubmit={onSubmit}
       >
-        {({ isSubmitting, setFieldValue, values }) => (
-          <Form className="formContainer">
-            <Box sx={{ m: "auto", textAlign: "center", mb: 10 }}>
-              <h1>Agregar un nuevo Servicio</h1>
-            </Box>
-            <Box sx={{ display: "flex", alignItems: "baseline", gap: 1, ml: "5rem" }}>
-              <Box>
-                <h3>Tipo de servicio</h3>
-              </Box>
-              <Box>
-                <CustomSelect
-                  displayEmpty
-                  name="serviceCategory"
-                  label="Por favor selecciona uno"
-                  sx={{ minWidth: "200px" }}
+        {({ isSubmitting, setFieldValue, values, errors, touched }) => (
+          <Paper
+            elevation={8}
+            sx={{ width: "50%", display: "flex", justifyContent: "center", m: "auto" }}
+            className="formAddservicePaper"
+          >
+            <Form className="formAddService">
+              <Grid container spacing={3}>
+                <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
+                  <Box sx={{ m: "auto", textAlign: "center", mb: 10 }}>
+                    <h1>Agregar un nuevo Servicio</h1>
+                  </Box>
+                </Grid>
+                <Grid
+                  item
+                  fullwidth
+                  xs={12}
+                  sm={12}
+                  sx={{ gap: 2, display: "flex", justifyContent: "center" }}
                 >
-                  {categories.map(({ label, value }, index) => (
-                    <MenuItem key={index} value={value}>
-                      {label}
-                    </MenuItem>
-                  ))}
-                </CustomSelect>
-              </Box>
-            </Box>
-            <Box sx={{ ml: "5rem" }}>
-              <h2>Imagenes</h2>
-            </Box>
-            <Box sx={{ ml: "5rem" }}>
-              <h3>Elige tus imagenes para mostrar</h3>
-            </Box>
-            <ImageUpload
-              phrase={"Arrastra tus archivos aqui o haz click"}
-              classbox={"boxAddservice1"}
-              classpaper={"paperAddservice1"}
-              setFieldValue={setFieldValue}
-              name="displayPhotos"
-              fieldName={"displayPhotos"}
-            />
-            <Box sx={{ ml: "5rem" }}>
-              <h3>Elige una foto de portada</h3>
-            </Box>
-            <ImageUpload
-              phrase={"Arrastra tu foto de portada aqui o haz click"}
-              classbox={"boxAddservice2"}
-              classpaper={"paperAddservice2"}
-              name="coverPhoto"
-              setFieldValue={setFieldValue}
-              fieldName={"coverPhoto"}
-            />
-            <Box sx={{ ml: "5rem" }}>
-              <h2>Configura tu paquete</h2>
-            </Box>
-            <Box sx={{ ml: "5rem" }}>
-              <h4>Precio</h4>
-              <Box sx={{ display: "flex", alignItems: "baseline", gap: 1 }}>
-                <CustomInput
-                  label="Precio Minimo"
-                  name="minPrice"
-                  type="text"
-                  placeholder="Precio Mínimo"
-                  size="small"
-                />
-                -
-                <CustomInput
-                  label="Precio Maximo"
-                  name="maxPrice"
-                  type="text"
-                  placeholder="Precio Máximo"
-                  size="small"
-                />
-              </Box>
-            </Box>
-            <Box sx={{ ml: "5rem" }}>
-              <h4>Descripción</h4>
-              <Field
-                as="textarea"
-                aria-label="Descripcion"
-                placeholder="Escribe una breve descripción"
-                minRows={15}
-                name="description"
-              />
-            </Box>
-            <Box sx={{ alignItems: "baseline", gap: 1, ml: "5rem" }}>
-              <h4>¿Cuántas fotos incluye? (Preview)</h4>
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                <CustomInput
-                  label="Min"
-                  name="minQuantityPrevPhotos"
-                  type="text"
-                  placeholder="Min"
-                  size="small"
-                />
-                <Box> - </Box>
-                <CustomInput
-                  label="Max"
-                  name="maxQuantityPrevPhotos"
-                  type="text"
-                  placeholder="Máx"
-                  size="small"
-                />
-              </Box>
-            </Box>
-            <Box sx={{ alignItems: "baseline", gap: 1, ml: "5rem" }}>
-              <h4>¿Cuántas fotos vas a entregar? </h4>
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                <CustomInput
-                  label="Min"
-                  name="minQuantityFinalPhotos"
-                  type="text"
-                  placeholder="Min"
-                  size="small"
-                />
-                <Box>-</Box>
-                <CustomInput
-                  label="Max"
-                  name="maxQuantityFinalPhotos"
-                  type="text"
-                  placeholder="Máx"
-                  size="small"
-                />
-              </Box>
-            </Box>
-            <Box sx={{ ml: "5rem" }}>
-              <h4>Tiempo estimado de entrega</h4>
-              <CustomInput
-                label="Tiempo"
-                name="deliveryTime"
-                type="text"
-                placeholder="Tiempo"
-                size="small"
-              />
-            </Box>
-            <Box sx={{ display: "flex", m: "auto", justifyContent: "center", mb: 25 }}>
-              <Button
-                sx={{ mb: 25 }}
-                disabled={isSubmitting}
-                type="submit"
-                text={"Submit"}
-                name={"Crear"}
-                className={"button-basic-registration"}
-              />
-            </Box>
-          </Form>
+                  <Box component="span">Tipo de servicio</Box>
+                  <CustomSelect
+                    fullwidth
+                    displayEmpty
+                    name="serviceCategory"
+                    label="Por favor selecciona uno"
+                    sx={{ minWidth: "200px" }}
+                  >
+                    {categories.map(({ label, value }, index) => (
+                      <MenuItem key={index} value={value}>
+                        {label}
+                      </MenuItem>
+                    ))}
+                  </CustomSelect>
+                </Grid>
+                <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
+                  <h2>Imagenes</h2>
+                </Grid>
+                <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
+                  <h3>Elige tus imagenes para mostrar (máx 8)</h3>
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                  sm={12}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    m: "auto",
+                    alignItems: "center",
+                    gap: 5,
+                  }}
+                >
+                  <ServiceDropZone
+                    setFieldValue={setFieldValue}
+                    name="displayPhotos"
+                    fieldName={"displayPhotos"}
+                    showAlerts={["error"]}
+                  />
+                  {touched.displayPhotos && Boolean(errors.displayPhotos) && (
+                    <Alert severity="error">Por favor sube al menos 1 foto</Alert>
+                  )}
+
+                  <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
+                    <h3>Elige una foto de portada (máx 1)</h3>
+                  </Grid>
+                  <ProfileDropZone
+                    setFieldValue={setFieldValue}
+                    name="coverPhoto"
+                    fieldName={"coverPhoto"}
+                  />
+                  {touched.coverPhoto && errors.coverPhoto && (
+                    <Alert severity="error">Por favor sube al menos 1 foto</Alert>
+                  )}
+                </Grid>
+                <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
+                  <h2>Configura tu paquete</h2>
+                </Grid>
+                <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
+                  <h4>Precio</h4>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <FormControl fullWidth>
+                    <CustomInput
+                      fullWidth
+                      label="Precio Minimo"
+                      name="minPrice"
+                      type="text"
+                      placeholder="Precio Mínimo"
+                      size="small"
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <FormControl fullWidth>
+                    <CustomInput
+                      fullWidth
+                      label="Precio Maximo"
+                      name="maxPrice"
+                      type="text"
+                      placeholder="Precio Máximo"
+                      size="small"
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
+                  <h4>Descripción</h4>
+                </Grid>
+                <Grid item xs={12} sm={12}>
+                  <FormControl fullWidth>
+                    <CustomInput
+                      fullWidth
+                      id="standard-textarea"
+                      multiline
+                      label="Descripcion"
+                      name="description"
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
+                  <h4>¿Cuántas fotos incluye? (Preview)</h4>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <FormControl fullWidth>
+                    <CustomInput
+                      fullWidth
+                      label="Min"
+                      name="minQuantityPrevPhotos"
+                      type="text"
+                      placeholder="Min"
+                      size="small"
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <FormControl fullWidth>
+                    <CustomInput
+                      fullWidth
+                      label="Max"
+                      name="maxQuantityPrevPhotos"
+                      type="text"
+                      placeholder="Máx"
+                      size="small"
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
+                  <h4>¿Cuántas fotos vas a entregar? </h4>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <FormControl fullWidth>
+                    <CustomInput
+                      fullWidth
+                      label="Min"
+                      name="minQuantityFinalPhotos"
+                      type="text"
+                      placeholder="Min"
+                      size="small"
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <FormControl fullWidth>
+                    <CustomInput
+                      fullWidth
+                      label="Max"
+                      name="maxQuantityFinalPhotos"
+                      type="text"
+                      placeholder="Máx"
+                      size="small"
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
+                  <h4>Tiempo estimado de entrega</h4>
+                </Grid>
+                <Grid item xs={12} sm={12}>
+                  <FormControl fullWidth>
+                    <CustomInput
+                      fullWidth
+                      label="Tiempo"
+                      name="deliveryTime"
+                      type="text"
+                      placeholder="Tiempo"
+                      size="small"
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={12} sx={{ textAlign: "center", my: 10 }}>
+                  {loadingUpload && (
+                    <Box sx={{ display: "flex" }}>
+                      <CircularProgress />
+                    </Box>
+                  )}
+                  <Button
+                    disabled={isSubmitting}
+                    type="submit"
+                    text={"Submit"}
+                    name={"Crear Paquete"}
+                    className={"button-basic-registration"}
+                  />
+                  {loadingUpload && (
+                    <Box sx={{ display: "flex" }}>
+                      <CircularProgress />
+                    </Box>
+                  )}
+                </Grid>
+              </Grid>
+            </Form>
+          </Paper>
         )}
       </Formik>
-    </>
+    </Box>
   );
 };
 
