@@ -11,6 +11,7 @@ export default function IdentityCard({ userData, isPremium, isOwner, isPhotograp
   const navigate = useNavigate();
   const { name, lastname, role, profilePic, _id } = userData;
   const [showGoProButton, setShowGoProButton] = useState(false);
+
   const handleEditProfile = () => {
     navigate(`/editprofile/${_id}`);
   };
@@ -41,8 +42,15 @@ export default function IdentityCard({ userData, isPremium, isOwner, isPhotograp
           src={profilePic}
           sx={{ width: 70, height: 70, m: 2 }}
         />
-        <Typography children={`${name} ${lastname}`} variant="h5" sx={{ p: 1 }} />
-        <Typography children={role} sx={{ p: 1 }} />
+        <Typography
+          children={`${name} ${lastname}`}
+          variant="h5"
+          sx={{ p: 1, fontWeight: "700", fontSize: "26px" }}
+        />
+        <Typography
+          children={role === "Photographer" ? "Fotógrafo" : "Usuario"}
+          sx={{ p: 1, fontWeight: "600", fontSize: "16px" }}
+        />
         {isOwner && (
           <>
             <Button name={"Editar Perfil"} className={"buttonLogin"} onClick={handleEditProfile}>

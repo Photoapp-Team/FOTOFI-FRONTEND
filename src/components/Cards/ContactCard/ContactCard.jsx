@@ -9,6 +9,7 @@ import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import Button from "../../Inputs/Button/Button";
+import { Link } from "react-router-dom";
 
 export default function ConctactCard({ userData }) {
   const { location, premium } = userData;
@@ -26,10 +27,10 @@ export default function ConctactCard({ userData }) {
             py: 1,
           }}
         >
-          <Button name={"Contactar"} className={"buttonLogin"}>
+          {/* <Button name={"Contactar"} className={"buttonLogin"}>
             Contactar
-          </Button>
-          <Box sx={{ display: "flex", justifyContent: "center", width: "inherit" }}>
+          </Button> */}
+          <Box sx={{ display: "flex", justifyContent: "flex-start", width: "inherit" }}>
             <Box
               className="icon-box"
               sx={{ display: "flex", justifyContent: "center", alignItems: "center", p: 1 }}
@@ -37,17 +38,29 @@ export default function ConctactCard({ userData }) {
               <WhereToVoteSharpIcon sx={{ fontSize: 30 }} />
             </Box>
             <Box className="info-box">
-              <Typography children={`Ciudad: ${location.city}`} variant="subtitle1" sx={{}} />
+              <Typography
+                children={`Ciudad: ${location.city}`}
+                variant="subtitle1"
+                sx={{ fontSize: "18px", fontWeight: "600" }}
+              />
               <Typography
                 children={`Calle: ${location.street} ${location.number}`}
                 variant="subtitle1"
-                sx={{}}
+                sx={{ fontSize: "18px", fontWeight: "600" }}
               />
-              <Typography children={`Col. ${location.suburb}`} variant="subtitle1" sx={{}} />
-              <Typography children={`C.P ${location.zipCode}`} variant="subtitle1" sx={{}} />
+              <Typography
+                children={`Col. ${location.suburb}`}
+                variant="subtitle1"
+                sx={{ fontSize: "18px", fontWeight: "600" }}
+              />
+              <Typography
+                children={`C.P ${location.zipCode}`}
+                variant="subtitle1"
+                sx={{ fontSize: "18px", fontWeight: "600" }}
+              />
             </Box>
           </Box>
-          <Box sx={{ display: "flex", justifyContent: "center", width: "inherit" }}>
+          <Box sx={{ display: "flex", justifyContent: "flex-start", width: "inherit" }}>
             <Box
               className="icon-box"
               sx={{ display: "flex", justifyContent: "center", alignItems: "center", p: 1 }}
@@ -55,10 +68,14 @@ export default function ConctactCard({ userData }) {
               <PhoneInTalkOutlinedIcon sx={{ fontSize: 30 }} />
             </Box>
             <Box className="info-box" sx={{ display: "flex", alignItems: "center" }}>
-              <Typography children={`${userData.phoneNumber}`} variant="subtitle1" sx={{}} />
+              <Typography
+                children={`${userData.phoneNumber}`}
+                variant="subtitle1"
+                sx={{ fontSize: "18px", fontWeight: "600" }}
+              />
             </Box>
           </Box>
-          <Box sx={{ display: "flex", justifyContent: "center", width: "inherit" }}>
+          <Box sx={{ display: "flex", justifyContent: "flex-start", width: "inherit" }}>
             <Box
               className="icon-box"
               sx={{ display: "flex", justifyContent: "center", alignItems: "center", p: 1 }}
@@ -66,27 +83,37 @@ export default function ConctactCard({ userData }) {
               <MarkEmailReadOutlinedIcon sx={{ fontSize: 30 }} />
             </Box>
             <Box className="info-box" sx={{ display: "flex", alignItems: "center" }}>
-              <Typography children={`${userData.email}`} variant="subtitle1" sx={{}} />
+              <Typography
+                children={`${userData.email}`}
+                variant="subtitle1"
+                sx={{ fontSize: "18px", fontWeight: "600" }}
+              />
             </Box>
           </Box>
-          <Box sx={{ display: "flex", justifyContent: "center", width: "inherit" }}>
+          <Box sx={{ display: "flex", justifyContent: "center", width: "inherit", pt: 3 }}>
             <Box
               className="icon-box"
               sx={{ display: "flex", justifyContent: "center", alignItems: "center", p: 1 }}
             >
-              <InstagramIcon sx={{ fontSize: 30 }} />
+              <a href={userData.socialNetwork.instagram} className="linkContactCard">
+                <InstagramIcon sx={{ fontSize: 30 }} />
+              </a>
             </Box>
             <Box
               className="icon-box"
               sx={{ display: "flex", justifyContent: "center", alignItems: "center", p: 1 }}
             >
-              <LanguageOutlinedIcon sx={{ fontSize: 30 }} />
+              <a href={userData.socialNetwork.www} className="linkContactCard">
+                <LanguageOutlinedIcon sx={{ fontSize: 30 }} />
+              </a>
             </Box>
             <Box
               className="icon-box"
               sx={{ display: "flex", justifyContent: "center", alignItems: "center", p: 1 }}
             >
-              <FacebookIcon sx={{ fontSize: 30 }} />
+              <a href={userData.socialNetwork.facebook} className="linkContactCard">
+                <FacebookIcon sx={{ fontSize: 30 }} />
+              </a>
             </Box>
           </Box>
         </Card>

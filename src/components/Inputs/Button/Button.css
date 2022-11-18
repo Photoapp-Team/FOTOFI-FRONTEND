@@ -113,3 +113,15 @@ button:disabled {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
+
+.button-service-block {
+  width: 245px;
+  height: 35px;
+  background-color: #324a51;
+  color: #95b0b7;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
