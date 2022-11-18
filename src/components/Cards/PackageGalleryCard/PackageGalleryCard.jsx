@@ -23,7 +23,7 @@ export default function PackageGalleryCard({
 
   return (
     <Card sx={{ borderRadius: 1, margin: 0 }} elevation={2}>
-      <Typography sx={{ margin: 1 }} children={`${name} > Tipode de foto >`}></Typography>
+      <Typography sx={{ margin: 1 }} children={`${name} > Tipo de foto >`}></Typography>
       <CardHeader
         onClick={handleOnClick}
         className="cardHeader"
@@ -31,7 +31,7 @@ export default function PackageGalleryCard({
         sx={{ p: 0.75 }}
         avatar={
           isLoaded ? (
-            <Avatar alt={name} src={profilePic} />
+            <Avatar src={profilePic} />
           ) : (
             <Skeleton animation="wave" variant="circular" width={40} height={40} />
           )
