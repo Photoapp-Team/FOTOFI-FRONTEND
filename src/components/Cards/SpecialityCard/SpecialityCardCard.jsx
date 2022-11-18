@@ -3,8 +3,16 @@ import "./SpecialityCard.css";
 import { Card, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import Button from "../../Inputs/Button/Button";
+import { useNavigate } from "react-router-dom";
+
 export default function SpecialityCard({ userData }) {
   const { premium, photoTags } = userData;
+  const navigate = useNavigate();
+
+  const onClick = () => {
+    navigate("/");
+  };
+
   if (premium.isPremium) {
     return (
       <>
@@ -20,8 +28,11 @@ export default function SpecialityCard({ userData }) {
           }}
         >
           <Box sx={{ display: "flex", width: "inherit", p: 1 }}>
-            <Box className="info-box">
-              <Typography children={`Especializado en:`} variant="h5" sx={{ px: 1 }} />
+            <Box>
+              <Typography
+                children={`Especializado en:`}
+                sx={{ px: 2, fontSize: "18px", fontWeight: "600" }}
+              />
             </Box>
           </Box>
 
@@ -34,13 +45,23 @@ export default function SpecialityCard({ userData }) {
               width: "inherit",
               alignItems: "center",
               p: 1,
+              border: "1px",
+              borderRadius: "10px",
+              mb: "10px",
             }}
           >
             {photoTags &&
               photoTags.map((photoTag, index) => {
                 return (
                   <Box sx={{ p: 0.5 }}>
-                    <Button key={index} name={photoTag} className={"button-service-block"} />
+                    <Button
+                      key={index}
+                      name={photoTag}
+                      className={"button-service-block"}
+                      onClick={() => {
+                        onClick();
+                      }}
+                    />
                   </Box>
                 );
               })}
