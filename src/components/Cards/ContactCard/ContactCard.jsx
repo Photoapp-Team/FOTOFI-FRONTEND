@@ -95,25 +95,37 @@ export default function ConctactCard({ userData }) {
               className="icon-box"
               sx={{ display: "flex", justifyContent: "center", alignItems: "center", p: 1 }}
             >
-              <a href={userData.socialNetwork.instagram} className="linkContactCard">
+              {userData?.socialNetwork?.instagram ? (
+                <a href={userData.socialNetwork.instagram} className="linkContactCard">
+                  <InstagramIcon sx={{ fontSize: 30 }} />
+                </a>
+              ) : (
                 <InstagramIcon sx={{ fontSize: 30 }} />
-              </a>
+              )}
             </Box>
             <Box
               className="icon-box"
               sx={{ display: "flex", justifyContent: "center", alignItems: "center", p: 1 }}
             >
-              <a href={userData.socialNetwork.www} className="linkContactCard">
+              {userData?.socialNetwork?.www ? (
+                <a href={userData.socialNetwork.www} className="linkContactCard">
+                  <LanguageOutlinedIcon sx={{ fontSize: 30 }} />
+                </a>
+              ) : (
                 <LanguageOutlinedIcon sx={{ fontSize: 30 }} />
-              </a>
+              )}
             </Box>
             <Box
               className="icon-box"
               sx={{ display: "flex", justifyContent: "center", alignItems: "center", p: 1 }}
             >
-              <a href={userData.socialNetwork.facebook} className="linkContactCard">
+              {userData?.socialNetwork?.facebook ? (
+                <a href={userData.socialNetwork.facebook} className="linkContactCard">
+                  <FacebookIcon sx={{ fontSize: 30 }} />
+                </a>
+              ) : (
                 <FacebookIcon sx={{ fontSize: 30 }} />
-              </a>
+              )}
             </Box>
           </Box>
         </Card>
