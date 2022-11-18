@@ -1,0 +1,5 @@
+.serviceDropZone img {
+  object-fit: "cover";
+  overflow: "hidden";
+  aspect-ratio: 1;
+}
