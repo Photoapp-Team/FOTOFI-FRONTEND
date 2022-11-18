@@ -5,11 +5,14 @@ import Link from "@mui/material/Link";
 import HomeIcon from "@mui/icons-material/Home";
 import GrainIcon from "@mui/icons-material/Grain";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
+import { useUser } from "../../contexts/UserContext";
+import { useNavigate } from "react-router-dom";
 
 function CustomBreadcrumbs({ sessionName }) {
-  function handleClick(event) {
-    event.preventDefault();
-  }
+  const user = localStorage.getItem("userId");
+  const navigate = useNavigate();
+
+  function handleClick(event) {}
   return (
     <div
       role="presentation"
@@ -33,7 +36,7 @@ function CustomBreadcrumbs({ sessionName }) {
           underline="hover"
           sx={{ display: "flex", alignItems: "center" }}
           color="inherit"
-          href="/material-ui/getting-started/installation/"
+          href={`/Profile/${user}`}
         >
           <CameraAltIcon sx={{ mr: 0.5 }} fontSize="inherit" />
           Sesiones
