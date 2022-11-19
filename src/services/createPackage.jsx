@@ -1,5 +1,3 @@
-import { file } from "@babel/types";
-import React from "react";
 const { REACT_APP_API_ENDPOINT } = process.env;
 
 const PACKAGE_URL = `${REACT_APP_API_ENDPOINT}/packages/`;

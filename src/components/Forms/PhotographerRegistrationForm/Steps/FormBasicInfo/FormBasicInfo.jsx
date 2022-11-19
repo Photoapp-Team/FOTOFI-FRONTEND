@@ -48,16 +48,7 @@ const FormBasicInfo = ({ setFieldValue }) => {
         </Grid>
         <Grid item xs={12} sm={6} sx={{ gap: 2, display: "flex", alignItems: "center" }}>
           <Box component="span">Género </Box>
-          <CustomSelect
-            fullWidth
-            label="Genero"
-            name="gender"
-            defaultValue="default"
-            size="small"
-            // sx={{
-            //   borderBottom: "1px solid #42B7D0",
-            // }}
-          >
+          <CustomSelect fullWidth label="Genero" name="gender" defaultValue="default" size="small">
             <MenuItem value="default">Por favor selecciona</MenuItem>
             <MenuItem value="m">H</MenuItem>
             <MenuItem value="f">M</MenuItem>

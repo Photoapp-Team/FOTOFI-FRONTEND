@@ -32,11 +32,32 @@ export const registerSchema = yup.object().shape({
 });
 
 export const addServiceSchema = yup.object().shape({
-  servicio: yup
-    .string()
-    .oneOf(["BODAS", "BEBES", "ARQUITECTURA", "PRODUCTOS", "RETRATOS"], "Servicio No Valido")
-    .required("Requerido"),
-  displayImages: yup.string(),
+  serviceCategory: yup.string().required("Por favor selecciona una opción"),
+  displayPhotos: yup.array().min(1, "at least 1").required("Por favor sube al menos 1 imagen"),
+  coverPhoto: yup.array().min(1, "at least 1").required("Por favor sube al menos 1 imagen"),
+  minPrice: yup.number().required("Por favor ingresa un precio mínimo"),
+  maxPrice: yup
+    .number()
+    .required("Por favor ingresa un precio máximo")
+    .moreThan(yup.ref("minPrice"), "El precio máximo no puede ser menor al precio mínimo"),
+  description: yup.string().required("Por favor ingresa una descripción"),
+  minQuantityPrevPhotos: yup.number().required("Obligatorio"),
+  maxQuantityPrevPhotos: yup
+    .number()
+    .required("Obligatorio")
+    .moreThan(
+      yup.ref("minQuantityPrevPhotos"),
+      "La cantidad máxima de fotos de preview no puede ser menor a la cantidad mínima"
+    ),
+  minQuantityFinalPhotos: yup.number().required("Obligatorio"),
+  maxQuantityFinalPhotos: yup
+    .number()
+    .required("Obligatorio")
+    .moreThan(
+      yup.ref("minQuantityFinalPhotos"),
+      "La cantidad máxima de fotos a entregar no puede ser menor a la cantidad mínima"
+    ),
+  deliveryTime: yup.string().required("Ejemplo: 1 semana"),
 });
 
 export const photographerRegisterSchema = yup.object().shape({
@@ -96,4 +117,16 @@ export const editSchema = yup.object().shape({
   number: yup.number(),
   zipCode: yup.number(),
   phoneNumber: yup.number(),
+});
+
+export const confirmSessionSchema = yup.object().shape({
+  name: yup
+    .string()
+    .min(3, "El nombre debe de tener al menos 3 caracteres")
+    .required("Por favor escbribe un nombre de sesión"),
+  location: yup.string().required("Por favor escribe dónde va a ser la sesión"),
+  price: yup.number().required("Por favor ingresa un precio"),
+  quantityPrevPhotos: yup.number().required("Obligatorio"),
+  quantityFinalPhotos: yup.number().required("Obligatorio"),
+  deliveryTime: yup.string().required("Por favor ingresa un tiempo estimado de entrega"),
 });
