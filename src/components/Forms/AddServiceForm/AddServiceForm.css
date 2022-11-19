@@ -1,4 +1,22 @@
-.formContainer {
-  width: 80%;
-  height: auto;
+@media screen and (max-width: 425px) {
+  .formAddservicePaper {
+    width: 90% !important;
+    margin: auto;
+  }
+
+  .formAddService {
+    padding-left: none !important;
+    width: 85%;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .formPersonalDataList {
+    padding-left: none !important;
+  }
+}
+
+.formAddService {
+  width: 85%;
 }

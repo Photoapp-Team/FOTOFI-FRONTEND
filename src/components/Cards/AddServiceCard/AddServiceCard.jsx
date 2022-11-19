@@ -5,13 +5,15 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import CardMedia from "@mui/material/CardMedia";
 
 export default function AddServiceCard() {
   const navigate = useNavigate();
+  const params = useParams();
+  const { id } = params;
   const handleOnClick = () => {
-    navigate(`/addservice`);
+    navigate(`/addservice/${id}`);
   };
 
   return (

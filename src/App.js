@@ -64,10 +64,9 @@ const App = () => {
                 <Route path="/Registration" element={<RegistrationPage />}></Route>
                 <Route path="/Login" element={<LoginPage />}></Route>
                 <Route path="/" element={<MainPage />}></Route>
-                <Route path="/Profile" element={<ProfilePage />}></Route>
                 <Route path="/Profile/:id" element={<ProfilePage />}></Route>
                 <Route path="/Package/:id" element={<PackageDetailPage />}></Route>
-                <Route path="/AddService" element={<AddServicePage />}></Route>
+                <Route path="/AddService/:id" element={<AddServicePage />}></Route>
                 <Route path="/NewSession/:id" element={<NewSessionPage />}></Route>
                 <Route path="/Selection/:id" element={<SelectionPage />}></Route>
                 <Route path="/Session/:id" element={<SessionPage />}></Route>
