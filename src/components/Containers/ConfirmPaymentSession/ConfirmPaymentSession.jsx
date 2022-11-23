@@ -1,8 +1,7 @@
-import { Paper } from "@mui/material";
+import { Button, Paper } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import { updateSession } from "../../../services/updateSession";
-import Button from "../../Inputs/Button/Button";
 
 const ConfirmPaymentSession = ({ sessionId, setStatusWorkspace }) => {
   const onClick = async (value) => {
@@ -17,18 +16,30 @@ const ConfirmPaymentSession = ({ sessionId, setStatusWorkspace }) => {
 
   return (
     <Box sx={{ maxWidth: 600, mx: "auto", my: "20px" }}>
-      <Paper sx={{ textAlign: "center", display: "flex", alignItems: "center", m: "auto", gap: 4 }}>
-        <Box sx={{ textAlign: "center", display: "flex", alignItems: "center", m: "auto" }}>
+      <Paper
+        sx={{ textAlign: "initial", display: "flex", alignItems: "flex-start", m: "auto", gap: 3 }}
+      >
+        <Box
+          sx={{
+            textAlign: "center",
+            display: "flex",
+            alignItems: "flex-start",
+            m: "auto",
+            pl: "1rem",
+          }}
+        >
           <h4>
-            Si el usuario ya pagó el anticipo o la sesión,
-            <br /> o si estás de acuerdo en continuar así por favor da click en aceptar
+            Si el usuario ya pagó el anticipo o la sesión, o si estás de acuerdo en continuar por
+            favor da click en aceptar
           </h4>
         </Box>
-        <Box sx={{ textAlign: "center", display: "flex", alignItems: "center", m: "auto", p: 5 }}>
+        <Box
+          sx={{ textAlign: "initial", display: "flex", alignItems: "flex-start", m: "auto", p: 5 }}
+        >
           <Button
-            className="buttonLogin"
-            text={"Confirm"}
-            name={"Confirmar"}
+            name="Confirmar"
+            variant="secondary"
+            children="confirmar"
             onClick={() => {
               onClick();
             }}

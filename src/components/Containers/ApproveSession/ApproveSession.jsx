@@ -33,7 +33,7 @@ const ApproveSession = ({ data, sessionId, setStatusWorkspace }) => {
 
   let fecha = dateFormater(data.startDate);
   return (
-    <div>
+    <Box sx={{ height: "calc(100%-199px" }}>
       {" "}
       <Card sx={{ maxWidth: 695, height: "auto", mx: "auto", my: "5%", borderRadius: "5px" }}>
         <CardMedia component="img" height="190" image={CameraPic} alt="green iguana" />
@@ -104,7 +104,7 @@ const ApproveSession = ({ data, sessionId, setStatusWorkspace }) => {
           </Box>
         </CardActions>
       </Card>
-    </div>
+    </Box>
   );
 };
 
