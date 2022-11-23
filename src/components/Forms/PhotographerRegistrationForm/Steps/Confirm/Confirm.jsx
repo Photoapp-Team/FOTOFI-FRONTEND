@@ -1,14 +1,21 @@
 import { Box, Checkbox, FormControlLabel, FormGroup, Typography } from "@mui/material";
 import { Field } from "formik";
-import React from "react";
+import React, { useState } from "react";
 
-const Confirm = () => {
+const Confirm = ({ setFieldValue }) => {
+  const [checked, setChecked] = useState(false);
+
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+    setFieldValue("checked", event.target.checked);
+  };
+
   return (
-    <Box sx={{ width: "100%", textAlign: "center" }}>
+    <Box sx={{ width: "100%", textAlign: "flex-start" }}>
       <Typography variant="subtitle1">
         Al registrarte estás de acuerdo con que se muestre tu información a posibles clientes.{" "}
       </Typography>
-      <Box sx={{ display: "flex", justifyContent: "center", mt: 5 }}>
+      <Box sx={{ display: "flex", justifyContent: "flex-start", mt: 5 }}>
         <FormGroup>
           <FormControlLabel
             control={
@@ -20,6 +27,8 @@ const Confirm = () => {
                     color: "#42B7D0",
                   },
                 }}
+                checked={checked}
+                onChange={handleChange}
               />
             }
             label="Estoy de acuerdo"

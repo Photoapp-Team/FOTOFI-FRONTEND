@@ -1,10 +1,11 @@
-import { Avatar } from "@mui/material";
+import { Avatar, Box, ButtonBase, Container } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import Button from "../../components/Inputs/Button/Button";
+import Button from "@mui/material/Button";
 import "./ProfileDropZone.css";
 
 export function ProfileDropZone({ setFieldValue, fieldName }) {
+  console.log(fieldName);
   const [files, setFiles] = useState([]);
   const { getRootProps, open, acceptedFiles } = useDropzone({
     // Disable click and keydown behavior
@@ -26,14 +27,11 @@ export function ProfileDropZone({ setFieldValue, fieldName }) {
     },
   });
 
-  let dynamicBorderRadius = fieldName === "profilePic" ? "50%" : "2px";
-
   let thumb = {
     display: "inline-flex",
-    borderRadius: { dynamicBorderRadius },
     marginBottom: 8,
     marginRight: 8,
-    width: "auto",
+    width: "100%",
     height: 100,
     padding: 4,
     boxSizing: "border-box",
@@ -44,22 +42,27 @@ export function ProfileDropZone({ setFieldValue, fieldName }) {
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
+    height: "100px",
+    maxWidth: "600px",
+    width: "auto",
   };
 
   const thumbInner = {
     display: "flex",
-    minWidth: 0,
-    overflow: "hidden",
   };
 
   const img = {
     display: "block",
-    width: "auto",
+    width: "100%",
     height: "100%",
+    objectFit: "cover",
   };
 
   const thumbs = files.map((file) => (
-    <div style={thumb} key={file.name}>
+    <div
+      style={{ ...thumb, borderRadius: fieldName === "profilePic" ? "50%" : "2px" }}
+      key={file.name}
+    >
       <div style={thumbInner} className="profileDropZone">
         {fieldName === "profilePic" ? (
           <Avatar
@@ -74,7 +77,7 @@ export function ProfileDropZone({ setFieldValue, fieldName }) {
         ) : (
           <img
             src={file.preview}
-            style={img}
+            style={{ ...img, aspectRatio: fieldName === "profilePic" ? "1" : "16" }}
             // Revoke data uri after image is loaded
             onLoad={() => {
               URL.revokeObjectURL(file.preview);
@@ -91,16 +94,20 @@ export function ProfileDropZone({ setFieldValue, fieldName }) {
   }, []);
 
   return (
-    <div className="container">
-      <aside style={thumbsContainer}>{thumbs}</aside>
-      <div {...getRootProps({ className: "profileDropZone" })}>
-        <Button
-          type="button"
-          name="Seleccionar"
-          className="button-basic-registration"
-          onClick={open}
-        />
-      </div>
-    </div>
+    <>
+      <Box {...getRootProps({ className: "profileDropZone" })}>
+        <Container
+          style={{
+            ...thumbsContainer,
+            border: fieldName === "profilePic" ? "none" : "1px dashed #DDDAD6",
+          }}
+        >
+          {thumbs}
+        </Container>
+      </Box>
+      <Button name="Seleccionar" variant="text" onClick={open}>
+        Seleccionar
+      </Button>
+    </>
   );
 }

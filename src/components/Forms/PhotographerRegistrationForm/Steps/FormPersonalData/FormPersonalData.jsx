@@ -48,7 +48,7 @@ const FormPersonalData = () => {
 
   return (
     <Grid container spacing={3}>
-      <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
+      <Grid item xs={12} sm={12} sx={{ textAlign: "flex-start" }}>
         <h3>Dirección</h3>
         <Typography sx={{ fontSize: "14px" }}>
           *Llena sólo los campos que quieres que se muestren como usuario PRO
@@ -94,7 +94,7 @@ const FormPersonalData = () => {
           <CustomInput fullWidth label="Número telefónico" name="phoneNumber" type="text" />
         </FormControl>
       </Grid>
-      <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
+      <Grid item xs={12} sm={12} sx={{ textAlign: "flex-start" }}>
         <h3>Especialidad y Redes Sociales</h3>
       </Grid>
       <Grid item xs={12} sm={4}>
