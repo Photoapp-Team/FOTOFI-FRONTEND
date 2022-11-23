@@ -121,3 +121,15 @@ export const editSchema = yup.object().shape({
   zipCode: yup.number(),
   phoneNumber: yup.number(),
 });
+
+export const confirmSessionSchema = yup.object().shape({
+  name: yup
+    .string()
+    .min(3, "El nombre debe de tener al menos 3 caracteres")
+    .required("Por favor escbribe un nombre de sesión"),
+  location: yup.string().required("Por favor escribe dónde va a ser la sesión"),
+  price: yup.number().required("Por favor ingresa un precio"),
+  quantityPrevPhotos: yup.number().required("Obligatorio"),
+  quantityFinalPhotos: yup.number().required("Obligatorio"),
+  deliveryTime: yup.string().required("Por favor ingresa un tiempo estimado de entrega"),
+});
