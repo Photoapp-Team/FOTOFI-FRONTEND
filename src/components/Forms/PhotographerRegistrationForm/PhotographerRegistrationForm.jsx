@@ -12,6 +12,7 @@ const PhotographerRegistrationForm = () => {
   const MySwal = withReactContent(Swal);
 
   const onSubmit = async (values) => {
+
     console.log(values);
     if (values.checked) {
       const photographer = await createPhotographer(values);
@@ -20,7 +21,7 @@ const PhotographerRegistrationForm = () => {
           title: <strong>Bienvenido a Fotofi!</strong>,
           icon: "success",
         });
-        navigate("/");
+        navigate("/MainPage");
       }
     } else {
       MySwal.fire({

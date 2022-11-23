@@ -27,7 +27,7 @@ function CustomBreadcrumbs({ sessionName }) {
           underline="hover"
           sx={{ display: "flex", alignItems: "center" }}
           color="inherit"
-          href="/"
+          href="/MainPage"
         >
           <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
           Home

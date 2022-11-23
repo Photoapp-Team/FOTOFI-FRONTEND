@@ -27,7 +27,6 @@ function Meganav() {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-  console.log(currentLocation);
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
@@ -40,7 +39,7 @@ function Meganav() {
           <div className="headerContainer">
             {phone ? (
               <div sx={{ opacity: 0.5 }}>
-                <a href="/">
+                <a href="/MainPage">
                   <img src={MobileFotofiLogo} className="fotofiLogo" />
                 </a>
               </div>
