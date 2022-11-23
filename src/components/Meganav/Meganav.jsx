@@ -46,11 +46,11 @@ function Meganav() {
             ) : (
               <>
                 <div sx={{ opacity: 0.5 }}>
-                  <a href="/">
+                  <a href="/MainPage">
                     <img src={Fotofilogo} className="fotofiLogo" />
                   </a>
                 </div>
-                <div>{currentLocation.pathname === "/" && <SearchBar />}</div>
+                <div>{currentLocation.pathname === "/MainPage" && <SearchBar />}</div>
               </>
             )}
             <div className="rightCornerNav">
