@@ -47,6 +47,7 @@ const CustomInput = ({ ...props }) => {
         InputLabelProps={{
           style: {
             color: "#023E8A",
+            fontSize: "12px",
           },
         }}
         variant="standard"
