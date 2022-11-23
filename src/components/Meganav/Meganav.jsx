@@ -22,7 +22,6 @@ function Meganav() {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-  console.log(currentLocation);
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
@@ -34,11 +33,11 @@ function Meganav() {
         <Toolbar disableGutters>
           <div className="headerContainer">
             <div sx={{ opacity: 0.5 }}>
-              <a href="/">
+              <a href="/MainPage">
                 <img src={Fotofilogo} className="fotofiLogo" />
               </a>
             </div>
-            <div>{currentLocation.pathname === "/" && <SearchBar />}</div>
+            <div>{currentLocation.pathname === "/MainPage" && <SearchBar />}</div>
             <div className="rightCornerNav">
               {isUserLoggedIn && user?.name ? (
                 <ProfileMenu data={user} />

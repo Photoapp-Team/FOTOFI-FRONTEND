@@ -11,7 +11,7 @@ const PhotographerRegistrationForm = () => {
 
   const onSubmit = async (values) => {
     const photographer = await createPhotographer(values);
-    navigate("/");
+    navigate("/MainPage");
   };
 
   return (

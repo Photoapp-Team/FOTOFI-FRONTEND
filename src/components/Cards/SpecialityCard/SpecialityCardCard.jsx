@@ -10,7 +10,7 @@ export default function SpecialityCard({ userData }) {
   const navigate = useNavigate();
 
   const onClick = () => {
-    navigate("/");
+    navigate("/MainPage");
   };
 
   if (premium.isPremium) {

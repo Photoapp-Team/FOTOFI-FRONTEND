@@ -1,5 +1,5 @@
-import { Grid, Typography } from "@mui/material";
-import { Container } from "@mui/system";
+import { Grid, Paper, Typography } from "@mui/material";
+import { borderRadius, Container, padding } from "@mui/system";
 import React from "react";
 import ServiceCard from "../../components/Cards/ServiceCard/ServiceCard";
 import Button from "../../components/Inputs/Button/Button";
@@ -11,9 +11,13 @@ import "./LandingPage.css";
 import PhotographerCard from "../../components/Cards/PhotographerCard/PhotographerCard";
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
 import { useNavigate } from "react-router-dom";
-
+import Card from "@mui/material/Card";
+import CardActionArea from "@mui/material/CardActionArea";
+import CardMedia from "@mui/material/CardMedia";
+import CardContent from "@mui/material/CardContent";
 const LandingPage = () => {
   const navigate = useNavigate();
+
   return (
     <>
       <div className="first-container">
@@ -35,7 +39,7 @@ const LandingPage = () => {
               <Typography variant="h4">¿Que tipo de fotografo necesitas?</Typography>
             </Grid>
             <Grid item xs={12} md={6}>
-              <img src={HeroPic} alt="HERO PHOTOGRAPHER" height={600} className="hero-pic" />
+              <img src={HeroPic} alt="HERO PHOTOGRAPHER" className="hero-pic" />
             </Grid>
           </Grid>
         </Container>
@@ -52,7 +56,7 @@ const LandingPage = () => {
               height: "inherit",
             }}
           >
-            <Grid item xs={12} sm={4} md={4}>
+            <Grid item xs={12} sm={12} md={4}>
               <Typography variant="h3" className="popular-services" fontSize="3rem">
                 Servicios mas populares
               </Typography>
@@ -71,40 +75,88 @@ const LandingPage = () => {
           }}
         >
           <div className="service-container">
-            <ServiceCard
-              withFooter={false}
-              service="BEBE"
-              img="https://images.pexels.com/photos/265987/pexels-photo-265987.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              isLoaded={true}
-              Link="/"
-            />
-            <ServiceCard
-              withFooter={false}
-              service="RETRATOS"
-              img="https://images.pexels.com/photos/573299/pexels-photo-573299.jpeg?auto=…"
-              isLoaded={true}
-              Link="/"
-            />
-            <ServiceCard
-              withFooter={false}
-              service="ARQUITECTURA"
-              img="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=…"
-              isLoaded={true}
-              Link="/"
-            />
-            <ServiceCard
-              withFooter={false}
-              service="BODAS"
-              img="https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?aut…"
-              isLoaded={true}
-              Link="/"
-            />
+            <Card sx={{ maxWidth: 345, borderRadius: 2, margin: 1 }}>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height="140"
+                  image="https://images.pexels.com/photos/265987/pexels-photo-265987.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                  alt="BABY PHOTO"
+                  sx={{ padding: 1, maxWidth: 208, maxHeight: 192, borderRadius: 4 }}
+                />
+                <CardContent>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    children="BEBE"
+                    textAlign="center"
+                  />
+                </CardContent>
+              </CardActionArea>
+            </Card>
+            <Card sx={{ maxWidth: 345, borderRadius: 2, margin: 1 }}>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height="140"
+                  image="https://images.pexels.com/photos/573299/pexels-photo-573299.jpeg?auto=…"
+                  alt="PORTRAIT PHOTO"
+                  sx={{ padding: 1, maxWidth: 208, maxHeight: 192, borderRadius: 4 }}
+                />
+                <CardContent>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    children="RETRATOS"
+                    textAlign="center"
+                  />
+                </CardContent>
+              </CardActionArea>
+            </Card>
+            <Card sx={{ maxWidth: 345, borderRadius: 2, margin: 1 }}>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height="140"
+                  image="https://images.pexels.com/photos/7726294/pexels-photo-7726294.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  alt="PET PHOTO"
+                  sx={{ padding: 1, width: 208, maxHeight: 192, borderRadius: 4 }}
+                />
+                <CardContent>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    children="MASCOTAS"
+                    textAlign="center"
+                  />
+                </CardContent>
+              </CardActionArea>
+            </Card>
+            <Card sx={{ maxWidth: 345, borderRadius: 2, margin: 1 }}>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height="140"
+                  image="https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?aut…"
+                  alt="WEADING PHOTO"
+                  sx={{ padding: 1, width: 208, maxHeight: 192, borderRadius: 4 }}
+                />
+                <CardContent>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    children="BODAS"
+                    textAlign="center"
+                  />
+                </CardContent>
+              </CardActionArea>
+            </Card>
           </div>
           <Button
             className="button-login"
             name="EXPLORA TODOS"
             onClick={() => {
-              navigate("/");
+              navigate("/MainPage");
             }}
           />
         </Container>
@@ -129,7 +181,7 @@ const LandingPage = () => {
             }}
           >
             <Grid item xs={12}>
-              <Typography variant="h2" className="best-experience" fontSize="4rem">
+              <Typography className="best-experience" variant="h2">
                 Nos importa que tengas la mejor experiencia, <br></br> ¿Porque escogernos?
               </Typography>
             </Grid>
@@ -158,7 +210,7 @@ const LandingPage = () => {
               <img
                 src="https://images.pexels.com/photos/1391786/pexels-photo-1391786.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 alt="PHOTOGRAPHER STUDIO"
-                height={380}
+                className="attributes-picture"
               />
             </Grid>
           </Grid>
@@ -180,11 +232,10 @@ const LandingPage = () => {
               flexWrap: "wrap",
               justifyContent: "space-around",
               alignItems: "center",
-              minHeight: "95vh",
             }}
           >
             <Grid item xs={12} md={8}>
-              <Typography variant="h3" className="explore-photographers-text" fontSize="3rem">
+              <Typography variant="h2" className="explore-photographers-text">
                 Explora a nuestros fotografos favoritos
               </Typography>
             </Grid>
@@ -237,11 +288,11 @@ const LandingPage = () => {
               </div>
             </Grid>
             <Grid item xs={12} md={8}>
-              <Typography variant="h3" className="best-jobs-text" fontSize="3rem">
+              <Typography variant="h2" className="best-jobs-text">
                 Puedes ver sus mejores trabajos
               </Typography>
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={12}>
               <div className="photographers-container">
                 <img
                   className="random-image"
@@ -284,11 +335,10 @@ const LandingPage = () => {
               flexWrap: "wrap",
               justifyContent: "space-around",
               alignItems: "center",
-              minHeight: "95vh",
             }}
           >
             <Grid item xs={12}>
-              <Typography variant="h2" className="photographer-offer" fontSize="4rem">
+              <Typography variant="h2" className="photographer-offer">
                 Eres fotografo y quieres ofrecer tus servicios?
               </Typography>
             </Grid>
@@ -296,7 +346,7 @@ const LandingPage = () => {
               <img
                 src="https://images.pexels.com/photos/3379934/pexels-photo-3379934.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 alt="PHOTOGRAPHER STUDIO"
-                height={380}
+                className="attributes-picture"
               />
             </Grid>
             <Grid item xs={12} md={6} className="property-container">
