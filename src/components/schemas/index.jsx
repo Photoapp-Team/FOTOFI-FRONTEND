@@ -61,6 +61,9 @@ export const addServiceSchema = yup.object().shape({
 });
 
 export const photographerRegisterSchema = yup.object().shape({
+  coverPhoto: yup.array().min(1, "at least 1").required("Por favor sube al menos 1 imagen"),
+  profilePic: yup.array().min(1, "at least 1").required("Por favor sube al menos 1 imagen"),
+  birthDate: yup.date(),
   name: yup
     .string()
     .min(3, "El nombre debe de tener al menos 3 caracteres")

@@ -6,16 +6,14 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { Alert, CircularProgress, FormControl, Grid, MenuItem, Paper } from "@mui/material";
 import { Box } from "@mui/system";
-import { ErrorMessage, Form, Formik } from "formik";
+import { Form, Formik } from "formik";
 import CustomInput from "../../Inputs/CustomInput";
 import Button from "../../Inputs/Button/Button";
 import { createPackage } from "../../../services/createPackage";
-import { useUser } from "../../../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 import { ProfileDropZone } from "../../../services/ProfileDropZone/ProfileDropZone";
 import "./AddServiceForm.css";
 import { ServiceDropZone } from "../../../services/ServiceDropZone/ServiceDropZone";
-import { SignalCellularNull } from "@mui/icons-material";
 
 const AddServiceForm = () => {
   const emptyOption = { label: "Por favor selecciona una opción", value: "" };

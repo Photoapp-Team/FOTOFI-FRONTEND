@@ -20,8 +20,9 @@ import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import PaymentSuscription from "./pages/PaymentSuscription/PaymentSuscription";
 import PaymentPage from "./pages/PaymentPage/PaymentPage";
-
 import PayResponsePage from "./pages/PayResponsePage/PayResponsePage";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 const theme = createTheme({
   typography: {
@@ -29,7 +30,11 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: purple[500],
+      main: "#60C1D7",
+      "&:hover": {
+        color: "#FFFFFF",
+        opacity: 0.7,
+      },
     },
     secondary: {
       main: green[500],
@@ -46,8 +51,73 @@ const theme = createTheme({
     blue: {
       main: blue[500],
     },
-    cyan: {
-      main: cyan[500],
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: ({ ownerState }) => ({
+          "&:hover": {
+            color: "#FFFFFF",
+            backgroundColor: "#60C1D7",
+            opacity: 0.9,
+          },
+        }),
+      },
+      style: {
+        backgroundColor: "red",
+        fontSize: "24px",
+        fontWeight: 800,
+      },
+      variants: [
+        {
+          props: {
+            variant: "secondary",
+          },
+          style: {
+            fontWeight: 500,
+            fontSize: "12px",
+            backgroundColor: "#60C1D7",
+            color: "#000",
+            cursor: "pointer",
+          },
+        },
+        {
+          props: {
+            variant: "text",
+          },
+          style: {
+            color: "blue",
+            fontWeight: 500,
+            fontSize: "12px",
+            textTransform: "none",
+          },
+          styleOverrides: {
+            root: ({ ownerState }) => ({
+              "&:hover": {
+                color: "blue",
+                fontWeight: 500,
+                fontSize: "12px",
+                textTransform: "none",
+              },
+            }),
+          },
+        },
+      ],
+    },
+    MuiMobileStepper: {
+      style: {
+        backgroundColor: "#60C1D7",
+        fontSize: "24px",
+        fontWeight: 800,
+        dot: {
+          backgroundColor: "#008000",
+          height: "15px",
+          width: "15px",
+        },
+        dotActive: {
+          backgroundColor: "#3f51b5",
+        },
+      },
     },
   },
 });
@@ -57,30 +127,32 @@ const App = () => {
     <>
       <ThemeProvider theme={theme}>
         <UserContextProvider>
-          <div>
-            <>
-              <Meganav />
-              <Routes>
-                <Route path="/Registration" element={<RegistrationPage />}></Route>
-                <Route path="/Login" element={<LoginPage />}></Route>
-                <Route path="/" element={<MainPage />}></Route>
-                <Route path="/Profile" element={<ProfilePage />}></Route>
-                <Route path="/Profile/:id" element={<ProfilePage />}></Route>
-                <Route path="/Package/:id" element={<PackageDetailPage />}></Route>
-                <Route path="/AddService/:id" element={<AddServicePage />}></Route>
-                <Route path="/NewSession/:id" element={<NewSessionPage />}></Route>
-                <Route path="/Selection/:id" element={<SelectionPage />}></Route>
-                <Route path="/Session/:id" element={<SessionPage />}></Route>
-                <Route path="/Rate/:id" element={<RatePage />}></Route>
-                <Route path="/EditProfile/:id" element={<EditProfile />}></Route>
-                <Route path="/Landing" element={<LandingPage />}></Route>
-                <Route path="/Payment/:id" element={<PaymentPage />}></Route>
-                <Route path="/Suscription/:id" element={<PaymentSuscription />}></Route>
-                <Route path="/PayResponse/:id" element={<PayResponsePage />}></Route>
-              </Routes>
-              <Footer />
-            </>
-          </div>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <div>
+              <>
+                <Meganav />
+                <Routes>
+                  <Route path="/Registration" element={<RegistrationPage />}></Route>
+                  <Route path="/Login" element={<LoginPage />}></Route>
+                  <Route path="/" element={<MainPage />}></Route>
+                  <Route path="/Profile" element={<ProfilePage />}></Route>
+                  <Route path="/Profile/:id" element={<ProfilePage />}></Route>
+                  <Route path="/Package/:id" element={<PackageDetailPage />}></Route>
+                  <Route path="/AddService/:id" element={<AddServicePage />}></Route>
+                  <Route path="/NewSession/:id" element={<NewSessionPage />}></Route>
+                  <Route path="/Selection/:id" element={<SelectionPage />}></Route>
+                  <Route path="/Session/:id" element={<SessionPage />}></Route>
+                  <Route path="/Rate/:id" element={<RatePage />}></Route>
+                  <Route path="/EditProfile/:id" element={<EditProfile />}></Route>
+                  <Route path="/Landing" element={<LandingPage />}></Route>
+                  <Route path="/Payment/:id" element={<PaymentPage />}></Route>
+                  <Route path="/Suscription/:id" element={<PaymentSuscription />}></Route>
+                  <Route path="/PayResponse/:id" element={<PayResponsePage />}></Route>
+                </Routes>
+                <Footer />
+              </>
+            </div>
+          </LocalizationProvider>
         </UserContextProvider>
       </ThemeProvider>
     </>

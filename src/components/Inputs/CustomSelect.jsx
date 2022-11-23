@@ -44,6 +44,13 @@ const CustomSelect = ({ label, ...props }) => {
         {...props}
         className={meta.touched && meta.error ? "input-error" : ""}
         variant="standard"
+        InputLabelProps={{
+          style: {
+            color: "#023E8A",
+            fontSize: "12px",
+          },
+        }}
+        sx={{ fontSize: "12px" }}
       />
       {meta.touched && meta.error && <div className="error">{meta.error}</div>}
     </>
