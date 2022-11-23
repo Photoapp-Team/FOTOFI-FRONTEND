@@ -13,7 +13,7 @@ const WaitingSessionStatus = ({ user }) => {
   const navigate = useNavigate();
 
   const onClick = () => {
-    navigate("/");
+    navigate("/MainPage");
   };
 
   if (user !== "usuario") {

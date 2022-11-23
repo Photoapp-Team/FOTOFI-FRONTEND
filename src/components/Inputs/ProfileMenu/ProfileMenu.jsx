@@ -65,7 +65,7 @@ function ProfileMenu({ data }) {
           onClick={() => {
             logout();
             handleCloseUserMenu();
-            navigate("/");
+            navigate("/MainPage");
           }}
         >
           <Typography textAlign="center">Log out</Typography>
