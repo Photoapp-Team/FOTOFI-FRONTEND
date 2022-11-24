@@ -36,7 +36,7 @@ const LandingPage = () => {
               <Typography variant="h3" className="title" fontSize="3rem">
                 Conectamos fotógrafos con clientes
               </Typography>
-              <Typography variant="h4">¿Que tipo de fotógrafo necesitas?</Typography>
+              <Typography variant="h4">¿Qué tipo de fotógrafo necesitas?</Typography>
             </Grid>
             <Grid item xs={12} md={6}>
               <img src={HeroPic} alt="HERO PHOTOGRAPHER" className="hero-pic" />
@@ -88,7 +88,7 @@ const LandingPage = () => {
                   <Typography
                     variant="body2"
                     color="text.secondary"
-                    children="BEBE"
+                    children="BEBÉ"
                     textAlign="center"
                   />
                 </CardContent>
@@ -182,7 +182,7 @@ const LandingPage = () => {
           >
             <Grid item xs={12}>
               <Typography className="best-experience" variant="h2">
-                Nos importa que tengas la mejor experiencia, <br></br> ¿Porque elegirnos?
+                Nos importa que tengas la mejor experiencia, <br></br> ¿Por qué elegirnos?
               </Typography>
             </Grid>
 
@@ -190,7 +190,7 @@ const LandingPage = () => {
               <div className="property-item">
                 <TaskAltIcon fontSize="large" color="success" />
                 <Typography variant="h5">
-                  Tú dinero esta seguro y no es entregado hasta que recibas tus fotografías.
+                  Tu dinero esta seguro y no es entregado hasta que recibas tus fotografías.
                 </Typography>
               </div>
               <div className="property-item">
@@ -202,7 +202,7 @@ const LandingPage = () => {
               <div className="property-item">
                 <TaskAltIcon fontSize="large" color="success" />
                 <Typography variant="h5">
-                  Los fotógrafos con las mejores calificaciones están a tú disposición.
+                  Los fotógrafos con las mejores calificaciones están a tu disposición.
                 </Typography>
               </div>
             </Grid>
