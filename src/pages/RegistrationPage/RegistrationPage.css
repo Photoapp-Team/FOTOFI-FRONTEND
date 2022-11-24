@@ -5,12 +5,26 @@
 }
 
 .page-container {
+  height: auto;
+  display: flex;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  position: relative;
+}
+
+.page-container::before {
   background-image: url(../../assets/backgroundImages/pexels-eberhard-grossgasteiger-629162.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  height: auto;
-  width: 100vw;
-  display: flex;
+  position: absolute;
+  content: "";
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  filter: brightness(.5) blur(3px);
+
 }
 
 .logo-container svg path {
@@ -52,7 +66,11 @@
     justify-content: center;
     width: auto;
     max-width: 80%;
+  }  
+  .userSession{
+    height: 2em;
   }
+  
   .main-container {
     width: 90%;
     max-width: 90%;
