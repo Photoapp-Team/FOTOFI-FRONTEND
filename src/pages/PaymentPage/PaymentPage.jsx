@@ -29,7 +29,7 @@ const PaymentPage = () => {
         <Paper className="title-container">
           <Typography
             variant="h3"
-            children="Paga Mensualmente y Obten Excelentes Beneficios"
+            children="Paga mensualmente y obten excelentes beneficios"
             className="page-title"
           />
         </Paper>
@@ -85,7 +85,7 @@ const PaymentPage = () => {
           }}
         ></Button>
         <Link to={`/profile/${id}`} variant="body2">
-          No quiero este increible beneficio
+          No quiero este increíble beneficio
         </Link>
       </Box>
     </Box>

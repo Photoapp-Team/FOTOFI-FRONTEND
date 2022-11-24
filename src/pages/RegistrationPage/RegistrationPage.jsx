@@ -31,7 +31,7 @@ const RegistrationPage = () => {
                 gutterBottom
                 variant="h2"
                 component="div"
-                children="Como te gustaria registrarte?"
+                children="¿Como te gustaría registrarte?"
                 align="center"
               />
             </Grid>
@@ -53,7 +53,7 @@ const RegistrationPage = () => {
                       gutterBottom
                       variant="h5"
                       component="div"
-                      children="Como fotografo"
+                      children="Como fotógrafo"
                       align="center"
                     />
                   </CardContent>

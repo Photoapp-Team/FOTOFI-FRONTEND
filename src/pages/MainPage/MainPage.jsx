@@ -23,7 +23,7 @@ const MainPage = () => {
           sx={{ px: 4, pt: 2 }}
           variant="h5"
           component="div"
-          children="Filtro de servicio"
+          children="Servicios"
           align="center"
           boxSizing="content-box"
         />

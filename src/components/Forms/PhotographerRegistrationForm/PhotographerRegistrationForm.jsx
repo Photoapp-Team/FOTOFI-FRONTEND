@@ -23,7 +23,7 @@ const PhotographerRegistrationForm = () => {
       }
     } else {
       MySwal.fire({
-        title: <strong>Por favor Acepta los términos</strong>,
+        title: <strong>Por favor acepta los términos</strong>,
         icon: `error`,
       });
     }
