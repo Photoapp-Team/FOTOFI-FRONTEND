@@ -65,7 +65,7 @@ const FullRegistrationForm = () => {
                 label="ConfirmPassword"
                 name="confirmPassword"
                 type="password"
-                placeholder="Escribe una contraseña"
+                placeholder="Confirma tu contraseña"
               />
 
               <CustomInput label="Email" name="email" type="email" placeholder="Ingresa tu email" />
