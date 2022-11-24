@@ -19,7 +19,7 @@ export default function ButtonAppBar() {
         <Toolbar>
           <div className="headerContainer">
             <div>
-              <a href="/">
+              <a href="/MainPage">
                 <img src={Fotofilogo} className="fotofiLogo" />
               </a>
             </div>

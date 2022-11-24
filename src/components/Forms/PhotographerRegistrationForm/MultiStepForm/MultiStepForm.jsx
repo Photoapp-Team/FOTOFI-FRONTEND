@@ -21,14 +21,21 @@ const MultiStepForm = ({ children, initialValues, onSubmit }) => {
   const totalSteps = steps.length;
   const isLastStep = activeStep === steps.length - 1;
 
-  function _renderStepContent(step, setFieldValue) {
+  function _renderStepContent(step, setFieldValue, values, touched, errors) {
     switch (step) {
       case 0:
-        return <FormBasicInfo setFieldValue={setFieldValue} />;
+        return (
+          <FormBasicInfo
+            setFieldValue={setFieldValue}
+            values={values}
+            touched={touched}
+            errors={errors}
+          />
+        );
       case 1:
         return <FormPersonalData />;
       case 2:
-        return <Confirm />;
+        return <Confirm setFieldValue={setFieldValue} />;
       default:
         return <div>Not Found</div>;
     }
@@ -62,6 +69,8 @@ const MultiStepForm = ({ children, initialValues, onSubmit }) => {
     <Formik
       sx={{ height: "auto", m: 1 }}
       initialValues={{
+        coverPhoto: [],
+        profilePic: [],
         username: "",
         name: "",
         lastname: "",
@@ -80,33 +89,25 @@ const MultiStepForm = ({ children, initialValues, onSubmit }) => {
         facebook: "",
         instagram: "",
         www: "",
+        birthDate: "",
         photoTags: [],
+        checked: "false",
       }}
       validationSchema={photographerRegisterSchema}
       onSubmit={handleSubmit}
     >
-      {({ setFieldValue, values }) => (
+      {({ setFieldValue, values, touched, errors }) => (
         <Paper
           elevation={8}
           sx={{
             display: "flex",
-            justifyContent: "center",
+            justifyContent: "flex-start",
             m: "auto",
             width: "60%",
           }}
           className="paperMultiStepForm"
         >
-          <Form
-            initialValues={snapshot}
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              m: "auto",
-              width: "70%",
-              maxWidth: "70%",
-            }}
-            className="formMultiStepForm"
-          >
+          <Form initialValues={snapshot} className="formMultiStepForm">
             {phone ? (
               <MobileStepper
                 variant="dots"
@@ -122,7 +123,7 @@ const MultiStepForm = ({ children, initialValues, onSubmit }) => {
                 }}
               ></MobileStepper>
             ) : (
-              <Stepper activeStep={activeStep} sx={{ px: 10, py: 5 }}>
+              <Stepper activeStep={activeStep} sx={{ py: 5 }}>
                 {steps.map((label) => (
                   <Step key={label}>
                     <StepLabel>{label}</StepLabel>
@@ -131,7 +132,7 @@ const MultiStepForm = ({ children, initialValues, onSubmit }) => {
               </Stepper>
             )}
 
-            {_renderStepContent(stepNumber, setFieldValue)}
+            {_renderStepContent(stepNumber, setFieldValue, touched, errors, values)}
             <FormNavigation
               isLastStep={isLastStep}
               phone={phone}
