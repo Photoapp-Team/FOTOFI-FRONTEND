@@ -9,3 +9,9 @@
   border-radius: 10 !important;
   box-shadow: none !important;
 }
+
+.button-identity-card {
+  box-shadow: 3px 6px 5px -2px rgba(166, 147, 147, 0.83) !important;
+  -webkit-box-shadow: 3px 6px 5px -2px rgba(166, 147, 147, 0.83) !important;
+  -moz-box-shadow: 3px 6px 5px -2px rgba(166, 147, 147, 0.83) !important;
+}

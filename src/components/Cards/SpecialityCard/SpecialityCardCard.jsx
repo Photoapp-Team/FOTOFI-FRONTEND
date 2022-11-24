@@ -31,7 +31,7 @@ export default function SpecialityCard({ userData }) {
             <Box>
               <Typography
                 children={"Especialidades"}
-                sx={{ px: "2.5rem", fontSize: "18px", fontWeight: "600" }}
+                sx={{ px: "18px", fontSize: "18px", fontWeight: "600" }}
               />
             </Box>
           </Box>
