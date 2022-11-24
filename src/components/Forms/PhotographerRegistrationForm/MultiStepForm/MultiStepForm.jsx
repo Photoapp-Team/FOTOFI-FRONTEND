@@ -21,10 +21,17 @@ const MultiStepForm = ({ children, initialValues, onSubmit }) => {
   const totalSteps = steps.length;
   const isLastStep = activeStep === steps.length - 1;
 
-  function _renderStepContent(step, setFieldValue) {
+  function _renderStepContent(step, setFieldValue, values, touched, errors) {
     switch (step) {
       case 0:
-        return <FormBasicInfo setFieldValue={setFieldValue} />;
+        return (
+          <FormBasicInfo
+            setFieldValue={setFieldValue}
+            values={values}
+            touched={touched}
+            errors={errors}
+          />
+        );
       case 1:
         return <FormPersonalData />;
       case 2:

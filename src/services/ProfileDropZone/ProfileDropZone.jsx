@@ -68,7 +68,7 @@ export function ProfileDropZone({ setFieldValue, fieldName }) {
           <Avatar
             src={file.preview}
             variant="circular"
-            style={img}
+            style={{ ...img, aspectRatio: fieldName === "profilePic" ? "1/1" : "1/1" }}
             // Revoke data uri after image is loaded
             onLoad={() => {
               URL.revokeObjectURL(file.preview);
@@ -77,7 +77,7 @@ export function ProfileDropZone({ setFieldValue, fieldName }) {
         ) : (
           <img
             src={file.preview}
-            style={{ ...img, aspectRatio: fieldName === "profilePic" ? "1" : "16" }}
+            style={{ ...img, aspectRatio: fieldName === "profilePic" ? "1/1" : "16/1" }}
             // Revoke data uri after image is loaded
             onLoad={() => {
               URL.revokeObjectURL(file.preview);

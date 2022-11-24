@@ -14,7 +14,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import "./ConfirmSession.css";
 
-const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, statusWorkspace }) => {
+const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, next }) => {
   const [approveSession, setApproveSession] = useState(false);
   const MySwal = withReactContent(Swal);
 
@@ -52,6 +52,7 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, stat
         title: <strong>Sesión Confirmada!</strong>,
         icon: `success`,
       });
+      next();
       setStatusWorkspace(updatedSession);
     }
   };
@@ -63,7 +64,7 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, stat
         <Card sx={{ maxWidth: 695, height: "auto", mx: "auto", my: "5%" }}>
           <CardContent>
             <Typography
-              sx={{ fontSize: 14, fontWeight: "bold" }}
+              sx={{ fontSize: 14, fontWeight: "bold", ml: "1rem" }}
               color="text.secondary"
               gutterBottom
             >
@@ -72,17 +73,17 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, stat
             <Divider variant="middle" />
             <Typography
               margin="auto"
-              width={"70%"}
-              variant="h5"
+              width={"90%"}
               component="div"
-              textAlign={"center"}
+              textAlign={"initial"}
+              sx={{ fontSize: "22px" }}
             >
               {sessionUser.name} {sessionUser.lastname} te ha solicitado una nueva sesión para el
               dia:
               <br /> {fecha}
             </Typography>
             <Typography sx={{ mb: 1.5 }} color="text.secondary"></Typography>
-            <Typography margin="auto" width={"70%"} variant="subtitle1" textAlign={"center"}>
+            <Typography margin="auto" width={"80%"} variant="subtitle1" textAlign={"initial"}>
               Si ya te contacto, tienes los detalles y estás de acuerdo por favor confirma, de lo
               contrario cancela.
             </Typography>
@@ -112,7 +113,7 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, stat
         </Card>
       )}
       {approveSession && (
-        <Box sx={{ mt: "50px" }}>
+        <Box sx={{ mt: "50px", pb: "50px" }}>
           <CssBaseline />
           <Formik
             initialValues={{
@@ -135,7 +136,6 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, stat
                   mx: "auto",
                   borderRadius: 4,
                   pb: "20px",
-                  mb: "10px",
                 }}
               >
                 <Form>
@@ -145,14 +145,14 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, stat
                     sx={{ px: 10 }}
                     className="gridContainerConfirmSession"
                   >
-                    <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
+                    <Grid item xs={12} sm={12} sx={{ textAlign: "flex-start" }}>
                       <h1>Detalles de la sesión</h1>
                     </Grid>
                     <Divider variant="middle" />
-                    <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
+                    <Grid item xs={12} sm={12} sx={{ textAlign: "flex-start" }}>
                       <h2>Configura la sesión</h2>
                     </Grid>
-                    <Grid item xs={12} sm={12} sx={{ textAlign: "center", lineHeight: "1px" }}>
+                    <Grid item xs={12} sm={12} sx={{ textAlign: "flex-start", lineHeight: "1px" }}>
                       <h4>Nombre de la Sesión</h4>
                     </Grid>
                     <Grid item xs={12} sm={12}>
@@ -167,7 +167,7 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, stat
                         />
                       </FormControl>
                     </Grid>
-                    <Grid item xs={12} sm={12} sx={{ textAlign: "center", lineHeight: "1px" }}>
+                    <Grid item xs={12} sm={12} sx={{ textAlign: "flex-start", lineHeight: "1px" }}>
                       <h4>Lugar donde será la sesión</h4>
                     </Grid>
                     <Grid item xs={12} sm={12}>
@@ -182,7 +182,7 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, stat
                         />
                       </FormControl>
                     </Grid>
-                    <Grid item xs={12} sm={12} sx={{ textAlign: "center", lineHeight: "1px" }}>
+                    <Grid item xs={12} sm={12} sx={{ textAlign: "flex-start", lineHeight: "1px" }}>
                       <h4>Precio</h4>
                     </Grid>
                     <Grid item xs={12} sm={12}>
@@ -197,7 +197,7 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, stat
                         />
                       </FormControl>
                     </Grid>
-                    <Grid item xs={12} sm={12} sx={{ textAlign: "center", lineHeight: "1px" }}>
+                    <Grid item xs={12} sm={12} sx={{ textAlign: "flex-start", lineHeight: "1px" }}>
                       <h4>¿Cuántas fotos incluye? (Preview)</h4>
                     </Grid>
                     <Grid item xs={12} sm={12}>
@@ -212,7 +212,7 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, stat
                         />
                       </FormControl>
                     </Grid>
-                    <Grid item xs={12} sm={12} sx={{ textAlign: "center", lineHeight: "1px" }}>
+                    <Grid item xs={12} sm={12} sx={{ textAlign: "flex-start", lineHeight: "1px" }}>
                       <h4>¿Cuántas fotos vas a entregar? </h4>
                     </Grid>
                     <Grid item xs={12} sm={12}>
@@ -227,7 +227,7 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, stat
                         />
                       </FormControl>
                     </Grid>
-                    <Grid item xs={12} sm={12} sx={{ textAlign: "center", lineHeight: "1px" }}>
+                    <Grid item xs={12} sm={12} sx={{ textAlign: "flex-start", lineHeight: "1px" }}>
                       <h4>Tiempo estimado de entrega</h4>
                     </Grid>
                     <Grid item xs={12} sm={12}>
@@ -242,7 +242,7 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, stat
                         />
                       </FormControl>
                     </Grid>
-                    <Box sx={{ display: "flex", m: "auto", justifyContent: "center", my: 5 }}>
+                    <Box sx={{ display: "flex", m: "auto", justifyContent: "flex-start", my: 5 }}>
                       <Button
                         disabled={isSubmitting}
                         type="submit"

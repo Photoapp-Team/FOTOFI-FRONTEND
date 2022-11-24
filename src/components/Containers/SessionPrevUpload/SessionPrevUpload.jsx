@@ -4,10 +4,12 @@ import { Form, Formik } from "formik";
 import { uploadSessionPhotos } from "../../../services/uploadSessionPhotos";
 import { useNavigate, useParams } from "react-router-dom";
 import ImageUpload from "../../../services/ImageUpload";
-import Button from "../../Inputs/Button/Button";
-import { Backdrop, Box, Fade, Modal } from "@mui/material";
+import { Box, Button, CircularProgress } from "@mui/material";
 import { useState } from "react";
 import { updateSession } from "../../../services/updateSession";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import "./SessionPrevUpload.css";
 
 const style = {
   position: "absolute",
@@ -24,90 +26,82 @@ const style = {
 const SessionPrevUpload = ({ setStatusWorkspace, sessionId }) => {
   const params = useParams();
   const { id } = params;
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  const onClick = () => {
-    setStatusWorkspace("updatedSession");
-  };
+  const MySwal = withReactContent(Swal);
 
   const onSubmit = async (values) => {
-    const { REACT_APP_API_ENDPOINT } = process.env;
-    const sessionUrl = `${REACT_APP_API_ENDPOINT}/upload/sessions/prev/${id}`;
-    const updatedSessionPhotos = await uploadSessionPhotos(sessionUrl, values);
-    if (updatedSessionPhotos) {
-      const newValues = {
-        status: {
-          preUploaded: Date.now(),
-        },
-      };
-      const updatedSession = await updateSession(sessionId, newValues);
-      setStatusWorkspace(updatedSession);
+    const { previewPics } = values;
+    if (previewPics.length > 0) {
+      const { REACT_APP_API_ENDPOINT } = process.env;
+      const sessionUrl = `${REACT_APP_API_ENDPOINT}/upload/sessions/prev/${id}`;
+      const updatedSessionPhotos = await uploadSessionPhotos(sessionUrl, values);
+      if (updatedSessionPhotos) {
+        const newValues = {
+          status: {
+            preUploaded: Date.now(),
+          },
+        };
+        const updatedSession = await updateSession(sessionId, newValues);
+        setStatusWorkspace(updatedSession);
+      }
+    } else {
+      MySwal.fire({
+        title: <strong>¡Espera!</strong>,
+        text: "Antes de continuar por favor sube las imágenes que tomaste para que el usuario las revise.",
+        icon: `error`,
+      });
     }
   };
 
   return (
-    <Formik
-      initialValues={{ previewPics: "" }}
-      // validationSchema={addServiceSchema}
-      onSubmit={onSubmit}
-    >
+    <Formik initialValues={{ previewPics: "" }} onSubmit={onSubmit}>
       {({ isSubmitting, setFieldValue, values }) => (
-        <Form className="formContainer">
+        <Form>
           <Box
-            sx={{ my: "14vh", mx: "auto", width: "80%", minHeight: "30vh", alignItems: "center" }}
+            sx={{
+              my: "14vh",
+              mx: "auto",
+              width: "80%",
+              minHeight: "30vh",
+              alignItems: "center",
+              display: "flex",
+              flexDirection: "column",
+              textAlign: "initial",
+              gap: 1,
+            }}
           >
-            <ImageUpload
-              phrase={"Arrastra tus fotos de preview aqui o haz click"}
-              classbox={"boxSession"}
-              classpaper={"paperSession"}
-              setFieldValue={setFieldValue}
-              name={"previewPics"}
-              fieldName={"previewPics"}
-            />
-            <Box
-              sx={{ mx: "auto", display: "flex", justifyContent: "center", position: "relative" }}
-            >
-              <Button
-                onClick={handleOpen}
-                sx={{ mb: 25 }}
-                disabled={isSubmitting}
-                type="submit"
-                text={"Submit"}
-                className={"button-basic-registration"}
-                name={"Subir Fotos"}
+            <Box sx={{ justifyContent: "flex-start", display: "flex", width: "100%", pl: "3rem" }}>
+              <Typography
+                children="*Sube tus imagenes en baja resolución y con marca de agua"
+                sx={{ fontSize: "14px", fontWeight: 500 }}
               />
-              <Modal
-                aria-labelledby="transition-modal-title"
-                aria-describedby="transition-modal-description"
-                open={open}
-                onClose={handleClose}
-                closeAfterTransition
-                BackdropComponent={Backdrop}
-                BackdropProps={{
-                  timeout: 500,
-                }}
-              >
-                <Fade in={open}>
-                  <Box sx={style}>
-                    <Typography id="transition-modal-title" variant="h6" component="h2">
-                      Success
-                    </Typography>
-                    <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-                      Tus fotos se subieron con éxito
-                    </Typography>
-                    <Button
-                      onClick={onClick}
-                      sx={{ mb: 25 }}
-                      disabled={isSubmitting}
-                      text={"Aceptar"}
-                      className={"button-basic-registration"}
-                      name={"Aceptar"}
-                    />
-                  </Box>
-                </Fade>
-              </Modal>
+            </Box>
+            <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
+              <ImageUpload
+                phrase={"Arrastra tus fotos de preview aqui o haz click"}
+                classbox={"boxSession"}
+                classpaper={"paperSession"}
+                setFieldValue={setFieldValue}
+                name={"previewPics"}
+                fieldName={"previewPics"}
+              />
+            </Box>
+            <Box>
+              <Box>{isSubmitting && <CircularProgress />}</Box>
+              <Box>
+                <Button
+                  onClick={() => {
+                    onSubmit(values);
+                  }}
+                  disabled={isSubmitting}
+                  type="submit"
+                  text="Submit"
+                  variant="secondary"
+                  children="Subir Fotos"
+                  name="Subir Fotos"
+                  sx={{ mt: 4 }}
+                  className="prev-button-session-upload"
+                />
+              </Box>
             </Box>
           </Box>
         </Form>
