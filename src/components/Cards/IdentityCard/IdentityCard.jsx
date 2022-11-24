@@ -47,10 +47,6 @@ export default function IdentityCard({ userData, isPremium, isOwner, isPhotograp
           variant="h5"
           sx={{ p: 1, fontWeight: "700", fontSize: "26px" }}
         />
-        <Typography
-          children={role === "Photographer" ? "Fotógrafo" : "Usuario"}
-          sx={{ p: 1, fontWeight: "600", fontSize: "16px" }}
-        />
         {isOwner && (
           <>
             <Button name={"Editar Perfil"} className={"buttonLogin"} onClick={handleEditProfile}>

@@ -30,8 +30,8 @@ export default function SpecialityCard({ userData }) {
           <Box sx={{ display: "flex", width: "inherit", p: 1 }}>
             <Box>
               <Typography
-                children={`Especializado en:`}
-                sx={{ px: 2, fontSize: "18px", fontWeight: "600" }}
+                children={"Especialidades"}
+                sx={{ px: "2.5rem", fontSize: "18px", fontWeight: "600" }}
               />
             </Box>
           </Box>
@@ -45,7 +45,7 @@ export default function SpecialityCard({ userData }) {
               width: "inherit",
               alignItems: "center",
               p: 1,
-              border: "1px",
+              border: "1px solid #60C1D7",
               borderRadius: "10px",
               mb: "10px",
             }}
