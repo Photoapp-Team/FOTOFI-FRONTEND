@@ -75,6 +75,7 @@ const theme = createTheme({
             fontWeight: 500,
             fontSize: "12px",
             textTransform: "none",
+            backgroundColor: "#FFF",
             cursor: "pointer",
           },
         },
