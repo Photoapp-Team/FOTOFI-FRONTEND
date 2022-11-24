@@ -25,12 +25,12 @@
   background-image: url(../../assets/backgroundImages/fondo_morado.png);
   background-size: cover;
   background-repeat: no-repeat;
-  height: 42vh;
   width: 100vw;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
 }
 
 .fourth-container {
-  height: 95vh;
   width: 100vw;
 }
 
@@ -38,7 +38,6 @@
   background-image: url(../../assets/backgroundImages/fondo_morado_rotated.png);
   background-size: cover;
   background-repeat: no-repeat;
-  height: 95vh;
   width: 100vw;
 }
 
@@ -54,7 +53,7 @@
 
 .service-container {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   width: 100%;
   justify-content: space-around;
 }
@@ -62,8 +61,14 @@
 .photographers-container {
   display: flex;
   flex-direction: row;
-  width: 100%;
-  justify-content: space-around;
+
+  justify-content: center;
+}
+
+@media only screen and (max-width: 900px) {
+  .photographers-container {
+    flex-wrap: wrap;
+  }
 }
 .popular-services {
   display: flex;
@@ -87,21 +92,59 @@
   text-align: left;
   text-shadow: 2px 2px 8px #350c0c95;
   padding: 2rem;
+  font-size: 3rem;
+}
+
+@media only screen and (max-width: 900px) {
+  .best-experience,
+  .photographer-offer {
+    display: flex;
+    font-weight: 800 !important;
+    justify-content: center;
+    text-align: left;
+    text-shadow: 2px 2px 8px #350c0c95;
+    padding: 2rem;
+    font-size: 2rem !important;
+  }
+}
+
+.attributes-picture {
+  max-width: 30vw;
+  min-width: 450px;
+}
+@media only screen and (max-width: 900px) {
+  .attributes-picture {
+    min-width: 320px;
+    width: 80vw;
+  }
 }
 
 .explore-photographers-text,
 .best-jobs-text {
+  font-weight: 800 !important;
   color: white;
   text-align: left;
   text-shadow: 2px 2px 8px #350c0c95;
+  font-size: 3rem !important;
+}
+@media only screen and (max-width: 900px) {
+  .explore-photographers-text,
+  .best-jobs-text {
+    font-size: 2rem !important;
+  }
 }
 
 .hero-pic {
   position: absolute;
   right: 20px;
   bottom: -20px;
+  height: 600px;
 }
-
+@media only screen and (max-width: 900px) {
+  .hero-pic {
+    height: 300px;
+  }
+}
 .random-image {
   border-radius: 0.5rem;
   margin: 2rem;
@@ -115,11 +158,29 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
 .property-container {
   display: flex;
   flex-direction: column !important;
   justify-content: space-between;
-  height: 40vh;
+  align-items: flex-start;
+}
+
+@media only screen and (min-width: 900px) {
+  .property-container {
+    display: flex;
+    flex-direction: column !important;
+    justify-content: space-between;
+    height: 40vh;
+  }
+}
+.service-card {
+  max-width: 300px !important;
+}
+
+.service-picture {
+  max-width: 200px;
 }

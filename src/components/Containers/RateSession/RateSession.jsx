@@ -23,7 +23,6 @@ const RateSession = ({ data, setStatusWorkspace }) => {
     return fileExtResult;
   };
   const onClick = async () => {
-
     let imgUrl = [];
     let imageBlob = [];
 
@@ -52,7 +51,7 @@ const RateSession = ({ data, setStatusWorkspace }) => {
   const onSubmit = async (values) => {
     const sessionRated = await rateSession(values, id);
     if (sessionRated) {
-      navigate("/");
+      navigate("/MainPage");
     }
   };
 

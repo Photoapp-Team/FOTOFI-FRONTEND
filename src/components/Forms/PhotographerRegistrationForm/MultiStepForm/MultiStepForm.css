@@ -16,16 +16,17 @@
   color: #42b7d0 !important;
 }
 
-.css-1c1l3f3-MuiMobileStepper-dot {
-  background-color: #42b7d0 !important;
-  height: 15px !important;
+.MuiMobileStepper-dot {
   width: 15px !important;
+  height: 15px !important;
 }
-.css-114p2tk-MuiMobileStepper-dot {
-  height: 15px !important;
+
+.MuiMobileStepper-dotActive {
   width: 15px !important;
+  height: 15px !important;
 }
 
 .formMultiStepForm {
   width: 85%;
+  margin: auto;
 }

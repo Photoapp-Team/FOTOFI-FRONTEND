@@ -124,7 +124,7 @@ export default function ConctactCard({ userData }) {
                   <FacebookIcon sx={{ fontSize: 30 }} />
                 </a>
               ) : (
-                <FacebookIcon sx={{ fontSize: 30 }} />
+                <FacebookIcon sx={{ fontSize: 30, opacity: "0.4" }} />
               )}
             </Box>
           </Box>
