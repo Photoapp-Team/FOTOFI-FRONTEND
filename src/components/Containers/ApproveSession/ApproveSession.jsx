@@ -3,14 +3,14 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { CardActionArea, CardActions, Divider } from "@mui/material";
+import { Button, CardActionArea, CardActions, Divider } from "@mui/material";
 import CameraPic from "../../../assets/backgroundImages/pexels-alexey-demidov-10137512.jpg";
 import { dateFormater } from "../../../services/dateFormater";
 import { Box } from "@mui/system";
-import Button from "../../Inputs/Button/Button";
 import { updateSession } from "../../../services/updateSession";
+import "./ApproveSession.css";
 
-const ApproveSession = ({ data, sessionId, setStatusWorkspace }) => {
+const ApproveSession = ({ data, sessionId, setStatusWorkspace, next }) => {
   const onSubmit = async (value) => {
     if (value === "confirm") {
       const newValue = {
@@ -27,6 +27,7 @@ const ApproveSession = ({ data, sessionId, setStatusWorkspace }) => {
         },
       };
       const updatedSession = await updateSession(sessionId, newValue);
+      next();
       setStatusWorkspace(updatedSession);
     }
   };
@@ -86,19 +87,21 @@ const ApproveSession = ({ data, sessionId, setStatusWorkspace }) => {
             <Button
               size="small"
               type="submit"
-              text={"Submit"}
-              name={"Confirmar"}
+              name="Confirmar"
               value="confirm"
-              className={"buttonApproveSession"}
+              variant="secondary"
+              children="Confirmar"
+              className="approve-session-button"
               onClick={() => onSubmit("confirm")}
             />
             <Button
               size="small"
               type="submit"
-              text={"Submit"}
-              name={"Cancelar"}
+              name="Cancelar"
               value="confirm"
-              className={"buttonApproveSessionRej"}
+              variant="reject"
+              children="Cancelar"
+              className="reject-session-button"
               onClick={() => onSubmit("reject")}
             />
           </Box>

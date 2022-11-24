@@ -1,7 +1,8 @@
-import { Button, Paper } from "@mui/material";
+import { Button, Paper, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import { updateSession } from "../../../services/updateSession";
+import "./ConfirmPaymentSession.css";
 
 const ConfirmPaymentSession = ({ sessionId, setStatusWorkspace }) => {
   const onClick = async (value) => {
@@ -17,21 +18,22 @@ const ConfirmPaymentSession = ({ sessionId, setStatusWorkspace }) => {
   return (
     <Box sx={{ maxWidth: 600, mx: "auto", my: "20px" }}>
       <Paper
+        elevation={8}
         sx={{ textAlign: "initial", display: "flex", alignItems: "flex-start", m: "auto", gap: 3 }}
       >
         <Box
           sx={{
-            textAlign: "center",
+            textAlign: "initial",
             display: "flex",
             alignItems: "flex-start",
             m: "auto",
             pl: "1rem",
           }}
         >
-          <h4>
+          <Typography sx={{ fontSize: "14px", fontWeight: 500 }}>
             Si el usuario ya pagó el anticipo o la sesión, o si estás de acuerdo en continuar por
-            favor da click en aceptar
-          </h4>
+            favor da click en confirmar.
+          </Typography>
         </Box>
         <Box
           sx={{ textAlign: "initial", display: "flex", alignItems: "flex-start", m: "auto", p: 5 }}
@@ -43,6 +45,7 @@ const ConfirmPaymentSession = ({ sessionId, setStatusWorkspace }) => {
             onClick={() => {
               onClick();
             }}
+            className="button-confirm-payment"
           />
         </Box>
       </Paper>

@@ -20,9 +20,9 @@ import { useState } from "react";
 import { useField } from "formik";
 
 const FormBasicInfo = (props) => {
-  const { stepNumber, setFieldValue } = props;
+  const { stepNumber, setFieldValue, values, touched, errors } = props;
   const [selectedDate, setSelectedDate] = useState(null);
-  const [meta, field, values] = useField(props);
+  const [meta] = useField(props);
 
   const CssTextField = styled(TextField)({
     fontSize: "12px",
@@ -54,7 +54,7 @@ const FormBasicInfo = (props) => {
             setFieldValue={setFieldValue}
             showAlerts={["error"]}
           />
-          {meta.touched && meta.error && (
+          {touched.coverPhoto && errors.coverPhoto && (
             <Alert severity="error">Por favor sube al menos 1 foto</Alert>
           )}
         </Grid>
@@ -89,7 +89,9 @@ const FormBasicInfo = (props) => {
               setFieldValue={setFieldValue}
               showAlerts={["error"]}
             />
-            {meta.touched && meta.error && <Alert severity="error">Por favor sube una foto</Alert>}
+            {touched.profilePic && errors.profilePic && (
+              <Alert severity="error">Por favor sube una foto</Alert>
+            )}
           </Grid>
         </Grid>
         <Divider orientation="vertical" flexItem />
@@ -102,13 +104,13 @@ const FormBasicInfo = (props) => {
             justifyContent: "flex-start",
             flexDirection: "column",
             textAlign: "flex-start",
-            alignItems: "flex-start",
+            alignItems: "stretch",
             gap: 3,
           }}
         >
           <Grid item xs={12} sm={12} sx={{ padding: "5px" }}>
             <FormControl fullWidth>
-              <CustomInput fullWidth label="Nickname" name="username" />
+              <CustomInput fullWidth label="Nickname" name="username" required />
             </FormControl>
           </Grid>
           <Grid item xs={12} sm={12} sx={{ gap: 2, display: "flex", alignItems: "flex-start" }}>

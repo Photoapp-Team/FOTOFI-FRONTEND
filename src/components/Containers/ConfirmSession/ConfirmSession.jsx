@@ -14,7 +14,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import "./ConfirmSession.css";
 
-const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, statusWorkspace }) => {
+const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, next }) => {
   const [approveSession, setApproveSession] = useState(false);
   const MySwal = withReactContent(Swal);
 
@@ -52,6 +52,7 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, stat
         title: <strong>Sesión Confirmada!</strong>,
         icon: `success`,
       });
+      next();
       setStatusWorkspace(updatedSession);
     }
   };
@@ -112,7 +113,7 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, stat
         </Card>
       )}
       {approveSession && (
-        <Box sx={{ mt: "50px", height: "100vh" }}>
+        <Box sx={{ mt: "50px", pb: "50px" }}>
           <CssBaseline />
           <Formik
             initialValues={{
@@ -135,7 +136,6 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, stat
                   mx: "auto",
                   borderRadius: 4,
                   pb: "20px",
-                  mb: "10px",
                 }}
               >
                 <Form>

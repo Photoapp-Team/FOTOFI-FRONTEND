@@ -12,8 +12,6 @@ const PhotographerRegistrationForm = () => {
   const MySwal = withReactContent(Swal);
 
   const onSubmit = async (values) => {
-
-    console.log(values);
     if (values.checked) {
       const photographer = await createPhotographer(values);
       if (photographer) {

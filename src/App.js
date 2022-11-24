@@ -55,13 +55,29 @@ const theme = createTheme({
   components: {
     MuiButton: {
       styleOverrides: {
-        root: ({ ownerState }) => ({
+        root: {
           "&:hover": {
             color: "#FFFFFF",
             backgroundColor: "#60C1D7",
             opacity: 0.9,
           },
-        }),
+        },
+        reject: {
+          "&:hover": {
+            color: "#FFF",
+            backgroundColor: "#cf1508",
+            opacity: 0.9,
+          },
+        },
+        text: {
+          "&:hover": {
+            color: "blue",
+            fontWeight: 500,
+            fontSize: "12px",
+            textTransform: "none",
+            cursor: "pointer",
+          },
+        },
       },
       style: {
         backgroundColor: "red",
@@ -90,16 +106,19 @@ const theme = createTheme({
             fontWeight: 500,
             fontSize: "12px",
             textTransform: "none",
+            cursor: "pointer",
           },
-          styleOverrides: {
-            root: ({ ownerState }) => ({
-              "&:hover": {
-                color: "blue",
-                fontWeight: 500,
-                fontSize: "12px",
-                textTransform: "none",
-              },
-            }),
+        },
+        {
+          props: {
+            variant: "reject",
+          },
+          style: {
+            color: "#000",
+            fontWeight: 500,
+            fontSize: "12px",
+            cursor: "pointer",
+            backgroundColor: "#eb4034",
           },
         },
       ],
