@@ -28,7 +28,7 @@ function FooterLayout() {
             Plataforma orientada a facilitar el contacto y contratación de servicios profesionales
             del área audiovisual.
             <br />
-            Nuestra misión es enlazar a fotografos con usuarios y hacer su experiencia más fácil y
+            Nuestra misión es enlazar a fotógrafos con usuarios y hacer su experiencia más fácil y
             dinámica.
           </Typography>
         </Box>

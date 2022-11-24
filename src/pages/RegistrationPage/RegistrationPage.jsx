@@ -34,9 +34,10 @@ const RegistrationPage = () => {
                 gutterBottom
                 variant="h2"
                 component="div"
-                children= "Como te gustaria registrarte?"
+                children="¿Cómo te gustaría registrarte?"
                 align="center"
                 mt={3}
+                sx={{color:"white"}}
                 
 
               />
@@ -51,7 +52,7 @@ const RegistrationPage = () => {
                   <img
                     src={PhotographerSession}
                     alt="CAMERA ICON" 
-                    style= {{aspectRatio:"4/3", with:"100%", left: "100%", botton: "100%" }}
+                    style= {{aspectRatio:"4/3", width:"100%", left: "100%", bottom: "100%" }}
                     
                   
                   />
@@ -60,7 +61,7 @@ const RegistrationPage = () => {
                       gutterBottom
                       variant="h5"
                       component="div"
-                      children="Como fotografo"
+                      children="Como fotógrafo"
                       align="center"
                     />
                   </CardContent>
@@ -77,7 +78,7 @@ const RegistrationPage = () => {
                    <img 
                    src={UserSession}
                    alt="USER SESSION" 
-                   style= {{aspectRatio:"4/3", with:"50%"}}
+                   style= {{aspectRatio:"4/3", width:"100%" }}
                    
                   />
                   <CardContent>
