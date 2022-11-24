@@ -6,6 +6,7 @@ import PhotographersContainer from "../../components/Containers/PhotographersCon
 import Grid from "@mui/material/Grid";
 import { useUser } from "../../contexts/UserContext";
 import { useEffect } from "react";
+import useWindowDimensions from "../../services/useResize";
 
 const MainPage = () => {
   const { setSearchWord } = useUser();
@@ -18,16 +19,18 @@ const MainPage = () => {
 
   return (
     <Grid container spacing={2} justifyContent="center" alignItems="center">
-      <Grid item sm={12} className="filter-container">
-        <Typography
-          sx={{ px: 4, pt: 2 }}
-          variant="h5"
-          component="div"
-          children="Servicios"
-          align="center"
-          boxSizing="content-box"
-        />
-        <ServiceFilter></ServiceFilter>
+      <Grid item sm={12} className="filter-block">
+        <div className="filter-container">
+          <Typography
+            sx={{ px: 4, pt: 2 }}
+            variant="h5"
+            component="div"
+            children="Servicios"
+            align="center"
+            boxSizing="content-box"
+          />
+          <ServiceFilter></ServiceFilter>
+        </div>
       </Grid>
       <Grid item sm={12}>
         <Typography

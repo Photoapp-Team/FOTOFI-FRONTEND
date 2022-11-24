@@ -4,15 +4,22 @@
 
 .headerContainer {
   display: flex;
-  width: 100vw;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+.leftCornerNav {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 1rem;
 }
 
 .rightCornerNav {
   display: flex;
   justify-content: space-around;
+  padding-right: 1rem;
 }
 
 .icon-button {
@@ -22,4 +29,59 @@
 .navbar {
   background-color: #ffffff !important;
   position: sticky !important;
+}
+
+@media screen and (max-width: 563px) {
+  .headerContainer {
+    width: 282px;
+  }
+}
+@media screen and (min-width: 564px) {
+  .headerContainer {
+    width: 564px;
+  }
+}
+@media screen and (min-width: 846px) {
+  .headerContainer {
+    width: 846px;
+  }
+}
+@media screen and (min-width: 1128px) {
+  .headerContainer {
+    width: 1128px;
+  }
+}
+@media screen and (min-width: 1410px) {
+  .headerContainer {
+    width: 1410px;
+  }
+}
+@media screen and (min-width: 1692px) {
+  .headerContainer {
+    width: 1692px;
+  }
+}
+@media screen and (min-width: 1974px) {
+  .headerContainer {
+    width: 1974px;
+  }
+}
+
+@media screen and (min-width: 651px) {
+  .mobileSearch {
+    display: none;
+  }
+  .searchFull {
+    display: flex;
+  }
+}
+@media screen and (max-width: 650px) {
+  .mobileSearch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .searchFull {
+    display: none;
+  }
 }
