@@ -36,7 +36,7 @@ const LandingPage = () => {
               <Typography variant="h3" className="title" fontSize="3rem">
                 Conectamos fotógrafos con clientes
               </Typography>
-              <Typography variant="h4">¿Que tipo de fotografo necesitas?</Typography>
+              <Typography variant="h4">¿Qué tipo de fotógrafo necesitas?</Typography>
             </Grid>
             <Grid item xs={12} md={6}>
               <img src={HeroPic} alt="HERO PHOTOGRAPHER" className="hero-pic" />
@@ -58,7 +58,7 @@ const LandingPage = () => {
           >
             <Grid item xs={12} sm={12} md={4}>
               <Typography variant="h3" className="popular-services" fontSize="3rem">
-                Servicios mas populares
+                Servicios más populares
               </Typography>
             </Grid>
           </Grid>
@@ -88,7 +88,7 @@ const LandingPage = () => {
                   <Typography
                     variant="body2"
                     color="text.secondary"
-                    children="BEBE"
+                    children="BEBÉ"
                     textAlign="center"
                   />
                 </CardContent>
@@ -182,7 +182,7 @@ const LandingPage = () => {
           >
             <Grid item xs={12}>
               <Typography className="best-experience" variant="h2">
-                Nos importa que tengas la mejor experiencia, <br></br> ¿Porque escogernos?
+                Nos importa que tengas la mejor experiencia, <br></br> ¿Por qué elegirnos?
               </Typography>
             </Grid>
 
@@ -190,19 +190,19 @@ const LandingPage = () => {
               <div className="property-item">
                 <TaskAltIcon fontSize="large" color="success" />
                 <Typography variant="h5">
-                  Tu dinero esta seguro y no es entregado hasta que recibas tus fotografias.
+                  Tu dinero esta seguro y no es entregado hasta que recibas tus fotografías.
                 </Typography>
               </div>
               <div className="property-item">
                 <TaskAltIcon fontSize="large" color="success" />
                 <Typography variant="h5">
-                  Pueden usar nuestras herramientas para recibir tus fotos en maxima calidad.
+                  Pueden usar nuestras herramientas para recibir tus fotos en máxima calidad.
                 </Typography>
               </div>
               <div className="property-item">
                 <TaskAltIcon fontSize="large" color="success" />
                 <Typography variant="h5">
-                  Los fotografos con las mejores calificaciones estan a tu disposición.
+                  Los fotógrafos con las mejores calificaciones están a tu disposición.
                 </Typography>
               </div>
             </Grid>
@@ -236,13 +236,13 @@ const LandingPage = () => {
           >
             <Grid item xs={12} md={8}>
               <Typography variant="h2" className="explore-photographers-text">
-                Explora a nuestros fotografos favoritos
+                Explora a nuestros fotógrafos favoritos
               </Typography>
             </Grid>
             <Grid item xs={12} md={12}>
               <div className="photographers-container">
                 <PhotographerCard
-                  name="Araceli"
+                  name="Luis"
                   coverImg="https://picsum.photos/250/194?random=1"
                   ranking="4.3"
                   rankingCount="233"
@@ -264,7 +264,7 @@ const LandingPage = () => {
                   isLoaded={true}
                 />
                 <PhotographerCard
-                  name="Luis"
+                  name="Araceli"
                   coverImg="https://picsum.photos/250/194?random=3"
                   ranking="4.1"
                   rankingCount="220"
@@ -339,7 +339,7 @@ const LandingPage = () => {
           >
             <Grid item xs={12}>
               <Typography variant="h2" className="photographer-offer">
-                Eres fotografo y quieres ofrecer tus servicios?
+                ¿Eres fotógrafo y quieres ofrecer tus servicios?
               </Typography>
             </Grid>
             <Grid item xs={0} md={6}>
@@ -357,7 +357,7 @@ const LandingPage = () => {
               <div className="property-item">
                 <TaskAltIcon fontSize="large" color="success" />
                 <Typography variant="h5">
-                  Usa las herramientas de la pagina para entregar tus fotografias
+                  Usa las herramientas de la página para entregar tus fotografías
                 </Typography>
               </div>
               <div className="property-item">

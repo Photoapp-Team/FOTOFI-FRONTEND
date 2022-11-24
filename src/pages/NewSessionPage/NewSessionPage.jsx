@@ -44,7 +44,7 @@ const NewSessionPage = () => {
       const date = dateFormater(sessionData.startDate);
 
       Swal.fire({
-        title: `Quieres crear una session para el ${date}`,
+        title: `Quieres crear una sesión para él ${date}`,
         icon: `question`,
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -59,7 +59,7 @@ const NewSessionPage = () => {
       });
     } else {
       Swal.fire({
-        title: `Tienes que estar logeado para cerar una session`,
+        title: `Tienes que estar logeado para crear una sesión`,
         icon: `error`,
       });
     }

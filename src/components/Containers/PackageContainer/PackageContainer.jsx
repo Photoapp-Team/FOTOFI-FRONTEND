@@ -24,11 +24,7 @@ export default function PackageContainer({ data }) {
       >
         <Grid item xs={12} md={7} sx={{ my: "auto" }}>
           {fetchSuccess ? (
-            <PackageGalleryCard
-              isLoaded={fetchSuccess}
-              name="Luis"
-              photos={packageData.displayPhotos}
-            />
+            <PackageGalleryCard isLoaded={fetchSuccess} photos={packageData.displayPhotos} />
           ) : (
             <PackageGalleryCard isLoaded={fetchSuccess} sx={1} />
           )}

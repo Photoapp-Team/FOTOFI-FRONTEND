@@ -73,7 +73,7 @@ const RatePage = () => {
                   label="Comentarios"
                   name="comments"
                   type="text"
-                  placeholder="Por favor danos tu reseña de la sesion.."
+                  placeholder="Por favor danos tu reseña de la sesión.."
                   size="large"
                   className="comments-input"
                 />
