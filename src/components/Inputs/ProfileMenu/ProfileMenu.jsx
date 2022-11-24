@@ -58,7 +58,7 @@ function ProfileMenu({ data }) {
             navigate(`/profile/${userId}`);
           }}
         >
-          <Typography textAlign="center">My Profile</Typography>
+          <Typography textAlign="center">Mi perfil</Typography>
         </MenuItem>
         <MenuItem
           key="logout-button"
@@ -68,7 +68,7 @@ function ProfileMenu({ data }) {
             navigate("/MainPage");
           }}
         >
-          <Typography textAlign="center">Log out</Typography>
+          <Typography textAlign="center">Cerrar sesión</Typography>
         </MenuItem>
       </Menu>
     </Box>

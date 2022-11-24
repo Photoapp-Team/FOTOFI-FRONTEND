@@ -45,7 +45,7 @@ const NewSessionPage = () => {
       const date = dateFormater(sessionData.startDate);
 
       Swal.fire({
-        title: `Quieres crear una session para el ${date}`,
+        title: `Quieres crear una sesión para él ${date}`,
         icon: `question`,
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -60,7 +60,7 @@ const NewSessionPage = () => {
       });
     } else {
       Swal.fire({
-        title: `Tienes que estar logeado para cerar una session`,
+        title: `Tienes que estar logeado para crear una sesión`,
         icon: `error`,
       });
     }
@@ -83,7 +83,7 @@ const NewSessionPage = () => {
         className="filterTitle"
         variant="h4"
         component="div"
-        children="Selecciona una fecha para agendar tu sessión"
+        children="Selecciona una fecha para agendar tu sesión"
         align="center"
         boxSizing="content-box"
       />
@@ -114,7 +114,7 @@ const NewSessionPage = () => {
                   label="Comments"
                   name="comments"
                   type="textarea"
-                  placeholder="Envia tus comentarios de lo que necesitas al fotografo..."
+                  placeholder="Envía tus comentarios de lo que necesitas al fotógrafo..."
                   rows="10"
                 />
 

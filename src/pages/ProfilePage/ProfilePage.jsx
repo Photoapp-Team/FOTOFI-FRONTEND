@@ -49,6 +49,7 @@ const ProfilePage = () => {
             item
             xs={12}
             md={3}
+            sm={5}
             sx={{ display: "flex", justifyContent: "center", alignItems: "flex-start" }}
           >
             <ProfileDetailCard

@@ -92,7 +92,7 @@ const theme = createTheme({
           },
           style: {
             fontWeight: 500,
-            fontSize: "12px",
+            fontSize: "13px",
             backgroundColor: "#60C1D7",
             color: "#000",
             cursor: "pointer",

@@ -27,7 +27,7 @@ const AddServiceForm = () => {
   const navigate = useNavigate();
   const MySwal = withReactContent(Swal);
 
-  useEffect(() => {}, [loadingUpload]);
+  useEffect(() => { }, [loadingUpload]);
 
   const onSubmit = async (values, actions) => {
     const newPackage = await createPackage(values);
@@ -119,10 +119,10 @@ const AddServiceForm = () => {
                   </CustomSelect>
                 </Grid>
                 <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
-                  <h2>Imagenes</h2>
+                  <h2>Imágenes</h2>
                 </Grid>
                 <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
-                  <h3>Elige tus imagenes para mostrar (máx 8)</h3>
+                  <h3>Elige tus imágenes para mostrar (máx 8)</h3>
                 </Grid>
                 <Grid
                   item
@@ -170,10 +170,9 @@ const AddServiceForm = () => {
                   <FormControl fullWidth>
                     <CustomInput
                       fullWidth
-                      label="Precio Minimo"
+                      label="Precio Mínimo"
                       name="minPrice"
                       type="text"
-                      placeholder="Precio Mínimo"
                       size="small"
                     />
                   </FormControl>
@@ -182,10 +181,9 @@ const AddServiceForm = () => {
                   <FormControl fullWidth>
                     <CustomInput
                       fullWidth
-                      label="Precio Maximo"
+                      label="Precio Máximo"
                       name="maxPrice"
                       type="text"
-                      placeholder="Precio Máximo"
                       size="small"
                     />
                   </FormControl>
@@ -214,7 +212,6 @@ const AddServiceForm = () => {
                       label="Min"
                       name="minQuantityPrevPhotos"
                       type="text"
-                      placeholder="Min"
                       size="small"
                     />
                   </FormControl>
@@ -226,7 +223,6 @@ const AddServiceForm = () => {
                       label="Max"
                       name="maxQuantityPrevPhotos"
                       type="text"
-                      placeholder="Máx"
                       size="small"
                     />
                   </FormControl>
@@ -241,7 +237,6 @@ const AddServiceForm = () => {
                       label="Min"
                       name="minQuantityFinalPhotos"
                       type="text"
-                      placeholder="Min"
                       size="small"
                     />
                   </FormControl>
@@ -253,7 +248,6 @@ const AddServiceForm = () => {
                       label="Max"
                       name="maxQuantityFinalPhotos"
                       type="text"
-                      placeholder="Máx"
                       size="small"
                     />
                   </FormControl>
@@ -268,7 +262,6 @@ const AddServiceForm = () => {
                       label="Tiempo"
                       name="deliveryTime"
                       type="text"
-                      placeholder="Tiempo"
                       size="small"
                     />
                   </FormControl>

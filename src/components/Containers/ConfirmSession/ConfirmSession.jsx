@@ -79,7 +79,7 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, next
               sx={{ fontSize: "22px" }}
             >
               {sessionUser.name} {sessionUser.lastname} te ha solicitado una nueva sesión para el
-              dia:
+              día:
               <br /> {fecha}
             </Typography>
             <Typography sx={{ mb: 1.5 }} color="text.secondary"></Typography>
@@ -153,7 +153,7 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, next
                       <h2>Configura la sesión</h2>
                     </Grid>
                     <Grid item xs={12} sm={12} sx={{ textAlign: "flex-start", lineHeight: "1px" }}>
-                      <h4>Nombre de la Sesión</h4>
+                      <h4>Nombre de la sesión</h4>
                     </Grid>
                     <Grid item xs={12} sm={12}>
                       <FormControl fullWidth>
@@ -162,7 +162,6 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, next
                           label="Nombre"
                           name="name"
                           type="text"
-                          placeholder="Nombre"
                           size="small"
                         />
                       </FormControl>
@@ -177,7 +176,6 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, next
                           label="Locación"
                           name="location"
                           type="text"
-                          placeholder="Locación"
                           size="small"
                         />
                       </FormControl>
@@ -192,7 +190,6 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, next
                           label="Precio"
                           name="price"
                           type="text"
-                          placeholder="Precio"
                           size="small"
                         />
                       </FormControl>
@@ -237,7 +234,6 @@ const ConfirmSession = ({ sessionId, data, sessionUser, setStatusWorkspace, next
                           label="Tiempo"
                           name="deliveryTime"
                           type="text"
-                          placeholder="Tiempo"
                           size="small"
                         />
                       </FormControl>
