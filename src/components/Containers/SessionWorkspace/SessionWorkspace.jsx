@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Step, StepLabel, Stepper } from "@mui/material";
 import React from "react";
 import { useParams } from "react-router-dom";
 import { statusFormater } from "../../../services/statusFormater";
@@ -19,6 +19,8 @@ import ConfirmPaymentSession from "../ConfirmPaymentSession/ConfirmPaymentSessio
 
 const SessionWorkspace = () => {
   const [statusWorkspace, setStatusWorkspace] = useState("");
+  const [stepNumber, setStepNumber] = useState(0);
+  const [activeStep, setActiveStep] = useState(0);
   const params = useParams();
   const { id } = params;
   const { REACT_APP_API_ENDPOINT } = process.env;
@@ -26,9 +28,20 @@ const SessionWorkspace = () => {
   const { data, sessionUser, refreshData } = useFetchUniqueSession(url);
   const currentUserId = localStorage.getItem("userId");
 
+  const steps = ["1", "2", "3", "4", "5", "6", "7"];
+  const isLastStep = activeStep === steps.length - 1;
+
+  const next = () => {
+    console.log("entraste al next");
+    setStepNumber(stepNumber + 1);
+    setActiveStep(activeStep + 1);
+  };
+
   useEffect(() => {
     refreshData();
   }, [statusWorkspace]);
+
+  console.log({ activeStep });
 
   if (data && currentUserId === data.photographerId[0]) {
     if (data && sessionUser) {
@@ -44,12 +57,20 @@ const SessionWorkspace = () => {
                   currentStatus={currentStatus}
                 />
               </Box>
+              {/* <Stepper activeStep={activeStep} sx={{ py: 5 }}>
+                {steps.map((label) => (
+                  <Step key={label}>
+                    <StepLabel>{label}</StepLabel>
+                  </Step>
+                ))}
+              </Stepper> */}
               <ConfirmSession
                 sessionId={data._id}
                 data={data}
                 sessionUser={sessionUser}
                 setStatusWorkspace={setStatusWorkspace}
                 statusWorkspace={statusWorkspace}
+                next={next}
               />
             </Box>
           </>
@@ -65,7 +86,18 @@ const SessionWorkspace = () => {
                   currentStatus={currentStatus}
                 />
               </Box>
-              <ConfirmPaymentSession sessionId={data._id} setStatusWorkspace={setStatusWorkspace} />
+              {/* <Stepper activeStep={activeStep} sx={{ py: 5 }}>
+                {steps.map((label) => (
+                  <Step key={label}>
+                    <StepLabel>{label}</StepLabel>
+                  </Step>
+                ))}
+              </Stepper> */}
+              <ConfirmPaymentSession
+                sessionId={data._id}
+                setStatusWorkspace={setStatusWorkspace}
+                next={next}
+              />
             </Box>
           </>
         );
@@ -80,7 +112,18 @@ const SessionWorkspace = () => {
                   currentStatus={currentStatus}
                 />
               </Box>
-              <SessionPrevUpload sessionId={data._id} setStatusWorkspace={setStatusWorkspace} />
+              {/* <Stepper activeStep={activeStep} sx={{ py: 5 }}>
+                {steps.map((label) => (
+                  <Step key={label}>
+                    <StepLabel>{label}</StepLabel>
+                  </Step>
+                ))}
+              </Stepper> */}
+              <SessionPrevUpload
+                sessionId={data._id}
+                setStatusWorkspace={setStatusWorkspace}
+                next={next}
+              />
             </Box>
           </>
         );
@@ -95,11 +138,19 @@ const SessionWorkspace = () => {
                   currentStatus={currentStatus}
                 />
               </Box>
+              {/* <Stepper activeStep={activeStep} sx={{ py: 5 }}>
+                {steps.map((label) => (
+                  <Step key={label}>
+                    <StepLabel>{label}</StepLabel>
+                  </Step>
+                ))}
+              </Stepper> */}
               <Box sx={{ display: "flex", flexWrap: "wrap" }}>
                 <SessionFinalUpload
                   sessionId={data._id}
                   selectedPics={data.selectedPics}
                   setStatusWorkspace={setStatusWorkspace}
+                  next={next}
                 />
               </Box>
             </Box>
@@ -116,6 +167,13 @@ const SessionWorkspace = () => {
                   currentStatus={currentStatus}
                 />
               </Box>
+              {/* <Stepper activeStep={activeStep} sx={{ py: 5 }}>
+                {steps.map((label) => (
+                  <Step key={label}>
+                    <StepLabel>{label}</StepLabel>
+                  </Step>
+                ))}
+              </Stepper> */}
               <Box sx={{ display: "flex", flexWrap: "wrap" }}>
                 <CancelledSession user={"usuario"} setStatusWorkspace={setStatusWorkspace} />
               </Box>
@@ -133,6 +191,13 @@ const SessionWorkspace = () => {
                   currentStatus={currentStatus}
                 />
               </Box>
+              {/* <Stepper activeStep={activeStep} sx={{ py: 5 }}>
+                {steps.map((label) => (
+                  <Step key={label}>
+                    <StepLabel>{label}</StepLabel>
+                  </Step>
+                ))}
+              </Stepper> */}
               <Box sx={{ display: "flex", flexWrap: "wrap" }}>
                 <WaitingSessionStatus user={"usuario"} />
               </Box>
@@ -155,10 +220,18 @@ const SessionWorkspace = () => {
                   currentStatus={currentStatus}
                 />
               </Box>
+              {/* <Stepper activeStep={activeStep} sx={{ py: 5 }}>
+                {steps.map((label) => (
+                  <Step key={label}>
+                    <StepLabel>{label}</StepLabel>
+                  </Step>
+                ))}
+              </Stepper> */}
               <ApproveSession
                 data={data}
                 sessionId={data._id}
                 setStatusWorkspace={setStatusWorkspace}
+                next={next}
               />
             </Box>
           </>
@@ -173,12 +246,20 @@ const SessionWorkspace = () => {
                   sessionUser={sessionUser}
                   currentStatus={currentStatus}
                 />
-              </Box>
+              </Box>{" "}
+              {/* <Stepper activeStep={activeStep} sx={{ py: 5 }}>
+                {steps.map((label) => (
+                  <Step key={label}>
+                    <StepLabel>{label}</StepLabel>
+                  </Step>
+                ))}
+              </Stepper> */}
               <ImageContainer
                 previewPics={data.previewPics}
                 loaded={true}
                 sessionId={data._id}
                 setStatusWorkspace={setStatusWorkspace}
+                next={next}
               />
               ;
             </Box>
@@ -195,6 +276,13 @@ const SessionWorkspace = () => {
                   currentStatus={currentStatus}
                 />
               </Box>
+              {/* <Stepper activeStep={activeStep} sx={{ py: 5 }}>
+                {steps.map((label) => (
+                  <Step key={label}>
+                    <StepLabel>{label}</StepLabel>
+                  </Step>
+                ))}
+              </Stepper> */}
               <RateSession data={data} />;
             </Box>
           </>
@@ -210,6 +298,13 @@ const SessionWorkspace = () => {
                   currentStatus={currentStatus}
                 />
               </Box>
+              {/* <Stepper activeStep={activeStep} sx={{ py: 5 }}>
+                {steps.map((label) => (
+                  <Step key={label}>
+                    <StepLabel>{label}</StepLabel>
+                  </Step>
+                ))}
+              </Stepper> */}
               <Box sx={{ display: "flex", flexWrap: "wrap" }}>
                 <CancelledSession user={"fotógrafo"} />
               </Box>
@@ -227,6 +322,13 @@ const SessionWorkspace = () => {
                   currentStatus={currentStatus}
                 />
               </Box>
+              {/* <Stepper activeStep={activeStep} sx={{ py: 5 }}>
+                {steps.map((label) => (
+                  <Step key={label}>
+                    <StepLabel>{label}</StepLabel>
+                  </Step>
+                ))}
+              </Stepper> */}
               <Box sx={{ display: "flex", flexWrap: "wrap" }}>
                 <WaitingSessionStatus user={"fotógrafo"} />
               </Box>

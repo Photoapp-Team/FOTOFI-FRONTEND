@@ -17,6 +17,7 @@ const thumb = {
   border: "1px solid #eaeaea",
   marginBottom: 8,
   marginRight: 8,
+  marginLeft: 8,
   width: 100,
   height: 100,
   padding: 4,
@@ -26,12 +27,13 @@ const thumb = {
 const thumbInner = {
   display: "flex",
   minWidth: 0,
+  width: "100%",
   overflow: "hidden",
 };
 
 const img = {
   display: "block",
-  width: "auto",
+  width: "100%",
   height: "100%",
 };
 

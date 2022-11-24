@@ -1,4 +1,6 @@
 .profileDropZone img {
-  object-fit: "cover";
-  overflow: "hidden";
+  object-fit: cover;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
 }
