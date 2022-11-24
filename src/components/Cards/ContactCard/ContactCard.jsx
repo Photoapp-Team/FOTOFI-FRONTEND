@@ -1,6 +1,6 @@
 import * as React from "react";
 import "./ContactCard.css";
-import { Card, Typography } from "@mui/material";
+import { Card, Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import WhereToVoteSharpIcon from "@mui/icons-material/WhereToVoteSharp";
 import PhoneInTalkOutlinedIcon from "@mui/icons-material/PhoneInTalkOutlined";
@@ -8,8 +8,6 @@ import MarkEmailReadOutlinedIcon from "@mui/icons-material/MarkEmailReadOutlined
 import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
-import Button from "../../Inputs/Button/Button";
-import { Link } from "react-router-dom";
 
 export default function ConctactCard({ userData }) {
   const { location, premium } = userData;
@@ -20,78 +18,137 @@ export default function ConctactCard({ userData }) {
           className="contactcard"
           sx={{
             display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
+            justifyContent: "flex-start",
+            alignItems: "flex-start",
             flexDirection: "column",
-            width: "inherit",
+            width: "auto",
             py: 1,
+            px: 2,
           }}
         >
-          {/* <Button name={"Contactar"} className={"buttonLogin"}>
-            Contactar
-          </Button> */}
-          <Box sx={{ display: "flex", justifyContent: "flex-start", width: "inherit" }}>
-            <Box
+          <Grid
+            container
+            sx={{ display: "flex", justifyContent: "flex-start", width: "100%", pb: "5px" }}
+          >
+            <Grid
+              item
               className="icon-box"
-              sx={{ display: "flex", justifyContent: "center", alignItems: "center", p: 1 }}
+              sx={{
+                display: "flex",
+                justifyContent: "flex-start",
+                alignItems: "flex-start",
+              }}
+              sm={2}
+              md={2}
             >
-              <WhereToVoteSharpIcon sx={{ fontSize: 30 }} />
-            </Box>
-            <Box className="info-box">
-              <Typography
-                children={`Ciudad: ${location.city}`}
-                variant="subtitle1"
-                sx={{ fontSize: "18px", fontWeight: "600" }}
-              />
-              <Typography
-                children={`Calle: ${location.street} ${location.number}`}
-                variant="subtitle1"
-                sx={{ fontSize: "18px", fontWeight: "600" }}
-              />
-              <Typography
-                children={`Col. ${location.suburb}`}
-                variant="subtitle1"
-                sx={{ fontSize: "18px", fontWeight: "600" }}
-              />
-              <Typography
-                children={`C.P ${location.zipCode}`}
-                variant="subtitle1"
-                sx={{ fontSize: "18px", fontWeight: "600" }}
-              />
-            </Box>
-          </Box>
-          <Box sx={{ display: "flex", justifyContent: "flex-start", width: "inherit" }}>
-            <Box
+              {location.city ? <WhereToVoteSharpIcon sx={{ fontSize: 30 }} /> : ""}
+            </Grid>
+            <Grid item sm={10} md={10} className="info-box">
+              {location.city ? (
+                <Typography
+                  children={`Ciudad: ${location.city}`}
+                  variant="subtitle1"
+                  sx={{ fontSize: "18px", fontWeight: "600" }}
+                />
+              ) : (
+                ""
+              )}
+              {location.street ? (
+                <Typography
+                  children={`Calle: ${location.street} ${location.number}`}
+                  variant="subtitle1"
+                  sx={{ fontSize: "18px", fontWeight: "600" }}
+                />
+              ) : (
+                ""
+              )}
+              {location.suburb ? (
+                <Typography
+                  children={`Col. ${location.suburb}`}
+                  variant="subtitle1"
+                  sx={{ fontSize: "18px", fontWeight: "600" }}
+                />
+              ) : (
+                ""
+              )}
+              {location.zipCode ? (
+                <Typography
+                  children={`C.P ${location.zipCode}`}
+                  variant="subtitle1"
+                  sx={{ fontSize: "18px", fontWeight: "600" }}
+                />
+              ) : (
+                ""
+              )}
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            sx={{ display: "flex", justifyContent: "flex-start", width: "100%", pb: "5px" }}
+          >
+            <Grid
+              item
+              sm={2}
+              md={2}
               className="icon-box"
-              sx={{ display: "flex", justifyContent: "center", alignItems: "center", p: 1 }}
+              sx={{
+                display: "flex",
+                justifyContent: "flex-start",
+                alignItems: "flex-start",
+                pb: 2,
+              }}
             >
-              <PhoneInTalkOutlinedIcon sx={{ fontSize: 30 }} />
-            </Box>
-            <Box className="info-box" sx={{ display: "flex", alignItems: "center" }}>
-              <Typography
-                children={`${userData.phoneNumber}`}
-                variant="subtitle1"
-                sx={{ fontSize: "18px", fontWeight: "600" }}
-              />
-            </Box>
-          </Box>
-          <Box sx={{ display: "flex", justifyContent: "flex-start", width: "inherit" }}>
-            <Box
+              {location.zipCode ? <PhoneInTalkOutlinedIcon sx={{ fontSize: 30 }} /> : ""}
+            </Grid>
+            <Grid
+              item
+              sm={10}
+              md={10}
+              className="info-box"
+              sx={{ display: "flex", alignItems: "flex-start" }}
+            >
+              {userData.phoneNumber ? (
+                <Typography
+                  children={`${userData.phoneNumber}`}
+                  variant="subtitle1"
+                  sx={{ fontSize: "18px", fontWeight: "600" }}
+                />
+              ) : (
+                ""
+              )}
+            </Grid>
+            <Grid
+              item
+              sm={2}
+              md={2}
               className="icon-box"
-              sx={{ display: "flex", justifyContent: "center", alignItems: "center", p: 1 }}
+              sx={{ display: "flex", justifyContent: "flex-start", alignItems: "flex-start" }}
             >
               <MarkEmailReadOutlinedIcon sx={{ fontSize: 30 }} />
-            </Box>
-            <Box className="info-box" sx={{ display: "flex", alignItems: "center" }}>
-              <Typography
-                children={`${userData.email}`}
-                variant="subtitle1"
-                sx={{ fontSize: "18px", fontWeight: "600" }}
-              />
-            </Box>
-          </Box>
-          <Box sx={{ display: "flex", justifyContent: "center", width: "inherit", pt: 3 }}>
-            <Box
+            </Grid>
+            <Grid
+              item
+              sm={10}
+              md={10}
+              className="info-box"
+              sx={{ display: "flex", alignItems: "flex-start" }}
+            >
+              {userData.email ? (
+                <Typography
+                  children={`${userData.email}`}
+                  variant="subtitle1"
+                  sx={{ fontSize: "18px", fontWeight: "600" }}
+                />
+              ) : (
+                ""
+              )}
+            </Grid>
+          </Grid>
+          <Grid container sx={{ display: "flex", justifyContent: "center", width: "100%", pt: 3 }}>
+            <Grid
+              item
+              sm={4}
+              md={4}
               className="icon-box"
               sx={{ display: "flex", justifyContent: "center", alignItems: "center", p: 1 }}
             >
@@ -102,8 +159,11 @@ export default function ConctactCard({ userData }) {
               ) : (
                 <InstagramIcon sx={{ fontSize: 30 }} />
               )}
-            </Box>
-            <Box
+            </Grid>
+            <Grid
+              item
+              sm={4}
+              md={4}
               className="icon-box"
               sx={{ display: "flex", justifyContent: "center", alignItems: "center", p: 1 }}
             >
@@ -114,8 +174,11 @@ export default function ConctactCard({ userData }) {
               ) : (
                 <LanguageOutlinedIcon sx={{ fontSize: 30 }} />
               )}
-            </Box>
-            <Box
+            </Grid>
+            <Grid
+              item
+              sm={4}
+              md={4}
               className="icon-box"
               sx={{ display: "flex", justifyContent: "center", alignItems: "center", p: 1 }}
             >
@@ -126,8 +189,8 @@ export default function ConctactCard({ userData }) {
               ) : (
                 <FacebookIcon sx={{ fontSize: 30, opacity: "0.4" }} />
               )}
-            </Box>
-          </Box>
+            </Grid>
+          </Grid>
         </Card>
       </>
     );

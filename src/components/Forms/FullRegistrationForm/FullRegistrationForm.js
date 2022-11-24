@@ -53,7 +53,7 @@ const FullRegistrationForm = () => {
                 label="Username"
                 name="username"
                 type="text"
-                placeholder="Ingresa tú nombre de usuario"
+                placeholder="Ingresa tu nombre de usuario"
               />
               <CustomInput
                 label="Password"
@@ -65,7 +65,7 @@ const FullRegistrationForm = () => {
                 label="ConfirmPassword"
                 name="confirmPassword"
                 type="password"
-                placeholder="Confirma tú contraseña"
+                placeholder="Confirma tu contraseña"
               />
 
               <CustomInput label="Email" name="email" type="email" placeholder="Ingresa tu email" />

@@ -22,4 +22,6 @@
 }
 .profile-container {
   padding-top: 80px;
+  padding-bottom: 1rem;
+  min-height: calc(100vh - 199px);
 }
