@@ -352,7 +352,7 @@ const LandingPage = () => {
             <Grid item xs={12} md={6} className="property-container">
               <div className="property-item">
                 <TaskAltIcon fontSize="large" color="success" />
-                <Typography variant="h5">Crea un perfil para exponer tú trabajo</Typography>
+                <Typography variant="h5">Crea un perfil para exponer tu trabajo</Typography>
               </div>
               <div className="property-item">
                 <TaskAltIcon fontSize="large" color="success" />
