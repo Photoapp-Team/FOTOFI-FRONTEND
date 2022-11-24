@@ -38,7 +38,7 @@ const PayResponsePage = () => {
           {success ? (
             <Typography
               variant="h3"
-              children="Felicidades!! tú cuenta ha sido activada con éxito"
+              children="¡Felicidades! tu cuenta ha sido activada con éxito"
             />
           ) : (
             <Typography variant="h3" children="El pago no pudo ser completado con éxito" />
