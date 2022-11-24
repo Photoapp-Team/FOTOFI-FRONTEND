@@ -38,14 +38,14 @@ const PayResponsePage = () => {
           {success ? (
             <Typography
               variant="h3"
-              children="Felicidades!! tu cuenta ha sido activada con exito"
+              children="Felicidades!! tú cuenta ha sido activada con éxito"
             />
           ) : (
-            <Typography variant="h3" children="El pago no pudo ser completado con exito" />
+            <Typography variant="h3" children="El pago no pudo ser completado con éxito" />
           )}
 
           <Button name={"Ir a mi perfil"} className={"buttonLogin"} onClick={handleClick}>
-            I a mi perfil
+            Ir a mi perfil
           </Button>
         </Paper>
       </div>
