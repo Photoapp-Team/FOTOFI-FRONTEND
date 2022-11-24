@@ -113,9 +113,9 @@ const RegistrationPage = () => {
             )}
 
             {userType === "Photographer" ? (
-              <Grid item xs={12} md={12}>
+              <>
                 <PhotographerRegistrationForm />{" "}
-              </Grid>
+              </>
             ) : (
               <></>
             )}

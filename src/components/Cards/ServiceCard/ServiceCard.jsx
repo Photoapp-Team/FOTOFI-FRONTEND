@@ -35,7 +35,7 @@ export default function ServiceCard({ service, img, isLoaded, withFooter, minPri
     <>
       <Card
         className={selected}
-        sx={{ maxWidth: 120, borderRadius: 2, minWidth: 90, margin: { xs: 0.5, md: 2 } }}
+        sx={{ maxWidth: 130, borderRadius: 2, minWidth: 130, margin: { xs: 0.5, md: 2 } }}
         elevation={elevation}
         onClick={handleOnClick}
       >

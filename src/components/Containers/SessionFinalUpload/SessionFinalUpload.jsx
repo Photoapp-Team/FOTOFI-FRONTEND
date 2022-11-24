@@ -1,18 +1,22 @@
-import { autocompleteClasses, Box, Divider, Paper } from "@mui/material";
+import {
+  autocompleteClasses,
+  Box,
+  Button,
+  CircularProgress,
+  Divider,
+  Paper,
+  Typography,
+} from "@mui/material";
 import React from "react";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import InsertDriveFileSharpIcon from "@mui/icons-material/InsertDriveFileSharp";
 import ImageUpload from "../../../services/ImageUpload";
 import { Form, Formik } from "formik";
 import { uploadSessionPhotos } from "../../../services/uploadSessionPhotos";
-import Button from "../../Inputs/Button/Button";
 import "./SessionFinalUpload.css";
 import { useParams } from "react-router-dom";
 import { updateSession } from "../../../services/updateSession";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const thumb = {
   display: "flex",
@@ -36,20 +40,32 @@ const img = {
 const SessionFinalUpload = ({ selectedPics, sessionId, setStatusWorkspace }) => {
   const params = useParams();
   const { id } = params;
+  const MySwal = withReactContent(Swal);
+
   const onSubmit = async (values) => {
-    const { REACT_APP_API_ENDPOINT } = process.env;
-    const sessionUrl = `${REACT_APP_API_ENDPOINT}/upload/sessions/final/${id}`;
-    const updatedSessionPhotos = await uploadSessionPhotos(sessionUrl, values);
-    if (updatedSessionPhotos) {
-      const newValues = {
-        status: {
-          delivered: Date.now(),
-        },
-      };
-      const updatedSession = await updateSession(sessionId, newValues);
-      setStatusWorkspace(updatedSession);
+    const { finalPics } = values;
+    if (finalPics?.length > 0) {
+      const { REACT_APP_API_ENDPOINT } = process.env;
+      const sessionUrl = `${REACT_APP_API_ENDPOINT}/upload/sessions/final/${id}`;
+      const updatedSessionPhotos = await uploadSessionPhotos(sessionUrl, values);
+      if (updatedSessionPhotos) {
+        const newValues = {
+          status: {
+            delivered: Date.now(),
+          },
+        };
+        const updatedSession = await updateSession(sessionId, newValues);
+        setStatusWorkspace(updatedSession);
+      }
+    } else {
+      MySwal.fire({
+        title: <strong>¡Espera!</strong>,
+        text: "Antes de continuar por favor sube las imágenes editadas para que el usuario las revise.",
+        icon: `error`,
+      });
     }
   };
+
   return (
     <>
       <Box
@@ -99,11 +115,7 @@ const SessionFinalUpload = ({ selectedPics, sessionId, setStatusWorkspace }) => 
           </Paper>
         </Box>
 
-        <Formik
-          initialValues={{ previewPics: "" }}
-          // validationSchema={addServiceSchema}
-          onSubmit={onSubmit}
-        >
+        <Formik initialValues={{ previewPics: "" }} onSubmit={onSubmit}>
           {({ isSubmitting, setFieldValue, values }) => (
             <Form>
               <Box
@@ -115,30 +127,52 @@ const SessionFinalUpload = ({ selectedPics, sessionId, setStatusWorkspace }) => 
                   minHeight: "30vh",
                   alignItems: "center",
                   justifyContent: "center",
+                  display: "flex",
+                  flexDirection: "column",
                 }}
               >
-                <Box sx={{ mb: 0, ml: "2px" }}>
-                  <h4 className="sessionFinalUploadText">
-                    Sube las fotos editadas en alta resolución
-                  </h4>
-                </Box>
-                <ImageUpload
-                  phrase={"Arrastra tus fotos finales aqui o haz click"}
-                  classbox={"boxSessionFinal"}
-                  classpaper={"paperSessionFinal"}
-                  setFieldValue={setFieldValue}
-                  name={"finalPics"}
-                  fieldName={"finalPics"}
-                />
-                <Box sx={{ display: "flex" }}>
-                  <Button
-                    sx={{ mb: 25, mx: "auto" }}
-                    disabled={isSubmitting}
-                    type="submit"
-                    text={"Submit"}
-                    className={"button-basic-registration"}
-                    name={"Subir Fotos"}
+                <Box
+                  sx={{
+                    mb: 0,
+                    ml: "2px",
+                    justifyContent: "flex-start",
+                    width: "100%",
+                    display: "flex",
+                    pl: "3rem",
+                  }}
+                >
+                  <Typography
+                    children="*Sube las fotos editadas en alta resolución"
+                    sx={{ fontSize: "14px", fontWeight: 500 }}
                   />
+                </Box>
+                <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
+                  <ImageUpload
+                    phrase={"Arrastra tus fotos finales aqui o haz click"}
+                    classbox={"boxSessionFinal"}
+                    classpaper={"paperSessionFinal"}
+                    setFieldValue={setFieldValue}
+                    name={"finalPics"}
+                    fieldName={"finalPics"}
+                  />
+                </Box>
+                <Box>
+                  <Box>{isSubmitting && <CircularProgress />}</Box>
+                  <Box sx={{ display: "flex", mt: 4 }}>
+                    <Button
+                      onClick={() => {
+                        onSubmit(values);
+                      }}
+                      sx={{ mb: 25, mx: "auto" }}
+                      disabled={isSubmitting}
+                      type="submit"
+                      text="Submit"
+                      variant="secondary"
+                      children="Subir Fotos"
+                      name={"Subir Fotos"}
+                      className="upload-final-pics"
+                    />
+                  </Box>
                 </Box>
               </Box>
             </Form>
