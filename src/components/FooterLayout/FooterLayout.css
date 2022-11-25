@@ -1,17 +1,15 @@
-.facebook{
-    height: 2em;
+.facebook {
+  height: 2em;
 }
 
-.instagram{
-    height: 2em;
+.instagram {
+  height: 2em;
 }
 
-.footerContainer{
-    display: flex;
-    width: auto;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    height: 151px;
+.footerContainer {
+  display: flex;
+  width: auto;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
-
