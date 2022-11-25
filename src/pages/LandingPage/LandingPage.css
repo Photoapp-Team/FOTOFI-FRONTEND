@@ -45,6 +45,17 @@
   height: 95vh;
   width: 100vw;
 }
+.seventh-container {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 95vh;
+  width: 100vw;
+}
+.workFlow {
+  height: 100%;
+}
 
 .title {
   text-shadow: 2px 2px 8px #350c0c95;

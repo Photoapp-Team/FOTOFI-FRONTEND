@@ -4,6 +4,7 @@ import React from "react";
 import ServiceCard from "../../components/Cards/ServiceCard/ServiceCard";
 import Button from "../../components/Inputs/Button/Button";
 import HeroPic from "../../assets/backgroundImages/sujeto2.png";
+import WorkFlowPic from "../../assets/backgroundImages/FUNCIONAMIENT.png";
 import Marco from "../../assets/backgroundImages/marco.jpg";
 import Gio from "../../assets/backgroundImages/Gio.jpeg";
 import Ara from "../../assets/backgroundImages/ara.jpeg";
@@ -371,6 +372,9 @@ const LandingPage = () => {
             </Grid>
           </Grid>
         </Container>
+      </div>
+      <div className="seventh-container">
+        <img src={WorkFlowPic} alt="workflow" className="workFlow" />
       </div>
     </>
   );

@@ -67,7 +67,7 @@
   }
 }
 
-@media screen and (min-width: 651px) {
+@media screen and (min-width: 846px) {
   .mobileSearch {
     display: none;
   }
@@ -75,7 +75,7 @@
     display: flex;
   }
 }
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 845px) {
   .mobileSearch {
     display: flex;
     justify-content: center;
