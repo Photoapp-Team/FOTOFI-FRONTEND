@@ -50,11 +50,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 95vh;
   width: 100vw;
 }
 .workFlow {
-  height: 100%;
+  max-width: 98vw;
 }
 
 .title {
@@ -70,13 +69,14 @@
 }
 
 .photographers-container {
-  display:flex;
+  display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
 .works-container {
-  display:flex;
+  display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
   width: 100%;
