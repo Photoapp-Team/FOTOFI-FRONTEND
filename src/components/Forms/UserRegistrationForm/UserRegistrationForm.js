@@ -25,7 +25,7 @@ const UserRegistrationForm = () => {
         <ReactLogo className="userRegistrationLogo" color="black" />
       </Box>
       <div className="box-layout-basic-registration">
-        <h3 className="basic-registration-title">Crear una cuenta</h3>
+        <h4 className="basic-registration-title">Crear una cuenta</h4>
         <Formik
           initialValues={{ username: "", gender: "" }}
           validationSchema={registerSchema}
@@ -97,10 +97,9 @@ const UserRegistrationForm = () => {
                     fullWidth
                   />
                 </Grid>
-                <br />
                 <Grid item sm={12} md={12}>
                   <Button
-                    sx={{ mt: "16px" }}
+                    sx={{ mt: "2px" }}
                     disabled={isSubmitting}
                     type="submit"
                     text={"Submit"}

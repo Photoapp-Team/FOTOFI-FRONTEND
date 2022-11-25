@@ -2,6 +2,6 @@
   background-image: url(../../../assets/backgroundImages/website-rays-background-pattern-1637863.png);
   background-size: cover;
   background-repeat: no-repeat;
-  height: auto;
+  min-height: calc(100vh - 190px);
   width: 100%;
 }

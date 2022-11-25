@@ -1,10 +1,10 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, CircularProgress } from "@mui/material";
 import React from "react";
 
 import "./FormNavigation.css";
 
 const FormNavigation = (props) => {
-  const { phone } = props;
+  const { phone, isSubmitting, isLastStep } = props;
   return (
     <Box
       sx={{ display: "flex", width: "80%", my: "30px", mx: "auto", justifyContent: "space-around" }}
@@ -19,14 +19,19 @@ const FormNavigation = (props) => {
           onClick={props.onBackClick}
         />
       )}
-      <Button
-        type="submit"
-        text={"Submit"}
-        className="button-basic-registration"
-        variant="secondary"
-        children={props.isLastStep ? "Enviar" : phone ? "Siguiente" : "Siguiente"}
-        name={props.isLastStep ? "Enviar" : phone ? "Siguiente" : "Siguiente"}
-      />
+      {isSubmitting && isLastStep ? (
+        <CircularProgress />
+      ) : (
+        <Button
+          type="submit"
+          text="Submit"
+          onSubmit={isSubmitting}
+          className="button-basic-registration"
+          variant="secondary"
+          children={isLastStep ? "Enviar" : phone ? "Siguiente" : "Siguiente"}
+          name={isLastStep ? "Enviar" : phone ? "Siguiente" : "Siguiente"}
+        />
+      )}
     </Box>
   );
 };
