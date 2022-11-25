@@ -100,9 +100,9 @@ const EditProfileForm = () => {
                       <CustomInput label="Number" name="number" type="text" />
                       <CustomInput label="ZipCode" name="zipCode" type="text" />
                       <CustomInput label="Número telefónico" name="phoneNumber" type="number" />
-                      <CustomInput label="facebook" name="facebook" type="text" />
+                      {/* <CustomInput label="facebook" name="facebook" type="text" />
                       <CustomInput label="instagram" name="instagram" type="text" />
-                      <CustomInput label="www" name="www" type="text" />
+                      <CustomInput label="www" name="www" type="text" /> */}
                       <Button
                         disabled={isSubmitting}
                         type="submit"

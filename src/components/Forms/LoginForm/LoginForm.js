@@ -5,9 +5,9 @@ import "./LoginForm.css";
 import { Formik, Form } from "formik";
 import CustomInput from "../../Inputs/CustomInput";
 import { useUser } from "../../../contexts/UserContext";
-import Button from "../../Inputs/Button/Button";
 import { Navigate } from "react-router-dom";
 import Fotofilogo from "../../../images/fotofi.png";
+import { Button } from "@mui/material";
 
 const LoginForm = () => {
   const { setLogStatus } = useUser();
@@ -23,16 +23,21 @@ const LoginForm = () => {
     <div className="box-container-login">
       <Box>
         <Paper
-          elevation={3}
-          sx={{ display: "flex", justifyContent: "center", margin: 2, p: 4, alignItems: "center" }}
+          elevation={2}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            margin: 2,
+            p: 4,
+            alignItems: "center",
+            flexGrow: 1,
+          }}
         >
           <div
             className="box-layout-login"
             sx={{
               display: "flex",
               justifyContent: "center",
-              margin: 2,
-              p: 2,
               alignItems: "center",
             }}
           >
@@ -43,21 +48,16 @@ const LoginForm = () => {
               sx={{ p: 2, m: 2 }}
             />
             <h1 className="login-title">Inicio de sesión</h1>
-            <p className="login-text">
-              ¿Eres un nuevo usuario?
-              <a href="/Registration">
-                <span className="login-text-link"> Crear una cuenta</span>
-              </a>
-            </p>
-            <Formik initialValues={{ username: "", password: "" }} onSubmit={onSubmit}>
+            <Formik
+              initialValues={{ username: "", password: "" }}
+              onSubmit={onSubmit}
+            >
               {({ isSubmitting }) => (
                 <Form
                   className="form-container-login"
                   sx={{
                     display: "flex",
-                    justifyContent: "center",
-                    margin: 2,
-                    p: 2,
+                    justifyContent: "flex-start",
                     alignItems: "center",
                   }}
                 >
@@ -69,6 +69,7 @@ const LoginForm = () => {
                     placeholder="Ingresa tu email"
                     size="small"
                     sx={{ m: 2 }}
+                    fullWidth
                   />
                   <CustomInput
                     label="Password"
@@ -77,13 +78,22 @@ const LoginForm = () => {
                     placeholder="Escribe una contraseña"
                     size="small"
                     sx={{ m: 2 }}
+                    fullWidth
                   />
                   <Button
+                    children="Enviar"
                     disabled={isSubmitting}
                     type="submit"
                     name={"Enviar"}
+                    variant="secondary"
                     className={"buttonLogin"}
                   />
+                  <p className="login-text">
+                    ¿Eres un nuevo usuario?
+                    <a href="/Registration">
+                      <span className="login-text-link"> Crear una cuenta</span>
+                    </a>
+                  </p>
                 </Form>
               )}
             </Formik>
