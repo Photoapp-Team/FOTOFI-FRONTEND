@@ -6,7 +6,21 @@
 
   .formAddService {
     padding-left: none !important;
-    width: 85%;
+    width: 100%;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 426px) {
+  .formAddservicePaper {
+    width: 60% !important;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .formAddservicePaper {
+    width: 30% !important;
     margin: auto;
   }
 }

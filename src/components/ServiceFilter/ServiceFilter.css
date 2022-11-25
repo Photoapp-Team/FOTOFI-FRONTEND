@@ -40,6 +40,16 @@
     width: 1974px;
   }
 }
+@media screen and (min-width: 2256px) {
+  .serviceFilter {
+    width: 2256px;
+  }
+}
+@media screen and (min-width: 2820px) {
+  .serviceFilter {
+    width: 100%;
+  }
+}
 .serviceFilterLoading {
   display: flex;
   flex-wrap: wrap;

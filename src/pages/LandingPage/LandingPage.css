@@ -45,6 +45,16 @@
   height: 95vh;
   width: 100vw;
 }
+.seventh-container {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+.workFlow {
+  max-width: 98vw;
+}
 
 .title {
   text-shadow: 2px 2px 8px #350c0c95;
@@ -61,8 +71,15 @@
 .photographers-container {
   display: flex;
   flex-direction: row;
-
   justify-content: center;
+}
+
+.works-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
 }
 
 @media only screen and (max-width: 900px) {

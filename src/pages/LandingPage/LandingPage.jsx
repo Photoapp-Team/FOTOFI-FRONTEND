@@ -1,12 +1,14 @@
 import { Grid, Paper, Typography } from "@mui/material";
 import { borderRadius, Container, padding } from "@mui/system";
 import React from "react";
-import ServiceCard from "../../components/Cards/ServiceCard/ServiceCard";
 import Button from "../../components/Inputs/Button/Button";
 import HeroPic from "../../assets/backgroundImages/sujeto2.png";
+import WorkFlowPic from "../../assets/backgroundImages/FUNCIONAMIENT.png";
+import WorkFlowMobilePic from "../../assets/backgroundImages/FUNCIONAMIENTO MOBILE.png";
 import Marco from "../../assets/backgroundImages/marco.jpg";
 import Gio from "../../assets/backgroundImages/Gio.jpeg";
 import Ara from "../../assets/backgroundImages/ara.jpeg";
+import LuisR from "../../assets/backgroundImages/LuisR.jpg";
 import "./LandingPage.css";
 import PhotographerCard from "../../components/Cards/PhotographerCard/PhotographerCard";
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
@@ -15,8 +17,10 @@ import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
+import useWindowDimensions from "../../services/useResize";
 const LandingPage = () => {
   const navigate = useNavigate();
+  const { width } = useWindowDimensions();
 
   return (
     <>
@@ -76,80 +80,72 @@ const LandingPage = () => {
         >
           <div className="service-container">
             <Card sx={{ maxWidth: 345, borderRadius: 2, margin: 1 }}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image="https://images.pexels.com/photos/265987/pexels-photo-265987.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                  alt="BABY PHOTO"
-                  sx={{ padding: 1, maxWidth: 208, maxHeight: 192, borderRadius: 4 }}
+              <CardMedia
+                component="img"
+                height="140"
+                image="https://images.pexels.com/photos/265987/pexels-photo-265987.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt="BABY PHOTO"
+                sx={{ padding: 1, maxWidth: 208, maxHeight: 192, borderRadius: 4 }}
+              />
+              <CardContent>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  children="BEBÉ"
+                  textAlign="center"
                 />
-                <CardContent>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    children="BEBÉ"
-                    textAlign="center"
-                  />
-                </CardContent>
-              </CardActionArea>
+              </CardContent>
             </Card>
             <Card sx={{ maxWidth: 345, borderRadius: 2, margin: 1 }}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image="https://images.pexels.com/photos/573299/pexels-photo-573299.jpeg?auto=…"
-                  alt="PORTRAIT PHOTO"
-                  sx={{ padding: 1, maxWidth: 208, maxHeight: 192, borderRadius: 4 }}
+              <CardMedia
+                component="img"
+                height="140"
+                image="https://images.pexels.com/photos/573299/pexels-photo-573299.jpeg?auto=…"
+                alt="PORTRAIT PHOTO"
+                sx={{ padding: 1, maxWidth: 208, maxHeight: 192, borderRadius: 4 }}
+              />
+              <CardContent>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  children="RETRATOS"
+                  textAlign="center"
                 />
-                <CardContent>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    children="RETRATOS"
-                    textAlign="center"
-                  />
-                </CardContent>
-              </CardActionArea>
+              </CardContent>
             </Card>
             <Card sx={{ maxWidth: 345, borderRadius: 2, margin: 1 }}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image="https://images.pexels.com/photos/7726294/pexels-photo-7726294.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                  alt="PET PHOTO"
-                  sx={{ padding: 1, width: 208, maxHeight: 192, borderRadius: 4 }}
+              <CardMedia
+                component="img"
+                height="140"
+                image="https://images.pexels.com/photos/7726294/pexels-photo-7726294.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                alt="PET PHOTO"
+                sx={{ padding: 1, width: 208, maxHeight: 192, borderRadius: 4 }}
+              />
+              <CardContent>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  children="MASCOTAS"
+                  textAlign="center"
                 />
-                <CardContent>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    children="MASCOTAS"
-                    textAlign="center"
-                  />
-                </CardContent>
-              </CardActionArea>
+              </CardContent>
             </Card>
             <Card sx={{ maxWidth: 345, borderRadius: 2, margin: 1 }}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image="https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?aut…"
-                  alt="WEADING PHOTO"
-                  sx={{ padding: 1, width: 208, maxHeight: 192, borderRadius: 4 }}
+              <CardMedia
+                component="img"
+                height="140"
+                image="https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?aut…"
+                alt="WEADING PHOTO"
+                sx={{ padding: 1, width: 208, maxHeight: 192, borderRadius: 4 }}
+              />
+              <CardContent>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  children="BODAS"
+                  textAlign="center"
                 />
-                <CardContent>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    children="BODAS"
-                    textAlign="center"
-                  />
-                </CardContent>
-              </CardActionArea>
+              </CardContent>
             </Card>
           </div>
           <Button
@@ -223,6 +219,7 @@ const LandingPage = () => {
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
+            maxWidth: "100 %",
           }}
         >
           <Grid
@@ -242,7 +239,7 @@ const LandingPage = () => {
             <Grid item xs={12} md={12}>
               <div className="photographers-container">
                 <PhotographerCard
-                  name="Luis"
+                  name="Araceli"
                   coverImg="https://picsum.photos/250/194?random=1"
                   ranking="4.3"
                   rankingCount="233"
@@ -251,6 +248,7 @@ const LandingPage = () => {
                   withFooter={false}
                   key="Ara"
                   isLoaded={true}
+                  photographerId=""
                 />
                 <PhotographerCard
                   name="Giovanni"
@@ -262,17 +260,19 @@ const LandingPage = () => {
                   withFooter={false}
                   key="Giovanni"
                   isLoaded={true}
+                  photographerId=""
                 />
                 <PhotographerCard
-                  name="Araceli"
+                  name="LuisRod"
                   coverImg="https://picsum.photos/250/194?random=3"
                   ranking="4.1"
                   rankingCount="220"
-                  profilePic={Ara}
+                  profilePic={LuisR}
                   location="Cdmx"
                   withFooter={false}
                   key="Luis"
                   isLoaded={true}
+                  photographerId="6380fdb3da82bcdcecb2b9e4"
                 />
                 <PhotographerCard
                   name="Marco"
@@ -284,6 +284,7 @@ const LandingPage = () => {
                   withFooter={false}
                   key="Marco"
                   isLoaded={true}
+                  photographerId="636490f40d20e59ef0c0ddb7"
                 />
               </div>
             </Grid>
@@ -293,7 +294,7 @@ const LandingPage = () => {
               </Typography>
             </Grid>
             <Grid item xs={12} md={12}>
-              <div className="photographers-container">
+              <div className="works-container">
                 <img
                   className="random-image"
                   src="https://picsum.photos/250/194?random=5"
@@ -371,6 +372,13 @@ const LandingPage = () => {
             </Grid>
           </Grid>
         </Container>
+      </div>
+      <div className="seventh-container">
+        {width <= 767 ? (
+          <img src={WorkFlowMobilePic} alt="workflow" className="workFlow" />
+        ) : (
+          <img src={WorkFlowPic} alt="workflow" className="workFlow" />
+        )}
       </div>
     </>
   );
