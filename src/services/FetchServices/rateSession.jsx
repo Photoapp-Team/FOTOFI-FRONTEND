@@ -22,14 +22,14 @@ export const rateSession = async (rate, sessionId) => {
   const data = await response.json();
   if (data.success === true) {
     MySwal.fire({
-      title: <strong>Session calificada con exito! </strong>,
+      title: <strong>¡Sesión calificada con éxito! </strong>,
       icon: `success`,
     });
     return data;
   }
   if (data.success !== true) {
     MySwal.fire({
-      title: <strong>La session no pudo ser calificada! </strong>,
+      title: <strong>¡La sesión no pudo ser calificada! </strong>,
       icon: `error`,
     });
     return data;
