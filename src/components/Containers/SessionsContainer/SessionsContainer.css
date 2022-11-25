@@ -1,0 +1,6 @@
+@media screen and(max-width: 425px) {
+  .grid-container-sessioncard {
+    margin: auto;
+    padding: 0px !important;
+  }
+}
