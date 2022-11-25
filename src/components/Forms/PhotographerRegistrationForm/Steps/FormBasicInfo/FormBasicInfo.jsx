@@ -44,7 +44,7 @@ const FormBasicInfo = (props) => {
         </Grid>
         <Grid item xs={12} sm={12} sx={{ textAlign: "flex-start", pt: 0, lineHeight: "0.5rem" }}>
           <Typography sx={{ pt: 0, my: 0, fontSize: "12px" }}>
-            *Tamaño mínimo sugrerido 1330 x 500
+            *Tamaño mínimo sugerido 1330 x 500
           </Typography>
         </Grid>
         <Grid item xs={12} sm={12} sx={{ textAlign: "flex-start", pt: 0 }}>

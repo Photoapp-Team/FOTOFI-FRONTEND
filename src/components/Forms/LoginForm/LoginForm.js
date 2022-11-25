@@ -7,7 +7,7 @@ import CustomInput from "../../Inputs/CustomInput";
 import { useUser } from "../../../contexts/UserContext";
 import { Navigate } from "react-router-dom";
 import Fotofilogo from "../../../images/fotofi.png";
-import { Button } from "@mui/material";
+import { Button, FormControl } from "@mui/material";
 
 const LoginForm = () => {
   const { setLogStatus } = useUser();
@@ -62,24 +62,28 @@ const LoginForm = () => {
                   }}
                 >
                   <br />
-                  <CustomInput
-                    label="Email"
-                    name="email"
-                    type="email"
-                    placeholder="Ingresa tu email"
-                    size="small"
-                    sx={{ m: 2 }}
-                    fullWidth
-                  />
-                  <CustomInput
-                    label="Password"
-                    name="password"
-                    type="password"
-                    placeholder="Escribe una contraseña"
-                    size="small"
-                    sx={{ m: 2 }}
-                    fullWidth
-                  />
+                  <FormControl fullWidth>
+                    <CustomInput
+                      fullWidth
+                      label="Email"
+                      name="email"
+                      type="email"
+                      placeholder="Ingresa tu email"
+                      size="small"
+                      sx={{ m: 1 }}
+                    />
+                  </FormControl>
+                  <FormControl fullWidth>
+                    <CustomInput
+                      label="Password"
+                      name="password"
+                      type="password"
+                      placeholder="Escribe una contraseña"
+                      size="small"
+                      sx={{ m: 1 }}
+                      fullWidth
+                    />
+                  </FormControl>
                   <Button
                     children="Enviar"
                     disabled={isSubmitting}

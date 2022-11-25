@@ -223,6 +223,7 @@ const LandingPage = () => {
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
+            maxWidth: "100 %",
           }}
         >
           <Grid
@@ -293,7 +294,7 @@ const LandingPage = () => {
               </Typography>
             </Grid>
             <Grid item xs={12} md={12}>
-              <div className="photographers-container">
+              <div className="works-container">
                 <img
                   className="random-image"
                   src="https://picsum.photos/250/194?random=5"
