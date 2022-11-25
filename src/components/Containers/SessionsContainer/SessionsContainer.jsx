@@ -9,12 +9,16 @@ export default function SessionsContainer({ id }) {
   var mySessions = useFetchMySessions();
 
   return (
-    <Container className="sessions-container">
-      <Grid sx={{ display: "flex", flexWrap: "wrap", m: "auto" }}>
+    <Container>
+      <Grid
+        spacing={1}
+        sx={{ display: "flex", flexWrap: "wrap", m: "auto" }}
+        className="grid-container-sessioncard"
+      >
         {mySessions.data &&
           mySessions.data.map((session, index) => {
             return (
-              <Grid item>
+              <Grid item xs={12} sm={6} md={6} lg={4} xl={3}>
                 <SessionCard key={`${index}index${session._id}`} data={session} />
               </Grid>
             );

@@ -76,11 +76,20 @@ const RateSession = ({ data, setStatusWorkspace }) => {
                 display: "flex",
                 justifyContent: "center",
                 flexDirection: "column",
+                borderRadius: "10px",
               }}
             >
               {!downloaded ? (
                 <>
-                  <Box sx={{ textAlign: "center", display: "flex", alignItems: "center" }}>
+                  <Box
+                    sx={{
+                      textAlign: "center",
+                      display: "flex",
+                      alignItems: "center",
+                      flexDirection: "column",
+                      borderRadius: "10%",
+                    }}
+                  >
                     <Box>
                       <h4>¡Tus fotos están Listas!</h4>
                       <h4>¡Sólo da click en el botón de descargar!</h4>
@@ -92,6 +101,7 @@ const RateSession = ({ data, setStatusWorkspace }) => {
                         name="Descargar Fotos"
                         variant="secondary"
                         children="Descargar Fotos"
+                        sx={{ width: "200px", mb: "1rem" }}
                         onClick={() => {
                           onClick();
                         }}
@@ -113,9 +123,18 @@ const RateSession = ({ data, setStatusWorkspace }) => {
                       }}
                     >
                       {" "}
-                      <Box sx={{ textAlign: "center", display: "flex", alignItems: "center" }}>
-                        <h4>¡Ayudanos con tus comentarios!</h4>
-                        <h4>¡Tu opinión es muy importante para nosotros!</h4>
+                      <Box
+                        sx={{
+                          textAlign: "center",
+                          display: "flex",
+                          alignItems: "center",
+                          flexDirection: "column",
+                          lineHeight: 0.5,
+                        }}
+                      >
+                        <h5>
+                          ¡Ayudanos con tus comentarios, tu opinión es muy importante para nosotros!
+                        </h5>
                       </Box>
                       <CustomInput
                         label="Comentarios"
@@ -132,7 +151,7 @@ const RateSession = ({ data, setStatusWorkspace }) => {
                         setFieldValue={setFieldValue}
                       ></RatingInput>
                       <Button
-                        sx={{ p: 2 }}
+                        sx={{ p: 2, width: "200px", mb: "2rem" }}
                         disabled={isSubmitting}
                         type="submit"
                         text="Submit"

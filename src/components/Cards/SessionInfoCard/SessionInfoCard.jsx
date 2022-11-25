@@ -66,7 +66,8 @@ const SessionInfoCard = ({ data, sessionUser, currentStatus }) => {
               sx={{ mt: 1, ml: 14.5, fontSize: 18, fontWeight: 500 }}
               className="sessionInfoDetail"
             >
-              <Box sx={{ fontWeight: 600, display: "inline" }}>Lugar:</Box> {data.location}
+              <Box sx={{ fontWeight: 600, display: "inline" }}>Lugar:</Box>{" "}
+              {`${data.location.toUpperCase()}`}
             </Box>
             <Box
               sx={{ mt: 1, ml: 14.5, mb: 3, fontSize: 18, fontWeight: 500 }}
