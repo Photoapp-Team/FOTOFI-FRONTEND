@@ -96,7 +96,7 @@ const MultiStepForm = ({ children, initialValues, onSubmit }) => {
       validationSchema={photographerRegisterSchema}
       onSubmit={handleSubmit}
     >
-      {({ setFieldValue, values, touched, errors }) => (
+      {({ setFieldValue, values, touched, errors, isSubmitting }) => (
         <Paper
           elevation={8}
           sx={{
@@ -138,6 +138,8 @@ const MultiStepForm = ({ children, initialValues, onSubmit }) => {
               phone={phone}
               hasPrevious={stepNumber > 0}
               onBackClick={() => previous(values)}
+              isSubmitting={isSubmitting}
+              values={values}
             />
           </Form>
         </Paper>

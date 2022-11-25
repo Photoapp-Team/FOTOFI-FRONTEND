@@ -19,6 +19,7 @@ export default function IdentityCard({ userData, isPremium, isOwner, isPhotograp
 
   useEffect(() => {
     if (isPhotographer && isPremium === false) {
+      console.log({ showGoProButton });
       setShowGoProButton(true);
     }
   }, [isPhotographer, isPremium]);
@@ -51,7 +52,9 @@ export default function IdentityCard({ userData, isPremium, isOwner, isPhotograp
               name="Editar Perfil"
               variant="secondary"
               children="Editar Perfil"
-              onClick={handleEditProfile}
+              onClick={() => {
+                handleEditProfile();
+              }}
               sx={{ my: "16px" }}
               className="button-identity-card"
             />
@@ -63,7 +66,16 @@ export default function IdentityCard({ userData, isPremium, isOwner, isPhotograp
                   textAlign="center"
                   sx={{ p: 1 }}
                 />
-                <Button name={"Volverse PRO"} className={"go-pro-button"} onClick={handleGoPro} />
+                <Button
+                  name="Volverse PRO"
+                  variant="PRO"
+                  children="Volverse PRO"
+                  onClick={() => {
+                    handleGoPro();
+                  }}
+                  sx={{ my: "16px" }}
+                  className="button-identity-card2"
+                />
               </>
             )}
           </>
