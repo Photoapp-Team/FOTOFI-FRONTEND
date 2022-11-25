@@ -3,21 +3,9 @@ import axios from "axios";
 
 export default function useFetchPhotographers() {
   const [data, setData] = useState(null);
-  const [filteredData, setFilteredData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const { REACT_APP_API_ENDPOINT } = process.env;
-
-  const [photographerFilters, setPhotographerFilters] = useState({ photoTags: [] });
-  const [photographerSearch, setPhotographerSearch] = useState("");
-
-  const updatePhotoTags = (photoTags) => {
-    setPhotographerFilters({ ...photographerFilters, photoTags });
-  };
-
-  const updateSearchWord = (searchWord) => {
-    setPhotographerSearch(searchWord);
-  };
 
   useEffect(() => {
     (async function () {
@@ -28,13 +16,9 @@ export default function useFetchPhotographers() {
           token = "";
         }
         setLoading(true);
-        const response = await axios.get(`${REACT_APP_API_ENDPOINT}/users`, {
+        const response = await axios.get(`${REACT_APP_API_ENDPOINT}/users?role=Photographer`, {
           headers: {
             Authorization: `Bearer ${token}`,
-          },
-          params: {
-            role: "Photographer",
-            ...photographerFilters,
           },
         });
         setData(response.data.data.users);
@@ -44,34 +28,7 @@ export default function useFetchPhotographers() {
         setLoading(false);
       }
     })();
-  }, [photographerFilters]);
+  }, []);
 
-  useEffect(() => {
-    if (data) {
-      if (photographerSearch !== "") {
-        let searchResult = data.reduce((accum, photographer) => {
-          if (
-            photographer.username.toLowerCase().includes(photographerSearch) ||
-            photographer.location.city.toLowerCase().includes(photographerSearch)
-          ) {
-            const object = { ...photographer };
-            return [...accum, object];
-          }
-          return accum;
-        }, []);
-        setFilteredData(searchResult);
-      } else {
-        setFilteredData(data);
-      }
-    }
-  }, [photographerSearch, data]);
-
-  return {
-    filteredData,
-    error,
-    loading,
-    updatePhotoTags,
-    updateSearchWord,
-    photographerSearch,
-  };
+  return { data, error, loading };
 }
