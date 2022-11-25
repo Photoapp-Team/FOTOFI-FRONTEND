@@ -91,11 +91,12 @@ const theme = createTheme({
             variant: "secondary",
           },
           style: {
-            fontWeight: 500,
+            fontWeight: 600,
             fontSize: "13px",
             backgroundColor: "#60C1D7",
-            color: "#000",
+            color: "#FFF",
             cursor: "pointer",
+            letterSpacing: 1,
           },
         },
         {
