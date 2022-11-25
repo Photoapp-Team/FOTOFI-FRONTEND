@@ -25,7 +25,7 @@ const UserRegistrationForm = () => {
         <ReactLogo className="userRegistrationLogo" color="black" />
       </Box>
       <div className="box-layout-basic-registration">
-        <h4 className="basic-registration-title">Crear una cuenta</h4>
+        <h5 className="basic-registration-title">Crear una cuenta</h5>
         <Formik
           initialValues={{ username: "", gender: "" }}
           validationSchema={registerSchema}
@@ -33,7 +33,7 @@ const UserRegistrationForm = () => {
         >
           {({ isSubmitting }) => (
             <Form className="form-container-basic-registration">
-              <Grid container sx={{ px: 2 }}>
+              <Grid container sx={{ px: "2rem" }} className="grid-container-user-registration">
                 <br />
                 <Grid item sm={12} md={12}>
                   <CustomInput
@@ -97,16 +97,18 @@ const UserRegistrationForm = () => {
                     fullWidth
                   />
                 </Grid>
-                <Grid item sm={12} md={12}>
-                  <Button
-                    sx={{ mt: "2px" }}
-                    disabled={isSubmitting}
-                    type="submit"
-                    text={"Submit"}
-                    name={"Enviar"}
-                    variant="secondary"
-                    children="Enviar"
-                  />
+                <Grid item sm={12} md={12} sx={{ display: "flex", justifyContent: "center" }}>
+                  <Box sx={{ width: "100%" }}>
+                    <Button
+                      sx={{ mt: "10px" }}
+                      disabled={isSubmitting}
+                      type="submit"
+                      text={"Submit"}
+                      name={"Enviar"}
+                      variant="secondary"
+                      children="Enviar"
+                    />
+                  </Box>
                 </Grid>
                 <Grid item sm={12} md={12}>
                   <p className="basic-registration-text">
