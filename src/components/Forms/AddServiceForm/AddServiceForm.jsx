@@ -4,11 +4,10 @@ import { addServiceSchema } from "../../schemas";
 import axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import { Alert, CircularProgress, FormControl, Grid, MenuItem, Paper } from "@mui/material";
+import { Alert, Button, CircularProgress, FormControl, Grid, MenuItem, Paper } from "@mui/material";
 import { Box } from "@mui/system";
 import { Form, Formik } from "formik";
 import CustomInput from "../../Inputs/CustomInput";
-import Button from "../../Inputs/Button/Button";
 import { createPackage } from "../../../services/createPackage";
 import { useNavigate } from "react-router-dom";
 import { ProfileDropZone } from "../../../services/ProfileDropZone/ProfileDropZone";
@@ -27,7 +26,7 @@ const AddServiceForm = () => {
   const navigate = useNavigate();
   const MySwal = withReactContent(Swal);
 
-  useEffect(() => { }, [loadingUpload]);
+  useEffect(() => {}, [loadingUpload]);
 
   const onSubmit = async (values, actions) => {
     const newPackage = await createPackage(values);
@@ -65,7 +64,7 @@ const AddServiceForm = () => {
   }, []);
 
   return (
-    <Box>
+    <>
       <Formik
         initialValues={{
           serviceCategory: emptyOption.value,
@@ -86,13 +85,19 @@ const AddServiceForm = () => {
         {({ isSubmitting, setFieldValue, values, errors, touched }) => (
           <Paper
             elevation={8}
-            sx={{ width: "50%", display: "flex", justifyContent: "center", m: "auto" }}
+            sx={{
+              width: "30%",
+              display: "flex",
+              justifyContent: "flex-start",
+              m: "auto",
+              px: "2rem",
+            }}
             className="formAddservicePaper"
           >
             <Form className="formAddService">
-              <Grid container spacing={3}>
-                <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
-                  <Box sx={{ m: "auto", textAlign: "center", mb: 10 }}>
+              <Grid container spacing={1}>
+                <Grid item xs={12} sm={12} sx={{ textAlign: "flex-start" }}>
+                  <Box sx={{ m: "auto", textAlign: "flex-start", mb: 5 }}>
                     <h1>Agregar un nuevo Servicio</h1>
                   </Box>
                 </Grid>
@@ -101,7 +106,7 @@ const AddServiceForm = () => {
                   fullwidth
                   xs={12}
                   sm={12}
-                  sx={{ gap: 2, display: "flex", justifyContent: "center" }}
+                  sx={{ gap: 2, display: "flex", justifyContent: "flex-start" }}
                 >
                   <Box component="span">Tipo de servicio</Box>
                   <CustomSelect
@@ -118,10 +123,10 @@ const AddServiceForm = () => {
                     ))}
                   </CustomSelect>
                 </Grid>
-                <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
+                <Grid item xs={12} sm={12} sx={{ textAlign: "flex-start" }}>
                   <h2>Imágenes</h2>
                 </Grid>
-                <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
+                <Grid item xs={12} sm={12} sx={{ textAlign: "flex-start" }}>
                   <h3>Elige tus imágenes para mostrar (máx 8)</h3>
                 </Grid>
                 <Grid
@@ -131,10 +136,10 @@ const AddServiceForm = () => {
                   sx={{
                     display: "flex",
                     flexDirection: "column",
-                    justifyContent: "center",
-                    textAlign: "center",
+                    justifyContent: "flex-start",
+                    textAlign: "flex-start",
                     m: "auto",
-                    alignItems: "center",
+                    alignItems: "flex-start",
                     gap: 5,
                   }}
                 >
@@ -148,7 +153,7 @@ const AddServiceForm = () => {
                     <Alert severity="error">Por favor sube al menos 1 foto</Alert>
                   )}
 
-                  <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
+                  <Grid item xs={12} sm={12} sx={{ textAlign: "flex-start" }}>
                     <h3>Elige una foto de portada (máx 1)</h3>
                   </Grid>
                   <ProfileDropZone
@@ -160,10 +165,10 @@ const AddServiceForm = () => {
                     <Alert severity="error">Por favor sube al menos 1 foto</Alert>
                   )}
                 </Grid>
-                <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
+                <Grid item xs={12} sm={12} sx={{ textAlign: "flex-start" }}>
                   <h2>Configura tu paquete</h2>
                 </Grid>
-                <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
+                <Grid item xs={12} sm={12} sx={{ textAlign: "flex-start" }}>
                   <h4>Precio</h4>
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -188,7 +193,7 @@ const AddServiceForm = () => {
                     />
                   </FormControl>
                 </Grid>
-                <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
+                <Grid item xs={12} sm={12} sx={{ textAlign: "flex-start" }}>
                   <h4>Descripción</h4>
                 </Grid>
                 <Grid item xs={12} sm={12}>
@@ -202,7 +207,7 @@ const AddServiceForm = () => {
                     />
                   </FormControl>
                 </Grid>
-                <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
+                <Grid item xs={12} sm={12} sx={{ textAlign: "flex-start" }}>
                   <h4>¿Cuántas fotos incluye? (Preview)</h4>
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -227,7 +232,7 @@ const AddServiceForm = () => {
                     />
                   </FormControl>
                 </Grid>
-                <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
+                <Grid item xs={12} sm={12} sx={{ textAlign: "flex-start" }}>
                   <h4>¿Cuántas fotos vas a entregar? </h4>
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -252,7 +257,7 @@ const AddServiceForm = () => {
                     />
                   </FormControl>
                 </Grid>
-                <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
+                <Grid item xs={12} sm={12} sx={{ textAlign: "flex-start" }}>
                   <h4>Tiempo estimado de entrega</h4>
                 </Grid>
                 <Grid item xs={12} sm={12}>
@@ -266,7 +271,7 @@ const AddServiceForm = () => {
                     />
                   </FormControl>
                 </Grid>
-                <Grid item xs={12} sm={12} sx={{ textAlign: "center", my: 10 }}>
+                <Grid item xs={12} sm={12} sx={{ textAlign: "center", my: 5 }}>
                   {loadingUpload && (
                     <Box sx={{ display: "flex" }}>
                       <CircularProgress />
@@ -275,9 +280,14 @@ const AddServiceForm = () => {
                   <Button
                     disabled={isSubmitting}
                     type="submit"
-                    text={"Submit"}
-                    name={"Crear Paquete"}
-                    className={"button-basic-registration"}
+                    text="Submit"
+                    name="Crear Paquete"
+                    children="Crear Paquete"
+                    variant="secondary"
+                    sx={{
+                      maxWidth: "600px",
+                      width: "auto",
+                    }}
                   />
                   {loadingUpload && (
                     <Box sx={{ display: "flex" }}>
@@ -290,7 +300,7 @@ const AddServiceForm = () => {
           </Paper>
         )}
       </Formik>
-    </Box>
+    </>
   );
 };
 

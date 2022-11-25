@@ -1,6 +1,5 @@
 import { Box, Button, CircularProgress } from "@mui/material";
 import React from "react";
-
 import "./FormNavigation.css";
 
 const FormNavigation = (props) => {
