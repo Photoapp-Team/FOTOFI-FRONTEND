@@ -57,7 +57,7 @@ const LoginForm = () => {
                   className="form-container-login"
                   sx={{
                     display: "flex",
-                    justifyContent: "center",
+                    justifyContent: "flex-start",
                     alignItems: "center",
                   }}
                 >
