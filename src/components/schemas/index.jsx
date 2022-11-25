@@ -87,7 +87,7 @@ export const photographerRegisterSchema = yup.object().shape({
     .string()
     .oneOf([yup.ref("password"), null], "Las contraseñas deben de coincidir")
     .required("Requerido"),
-  gender: yup.string().oneOf(["h", "m", "o"], ""),
+  gender: yup.string().oneOf(["f", "m", "o"], ""),
 });
 
 export const editSchema = yup.object().shape({
