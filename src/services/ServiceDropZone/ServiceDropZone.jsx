@@ -1,6 +1,6 @@
+import { Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import Button from "../../components/Inputs/Button/Button";
 import "./ServiceDropZone.css";
 
 export function ServiceDropZone({ setFieldValue, fieldName }) {
@@ -81,8 +81,9 @@ export function ServiceDropZone({ setFieldValue, fieldName }) {
       <div {...getRootProps({ className: "serviceDropZone" })}>
         <Button
           type="button"
+          variant="text"
           name="Seleccionar"
-          className="button-basic-registration"
+          children="Seleccionar"
           onClick={open}
         />
       </div>
