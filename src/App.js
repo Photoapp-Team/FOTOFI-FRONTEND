@@ -79,6 +79,17 @@ const theme = createTheme({
             cursor: "pointer",
           },
         },
+        PRO: {
+          "&:hover": {
+            fontWeight: 500,
+            fontSize: "13px",
+            backgroundColor: "#0f8d2a",
+            color: "#FFF",
+            cursor: "pointer",
+            letterSpacing: 1.5,
+            opacity: 0.5,
+          },
+        },
       },
       style: {
         backgroundColor: "red",
@@ -121,6 +132,19 @@ const theme = createTheme({
             fontSize: "12px",
             cursor: "pointer",
             backgroundColor: "#eb4034",
+          },
+        },
+        {
+          props: {
+            variant: "PRO",
+          },
+          style: {
+            fontWeight: 500,
+            fontSize: "13px",
+            backgroundColor: "#0f8d2a",
+            color: "#FFF",
+            cursor: "pointer",
+            letterSpacing: 1.5,
           },
         },
       ],
