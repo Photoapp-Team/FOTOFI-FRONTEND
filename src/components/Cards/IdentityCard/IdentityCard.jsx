@@ -1,9 +1,7 @@
 import * as React from "react";
 import "./IdentityCard.css";
-import { Card, Typography } from "@mui/material";
+import { Button, Card, Typography } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
-import Button from "../../Inputs/Button/Button";
-
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -47,15 +45,16 @@ export default function IdentityCard({ userData, isPremium, isOwner, isPhotograp
           variant="h5"
           sx={{ p: 1, fontWeight: "700", fontSize: "26px" }}
         />
-        <Typography
-          children={role === "Photographer" ? "Fotógrafo" : "Usuario"}
-          sx={{ p: 1, fontWeight: "600", fontSize: "16px" }}
-        />
         {isOwner && (
           <>
-            <Button name={"Editar Perfil"} className={"buttonLogin"} onClick={handleEditProfile}>
-              Editar mi perfil
-            </Button>
+            <Button
+              name="Editar Perfil"
+              variant="secondary"
+              children="Editar Perfil"
+              onClick={handleEditProfile}
+              sx={{ my: "16px" }}
+              className="button-identity-card"
+            />
             {showGoProButton && (
               <>
                 <Typography

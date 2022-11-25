@@ -16,10 +16,11 @@
 
 .basic-registration-title {
   font-style: normal;
-  font-weight: 650;
-  font-size: 45px;
+  font-weight: 600;
+  font-size: 40px;
   line-height: 47px;
   margin: 0px;
+  padding-left: 1rem;
   flex-direction: column;
 }
 
@@ -28,9 +29,19 @@
   flex-direction: column;
   align-items: center;
   gap: 15px;
-  width: 95%;
-  max-width: 1000px;
   margin: 0 auto;
+  max-width: 320px;
+}
+
+@media screen and (max-width: 425px) {
+  .form-container-basic-registration {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin: 0 auto;
+    width: 95%;
+  }
 }
 
 .button-basic-registration {
@@ -52,13 +63,19 @@
 @media screen and (max-width: 768px) {
   .box-layout-basic-registration {
     padding: 10px;
-    max-width: 60%;
+    max-width: 80%;
     margin: auto;
   }
+
   .userRegistrationLogo {
     margin-top: 15px;
     margin-left: 15px;
     max-width: 80px;
+  }
+
+  .grid-container-user-registration {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
   }
 }
 

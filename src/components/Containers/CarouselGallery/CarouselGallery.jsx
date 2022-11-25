@@ -1,6 +1,7 @@
 import "../../../../node_modules/react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
 import React from "react";
+import "./CarouselGallery.css";
 
 const placeHolders = [
   {
@@ -18,7 +19,7 @@ export default function CarouselGallery({ isLoaded, photos }) {
       return [...accum, object];
     }, []);
 
-    return <ImageGallery items={photogallery} />;
+    return <ImageGallery items={photogallery} className="image-gallery-slide" />;
   }
   return <ImageGallery items={placeHolders} />;
 }

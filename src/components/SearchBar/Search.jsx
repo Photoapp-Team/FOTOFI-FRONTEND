@@ -3,11 +3,8 @@ import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import Toolbar from "@mui/material/Toolbar";
-import useFetchPhotographers from "../../services/FetchServices/useFetchPhotographers";
-import { Form, Formik } from "formik";
 import { useUser } from "../../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
-import { ConstructionOutlined } from "@mui/icons-material";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -43,9 +40,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("sm")]: {
-      width: "4ch",
+      width: "25ch",
       "&:focus": {
-        width: "30ch",
+        width: "25ch",
       },
     },
   },
@@ -62,7 +59,7 @@ const SearchBar = () => {
 
   const handleClick = (event) => {};
   return (
-    <Toolbar sx={{ display: { xs: "none", md: "flex" }, mr: 1, color: "black" }}>
+    <Toolbar sx={{ mr: 1, color: "black" }} className="searchToolbar">
       <Search onClick={handleClick}>
         <SearchIconWrapper>
           <SearchIcon />
@@ -73,7 +70,7 @@ const SearchBar = () => {
           name="search"
           type="text"
           value={searchWord}
-          placeholder="Filtra por nombre o ciudad "
+          placeholder="Busca por nombre o ciudad "
           onChange={handleOnChange}
         />
       </Search>

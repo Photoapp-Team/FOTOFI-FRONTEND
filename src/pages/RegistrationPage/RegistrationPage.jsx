@@ -8,7 +8,10 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActionArea from "@mui/material/CardActionArea";
 import Typography from "@mui/material/Typography";
+import PhotographerSession from "../../assets/images/photographersession.png";
+import UserSession from "../../assets/images/usersession.png";
 import PhotographerRegistrationForm from "../../components/Forms/PhotographerRegistrationForm/PhotographerRegistrationForm";
+
 
 const RegistrationPage = () => {
   const [userType, setUserType] = useState(null);
@@ -31,47 +34,52 @@ const RegistrationPage = () => {
                 gutterBottom
                 variant="h2"
                 component="div"
-                children="Como te gustaria registrarte?"
+                children="¿Cómo te gustaría registrarte?"
                 align="center"
+                mt={3}
+                sx={{color:"white"}}
+                
+
               />
             </Grid>
-            <Grid item xs={12} md={4}>
-              <Card sx={{ maxWidth: 345 }}>
+            <Grid item xs={12} md={5}>
+              <Card>
                 <CardActionArea
                   onClick={() => {
                     setUserType("Photographer");
                   }}
                 >
-                  <CardMedia
-                    component="img"
-                    height="250"
-                    image="https://cdn-icons-png.flaticon.com/512/4551/4551689.png"
-                    alt="CAMERA ICON"
+                  <img
+                    src={PhotographerSession}
+                    alt="CAMERA ICON" 
+                    style= {{aspectRatio:"4/3", width:"100%", left: "100%", bottom: "100%" }}
+                    
+                  
                   />
                   <CardContent>
                     <Typography
                       gutterBottom
                       variant="h5"
                       component="div"
-                      children="Como fotografo"
+                      children="Como fotógrafo"
                       align="center"
                     />
                   </CardContent>
                 </CardActionArea>
               </Card>
             </Grid>
-            <Grid item xs={12} md={4}>
-              <Card sx={{ maxWidth: 345 }}>
+            <Grid item xs={12} md={5}>
+              <Card>
                 <CardActionArea
                   onClick={() => {
                     setUserType("User");
                   }}
                 >
-                  <CardMedia
-                    component="img"
-                    height="250"
-                    image="https://cdn-icons-png.flaticon.com/512/4633/4633099.png"
-                    alt="USER ICON"
+                   <img 
+                   src={UserSession}
+                   alt="USER SESSION" 
+                   style= {{aspectRatio:"4/3", width:"100%" }}
+                   
                   />
                   <CardContent>
                     <Typography

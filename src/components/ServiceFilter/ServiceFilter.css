@@ -2,8 +2,43 @@
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
-  width: 100%;
-  justify-content: center;
+  justify-content: space-evenly;
+}
+
+@media screen and (max-width: 563px) {
+  .serviceFilter {
+    width: 282px;
+  }
+}
+@media screen and (min-width: 564px) {
+  .serviceFilter {
+    width: 564px;
+  }
+}
+@media screen and (min-width: 846px) {
+  .serviceFilter {
+    width: 846px;
+  }
+}
+@media screen and (min-width: 1128px) {
+  .serviceFilter {
+    width: 1128px;
+  }
+}
+@media screen and (min-width: 1410px) {
+  .serviceFilter {
+    width: 1410px;
+  }
+}
+@media screen and (min-width: 1692px) {
+  .serviceFilter {
+    width: 1692px;
+  }
+}
+@media screen and (min-width: 1974px) {
+  .serviceFilter {
+    width: 1974px;
+  }
 }
 .serviceFilterLoading {
   display: flex;

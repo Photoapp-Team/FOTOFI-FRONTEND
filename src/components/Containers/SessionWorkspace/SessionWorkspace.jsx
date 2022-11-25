@@ -1,4 +1,4 @@
-import { Box, Step, StepLabel, Stepper } from "@mui/material";
+import { Box, MobileStepper, Step, StepLabel, Stepper, useMediaQuery } from "@mui/material";
 import React from "react";
 import { useParams } from "react-router-dom";
 import { statusFormater } from "../../../services/statusFormater";
@@ -28,20 +28,54 @@ const SessionWorkspace = () => {
   const { data, sessionUser, refreshData } = useFetchUniqueSession(url);
   const currentUserId = localStorage.getItem("userId");
 
-  const steps = ["1", "2", "3", "4", "5", "6", "7"];
+  const steps = [
+    "Solicitar Sesión",
+    "Confirmar Sesión",
+    "Aprobar Sesión",
+    "Fotos Previas",
+    "Seleccionar Fotos",
+    "Fotos Finales",
+    "Entregada",
+  ];
   const isLastStep = activeStep === steps.length - 1;
+  const phone = useMediaQuery("(max-width: 768px)");
 
-  const next = () => {
-    console.log("entraste al next");
-    setStepNumber(stepNumber + 1);
-    setActiveStep(activeStep + 1);
-  };
+  const next = () => {};
+
+  useEffect(() => {
+    if (data && sessionUser) {
+      const currentStatus = statusFormater(data.status).reverse()[0];
+      switch (currentStatus) {
+        case "Solicitada":
+          setActiveStep(0);
+          break;
+        case "Programada":
+          setActiveStep(1);
+          break;
+        case "Aprobada":
+          setActiveStep(2);
+          break;
+        case "Pagada":
+          setActiveStep(3);
+          break;
+        case "Por seleccionar":
+          setActiveStep(4);
+          break;
+        case "Fotos seleccionadas":
+          setActiveStep(5);
+          break;
+        case "Entregada":
+          setActiveStep(6);
+          break;
+        default:
+          console.log("La sesión fue cancelada");
+      }
+    }
+  }, [data]);
 
   useEffect(() => {
     refreshData();
   }, [statusWorkspace]);
-
-  console.log({ activeStep });
 
   if (data && currentUserId === data.photographerId[0]) {
     if (data && sessionUser) {
@@ -57,13 +91,29 @@ const SessionWorkspace = () => {
                   currentStatus={currentStatus}
                 />
               </Box>
-              {/* <Stepper activeStep={activeStep} sx={{ py: 5 }}>
-                {steps.map((label) => (
-                  <Step key={label}>
-                    <StepLabel>{label}</StepLabel>
-                  </Step>
-                ))}
-              </Stepper> */}
+              {phone ? (
+                <MobileStepper
+                  variant="dots"
+                  steps={7}
+                  activeStep={activeStep}
+                  sx={{
+                    maxWidth: "768px",
+                    height: "20px",
+                    flexGrow: 1,
+                    position: "relative",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                />
+              ) : (
+                <Stepper activeStep={activeStep} sx={{ py: 5, px: 5 }}>
+                  {steps.map((label) => (
+                    <Step key={label}>
+                      <StepLabel>{label}</StepLabel>
+                    </Step>
+                  ))}
+                </Stepper>
+              )}
               <ConfirmSession
                 sessionId={data._id}
                 data={data}
@@ -86,13 +136,29 @@ const SessionWorkspace = () => {
                   currentStatus={currentStatus}
                 />
               </Box>
-              {/* <Stepper activeStep={activeStep} sx={{ py: 5 }}>
-                {steps.map((label) => (
-                  <Step key={label}>
-                    <StepLabel>{label}</StepLabel>
-                  </Step>
-                ))}
-              </Stepper> */}
+              {phone ? (
+                <MobileStepper
+                  variant="dots"
+                  steps={7}
+                  activeStep={activeStep}
+                  sx={{
+                    maxWidth: "768px",
+                    height: "20px",
+                    flexGrow: 1,
+                    position: "relative",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                />
+              ) : (
+                <Stepper activeStep={activeStep} sx={{ py: 5, px: 5 }}>
+                  {steps.map((label) => (
+                    <Step key={label}>
+                      <StepLabel>{label}</StepLabel>
+                    </Step>
+                  ))}
+                </Stepper>
+              )}
               <ConfirmPaymentSession
                 sessionId={data._id}
                 setStatusWorkspace={setStatusWorkspace}
@@ -112,13 +178,29 @@ const SessionWorkspace = () => {
                   currentStatus={currentStatus}
                 />
               </Box>
-              {/* <Stepper activeStep={activeStep} sx={{ py: 5 }}>
-                {steps.map((label) => (
-                  <Step key={label}>
-                    <StepLabel>{label}</StepLabel>
-                  </Step>
-                ))}
-              </Stepper> */}
+              {phone ? (
+                <MobileStepper
+                  variant="dots"
+                  steps={7}
+                  activeStep={activeStep}
+                  sx={{
+                    maxWidth: "768px",
+                    height: "20px",
+                    flexGrow: 1,
+                    position: "relative",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                />
+              ) : (
+                <Stepper activeStep={activeStep} sx={{ py: 5, px: 5 }}>
+                  {steps.map((label) => (
+                    <Step key={label}>
+                      <StepLabel>{label}</StepLabel>
+                    </Step>
+                  ))}
+                </Stepper>
+              )}
               <SessionPrevUpload
                 sessionId={data._id}
                 setStatusWorkspace={setStatusWorkspace}
@@ -138,13 +220,29 @@ const SessionWorkspace = () => {
                   currentStatus={currentStatus}
                 />
               </Box>
-              {/* <Stepper activeStep={activeStep} sx={{ py: 5 }}>
-                {steps.map((label) => (
-                  <Step key={label}>
-                    <StepLabel>{label}</StepLabel>
-                  </Step>
-                ))}
-              </Stepper> */}
+              {phone ? (
+                <MobileStepper
+                  variant="dots"
+                  steps={7}
+                  activeStep={activeStep}
+                  sx={{
+                    maxWidth: "768px",
+                    height: "20px",
+                    flexGrow: 1,
+                    position: "relative",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                />
+              ) : (
+                <Stepper activeStep={activeStep} sx={{ py: 5, px: 5 }}>
+                  {steps.map((label) => (
+                    <Step key={label}>
+                      <StepLabel>{label}</StepLabel>
+                    </Step>
+                  ))}
+                </Stepper>
+              )}
               <Box sx={{ display: "flex", flexWrap: "wrap" }}>
                 <SessionFinalUpload
                   sessionId={data._id}
@@ -167,13 +265,29 @@ const SessionWorkspace = () => {
                   currentStatus={currentStatus}
                 />
               </Box>
-              {/* <Stepper activeStep={activeStep} sx={{ py: 5 }}>
-                {steps.map((label) => (
-                  <Step key={label}>
-                    <StepLabel>{label}</StepLabel>
-                  </Step>
-                ))}
-              </Stepper> */}
+              {phone ? (
+                <MobileStepper
+                  variant="dots"
+                  steps={7}
+                  activeStep={activeStep}
+                  sx={{
+                    maxWidth: "768px",
+                    height: "20px",
+                    flexGrow: 1,
+                    position: "relative",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                />
+              ) : (
+                <Stepper activeStep={activeStep} sx={{ py: 5, px: 5 }}>
+                  {steps.map((label) => (
+                    <Step key={label}>
+                      <StepLabel>{label}</StepLabel>
+                    </Step>
+                  ))}
+                </Stepper>
+              )}
               <Box sx={{ display: "flex", flexWrap: "wrap" }}>
                 <CancelledSession user={"usuario"} setStatusWorkspace={setStatusWorkspace} />
               </Box>
@@ -191,13 +305,29 @@ const SessionWorkspace = () => {
                   currentStatus={currentStatus}
                 />
               </Box>
-              {/* <Stepper activeStep={activeStep} sx={{ py: 5 }}>
-                {steps.map((label) => (
-                  <Step key={label}>
-                    <StepLabel>{label}</StepLabel>
-                  </Step>
-                ))}
-              </Stepper> */}
+              {phone ? (
+                <MobileStepper
+                  variant="dots"
+                  steps={7}
+                  activeStep={activeStep}
+                  sx={{
+                    maxWidth: "768px",
+                    height: "20px",
+                    flexGrow: 1,
+                    position: "relative",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                />
+              ) : (
+                <Stepper activeStep={activeStep} sx={{ py: 5, px: 5 }}>
+                  {steps.map((label) => (
+                    <Step key={label}>
+                      <StepLabel>{label}</StepLabel>
+                    </Step>
+                  ))}
+                </Stepper>
+              )}
               <Box sx={{ display: "flex", flexWrap: "wrap" }}>
                 <WaitingSessionStatus user={"usuario"} />
               </Box>
@@ -220,13 +350,29 @@ const SessionWorkspace = () => {
                   currentStatus={currentStatus}
                 />
               </Box>
-              {/* <Stepper activeStep={activeStep} sx={{ py: 5 }}>
-                {steps.map((label) => (
-                  <Step key={label}>
-                    <StepLabel>{label}</StepLabel>
-                  </Step>
-                ))}
-              </Stepper> */}
+              {phone ? (
+                <MobileStepper
+                  variant="dots"
+                  steps={7}
+                  activeStep={activeStep}
+                  sx={{
+                    maxWidth: "768px",
+                    height: "20px",
+                    flexGrow: 1,
+                    position: "relative",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                />
+              ) : (
+                <Stepper activeStep={activeStep} sx={{ py: 5, px: 5 }}>
+                  {steps.map((label) => (
+                    <Step key={label}>
+                      <StepLabel>{label}</StepLabel>
+                    </Step>
+                  ))}
+                </Stepper>
+              )}
               <ApproveSession
                 data={data}
                 sessionId={data._id}
@@ -247,13 +393,29 @@ const SessionWorkspace = () => {
                   currentStatus={currentStatus}
                 />
               </Box>{" "}
-              {/* <Stepper activeStep={activeStep} sx={{ py: 5 }}>
-                {steps.map((label) => (
-                  <Step key={label}>
-                    <StepLabel>{label}</StepLabel>
-                  </Step>
-                ))}
-              </Stepper> */}
+              {phone ? (
+                <MobileStepper
+                  variant="dots"
+                  steps={7}
+                  activeStep={activeStep}
+                  sx={{
+                    maxWidth: "768px",
+                    height: "20px",
+                    flexGrow: 1,
+                    position: "relative",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                />
+              ) : (
+                <Stepper activeStep={activeStep} sx={{ py: 5, px: 5 }}>
+                  {steps.map((label) => (
+                    <Step key={label}>
+                      <StepLabel>{label}</StepLabel>
+                    </Step>
+                  ))}
+                </Stepper>
+              )}
               <ImageContainer
                 previewPics={data.previewPics}
                 loaded={true}
@@ -276,13 +438,29 @@ const SessionWorkspace = () => {
                   currentStatus={currentStatus}
                 />
               </Box>
-              {/* <Stepper activeStep={activeStep} sx={{ py: 5 }}>
-                {steps.map((label) => (
-                  <Step key={label}>
-                    <StepLabel>{label}</StepLabel>
-                  </Step>
-                ))}
-              </Stepper> */}
+              {phone ? (
+                <MobileStepper
+                  variant="dots"
+                  steps={7}
+                  activeStep={activeStep}
+                  sx={{
+                    maxWidth: "768px",
+                    height: "20px",
+                    flexGrow: 1,
+                    position: "relative",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                />
+              ) : (
+                <Stepper activeStep={activeStep} sx={{ py: 5, px: 5 }}>
+                  {steps.map((label) => (
+                    <Step key={label}>
+                      <StepLabel>{label}</StepLabel>
+                    </Step>
+                  ))}
+                </Stepper>
+              )}
               <RateSession data={data} />;
             </Box>
           </>
@@ -298,13 +476,29 @@ const SessionWorkspace = () => {
                   currentStatus={currentStatus}
                 />
               </Box>
-              {/* <Stepper activeStep={activeStep} sx={{ py: 5 }}>
-                {steps.map((label) => (
-                  <Step key={label}>
-                    <StepLabel>{label}</StepLabel>
-                  </Step>
-                ))}
-              </Stepper> */}
+              {phone ? (
+                <MobileStepper
+                  variant="dots"
+                  steps={7}
+                  activeStep={activeStep}
+                  sx={{
+                    maxWidth: "768px",
+                    height: "20px",
+                    flexGrow: 1,
+                    position: "relative",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                />
+              ) : (
+                <Stepper activeStep={activeStep} sx={{ py: 5, px: 5 }}>
+                  {steps.map((label) => (
+                    <Step key={label}>
+                      <StepLabel>{label}</StepLabel>
+                    </Step>
+                  ))}
+                </Stepper>
+              )}
               <Box sx={{ display: "flex", flexWrap: "wrap" }}>
                 <CancelledSession user={"fotógrafo"} />
               </Box>
@@ -322,13 +516,29 @@ const SessionWorkspace = () => {
                   currentStatus={currentStatus}
                 />
               </Box>
-              {/* <Stepper activeStep={activeStep} sx={{ py: 5 }}>
-                {steps.map((label) => (
-                  <Step key={label}>
-                    <StepLabel>{label}</StepLabel>
-                  </Step>
-                ))}
-              </Stepper> */}
+              {phone ? (
+                <MobileStepper
+                  variant="dots"
+                  steps={7}
+                  activeStep={activeStep}
+                  sx={{
+                    maxWidth: "768px",
+                    height: "20px",
+                    flexGrow: 1,
+                    position: "relative",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                />
+              ) : (
+                <Stepper activeStep={activeStep} sx={{ py: 5, px: 5 }}>
+                  {steps.map((label) => (
+                    <Step key={label}>
+                      <StepLabel>{label}</StepLabel>
+                    </Step>
+                  ))}
+                </Stepper>
+              )}
               <Box sx={{ display: "flex", flexWrap: "wrap" }}>
                 <WaitingSessionStatus user={"fotógrafo"} />
               </Box>

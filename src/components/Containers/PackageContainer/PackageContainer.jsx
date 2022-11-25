@@ -10,24 +10,26 @@ export default function PackageContainer({ data }) {
   const packageData = data.data;
   const fetchSuccess = !data.loading;
   return (
-    <Container maxWidth="md">
-      <Grid container spacing={2} justifyContent="center" alignItems="center">
-        <Grid item xs={12} md={8}>
+    <Container maxWidth="md" sx={{ minHeight: "calc(100vh - 199px)", display: "flex" }}>
+      <Grid
+        container
+        spacing={2}
+        sx={{
+          justifyContent: "center",
+          alignItems: "center",
+          display: "flex",
+          my: "auto",
+          height: "auto",
+        }}
+      >
+        <Grid item xs={12} md={7} sx={{ my: "auto" }}>
           {fetchSuccess ? (
-            <PackageGalleryCard
-              isLoaded={fetchSuccess}
-              name="Luis"
-              photos={packageData.displayPhotos}
-              //!MANDAR INFO DESDE LA PAGINA ANTERIOR
-              // profilePic=""
-              // location=""
-              // photographerId=""
-            />
+            <PackageGalleryCard isLoaded={fetchSuccess} photos={packageData.displayPhotos} />
           ) : (
             <PackageGalleryCard isLoaded={fetchSuccess} sx={1} />
           )}
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={5}>
           {fetchSuccess ? (
             <PackageInfoCard data={packageData} isLoaded={true} />
           ) : (

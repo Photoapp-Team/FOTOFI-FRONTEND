@@ -7,8 +7,8 @@ import CustomInput from "../../Inputs/CustomInput";
 import { registerSchema } from "../../schemas";
 import { useNavigate } from "react-router-dom";
 import { createBasicUser } from "../../../services/registerUser";
-import Button from "../../Inputs/Button/Button";
 import { ReactComponent as ReactLogo } from "../../../assets/Logo/Logo.svg";
+import { Button, Grid } from "@mui/material";
 
 const UserRegistrationForm = () => {
   const navigate = useNavigate();
@@ -25,13 +25,7 @@ const UserRegistrationForm = () => {
         <ReactLogo className="userRegistrationLogo" color="black" />
       </Box>
       <div className="box-layout-basic-registration">
-        <h1 className="basic-registration-title">Crear una cuenta</h1>
-        <p className="basic-registration-text">
-          ¿Ya eres usuario?
-          <a href="/Login">
-            <span className="basic-registration-text-link"> Inicia sesión</span>
-          </a>
-        </p>
+        <h5 className="basic-registration-title">Crear una cuenta</h5>
         <Formik
           initialValues={{ username: "", gender: "" }}
           validationSchema={registerSchema}
@@ -39,58 +33,92 @@ const UserRegistrationForm = () => {
         >
           {({ isSubmitting }) => (
             <Form className="form-container-basic-registration">
-              <br />
-              <CustomInput
-                label="Nombre"
-                name="name"
-                type="text"
-                placeholder="Ingresa tu nombre"
-                size="small"
-              />
-              <CustomInput
-                label="Apellido"
-                name="lastname"
-                type="text"
-                placeholder="Ingresa tu apellido"
-                size="small"
-              />
-              <CustomInput
-                label="Username"
-                name="username"
-                type="text"
-                placeholder="Ingresa tu nombre de usuario"
-                size="small"
-              />
-              <CustomInput
-                label="Email"
-                name="email"
-                type="email"
-                placeholder="Ingresa tu email"
-                size="small"
-              />
-              <CustomInput
-                label="Password"
-                name="password"
-                type="password"
-                placeholder="Escribe una contraseña"
-                size="small"
-                autoComplete="new-password"
-              />
-              <CustomInput
-                label="ConfirmPassword"
-                name="confirmPassword"
-                type="password"
-                placeholder="Escribe una contraseña"
-                size="small"
-                autoComplete="new-password"
-              />
-              <Button
-                disabled={isSubmitting}
-                type="submit"
-                text={"Submit"}
-                name={"Enviar"}
-                className={"button-basic-registration"}
-              />
+              <Grid container sx={{ px: "2rem" }} className="grid-container-user-registration">
+                <br />
+                <Grid item sm={12} md={12}>
+                  <CustomInput
+                    label="Nombre"
+                    name="name"
+                    type="text"
+                    placeholder="Ingresa tu nombre"
+                    size="small"
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item sm={12} md={12}>
+                  <CustomInput
+                    label="Apellido"
+                    name="lastname"
+                    type="text"
+                    placeholder="Ingresa tu apellido"
+                    size="small"
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item sm={12} md={12}>
+                  <CustomInput
+                    label="Username"
+                    name="username"
+                    type="text"
+                    placeholder="Ingresa tu nombre de usuario"
+                    size="small"
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item sm={12} md={12}>
+                  <CustomInput
+                    label="Email"
+                    name="email"
+                    type="email"
+                    placeholder="Ingresa tu email"
+                    size="small"
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item sm={12} md={12}>
+                  <CustomInput
+                    label="Password"
+                    name="password"
+                    type="password"
+                    placeholder="Escribe una contraseña"
+                    size="small"
+                    autoComplete="new-password"
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item sm={12} md={12}>
+                  <CustomInput
+                    label="ConfirmPassword"
+                    name="confirmPassword"
+                    type="password"
+                    placeholder="Escribe una contraseña"
+                    size="small"
+                    autoComplete="new-password"
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item sm={12} md={12} sx={{ display: "flex", justifyContent: "center" }}>
+                  <Box sx={{ width: "100%" }}>
+                    <Button
+                      sx={{ mt: "10px" }}
+                      disabled={isSubmitting}
+                      type="submit"
+                      text={"Submit"}
+                      name={"Enviar"}
+                      variant="secondary"
+                      children="Enviar"
+                    />
+                  </Box>
+                </Grid>
+                <Grid item sm={12} md={12}>
+                  <p className="basic-registration-text">
+                    ¿Ya eres usuario?
+                    <a href="/Login">
+                      <span className="basic-registration-text-link"> Inicia sesión</span>
+                    </a>
+                  </p>
+                </Grid>
+              </Grid>
             </Form>
           )}
         </Formik>
