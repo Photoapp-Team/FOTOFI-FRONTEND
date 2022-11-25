@@ -19,7 +19,6 @@ export default function IdentityCard({ userData, isPremium, isOwner, isPhotograp
 
   useEffect(() => {
     if (isPhotographer && isPremium === false) {
-      console.log({ showGoProButton });
       setShowGoProButton(true);
     }
   }, [isPhotographer, isPremium]);
