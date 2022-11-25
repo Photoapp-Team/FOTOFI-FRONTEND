@@ -2,7 +2,7 @@ import { Box, MobileStepper, Step, StepLabel, Stepper, useMediaQuery } from "@mu
 import React from "react";
 import { useParams } from "react-router-dom";
 import { statusFormater } from "../../../services/statusFormater";
-import useFetchUniqueSession from "../../../services/useFetchUniqueSession";
+import useFetchUniqueSession from "../../../services/FetchServices/useFetchUniqueSession.jsx";
 import SessionInfoCard from "../../Cards/SessionInfoCard/SessionInfoCard";
 import "./SessionWorkspace.css";
 import SessionPrevUpload from "../SessionPrevUpload/SessionPrevUpload";
