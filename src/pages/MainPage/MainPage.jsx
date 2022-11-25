@@ -38,7 +38,7 @@ const MainPage = () => {
           className="filterTitle"
           variant="h4"
           component="div"
-          children="Fotografos disponibles"
+          children="Fotógrafos disponibles"
           align="center"
           boxSizing="content-box"
         />

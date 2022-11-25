@@ -1,7 +1,35 @@
 .mainContainer {
-  height: 90vh;
+  min-height: calc(100vh - 199px);
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.845);
+}
+
+.react-calendar {
+  width: 80% !important;
+}
+
+@media screen and (max-width: 425px) {
+  .react-calendar {
+    width: 95% !important;
+  }
+  .filterTitle {
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: start;
+  }
+  .new-session-form {
+    width: 88% !important;
+  }
+}
+
+.new-session-form {
+  width: 58%;
+}
+
+.schedule-button {
+  box-shadow: 3px 6px 5px -2px rgba(166, 147, 147, 0.83) !important;
+  -webkit-box-shadow: 3px 6px 5px -2px rgba(166, 147, 147, 0.83) !important;
+  -moz-box-shadow: 3px 6px 5px -2px rgba(166, 147, 147, 0.83) !important;
 }

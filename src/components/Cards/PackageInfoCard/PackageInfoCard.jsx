@@ -3,9 +3,8 @@ import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import Typography from "@mui/material/Typography";
 import Skeleton from "@mui/material/Skeleton";
-import Button from "../../Inputs/Button/Button";
 import CardContent from "@mui/material/CardContent";
-import { List, ListItemText, ListItem } from "@mui/material";
+import { List, ListItemText, ListItem, Button } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import StarIcon from "@mui/icons-material/StarTwoTone";
 import "./PackageInfoCard.css";
@@ -24,6 +23,7 @@ export default function PackageInfoCard({ data, isLoaded }) {
     maxQuantityFinalPhotos,
     _id,
     photographerId,
+    serviceCategory,
   } = data;
 
   const { isUserLoggedIn, setAutomaticRedirection } = useUser();
@@ -42,7 +42,7 @@ export default function PackageInfoCard({ data, isLoaded }) {
   return (
     <>
       <Card alignItems="center" className="packageInfoCard">
-        <CardHeader title="Paquetes" />
+        <CardHeader title={`Paquete ${serviceCategory}`} />
         <Divider></Divider>
         <CardContent>
           <Typography
@@ -108,7 +108,14 @@ export default function PackageInfoCard({ data, isLoaded }) {
             </ListItem>
           </List>
         </CardContent>
-        <Button name={"Agregar"} className={"schedule-button"} onClick={handleOnClick} />
+        <Button
+          name="Agregar"
+          children="Contratar"
+          variant="secondary"
+          onClick={handleOnClick}
+          className="schedule-button"
+          sx={{ mb: "1rem", width: "272px", mx: "auto" }}
+        />
       </Card>
     </>
   );

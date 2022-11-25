@@ -65,7 +65,7 @@ function Meganav() {
             ) : (
               <>
                 <Button
-                  variant="contained"
+                  variant="secondary"
                   href="/login"
                   sx={{
                     background: "#42b7d0",
@@ -77,13 +77,14 @@ function Meganav() {
                 />
 
                 <Button
-                  variant="contained"
+                  variant="secondary"
                   href="/Registration"
                   sx={{
                     background: "transparent",
                     color: "#42b7d0",
                     fontSize: ".75rem",
                     margin: ".5rem",
+                    border: "1px solid",
                   }}
                   children="Registrate"
                 />

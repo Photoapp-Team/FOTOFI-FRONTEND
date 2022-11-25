@@ -33,7 +33,7 @@ const UserRegistrationForm = () => {
         >
           {({ isSubmitting }) => (
             <Form className="form-container-basic-registration">
-              <Grid container sx={{ px: 2 }}>
+              <Grid container sx={{ textAlign: "center", px: 2 }}>
                 <br />
                 <Grid item sm={12} md={12}>
                   <CustomInput
@@ -97,9 +97,9 @@ const UserRegistrationForm = () => {
                     fullWidth
                   />
                 </Grid>
-                <Box>
+                <Grid item sm={12} md={12}>
                   <Button
-                    sx={{ pt: 2, mt: "2px" }}
+                    sx={{ mt: "2px" }}
                     disabled={isSubmitting}
                     type="submit"
                     text={"Submit"}
@@ -107,16 +107,15 @@ const UserRegistrationForm = () => {
                     variant="secondary"
                     children="Enviar"
                   />
-                </Box>
-                <p className="basic-registration-text">
-                  ¿Ya eres usuario?
-                  <a href="/Login">
-                    <span className="basic-registration-text-link">
-                      {" "}
-                      Inicia sesión
-                    </span>
-                  </a>
-                </p>
+                </Grid>
+                <Grid item sm={12} md={12}>
+                  <p className="basic-registration-text">
+                    ¿Ya eres usuario?
+                    <a href="/Login">
+                      <span className="basic-registration-text-link"> Inicia sesión</span>
+                    </a>
+                  </p>
+                </Grid>
               </Grid>
             </Form>
           )}

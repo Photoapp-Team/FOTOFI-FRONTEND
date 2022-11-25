@@ -30,7 +30,7 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: "#60C1D7",
+      main: "#42B7D0",
       "&:hover": {
         color: "#FFFFFF",
         opacity: 0.7,
@@ -58,8 +58,8 @@ const theme = createTheme({
         root: {
           "&:hover": {
             color: "#FFFFFF",
-            backgroundColor: "#60C1D7",
-            opacity: 0.9,
+            backgroundColor: "#42B7D0",
+            opacity: 0.8,
           },
         },
         reject: {
@@ -79,6 +79,17 @@ const theme = createTheme({
             cursor: "pointer",
           },
         },
+        PRO: {
+          "&:hover": {
+            fontWeight: 500,
+            fontSize: "13px",
+            backgroundColor: "#0f8d2a",
+            color: "#FFF",
+            cursor: "pointer",
+            letterSpacing: 1.5,
+            opacity: 0.5,
+          },
+        },
       },
       style: {
         backgroundColor: "red",
@@ -93,9 +104,10 @@ const theme = createTheme({
           style: {
             fontWeight: 500,
             fontSize: "13px",
-            backgroundColor: "#60C1D7",
-            color: "#000",
+            backgroundColor: "#42B7D0",
+            color: "#FFF",
             cursor: "pointer",
+            letterSpacing: 1.5,
           },
         },
         {
@@ -122,11 +134,24 @@ const theme = createTheme({
             backgroundColor: "#eb4034",
           },
         },
+        {
+          props: {
+            variant: "PRO",
+          },
+          style: {
+            fontWeight: 500,
+            fontSize: "13px",
+            backgroundColor: "#0f8d2a",
+            color: "#FFF",
+            cursor: "pointer",
+            letterSpacing: 1.5,
+          },
+        },
       ],
     },
     MuiMobileStepper: {
       style: {
-        backgroundColor: "#60C1D7",
+        backgroundColor: "#42B7D0",
         fontSize: "24px",
         fontWeight: 800,
         dot: {
@@ -135,7 +160,7 @@ const theme = createTheme({
           width: "15px",
         },
         dotActive: {
-          backgroundColor: "#3f51b5",
+          backgroundColor: "#42B7D0",
         },
       },
     },

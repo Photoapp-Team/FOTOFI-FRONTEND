@@ -13,7 +13,7 @@ const ProductDisplay = ({ id }) => (
       <Card sx={{ minWidth: 275, maxWidth: 500 }}>
         <CardContent>
           <Typography variant="h3" component="div">
-            Plan fotografo Pro
+            Plan fotógrafo Pro
           </Typography>
           <Typography variant="h4" sx={{ mb: 1.5 }} color="text.secondary">
             $1.00 / mensual
