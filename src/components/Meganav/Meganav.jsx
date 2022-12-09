@@ -72,8 +72,11 @@ function Meganav() {
                     color: "black",
                     fontSize: ".75rem",
                     margin: ".5rem",
+                    textAlign: "center",
+                    maxWidth: "100px",
+                    maxHeight: "48px",
                   }}
-                  children="Inicia Sesion"
+                  children="Iniciar Sesión"
                 />
 
                 <Button
@@ -85,8 +88,10 @@ function Meganav() {
                     fontSize: ".75rem",
                     margin: ".5rem",
                     border: "1px solid",
+                    textAlign: "center",
+                    maxWidth: "100px",
                   }}
-                  children="Registrate"
+                  children="Registrarse"
                 />
               </>
             )}

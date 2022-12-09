@@ -1,5 +1,5 @@
 .fotofiLogo {
-  height: 2em;
+  height: 48px;
 }
 
 .headerContainer {
@@ -33,7 +33,7 @@
 
 @media screen and (max-width: 563px) {
   .headerContainer {
-    width: 282px;
+    width: 320px;
   }
 }
 @media screen and (min-width: 564px) {
